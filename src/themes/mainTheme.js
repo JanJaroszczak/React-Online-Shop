@@ -5,8 +5,9 @@ export const mainTheme = {
     lightDark: '#222',
     darkGray: '#888',
     gray: '#626262',
+    moderateGray: '#dedede',
     lightGray: '#959595',
-    extraLightGray: '#EEE',
+    extraLightGray: 'rgb(249, 249, 249)',
     violet: '#7B599B',
     navText: '#4D4D4D',
     heading: '#222',
@@ -14,8 +15,8 @@ export const mainTheme = {
     price: '#333',
   },
 
-  fontSize: {
-    sl: '4.8rem',
+  fontSizes: {
+    sl: '6rem',
     xxl: '4rem',
     xl: '3rem',
     l: '2.4rem',
@@ -24,6 +25,12 @@ export const mainTheme = {
     xs: '1.5rem',
     xxs: '1.4rem',
     ss: '1.2rem',
+  },
+
+  fontWeights: {
+    light: 300,
+    regular: 400,
+    bold: 700,
   },
 
   // devices: {

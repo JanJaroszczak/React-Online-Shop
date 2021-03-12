@@ -1,61 +1,78 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addProductToCart } from '../../actions';
 
-const StyledDiv = styled.div`
-  position: relative;
-  width: 263px;
-  height: 119px;
-  padding: 2px 20px;
-  color: ${({ theme }) => theme.colors.lightDark};
-  text-transform: uppercase;
-`;
+import {
+  StyledDiv,
+  StyledModelName,
+  StyledBrandName,
+  StyledPlus,
+  StyledPrice,
+} from './styles/StyledProductInfo';
+import './styles/stylesProductInfo.css';
 
-const StyledH3 = styled.h3`
-  font-size: ${({ theme }) => theme.fontSize.m};
-  line-height: 22px;
-  font-weight: 300;
-  margin-top: 20px;
-  margin-right: 25px;
-`;
+const ProductInfo = ({ model, brand, price, productId, sizes }) => {
+  const [chosenSize, setChosenSize] = useState('-');
+  const [errorVisibility, setError] = useState('none');
+  const [addToCartFailed, setAddToCartFailed] = useState(false);
 
-const StyledCategory = styled.span`
-  display: block;
-  color: ${({ theme }) => theme.colors.darkGray};
-  font-size: ${({ theme }) => theme.fontSize.xxs};
-  margin-top: 5px;
-  line-height: 20px;
-  font-weight: 300;
-`;
+  const dispatch = useDispatch();
 
-const StyledPlus = styled.span`
-  position: absolute;
-  top: 22px;
-  right: 10px;
-  color: ${({ theme }) => theme.colors.mainDark};
-  font-size: ${({ theme }) => theme.fontSize.s};
-`;
+  // const availableProducts = useSelector(({ products }) => products);
 
-const StyledPrice = styled.span`
-  display: block;
-  font-size: ${({ theme }) => theme.fontSize.m};
-  font-weight: 300;
-  margin-top: 20px;
-`;
+  const sizeOptions = sizes.map((size) => {
+    if (size.availableQuantity > 0) {
+      return (
+        <option key={size.size} value={size.size}>
+          {size.size}
+        </option>
+      );
+    }
+  });
 
-const StyledPriceValue = styled.span`
-  padding-left: 6px;
-`;
+  useEffect(() => {
+    if (addToCartFailed)
+      chosenSize !== '-' ? setError('none') : setError('inline');
+  }, [chosenSize]);
 
-const ProductInfo = ({ product, category, price }) => {
+  const addToCart = () => {
+    if (chosenSize !== '-') {
+      dispatch(addProductToCart(productId));
+      setAddToCartFailed(false);
+      setError('none');
+    } else {
+      setAddToCartFailed(true);
+      setError('inline');
+    }
+  };
+
+  const handleSelectChange = (e) => {
+    setChosenSize(e.target.value);
+  };
+
   return (
     <StyledDiv>
-      <StyledH3>{product}</StyledH3>
-      <StyledCategory>{category}</StyledCategory>
+      <StyledModelName>{model}</StyledModelName>
+      <StyledBrandName>{brand}</StyledBrandName>
       <StyledPlus>
-        <i class="fas fa-plus"></i>
+        <i className="fas fa-plus" onClick={addToCart}></i>
+        <bdi></bdi>
       </StyledPlus>
+      <label htmlFor="size">Size:</label>
+      <select
+        id="size"
+        onChange={(e) => {
+          handleSelectChange(e);
+        }}
+      >
+        <option value="-">-</option>
+        {sizeOptions}
+      </select>
+      <label style={{ display: `${errorVisibility}` }}>
+        You need to choose a size!
+      </label>
       <StyledPrice>
-        £<StyledPriceValue>{price.toFixed(2)}</StyledPriceValue>
+        £<span>{price.toFixed(2)}</span>
       </StyledPrice>
     </StyledDiv>
   );

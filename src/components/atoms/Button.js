@@ -1,16 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
-  /* style wszystkich buttonów w apce */
+  padding: 7px 15px;
+  background-color: ${({ theme }) => theme.colors.mainDark};
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+  color: ${({ theme }) => theme.colors.mainWhite};
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: capitalize;
+  border-radius: 2px;
+  border: none;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.darkGray};
+  }
+
+  ${({ type }) =>
+    type === 'specialOffer' &&
+    css`
+      align-self: center;
+      justify-self: center;
+    `}
 `;
 
-const Button = ({ children, onClickFn, cartBtn }) => {
-  return (
-    <StyledButton onClick={onClickFn} cartBtn={cartBtn}>
-      {children}
-    </StyledButton>
-  );
+const Button = ({ type, label }) => {
+  return <StyledButton type={type}>{label}</StyledButton>;
 };
 
 export default Button;

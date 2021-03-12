@@ -5,12 +5,30 @@ import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   position: relative;
-  width: 263px;
-  height: 335px;
+  margin-bottom: 2px;
+`;
+
+const StyledOverflowHidde = styled.div`
+  overflow: hidden;
+  font-size: 0;
 `;
 
 const StyledImg = styled.img`
   width: 100%;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.1) translate(-2%, 2%);
+  }
+`;
+
+const StyledBgImg = styled.div`
+  background: url(${({ img }) => img});
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
 `;
 
 const StyledCircle = styled.div`
@@ -29,14 +47,17 @@ const StyledCircleInfo = styled.span`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: ${({ theme }) => theme.fontSize.ss};
+  font-size: ${({ theme }) => theme.fontSizes.ss};
   text-transform: uppercase;
 `;
 
 const ProductImage = ({ circleInfo, img }) => {
   return (
     <StyledDiv>
-      <StyledImg src={img} />
+      <StyledOverflowHidde>
+        {/* <StyledImg src={img} /> */}
+        <StyledBgImg img={img} />
+      </StyledOverflowHidde>
       <StyledCircle>
         <StyledCircleInfo>{circleInfo}</StyledCircleInfo>
       </StyledCircle>

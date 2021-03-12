@@ -1,0 +1,19 @@
+#main.swiper-container {
+  width: 100%;
+  height: 490px;
+  max-width: none;
+}
+
+#main .swiper-slide {
+  position: relative;
+  background-size: cover;
+}
+
+#main .swiper-button-prev,
+#main .swiper-button-next {
+  color: white;
+}
+
+#main .swiper-pagination-bullet {
+  background-color: #fff;
+}

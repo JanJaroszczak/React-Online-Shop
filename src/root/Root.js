@@ -1,16 +1,8 @@
 import React from 'react';
 // import styled, { css } from 'styled-components';
+
 import MainTemplate from '../templates/MainTemplate';
-import { Route, Switch } from 'react-router-dom';
-
-// import Home from '../views/Home';
-import ProductsList from '../views/ProductsList';
-import ProductPage from '../views/ProductPage';
-
-import ProductElement from '../components/molecules/ProductElement';
-import ProductCategory from '../components/atoms/ProductCategory';
-
-import image2 from '../assets/images/test_photo2.jpg';
+import Router from '../routing/Router';
 
 // import Button from '../components/atoms/Button';
 
@@ -47,19 +39,7 @@ import image2 from '../assets/images/test_photo2.jpg';
 const Root = () => {
   return (
     <MainTemplate>
-      <Switch>
-        {/* <Route path="/" component={Home} /> */}
-        {/* <Route path="/" component={ProductElement} /> */}
-
-        <Route
-          path="/"
-          exact
-          component={() => <ProductCategory img={image2} category={'woman'} />}
-        />
-
-        <Route path="/products" component={ProductPage} />
-        <Route path="/product/:id" component={ProductsList} />
-      </Switch>
+      <Router />
 
       {/* <h1>Root</h1>
       <StyledBtn>click me one</StyledBtn>
