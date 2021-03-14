@@ -8,12 +8,14 @@ export const setCartClose = () => ({
   type: actionsTypes.SET_CART_CLOSE,
 });
 
-export const addProductToCart = (productId) => ({
+export const addProductToCart = (productId, chosenSize, chosenQuantity) => ({
   type: actionsTypes.ADD_PRODUCT_TO_CART,
-  payload: productId,
+  productId,
+  chosenSize,
+  chosenQuantity,
 });
 
 export const removeProductFromCart = (productId) => ({
   type: actionsTypes.REMOVE_PRODUCT_FROM_CART,
-  payload: productId,
+  productId,
 });

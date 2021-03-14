@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import ProductImage from '../atoms/ProductImage';
 import ProductInfo from '../atoms/ProductInfo';
-import image from '../../assets/images/test_photo.jpg';
 
 const StyledDiv = styled.div`
   max-width: 320px;
@@ -12,14 +11,21 @@ const StyledDiv = styled.div`
   /* border: 1px solid black; */
 `;
 
-const ProductCard = ({ image, productId, sizes }) => {
+const ProductCard = ({
+  productName,
+  productBrand,
+  productPrice,
+  productImage,
+  productId,
+  sizes,
+}) => {
   return (
     <StyledDiv>
-      <ProductImage img={image} circleInfo="sale" />
+      <ProductImage img={productImage[0]} circleInfo="sale" />
       <ProductInfo
-        model="predator mutator"
-        brand="adidas"
-        price={129.0}
+        model={productName}
+        brand={productBrand}
+        price={productPrice}
         productId={productId}
         sizes={sizes}
       />

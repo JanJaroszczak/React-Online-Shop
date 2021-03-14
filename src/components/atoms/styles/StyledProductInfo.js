@@ -26,13 +26,13 @@ export const StyledBrandName = styled.span`
   line-height: 20px;
 `;
 
-export const StyledPlus = styled.span`
-  position: absolute;
-  top: 22px;
-  right: 10px;
-  color: ${({ theme }) => theme.colors.mainDark};
-  font-size: ${({ theme }) => theme.fontSizes.s};
-`;
+// export const StyledPlus = styled.span`
+//   position: absolute;
+//   top: 22px;
+//   right: 10px;
+//   color: ${({ theme }) => theme.colors.mainDark};
+//   font-size: ${({ theme }) => theme.fontSizes.s};
+// `;
 
 export const StyledPrice = styled.span`
   display: block;

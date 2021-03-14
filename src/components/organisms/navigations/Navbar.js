@@ -8,8 +8,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCartOpen } from '../../../actions';
 
 const StyledNav = styled.div`
-  position: fixed;
-  z-index: 2;
+  /* position: fixed;
+  z-index: 2; */
   width: 100%;
   background-color: ${({ theme }) => theme.colors.mainWhite};
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};

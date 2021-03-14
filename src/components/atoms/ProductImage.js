@@ -22,14 +22,14 @@ const StyledImg = styled.img`
   }
 `;
 
-const StyledBgImg = styled.div`
-  background: url(${({ img }) => img});
-  width: 200px;
-  height: 200px;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: contain;
-`;
+// const StyledBgImg = styled.div`
+//   background: url(${({ img }) => img});
+//   width: 200px;
+//   height: 200px;
+//   /* background-repeat: no-repeat; */
+//   /* background-position: 50%; */
+//   background-size: contain;
+// `;
 
 const StyledCircle = styled.div`
   position: absolute;
@@ -55,8 +55,8 @@ const ProductImage = ({ circleInfo, img }) => {
   return (
     <StyledDiv>
       <StyledOverflowHidde>
-        {/* <StyledImg src={img} /> */}
-        <StyledBgImg img={img} />
+        <StyledImg src={img} alt={''} />
+        {/* <StyledBgImg img={img} /> */}
       </StyledOverflowHidde>
       <StyledCircle>
         <StyledCircleInfo>{circleInfo}</StyledCircleInfo>

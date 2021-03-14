@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 const StyledDiv = styled.div`
   text-transform: uppercase;
-  width: 1200px;
+  max-width: 1200px;
   margin: 60px auto 20px;
   padding-left: 80px;
 
@@ -19,6 +19,13 @@ const StyledDiv = styled.div`
       margin: 0;
       padding-left: 0;
     `}
+
+  ${({ type }) =>
+    type === 'productPage' &&
+    css`
+      margin: 0;
+      padding: 0;
+    `}
 `;
 
 const StyledHeading = styled.h2`
@@ -26,10 +33,11 @@ const StyledHeading = styled.h2`
   font-weight: ${({ theme }) => theme.fontWeights.light};
 
   ${({ type }) =>
-    type === 'specialOffer' &&
-    css`
-      font-size: ${({ theme }) => theme.fontSizes.xxl};
-    `}
+    type === 'specialOffer' ||
+    (type === 'productPage' &&
+      css`
+        font-size: ${({ theme }) => theme.fontSizes.xxl};
+      `)}
 `;
 
 const StyledHeadingDescription = styled.h3`

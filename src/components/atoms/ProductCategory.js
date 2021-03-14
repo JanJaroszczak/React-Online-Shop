@@ -10,7 +10,7 @@ import {
 const ProductCategory = ({ img, category }) => {
   return (
     <StyledDiv>
-      <StyledImg src={img} />
+      <StyledImg src={img} alt={''} />
       <StyledFade />
       <StyledCategory />
       <StyledCategoryName>{category}</StyledCategoryName>

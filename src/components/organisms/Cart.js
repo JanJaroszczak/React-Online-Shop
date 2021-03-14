@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    border: 'none',
+    // border: 'none',
     borderRadius: '20px',
     outline: 'none',
     width: '35vw',
@@ -37,14 +37,19 @@ const Cart = () => {
   const cartTotalPrice = useSelector(({ totalPrice }) => totalPrice);
 
   const cartDisplayList = cartProducts.map((product) => (
-    <li key={product.productId}>
-      {product.productName}
+    <li
+      key={`${product.productId}_${product.chosenOption.size}`}
+      style={{ fontSize: `15px` }}
+    >
+      {product.productName}__{product.chosenOption.size}__
+      {product.chosenOption.quantity}
       <button
         onClick={() => dispatch(removeProductFromCart(product.productId))}
+        style={{ marginLeft: `5px` }}
       >
         -
       </button>
-      <button>+</button>
+      <button style={{ marginLeft: `5px` }}>+</button>
     </li>
   ));
 

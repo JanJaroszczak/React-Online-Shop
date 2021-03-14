@@ -14,7 +14,13 @@ export const productsData = [
     productName: 'Tiempo 8 Black',
     productBrand: 'Nike',
     productPrice: 100,
-    productImage: imgProduct1,
+    productImage: [
+      imgProduct1,
+      imgProduct1,
+      imgProduct1,
+      imgProduct1,
+      imgProduct1,
+    ],
     productCategory: 'Firm Ground',
     productDescription:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nihil iste facere officia magnam perferendis nesciunt ipsa quisquam officiis, voluptatem deserunt labore quod dolore corrupti.',
@@ -46,7 +52,13 @@ export const productsData = [
     productName: 'Tiempo 8 White',
     productBrand: 'Nike',
     productPrice: 100,
-    productImage: imgProduct2,
+    productImage: [
+      imgProduct2,
+      imgProduct2,
+      imgProduct2,
+      imgProduct2,
+      imgProduct2,
+    ],
     productCategory: 'Firm Ground',
     productDescription:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nihil iste facere officia magnam perferendis nesciunt ipsa quisquam officiis, voluptatem deserunt labore quod dolore corrupti.',
@@ -78,7 +90,13 @@ export const productsData = [
     productName: 'Copa Blue',
     productBrand: 'Adidas',
     productPrice: 100,
-    productImage: imgProduct3,
+    productImage: [
+      imgProduct3,
+      imgProduct3,
+      imgProduct3,
+      imgProduct3,
+      imgProduct3,
+    ],
     productCategory: 'Firm Ground',
     productDescription:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nihil iste facere officia magnam perferendis nesciunt ipsa quisquam officiis, voluptatem deserunt labore quod dolore corrupti.',
@@ -110,7 +128,13 @@ export const productsData = [
     productName: 'Mercurial Flyknit White',
     productBrand: 'Nike',
     productPrice: 100,
-    productImage: imgProduct4,
+    productImage: [
+      imgProduct4,
+      imgProduct4,
+      imgProduct4,
+      imgProduct4,
+      imgProduct4,
+    ],
     productCategory: 'Firm Ground',
     productDescription:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nihil iste facere officia magnam perferendis nesciunt ipsa quisquam officiis, voluptatem deserunt labore quod dolore corrupti.',
@@ -142,7 +166,13 @@ export const productsData = [
     productName: 'Mercurial Yellow',
     productBrand: 'Nike',
     productPrice: 100,
-    productImage: imgProduct5,
+    productImage: [
+      imgProduct5,
+      imgProduct5,
+      imgProduct5,
+      imgProduct5,
+      imgProduct5,
+    ],
     productCategory: 'Firm Ground',
     productDescription:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nihil iste facere officia magnam perferendis nesciunt ipsa quisquam officiis, voluptatem deserunt labore quod dolore corrupti.',
@@ -172,9 +202,15 @@ export const productsData = [
   {
     productId: 6,
     productName: 'Future Yellow',
-    productBrand: 'NPuma',
+    productBrand: 'Puma',
     productPrice: 100,
-    productImage: imgProduct6,
+    productImage: [
+      imgProduct6,
+      imgProduct6,
+      imgProduct6,
+      imgProduct6,
+      imgProduct6,
+    ],
     productCategory: 'Firm Ground',
     productDescription:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nihil iste facere officia magnam perferendis nesciunt ipsa quisquam officiis, voluptatem deserunt labore quod dolore corrupti.',
@@ -206,7 +242,13 @@ export const productsData = [
     productName: 'Predator Mutator White',
     productBrand: 'Adidas',
     productPrice: 100,
-    productImage: imgProduct7,
+    productImage: [
+      imgProduct7,
+      imgProduct7,
+      imgProduct7,
+      imgProduct7,
+      imgProduct7,
+    ],
     productCategory: 'Firm Ground',
     productDescription:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nihil iste facere officia magnam perferendis nesciunt ipsa quisquam officiis, voluptatem deserunt labore quod dolore corrupti.',
@@ -238,7 +280,13 @@ export const productsData = [
     productName: 'Predator Mutator Black',
     productBrand: 'Nike',
     productPrice: 100,
-    productImage: imgProduct8,
+    productImage: [
+      imgProduct8,
+      imgProduct8,
+      imgProduct8,
+      imgProduct8,
+      imgProduct8,
+    ],
     productCategory: 'Firm Ground',
     productDescription:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nihil iste facere officia magnam perferendis nesciunt ipsa quisquam officiis, voluptatem deserunt labore quod dolore corrupti.',
@@ -270,7 +318,13 @@ export const productsData = [
     productName: 'X Blue',
     productBrand: 'Adidas',
     productPrice: 100,
-    productImage: imgProduct9,
+    productImage: [
+      imgProduct9,
+      imgProduct9,
+      imgProduct9,
+      imgProduct9,
+      imgProduct9,
+    ],
     productCategory: 'Firm Ground',
     productDescription:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nihil iste facere officia magnam perferendis nesciunt ipsa quisquam officiis, voluptatem deserunt labore quod dolore corrupti.',

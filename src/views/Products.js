@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+// import { routes } from '../routes';
 import styled from 'styled-components';
 
 import Heading from '../components/atoms/Heading';
@@ -28,7 +30,9 @@ const Products = () => {
       />
       <StyledProductsWrapper>
         {selectedProducts.map((product) => (
-          <ProductCard {...product} key={product.productId} />
+          <Link to={`/product/${product.productId}`} key={product.productId}>
+            <ProductCard {...product} />
+          </Link>
         ))}
       </StyledProductsWrapper>
     </>

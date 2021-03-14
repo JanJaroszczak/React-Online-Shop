@@ -2,9 +2,13 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { routes } from '../routes';
 import Contact from '../views/Contact';
-import Home from '../views/Home';
-// import ProductPage from '../views/ProductPage';
+// import Home from '../views/Home';
+import ProductPage from '../views/ProductPage';
 import Products from '../views/Products';
+
+// import ProductPageInfo from '../components/molecules/ProductPageInfo';
+
+// import PhotoCarousel from '../components/molecules/PhotoCarousel';
 
 // import HomeCategories from '../components/molecules/HomeCategories';
 
@@ -25,14 +29,18 @@ import Products from '../views/Products';
 const Router = () => {
   return (
     <Switch>
-      <Route exact path={routes.home} component={Home} />
-      <Route path={routes.products} component={Products} />
+      {/* <Route exact path={routes.home} component={Home} /> */}
+      <Route exact path={routes.home} component={Products} />
       <Route path={routes.contact} component={Contact} />
 
-      {/* <Route exact path={routes.home} component={ProductPage} /> */}
+      {/* <Route exact path={routes.home} component={ProductPageInfo} /> */}
 
-      {/* <Route exact path={routes.home} component={Header} />
-      <Route
+      {/* <Route exact path={routes.home} component={PhotoCarousel} /> */}
+
+      <Route path={routes.singleProduct} component={ProductPage} />
+
+      {/* <Route exact path={routes.home} component={Header} /> */}
+      {/* <Route
         path="/"
         exact
         component={() => (
@@ -42,14 +50,14 @@ const Router = () => {
             headingDescription={'most trendy clothes'}
           />
         )}
-      />
-      <Route exact path={routes.home} component={ProductsSlider} />
+      /> */}
+      {/* <Route exact path={routes.home} component={ProductsSlider} /> */}
 
-      <Route exact path={routes.home} component={HomeCategories} />
+      {/* <Route exact path={routes.home} component={HomeCategories} /> */}
 
-      <Route exact path={routes.home} component={SpecialOffer} />
+      {/* <Route exact path={routes.home} component={SpecialOffer} /> */}
 
-      <Route
+      {/* <Route
         path="/"
         exact
         component={() => (
@@ -59,9 +67,9 @@ const Router = () => {
             headingDescription={'most trendy clothes'}
           />
         )}
-      />
+      /> */}
 
-      <Route exact path={routes.home} component={ProductsSlider} /> */}
+      {/* <Route exact path={routes.home} component={ProductsSlider} /> */}
 
       {/* <Route
         path="/"

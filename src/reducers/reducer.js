@@ -10,7 +10,7 @@ const intitialState = {
 };
 
 const reducer = (state = intitialState, action) => {
-  const { type, payload } = action;
+  const { type, productId, chosenSize, chosenQuantity } = action;
 
   switch (type) {
     case actionsTypes.SET_CART_OPEN:
@@ -26,26 +26,61 @@ const reducer = (state = intitialState, action) => {
       };
 
     case actionsTypes.ADD_PRODUCT_TO_CART:
-      const choosenProduct = state.products.find(
-        (product) => product.productId === payload
+      const foundMatchIndex = state.cart.findIndex(
+        (product) =>
+          product.productId === productId &&
+          product.chosenOption.size === chosenSize
       );
 
-      // const cartProductsPrices = state.cart.map(product => product.productPrice);
+      console.log(foundMatchIndex);
 
-      return {
-        ...state,
-        cart: [...state.cart, choosenProduct],
-        counter: state.counter + 1,
-        totalPrice: state.totalPrice + choosenProduct.productPrice,
-      };
+      if (foundMatchIndex >= 0) {
+        const cartCopy = [...state.cart];
+
+        // const cutProduct = newCart.splice(foundMatchIndex, 1);
+
+        cartCopy[foundMatchIndex].chosenOption.quantity =
+          cartCopy[foundMatchIndex].chosenOption.quantity + chosenQuantity;
+
+        return {
+          ...state,
+          cart: cartCopy,
+          counter: state.counter + 1 * chosenQuantity,
+          totalPrice:
+            state.totalPrice +
+            cartCopy[foundMatchIndex].productPrice * chosenQuantity,
+        };
+      } else {
+        const productsCopy = [...state.products];
+
+        const chosenProduct = productsCopy.find(
+          (product) => product.productId === productId
+        );
+
+        chosenProduct.chosenOption = {};
+        chosenProduct.chosenOption.size = chosenSize;
+        chosenProduct.chosenOption.quantity = chosenQuantity;
+
+        // chosenProduct.chosenOption.size = chosenSize;
+        // chosenProduct.chosenOption.quantity = chosenQuantity;
+        return {
+          ...state,
+          cart: [...state.cart, chosenProduct],
+          counter: state.counter + 1 * chosenQuantity,
+          totalPrice:
+            state.totalPrice + chosenProduct.productPrice * chosenQuantity,
+        };
+        // debugger;
+      }
+    // const cartProductsPrices = state.cart.map(product => product.productPrice);
 
     case actionsTypes.REMOVE_PRODUCT_FROM_CART:
       const cartAfterRemoval = state.cart.filter(
-        (product) => product.productId !== payload
+        (product) => product.productId !== productId
       );
 
       const removedPoduct = state.products.find(
-        (product) => product.productId === payload
+        (product) => product.productId === productId
       );
 
       return {
