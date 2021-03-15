@@ -17,17 +17,19 @@ const ProductCard = ({
   productPrice,
   productImage,
   productId,
-  sizes,
 }) => {
   return (
     <StyledDiv>
-      <ProductImage img={productImage[0]} circleInfo="sale" />
+      <ProductImage
+        img={productImage[0]}
+        productId={productId}
+        circleInfo="sale"
+      />
       <ProductInfo
         model={productName}
         brand={productBrand}
         price={productPrice}
         productId={productId}
-        sizes={sizes}
       />
     </StyledDiv>
   );

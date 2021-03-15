@@ -15,7 +15,18 @@ export const addProductToCart = (productId, chosenSize, chosenQuantity) => ({
   chosenQuantity,
 });
 
-export const removeProductFromCart = (productId) => ({
+export const removeProductFromCart = (productId, cartProductId) => ({
   type: actionsTypes.REMOVE_PRODUCT_FROM_CART,
   productId,
+  cartProductId,
+});
+
+export const decreaseProductCartQuantity = (productId, cartProductId) => ({
+  type: actionsTypes.DECREASE_PRODUCT_CART_QUANTITY,
+  productId,
+  cartProductId,
+});
+
+export const closeNotInStockMessage = () => ({
+  type: actionsTypes.CLOSE_NOT_IN_STOCK_MESSAGE,
 });

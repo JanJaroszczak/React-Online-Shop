@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 // import { routes } from '../routes';
 import styled from 'styled-components';
 
@@ -30,9 +29,7 @@ const Products = () => {
       />
       <StyledProductsWrapper>
         {selectedProducts.map((product) => (
-          <Link to={`/product/${product.productId}`} key={product.productId}>
-            <ProductCard {...product} />
-          </Link>
+          <ProductCard {...product} key={product.productId} />
         ))}
       </StyledProductsWrapper>
     </>

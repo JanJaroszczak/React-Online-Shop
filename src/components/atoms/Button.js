@@ -13,7 +13,7 @@ const StyledButton = styled.button`
   transition: 0.3s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.darkGray};
+    background-color: ${({ theme }) => theme.colors.extraDarkGray};
   }
 
   ${({ type }) =>

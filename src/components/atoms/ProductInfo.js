@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 // import { useDispatch } from 'react-redux';
 // import { addProductToCart } from '../../actions';
 
@@ -11,7 +13,7 @@ import {
 } from './styles/StyledProductInfo';
 import './styles/stylesProductInfo.css';
 
-const ProductInfo = ({ model, brand, price }) => {
+const ProductInfo = ({ model, brand, price, productId }) => {
   // const [chosenSize, setChosenSize] = useState('-');
   // const [errorVisibility, setError] = useState('none');
   // const [addToCartFailed, setAddToCartFailed] = useState(false);
@@ -50,7 +52,12 @@ const ProductInfo = ({ model, brand, price }) => {
 
   return (
     <StyledDiv>
-      <StyledModelName>{model}</StyledModelName>
+      <Link
+        to={`/product/${productId}`}
+        style={{ textDecoration: 'none', color: '#222' }}
+      >
+        <StyledModelName>{model}</StyledModelName>
+      </Link>
       <StyledBrandName>{brand}</StyledBrandName>
       {/* <StyledPlus>
         <i className="fas fa-plus" onClick={addToCart}></i>

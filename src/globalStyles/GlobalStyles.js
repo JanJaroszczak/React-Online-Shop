@@ -20,7 +20,7 @@ body{
 button {
   cursor: pointer;
     font-family: 'Roboto Condensed', sans-serif;
-
+outline: none;
 }
 
 ul {

@@ -27,7 +27,7 @@ const ProductsSlider = () => {
         // centeredSlides={true}
         // centeredSlidesBounds={true}
         // spaceBetween={10}
-        slidesPerView={3}
+        slidesPerView={4}
         // autoplay={{ delay: 3000, disableOnInteraction: false }}
         // loop
       >

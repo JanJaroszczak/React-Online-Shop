@@ -1,8 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { routes } from '../routes';
+import Cart from '../views/Cart';
 import Contact from '../views/Contact';
-// import Home from '../views/Home';
+import Home from '../views/Home';
 import ProductPage from '../views/ProductPage';
 import Products from '../views/Products';
 
@@ -29,15 +30,15 @@ import Products from '../views/Products';
 const Router = () => {
   return (
     <Switch>
-      {/* <Route exact path={routes.home} component={Home} /> */}
-      <Route exact path={routes.home} component={Products} />
+      <Route exact path={routes.home} component={Home} />
+      <Route exact path={routes.products} component={Products} />
+      <Route exact path={routes.cart} component={Cart} />
       <Route path={routes.contact} component={Contact} />
+      <Route path={routes.singleProduct} component={ProductPage} />
 
       {/* <Route exact path={routes.home} component={ProductPageInfo} /> */}
 
       {/* <Route exact path={routes.home} component={PhotoCarousel} /> */}
-
-      <Route path={routes.singleProduct} component={ProductPage} />
 
       {/* <Route exact path={routes.home} component={Header} /> */}
       {/* <Route

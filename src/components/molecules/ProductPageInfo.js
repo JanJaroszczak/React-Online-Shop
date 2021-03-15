@@ -9,11 +9,13 @@ import {
   StyledPrice,
   StyledSizeChoice,
   StyledSelect,
-  StyledQuantityChoice,
-  StyledQuantityInput,
   StyledError,
   StyledSubmitButton,
 } from './styles/StyledProductPageInfo';
+import {
+  StyledQuantityChoice,
+  StyledQuantityInput,
+} from './styles/StyledQuantitySelector';
 
 const ProductPageInfo = ({ id }) => {
   const [chosenSize, setChosenSize] = useState('-');

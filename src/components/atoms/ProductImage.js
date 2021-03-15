@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // import image from '../../assets/images/test_photo.jpg';
 
@@ -51,11 +52,13 @@ const StyledCircleInfo = styled.span`
   text-transform: uppercase;
 `;
 
-const ProductImage = ({ circleInfo, img }) => {
+const ProductImage = ({ circleInfo, img, productId }) => {
   return (
     <StyledDiv>
       <StyledOverflowHidde>
-        <StyledImg src={img} alt={''} />
+        <Link to={`/product/${productId}`}>
+          <StyledImg src={img} alt={''} />
+        </Link>
         {/* <StyledBgImg img={img} /> */}
       </StyledOverflowHidde>
       <StyledCircle>

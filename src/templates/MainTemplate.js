@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../themes/mainTheme';
 import Navbar from '../components/organisms/navigations/Navbar';
 import Footer from '../components/organisms/navigations/Footer';
-import Cart from '../components/organisms/Cart';
+import CartModal from '../components/organisms/CartModal';
 
 const MainTemplate = ({ children }) => {
   return (
@@ -12,7 +12,7 @@ const MainTemplate = ({ children }) => {
       <GlobalStyle />
       <ThemeProvider theme={mainTheme}>
         <Navbar />
-        <Cart />
+        <CartModal />
         {/* To co ma widok */}
         {children}
         <Footer />
