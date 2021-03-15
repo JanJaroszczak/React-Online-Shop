@@ -6,12 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  setCartClose,
-  removeProductFromCart,
-  addProductToCart,
-  decreaseProductCartQuantity,
-} from '../../actions';
+import { setCartClose } from '../../actions';
 import CartModalElement from '../molecules/CartModalElement';
 import './styles/stylesCartModal.css';
 

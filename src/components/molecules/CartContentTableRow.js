@@ -61,7 +61,7 @@ const CartContentTableRow = ({ product }) => {
     setTimeout(() => {
       dispatch(closeNotInStockMessage());
     }, 2000);
-  }, [notInStockMessage]);
+  }, [notInStockMessage, dispatch]);
 
   return (
     <StyledTableRow>
