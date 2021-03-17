@@ -14,6 +14,7 @@ const StyledPrice = styled.div`
   align-self: center;
   justify-self: center;
   font-size: ${({ theme }) => theme.fontSizes.m};
+  font-weight: ${({ theme }) => theme.fontWeights.regular};
 
   /* border: 1px solid black; */
 `;

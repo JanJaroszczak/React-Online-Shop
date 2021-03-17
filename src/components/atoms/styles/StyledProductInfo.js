@@ -6,7 +6,6 @@ export const StyledDiv = styled.div`
   background-color: ${({ theme }) => theme.colors.extraLightGray};
   color: ${({ theme }) => theme.colors.lightDark};
   text-transform: uppercase;
-  font-weight: ${({ theme }) => theme.fontWeights.light};
 `;
 
 export const StyledModelName = styled.h3`

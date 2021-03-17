@@ -33,6 +33,7 @@ const StyledPrice = styled.div`
   align-items: center;
   height: 100%;
   font-size: ${({ theme }) => theme.fontSizes.m};
+  font-weight: ${({ theme }) => theme.fontWeights.regular};
   color: ${({ theme }) => theme.colors.mainDark};
 
   /* border: 1px solid black; */

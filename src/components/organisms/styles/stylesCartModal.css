@@ -69,6 +69,7 @@ display: grid;
     justify-self: center;
     grid-area: price;
     margin-top: 15px;
+    font-weight: 400;
 
   /* border: 1px solid red; */
 }

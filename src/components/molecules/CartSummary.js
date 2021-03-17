@@ -20,7 +20,6 @@ const StyledListElement = styled.li`
   justify-content: space-between;
   padding: 5px 0;
   font-size: ${({ theme }) => theme.fontSizes.s};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
   color: ${({ theme }) => theme.colors.gray};
   border-bottom: 1px solid ${({ theme }) => theme.colors.declicateGray};
 

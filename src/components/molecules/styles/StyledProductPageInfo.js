@@ -16,14 +16,12 @@ export const StyledProductDescription = styled.p`
 export const StyledPrice = styled.div`
   margin: 20px 0;
   font-size: ${({ theme }) => theme.fontSizes.xxl};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
   color: ${({ theme }) => theme.colors.lightDark};
 `;
 
 export const StyledSizeChoice = styled.div`
   display: inline-block;
   font-size: ${({ theme }) => theme.fontSizes.xs};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
 
   /* border: 1px solid black; */
 `;
@@ -34,7 +32,6 @@ export const StyledSelect = styled.select`
   height: 40px;
   margin-top: 3px;
   font-size: ${({ theme }) => theme.fontSizes.m};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
   font-family: inherit;
   background-color: ${({ theme }) => theme.colors.declicateGray};
   color: ${({ theme }) => theme.colors.mainDark};
@@ -51,7 +48,6 @@ export const StyledError = styled.span`
   display: block;
   margin: 10px 0;
   font-size: ${({ theme }) => theme.fontSizes.xxs};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
   color: red;
 `;
 

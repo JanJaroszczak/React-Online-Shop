@@ -4,8 +4,6 @@ export const StyledQuantityChoice = styled.div`
   display: inline-block;
   margin-left: 50px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
-
   /* border: 1px solid black; */
 
   ${({ cart }) =>
@@ -49,7 +47,6 @@ export const StyledQuantityInput = styled.div`
     width: 25px;
     text-align: center;
     font-size: ${({ theme }) => theme.fontSizes.m};
-    font-weight: ${({ theme }) => theme.fontWeights.light};
     font-family: 'Roboto Condensed', sans-serif;
     background-color: ${({ theme }) => theme.colors.declicateGray};
     color: ${({ theme }) => theme.colors.mainDark};

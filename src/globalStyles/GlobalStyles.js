@@ -11,10 +11,12 @@ const GlobalStyle = createGlobalStyle`
 
 html{
   font-size: 62.5%;
+  font-weight: 300;
 }
 
 body{
     font-family: 'Roboto Condensed', sans-serif;
+    height: 100vh;
 }
 
 button {

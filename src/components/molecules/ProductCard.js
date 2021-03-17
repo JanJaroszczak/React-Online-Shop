@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import ProductImage from '../atoms/ProductImage';
@@ -18,6 +18,10 @@ const ProductCard = ({
   productImage,
   productId,
 }) => {
+  useEffect(() => {
+    console.log('rerender');
+  }, []);
+
   return (
     <StyledDiv>
       <ProductImage

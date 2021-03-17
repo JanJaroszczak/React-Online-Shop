@@ -62,7 +62,6 @@ const StyledLink = styled(NavLink)`
   padding: 10px 30px;
   color: ${({ theme }) => theme.colors.mainDark};
   font-size: ${({ theme }) => theme.fontSizes.l};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
   text-decoration: none;
   text-transform: uppercase;
 

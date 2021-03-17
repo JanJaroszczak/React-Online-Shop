@@ -24,15 +24,21 @@ import Products from '../views/Products';
 
 // import Button from '../components/atoms/Button';
 
+// import CheckboxFilters from '../components/molecules/CheckboxFilters';
+
 // import Header from '../components/organisms/Header';
 // import ProductsSlider from '../components/organisms/ProductsSlider';
+// import CheckboxFiltersColumn from '../components/organisms/CheckboxFiltersColumn';
 
 const Router = () => {
   return (
     <Switch>
+      {/* <Route exact path={routes.home} component={CheckboxFiltersColumn} /> */}
+
       <Route exact path={routes.home} component={Home} />
-      <Route exact path={routes.products} component={Products} />
-      <Route exact path={routes.cart} component={Cart} />
+
+      <Route path={routes.products} component={Products} />
+      <Route path={routes.cart} component={Cart} />
       <Route path={routes.contact} component={Contact} />
       <Route path={routes.singleProduct} component={ProductPage} />
 

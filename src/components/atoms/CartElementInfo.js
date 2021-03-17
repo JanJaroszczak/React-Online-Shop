@@ -20,6 +20,7 @@ const StyledProductInfo = styled.div`
 
   span {
     font-size: ${({ theme }) => theme.fontSizes.xs};
+    font-weight: ${({ theme }) => theme.fontWeights.regular};
     color: ${({ theme }) => theme.colors.gray};
   }
 `;

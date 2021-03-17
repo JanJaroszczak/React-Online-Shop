@@ -49,6 +49,7 @@ const StyledCircleInfo = styled.span`
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: ${({ theme }) => theme.fontSizes.ss};
+  font-weight: ${({ theme }) => theme.fontWeights.regular};
   text-transform: uppercase;
 `;
 
