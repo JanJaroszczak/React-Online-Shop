@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
+  display: block;
   padding: 7px 15px;
   background-color: ${({ theme }) => theme.colors.mainDark};
   font-size: ${({ theme }) => theme.fontSizes.xs};
@@ -16,16 +17,20 @@ const StyledButton = styled.button`
     background-color: ${({ theme }) => theme.colors.extraDarkGray};
   }
 
-  ${({ type }) =>
-    type === 'specialOffer' &&
+  ${({ variant }) =>
+    variant === 'specialOffer' &&
     css`
       align-self: center;
       justify-self: center;
     `}
 `;
 
-const Button = ({ type, label }) => {
-  return <StyledButton type={type}>{label}</StyledButton>;
+const Button = ({ type, variant, label }) => {
+  return (
+    <StyledButton type={type} variant={variant}>
+      {label}
+    </StyledButton>
+  );
 };
 
 export default Button;

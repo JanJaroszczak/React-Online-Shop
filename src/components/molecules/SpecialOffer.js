@@ -36,7 +36,7 @@ const SpecialOffer = ({ heading, headingDescription }) => {
         heading={'march sale'}
         headingDescription={'free shipping for orders over $100'}
       />
-      <Button type={'specialOffer'} label={'shop now'} />
+      <Button variant={'specialOffer'} label={'shop now'} />
     </StyledDiv>
   );
 };

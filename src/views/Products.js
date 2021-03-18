@@ -14,7 +14,7 @@ const StyledProductsPageWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const StyledProductsWrapper = styled.div`
+const StyledProductsGridWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
@@ -32,23 +32,24 @@ const Products = () => {
 
   const filteredProductsHandler = useCallback((filteredProducts) => {
     setProductsToDisplay(filteredProducts);
-    // console.log(filteredProducts);
   }, []);
 
   return (
     <>
-      <Heading
-        // type={'specialOffer'}
-        heading={'adidas'}
-        headingDescription={'all available adidas cleats'}
-      />
       <StyledProductsPageWrapper>
         <CheckboxFiltersColumn onFilteredProducts={filteredProductsHandler} />
-        <StyledProductsWrapper>
-          {productsToDisplay.map((product) => (
-            <ProductCard {...product} key={product.productId} />
-          ))}
-        </StyledProductsWrapper>
+        <div>
+          <Heading
+            // type={'specialOffer'}
+            heading={'all products'}
+            headingDescription={'all currently available cleats'}
+          />
+          <StyledProductsGridWrapper>
+            {productsToDisplay.map((product) => (
+              <ProductCard {...product} key={product.productId} />
+            ))}
+          </StyledProductsGridWrapper>
+        </div>
       </StyledProductsPageWrapper>
     </>
   );

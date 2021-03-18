@@ -42,7 +42,7 @@ const ProductPageInfo = ({ id }) => {
         </option>
       );
     } else {
-      return <option>-</option>;
+      return <option key={size.size}>-</option>;
     }
   });
 

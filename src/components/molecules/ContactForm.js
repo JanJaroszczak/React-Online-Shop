@@ -1,75 +1,101 @@
-// Wydzielic atomy, najważniejszy input!
-
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+import Input from '../atoms/Input';
+import Heading from '../atoms/Heading';
+import Button from '../atoms/Button';
+import {
+  StyledFormWrapper,
+  StyledInputWrapper,
+  StyledErrorWrapper,
+  StyledTextarea,
+  StyledTermsWrapper,
+  StyledLabel,
+} from './styles/StyledContactForm';
+
 const contactValidationSchema = Yup.object().shape({
   userName: Yup.string().required('Enter your name!'),
   userEmail: Yup.string().email('Invalid email!').required('Enter email!'),
-  userMessage: Yup.string().required('enter message').min(10, 'Min. 10 char.'),
+  userMessage: Yup.string().required('Enter message!').min(10, 'Min. 10 char.'),
   acceptTerms: Yup.bool().oneOf([true], 'You must accept terms!'),
 });
 
 const ContactForm = () => {
   return (
-    <Formik
-      initialValues={{
-        userName: '',
-        userEmail: '',
-        userMessage: '',
-        acceptTerms: false,
-      }}
-      validationSchema={contactValidationSchema}
-      onSubmit={(values, { resetForm }) => {
-        console.log(values);
+    <div>
+      <Heading
+        // type={'specialOffer'}
+        heading={'contact form'}
+        headingDescription={'feel free to ask us any question'}
+      />
+      <StyledFormWrapper>
+        <Formik
+          initialValues={{
+            userName: '',
+            userEmail: '',
+            userMessage: '',
+            acceptTerms: false,
+          }}
+          validationSchema={contactValidationSchema}
+          onSubmit={(values, { resetForm }) => {
+            console.log(values);
 
-        resetForm();
-      }}
-    >
-      {({ values, handleChange }) => (
-        <Form>
-          <input
-            type="text"
-            name="userName"
-            placeholder="type your name"
-            value={values.userName}
-            onChange={handleChange}
-          />
-          <ErrorMessage name="userName" />
-          <input
-            type="email"
-            name="userEmail"
-            placeholder="type your email"
-            value={values.userEmail}
-            onChange={handleChange}
-          />
-          <ErrorMessage name="userEmail" />
-          <textarea
-            cols="30"
-            rows="10"
-            type="text"
-            name="userMessage"
-            placeholder="type your message"
-            value={values.userMessage}
-            onChange={handleChange}
-          />
-          <div style={{ color: 'yellow' }}>
-            <ErrorMessage name="userMessage" />
-          </div>
-
-          <input
-            type="checkbox"
-            name="acceptTerms"
-            value={values.acceptTerms}
-            onChange={handleChange}
-          />
-          <ErrorMessage name="acceptTerms" />
-
-          <button type="submit">Send</button>
-        </Form>
-      )}
-    </Formik>
+            resetForm();
+          }}
+        >
+          {({ values, handleChange }) => (
+            <Form>
+              <div>
+                <Input
+                  type="text"
+                  name="userName"
+                  placeholder="*Name"
+                  value={values.userName}
+                  onChangeHandler={handleChange}
+                />
+                <Input
+                  type="email"
+                  name="userEmail"
+                  placeholder="*Email"
+                  value={values.userEmail}
+                  onChangeHandler={handleChange}
+                />
+                <StyledInputWrapper>
+                  <StyledTextarea
+                    type="text"
+                    name="userMessage"
+                    placeholder="*Your message"
+                    value={values.userMessage}
+                    onChange={handleChange}
+                  />
+                  <StyledErrorWrapper>
+                    <ErrorMessage name="userMessage" />
+                  </StyledErrorWrapper>
+                </StyledInputWrapper>
+              </div>
+              <StyledTermsWrapper>
+                <input
+                  style={{ width: '20px', height: '20px' }}
+                  id="terms"
+                  type="checkbox"
+                  name="acceptTerms"
+                  value={values.acceptTerms}
+                  onChange={handleChange}
+                />
+                <StyledLabel htmlFor={'terms'}>
+                  Accept Terms and Conditions
+                </StyledLabel>
+                <StyledErrorWrapper>
+                  <ErrorMessage name="acceptTerms" />
+                </StyledErrorWrapper>
+              </StyledTermsWrapper>
+              <Button type="submit" label="send message" />
+            </Form>
+          )}
+        </Formik>
+      </StyledFormWrapper>
+    </div>
   );
 };
 

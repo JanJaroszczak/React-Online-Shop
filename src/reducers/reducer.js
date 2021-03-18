@@ -41,17 +41,15 @@ const reducer = (state = intitialState, action) => {
       let chosenProductAvailableQuantity = null;
       let chosenProductSizeObjectReference = null;
 
-      productsCopy.map((product) => {
+      productsCopy.forEach((product) => {
         if (product.productId === productId) {
-          product.sizes.map((size) => {
+          product.sizes.forEach((size) => {
             if (size.size === chosenSize) {
               chosenProductAvailableQuantity = size.availableQuantity;
               chosenProductSizeObjectReference = size;
             }
-            return size;
           });
         }
-        return product;
       });
 
       if (chosenProductAvailableQuantity < chosenQuantity)
@@ -99,25 +97,23 @@ const reducer = (state = intitialState, action) => {
       }
 
     case actionsTypes.REMOVE_PRODUCT_FROM_CART:
-      const cartAfterRemoval = state.cart.filter(
+      const cartAfterRemoval = cartCopy.filter(
         (product) => product.cartProductId !== cartProductId
       );
 
-      const removedProduct = state.cart.find(
+      const removedProduct = cartCopy.find(
         (product) => product.cartProductId === cartProductId
       );
 
-      productsCopy.map((product) => {
+      productsCopy.forEach((product) => {
         if (product.productId === productId) {
-          product.sizes.map((size) => {
+          product.sizes.forEach((size) => {
             if (size.size === removedProduct.chosenOption.size) {
               size.availableQuantity =
                 size.availableQuantity + removedProduct.chosenOption.quantity;
             }
-            return size;
           });
         }
-        return product;
       });
 
       return {
@@ -134,7 +130,7 @@ const reducer = (state = intitialState, action) => {
       let handledProduct = null;
       let decreaseNotPossibleFlag = false;
 
-      const updatedCart = cartCopy.map((product) => {
+      cartCopy.forEach((product) => {
         if (product.cartProductId === cartProductId) {
           handledProduct = product;
           if (product.chosenOption.quantity > 1) {
@@ -143,19 +139,16 @@ const reducer = (state = intitialState, action) => {
             decreaseNotPossibleFlag = true;
           }
         }
-        return product;
       });
 
-      productsCopy.map((product) => {
+      productsCopy.forEach((product) => {
         if (product.productId === productId) {
-          product.sizes.map((size) => {
+          product.sizes.forEach((size) => {
             if (size.size === handledProduct.chosenOption.size) {
               size.availableQuantity = size.availableQuantity + 1;
             }
-            return size;
           });
         }
-        return product;
       });
 
       if (decreaseNotPossibleFlag) return state;
@@ -163,7 +156,7 @@ const reducer = (state = intitialState, action) => {
       return {
         ...state,
         products: productsCopy,
-        cart: updatedCart,
+        cart: cartCopy,
         counter: state.counter - 1,
         totalPrice: state.totalPrice - handledProduct.productPrice,
       };

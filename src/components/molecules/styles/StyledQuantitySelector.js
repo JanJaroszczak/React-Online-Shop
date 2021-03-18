@@ -27,7 +27,7 @@ export const StyledQuantityInput = styled.div`
     margin: 3px 2px 0;
     font-size: ${({ theme }) => theme.fontSizes.m};
     font-weight: ${({ theme }) => theme.fontWeights.light};
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: inherit;
     text-align: center;
     background-color: ${({ theme }) => theme.colors.declicateGray};
     color: ${({ theme }) => theme.colors.mainDark};

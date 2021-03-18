@@ -37,6 +37,12 @@ import Router from '../routing/Router';
 // `
 
 const Root = () => {
+  //get cart from reducer
+
+  // useEffect(() => {
+  //   //  dispatch(calculateCartTotal())
+  // }, [cart]);
+
   return (
     <MainTemplate>
       <Router />
