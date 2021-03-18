@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import emailjs from 'emailjs-com';
 
 import Input from '../atoms/Input';
 import Heading from '../atoms/Heading';
@@ -40,6 +41,22 @@ const ContactForm = () => {
           validationSchema={contactValidationSchema}
           onSubmit={(values, { resetForm }) => {
             console.log(values);
+
+            // emailjs
+            //   .sendForm(
+            //     'contact_service',
+            //     'contact_form',
+            //     e.target,
+            //     'user_CzpJ3EC6leOTAgc4zXdln'
+            //   )
+            //   .then(
+            //     (result) => {
+            //       console.log(result.text);
+            //     },
+            //     (error) => {
+            //       console.log(error.text);
+            //     }
+            //   );
 
             resetForm();
           }}

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 // import styled, { css } from 'styled-components';
 
 import MainTemplate from '../templates/MainTemplate';
 import Router from '../routing/Router';
+import { calculateCartTotals } from '../actions';
 
 // import Button from '../components/atoms/Button';
 
@@ -38,10 +40,12 @@ import Router from '../routing/Router';
 
 const Root = () => {
   //get cart from reducer
+  const cartProducts = useSelector(({ cart }) => cart);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   //  dispatch(calculateCartTotal())
-  // }, [cart]);
+  useEffect(() => {
+    dispatch(calculateCartTotals());
+  }, [cartProducts, dispatch]);
 
   return (
     <MainTemplate>

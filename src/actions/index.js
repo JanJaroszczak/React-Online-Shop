@@ -27,6 +27,11 @@ export const decreaseProductCartQuantity = (productId, cartProductId) => ({
   cartProductId,
 });
 
-export const closeNotInStockMessage = () => ({
+export const closeNotInStockMessage = (cartProductId) => ({
   type: actionsTypes.CLOSE_NOT_IN_STOCK_MESSAGE,
+  cartProductId,
+});
+
+export const calculateCartTotals = () => ({
+  type: actionsTypes.CALCULATE_CART_TOTALS,
 });

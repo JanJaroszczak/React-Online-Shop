@@ -9,7 +9,6 @@ const intitialState = {
   products: [...productsData],
   counter: 0,
   totalPrice: 0,
-  notInStockMessage: '',
 };
 
 const reducer = (state = intitialState, action) => {
@@ -52,11 +51,14 @@ const reducer = (state = intitialState, action) => {
         }
       });
 
-      if (chosenProductAvailableQuantity < chosenQuantity)
+      if (chosenProductAvailableQuantity < chosenQuantity) {
+        cartCopy[foundMatchIndex].notInStock = 'notInStock';
+
         return {
           ...state,
-          notInStockMessage: 'notInStock',
+          cart: cartCopy,
         };
+      }
 
       if (foundMatchIndex >= 0) {
         cartCopy[foundMatchIndex].chosenOption.quantity =
@@ -69,16 +71,13 @@ const reducer = (state = intitialState, action) => {
           ...state,
           products: productsCopy,
           cart: cartCopy,
-          counter: state.counter + 1 * chosenQuantity,
-          totalPrice:
-            state.totalPrice +
-            cartCopy[foundMatchIndex].productPrice * chosenQuantity,
         };
       } else {
         const chosenProduct = _.cloneDeep(productsCopy).find(
           (product) => product.productId === productId
         );
         chosenProduct.cartProductId = `${chosenProduct.productId}_${chosenSize}`;
+        chosenProduct.notInStock = '';
         chosenProduct.chosenOption = {};
         chosenProduct.chosenOption.size = chosenSize;
         chosenProduct.chosenOption.quantity = chosenQuantity;
@@ -90,9 +89,6 @@ const reducer = (state = intitialState, action) => {
           ...state,
           products: productsCopy,
           cart: [...state.cart, chosenProduct],
-          counter: state.counter + 1 * chosenQuantity,
-          totalPrice:
-            state.totalPrice + chosenProduct.productPrice * chosenQuantity,
         };
       }
 
@@ -120,10 +116,6 @@ const reducer = (state = intitialState, action) => {
         ...state,
         products: productsCopy,
         cart: cartAfterRemoval,
-        counter: state.counter - 1 * removedProduct.chosenOption.quantity,
-        totalPrice:
-          state.totalPrice -
-          removedProduct.productPrice * removedProduct.chosenOption.quantity,
       };
 
     case actionsTypes.DECREASE_PRODUCT_CART_QUANTITY:
@@ -157,14 +149,36 @@ const reducer = (state = intitialState, action) => {
         ...state,
         products: productsCopy,
         cart: cartCopy,
-        counter: state.counter - 1,
-        totalPrice: state.totalPrice - handledProduct.productPrice,
       };
 
     case actionsTypes.CLOSE_NOT_IN_STOCK_MESSAGE:
+      cartCopy.forEach((product) => {
+        if (product.cartProductId === cartProductId) {
+          product.notInStock = '';
+        }
+      });
+
       return {
         ...state,
-        notInStockMessage: '',
+        cart: cartCopy,
+      };
+
+    case actionsTypes.CALCULATE_CART_TOTALS:
+      let totalPriceCounter = 0;
+      let cartProductsCounter = 0;
+
+      state.cart.forEach((product) => {
+        cartProductsCounter =
+          cartProductsCounter + product.chosenOption.quantity;
+        totalPriceCounter =
+          totalPriceCounter +
+          product.chosenOption.quantity * product.productPrice;
+      });
+
+      return {
+        ...state,
+        counter: cartProductsCounter,
+        totalPrice: totalPriceCounter,
       };
 
     default:

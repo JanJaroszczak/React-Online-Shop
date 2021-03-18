@@ -70,6 +70,7 @@ export const StyledQuantityInput = styled.div`
   .notInStock::after {
     content: 'NO MORE PAIRS AVAILABLE';
     position: absolute;
+    z-index: 3;
     width: 170px;
     height: 26px;
     top: 7px;

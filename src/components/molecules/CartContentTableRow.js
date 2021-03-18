@@ -60,9 +60,9 @@ const CartContentTableRow = ({ product }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(closeNotInStockMessage());
+      dispatch(closeNotInStockMessage(product.cartProductId));
     }, 2000);
-  }, [notInStockMessage, dispatch]);
+  }, [product.notInStock, dispatch]);
 
   return (
     <StyledTableRow>
@@ -104,7 +104,7 @@ const CartContentTableRow = ({ product }) => {
                   )
                 )
               }
-              className={`${notInStockMessage}`}
+              className={`${product.notInStock}`}
             >
               +
             </button>
