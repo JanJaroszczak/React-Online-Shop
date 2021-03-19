@@ -1,10 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledFormWrapper = styled.div`
   margin-top: 30px;
   margin-left: 80px;
 
   /* border: 1px solid black; */
+
+  ${({ checkout }) =>
+    checkout &&
+    css`
+      width: 300px;
+      margin-left: 0;
+    `}
 `;
 
 export const StyledInputWrapper = styled.div`
@@ -17,6 +24,12 @@ export const StyledErrorWrapper = styled.div`
   left: 0;
   font-size: ${({ theme }) => theme.fontSizes.ss};
   color: red;
+`;
+
+export const StyledTextAreaLabel = styled.label`
+  display: block;
+  margin-bottom: 3px;
+  font-size: ${({ theme }) => theme.fontSizes.xs};
 `;
 
 export const StyledTextarea = styled.textarea`
@@ -38,7 +51,7 @@ export const StyledTermsWrapper = styled.div`
   margin: 22px 0 24px;
 `;
 
-export const StyledLabel = styled.label`
+export const StyledCheckboxLabel = styled.label`
   margin-left: 10px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   vertical-align: 4px;

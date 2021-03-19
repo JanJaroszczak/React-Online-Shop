@@ -1,12 +1,21 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { routes } from '../../routes';
 
 const StyledCartSummary = styled.div`
   width: 380px;
   margin: 40px 0 40px auto;
 
   /* border: 1px solid black; */
+
+  ${({ variant }) =>
+    variant === 'checkout' &&
+    css`
+      justify-self: center;
+      margin: 123px 50px 0 0;
+    `}
 `;
 
 const StyledCartSummaryHeading = styled.h3`
@@ -49,11 +58,11 @@ const StyledButton = styled.button`
   }
 `;
 
-const CartSummary = () => {
+const CartSummary = ({ variant }) => {
   const totalPrice = useSelector(({ totalPrice }) => totalPrice);
 
   return (
-    <StyledCartSummary>
+    <StyledCartSummary variant={variant}>
       <StyledCartSummaryHeading>CART SUMMARY</StyledCartSummaryHeading>
       <ul>
         <StyledListElement>
@@ -69,7 +78,11 @@ const CartSummary = () => {
           <span>$ {10 + totalPrice}</span>
         </StyledListElement>
       </ul>
-      <StyledButton>CHECKOUT</StyledButton>
+      {variant !== 'checkout' && (
+        <Link to={routes.checkout} style={{ textDecoration: 'none' }}>
+          <StyledButton>CHECKOUT</StyledButton>
+        </Link>
+      )}
     </StyledCartSummary>
   );
 };

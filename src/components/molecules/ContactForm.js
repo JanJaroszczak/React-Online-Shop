@@ -10,9 +10,10 @@ import {
   StyledFormWrapper,
   StyledInputWrapper,
   StyledErrorWrapper,
+  StyledTextAreaLabel,
   StyledTextarea,
   StyledTermsWrapper,
-  StyledLabel,
+  StyledCheckboxLabel,
 } from './styles/StyledContactForm';
 
 const contactValidationSchema = Yup.object().shape({
@@ -63,34 +64,38 @@ const ContactForm = () => {
         >
           {({ values, handleChange }) => (
             <Form>
-              <div>
-                <Input
+              <Input
+                type="text"
+                name="userName"
+                label="*Name:"
+                placeholder="Type your name"
+                value={values.userName}
+                onChangeHandler={handleChange}
+              />
+              <Input
+                type="email"
+                name="userEmail"
+                label="*Email:"
+                placeholder="Type your email"
+                value={values.userEmail}
+                onChangeHandler={handleChange}
+              />
+              <StyledInputWrapper>
+                <StyledTextAreaLabel htmlFor="userMessage">
+                  *Message:
+                </StyledTextAreaLabel>
+                <StyledTextarea
+                  id="userMessage"
                   type="text"
-                  name="userName"
-                  placeholder="*Name"
-                  value={values.userName}
-                  onChangeHandler={handleChange}
+                  name="userMessage"
+                  placeholder="Type your message"
+                  value={values.userMessage}
+                  onChange={handleChange}
                 />
-                <Input
-                  type="email"
-                  name="userEmail"
-                  placeholder="*Email"
-                  value={values.userEmail}
-                  onChangeHandler={handleChange}
-                />
-                <StyledInputWrapper>
-                  <StyledTextarea
-                    type="text"
-                    name="userMessage"
-                    placeholder="*Your message"
-                    value={values.userMessage}
-                    onChange={handleChange}
-                  />
-                  <StyledErrorWrapper>
-                    <ErrorMessage name="userMessage" />
-                  </StyledErrorWrapper>
-                </StyledInputWrapper>
-              </div>
+                <StyledErrorWrapper>
+                  <ErrorMessage name="userMessage" />
+                </StyledErrorWrapper>
+              </StyledInputWrapper>
               <StyledTermsWrapper>
                 <input
                   style={{ width: '20px', height: '20px' }}
@@ -100,9 +105,9 @@ const ContactForm = () => {
                   value={values.acceptTerms}
                   onChange={handleChange}
                 />
-                <StyledLabel htmlFor={'terms'}>
+                <StyledCheckboxLabel htmlFor={'terms'}>
                   Accept Terms and Conditions
-                </StyledLabel>
+                </StyledCheckboxLabel>
                 <StyledErrorWrapper>
                   <ErrorMessage name="acceptTerms" />
                 </StyledErrorWrapper>

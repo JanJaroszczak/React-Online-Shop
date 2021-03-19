@@ -7,6 +7,12 @@ const StyledInputWrapper = styled.div`
   position: relative;
 `;
 
+const StyledLabel = styled.label`
+  display: block;
+  margin-bottom: 3px;
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+`;
+
 const StyledInput = styled.input`
   display: block;
   width: 250px;
@@ -28,10 +34,12 @@ const StyledErrorWrapper = styled.div`
   color: red;
 `;
 
-const Input = ({ type, name, placeholder, value, onChangeHandler }) => {
+const Input = ({ type, name, label, placeholder, value, onChangeHandler }) => {
   return (
     <StyledInputWrapper>
+      <StyledLabel htmlFor={name}>{label}</StyledLabel>
       <StyledInput
+        id={name}
         type={type}
         name={name}
         placeholder={placeholder}

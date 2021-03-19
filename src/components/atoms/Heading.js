@@ -26,6 +26,13 @@ const StyledDiv = styled.div`
       margin: 0;
       padding: 0;
     `}
+
+     ${({ type }) =>
+    type === 'checkout' &&
+    css`
+      margin: 0;
+      padding-left: 0;
+    `}
 `;
 
 const StyledHeading = styled.h2`

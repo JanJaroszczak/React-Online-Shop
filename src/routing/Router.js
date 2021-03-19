@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { routes } from '../routes';
 import Cart from '../views/Cart';
+import Checkout from '../views/Checkout';
 import Contact from '../views/Contact';
 import Home from '../views/Home';
 import ProductPage from '../views/ProductPage';
@@ -39,6 +40,7 @@ const Router = () => {
 
       <Route path={routes.products} component={Products} />
       <Route path={routes.cart} component={Cart} />
+      <Route path={routes.checkout} component={Checkout} />
       <Route path={routes.contact} component={Contact} />
       <Route path={routes.singleProduct} component={ProductPage} />
 

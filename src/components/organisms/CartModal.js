@@ -7,6 +7,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCartClose } from '../../actions';
+
 import CartModalElement from '../molecules/CartModalElement';
 import './styles/stylesCartModal.css';
 
@@ -68,12 +69,16 @@ const CartModal = () => {
                 <div className="buttonViewCart">
                   <Link to={routes.cart}>
                     <button onClick={() => dispatch(setCartClose())}>
-                      View Cart
+                      View Cart Details
                     </button>
                   </Link>
                 </div>
                 <div className="buttonCheckout">
-                  <button>Checkout</button>
+                  <Link to={routes.checkout}>
+                    <button onClick={() => dispatch(setCartClose())}>
+                      Checkout
+                    </button>
+                  </Link>
                 </div>
                 <div className="totalPrice">
                   <span>Total price: ${cartTotalPrice}</span>
