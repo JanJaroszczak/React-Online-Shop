@@ -25,7 +25,6 @@ const contactValidationSchema = Yup.object().shape({
 });
 
 const StyledCheckoutWrapper = styled.div`
-  max-width: 1200px;
   margin-top: 30px;
   margin-left: 50px;
 

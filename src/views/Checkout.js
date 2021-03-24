@@ -1,6 +1,10 @@
 import React from 'react';
-import ClientDataForm from '../components/molecules/ClientDataForm';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+import { routes } from '../routes';
+import ClientDataForm from '../components/molecules/ClientDataForm';
 import CartSummary from '../components/molecules/CartSummary';
 
 const StyledCheckoutPageWrapper = styled.div`
@@ -13,12 +17,15 @@ const StyledCheckoutPageWrapper = styled.div`
 `;
 
 const Checkout = () => {
+  const currentUser = useSelector(({ currentUser }) => currentUser);
+
   return (
     <div>
       <StyledCheckoutPageWrapper>
         <ClientDataForm />
         <CartSummary variant="checkout" />
       </StyledCheckoutPageWrapper>
+      {!currentUser && <Redirect to={routes.authbeforecheckout} />}
     </div>
   );
 };

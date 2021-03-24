@@ -253,7 +253,7 @@ export const productsData = [
     productId: 7,
     productName: 'Predator Mutator',
     productBrand: 'Adidas',
-    productFamily: 'Predator Mutator',
+    productFamily: 'Predator',
     productColor: 'White',
     productPrice: 179,
     productImage: [
@@ -293,7 +293,7 @@ export const productsData = [
     productId: 8,
     productName: 'Predator Mutator',
     productBrand: 'Adidas',
-    productFamily: 'Predator Mutator',
+    productFamily: 'Predator',
     productColor: 'Black',
     productPrice: 139,
     productImage: [

@@ -36,7 +36,7 @@ export default function Paypal() {
         },
       })
       .render(paypal.current);
-  }, []);
+  }, [totalPrice]);
 
   return (
     <StyledPayPalButtonsWrapper>

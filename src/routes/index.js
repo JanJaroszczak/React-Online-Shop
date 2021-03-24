@@ -5,4 +5,8 @@ export const routes = {
   singleProduct: '/product/:productId',
   cart: '/cart',
   checkout: '/checkout',
+  upload: '/upload',
+  signup: '/signup',
+  login: '/login',
+  authbeforecheckout: '/authbeforecheckout',
 };

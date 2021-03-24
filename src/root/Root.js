@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { auth } from '../firebase/firebaseConfig';
 // import styled, { css } from 'styled-components';
 
 import MainTemplate from '../templates/MainTemplate';
 import Router from '../routing/Router';
-import { calculateCartTotals } from '../actions';
+import { calculateCartTotals, setCurrentUser, getProducts } from '../actions';
+import {
+  productsCollection,
+  usersCollection,
+} from '../firebase/firestoreUtils';
 
 // import Button from '../components/atoms/Button';
 
@@ -39,9 +44,45 @@ import { calculateCartTotals } from '../actions';
 // `
 
 const Root = () => {
-  //get cart from reducer
   const cartProducts = useSelector(({ cart }) => cart);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const subscribe = productsCollection.onSnapshot((snapshot) => {
+      const dataFormProductsCollection = snapshot.docs.map((doc) => {
+        return {
+          ...doc.data(),
+        };
+      });
+
+      dispatch(getProducts(dataFormProductsCollection));
+    });
+
+    return () => {
+      subscribe();
+    };
+  }, []);
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      console.log('Root - logged n');
+
+      const currentUserData = usersCollection.doc(user.uid);
+
+      currentUserData.get().then((item) => {
+        if (item.exists) {
+          console.log(item.data());
+
+          dispatch(setCurrentUser(item.data()));
+        } else {
+          console.error('no user!');
+        }
+      });
+    } else {
+      console.log('Root- logged out');
+      dispatch(setCurrentUser(null));
+    }
+  });
 
   useEffect(() => {
     dispatch(calculateCartTotals());

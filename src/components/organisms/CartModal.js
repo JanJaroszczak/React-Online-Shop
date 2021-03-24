@@ -36,6 +36,7 @@ const CartModal = () => {
   const selectedIsCartOpen = useSelector(({ isCartOpen }) => isCartOpen);
   const cartProducts = useSelector(({ cart }) => cart);
   const cartTotalPrice = useSelector(({ totalPrice }) => totalPrice);
+  const currentUser = useSelector(({ currentUser }) => currentUser);
 
   const cartProductsModalList = cartProducts.map((product) => (
     <li key={product.cartProductId}>
@@ -74,7 +75,11 @@ const CartModal = () => {
                   </Link>
                 </div>
                 <div className="buttonCheckout">
-                  <Link to={routes.checkout}>
+                  <Link
+                    to={
+                      currentUser ? routes.checkout : routes.authbeforecheckout
+                    }
+                  >
                     <button onClick={() => dispatch(setCartClose())}>
                       Checkout
                     </button>

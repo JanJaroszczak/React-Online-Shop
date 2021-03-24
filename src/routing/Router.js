@@ -7,6 +7,10 @@ import Contact from '../views/Contact';
 import Home from '../views/Home';
 import ProductPage from '../views/ProductPage';
 import Products from '../views/Products';
+import DatabaseUpload from '../views/DatabaseUpload';
+import SignUpPage from '../views/SignUpPage';
+import LogInPage from '../views/LogInPage';
+import AuthBeforeCheckout from '../views/AuthBeforeCheckout';
 
 // import ProductPageInfo from '../components/molecules/ProductPageInfo';
 
@@ -37,12 +41,15 @@ const Router = () => {
       {/* <Route exact path={routes.home} component={CheckboxFiltersColumn} /> */}
 
       <Route exact path={routes.home} component={Home} />
-
       <Route path={routes.products} component={Products} />
       <Route path={routes.cart} component={Cart} />
       <Route path={routes.checkout} component={Checkout} />
       <Route path={routes.contact} component={Contact} />
       <Route path={routes.singleProduct} component={ProductPage} />
+      <Route path={routes.upload} component={DatabaseUpload} />
+      <Route path={routes.signup} component={SignUpPage} />
+      <Route path={routes.login} component={LogInPage} />
+      <Route path={routes.authbeforecheckout} component={AuthBeforeCheckout} />
 
       {/* <Route exact path={routes.home} component={ProductPageInfo} /> */}
 

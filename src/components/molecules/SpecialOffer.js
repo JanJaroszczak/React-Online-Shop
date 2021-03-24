@@ -9,8 +9,6 @@ const StyledDiv = styled.div`
   grid-template-columns: 1fr auto;
   grid-template-rows: auto;
   position: relative;
-  max-width: 1200px;
-  width: 90%;
   height: 165px;
   margin: 60px auto;
   padding: 0px 100px;

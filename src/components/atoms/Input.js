@@ -34,7 +34,15 @@ const StyledErrorWrapper = styled.div`
   color: red;
 `;
 
-const Input = ({ type, name, label, placeholder, value, onChangeHandler }) => {
+const Input = ({
+  type,
+  name,
+  label,
+  placeholder,
+  value,
+  multiple,
+  onChangeHandler,
+}) => {
   return (
     <StyledInputWrapper>
       <StyledLabel htmlFor={name}>{label}</StyledLabel>
@@ -44,6 +52,7 @@ const Input = ({ type, name, label, placeholder, value, onChangeHandler }) => {
         name={name}
         placeholder={placeholder}
         value={value}
+        multiple={multiple}
         onChange={onChangeHandler}
       />
       <StyledErrorWrapper>

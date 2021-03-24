@@ -33,6 +33,20 @@ const StyledDiv = styled.div`
       margin: 0;
       padding-left: 0;
     `}
+
+      ${({ type }) =>
+    type === 'auth' &&
+    css`
+      margin-top: 30px;
+      padding-left: 0;
+    `}
+
+         ${({ type }) =>
+    type === 'authBeforeCheckout' &&
+    css`
+      margin: 0;
+      padding-left: 0;
+    `}
 `;
 
 const StyledHeading = styled.h2`
@@ -45,6 +59,13 @@ const StyledHeading = styled.h2`
       css`
         font-size: ${({ theme }) => theme.fontSizes.xxl};
       `)}
+
+  ${({ type }) =>
+    type === 'authBeforeCheckout' &&
+    css`
+      /* margin: 0; */
+      margin-top: 30px;
+    `}
 `;
 
 const StyledHeadingDescription = styled.h3`
@@ -58,6 +79,12 @@ const StyledHeadingDescription = styled.h3`
     css`
       font-size: ${({ theme }) => theme.fontSizes.s};
       margin-top: 12px;
+    `}
+
+  ${({ type }) =>
+    type === 'authBeforeCheckout' &&
+    css`
+      margin: 0;
     `}
 `;
 

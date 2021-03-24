@@ -11,6 +11,7 @@ const StyledProductWrapper = styled.div`
   column-gap: 10px;
   max-width: 1200px;
   margin: 40px auto;
+  padding: 0 20px;
 
   /* border: 1px solid black; */
 `;
@@ -18,8 +19,8 @@ const StyledProductWrapper = styled.div`
 const ProductPage = ({ match }) => {
   return (
     <StyledProductWrapper>
-      <PhotoCarousel id={Number(match.params.productId)} />
-      <ProductPageInfo id={Number(match.params.productId)} />
+      <PhotoCarousel id={match.params.productId} />
+      <ProductPageInfo id={match.params.productId} />
     </StyledProductWrapper>
   );
 };

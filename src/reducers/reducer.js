@@ -1,18 +1,18 @@
 import _ from 'lodash';
 
 import { actionsTypes } from '../actions/actionsTypes';
-import { productsData } from '../localData/productsData';
 
 const intitialState = {
   cart: [],
   isCartOpen: false,
-  products: [...productsData],
+  products: [],
   counter: 0,
   totalPrice: 0,
+  currentUser: null,
 };
 
 const reducer = (state = intitialState, action) => {
-  const { type, productId, cartProductId, chosenSize, chosenQuantity } = action;
+  const { type, payload } = action;
 
   const productsCopy = _.cloneDeep(state.products);
   const cartCopy = _.cloneDeep(state.cart);
@@ -33,17 +33,17 @@ const reducer = (state = intitialState, action) => {
     case actionsTypes.ADD_PRODUCT_TO_CART:
       const foundMatchIndex = state.cart.findIndex(
         (product) =>
-          product.productId === productId &&
-          product.chosenOption.size === chosenSize
+          product.productId === payload.productId &&
+          product.chosenOption.size === payload.chosenSize
       );
 
       let chosenProductAvailableQuantity = null;
       let chosenProductSizeObjectReference = null;
 
       productsCopy.forEach((product) => {
-        if (product.productId === productId) {
+        if (product.productId === payload.productId) {
           product.sizes.forEach((size) => {
-            if (size.size === chosenSize) {
+            if (size.size === payload.chosenSize) {
               chosenProductAvailableQuantity = size.availableQuantity;
               chosenProductSizeObjectReference = size;
             }
@@ -51,7 +51,7 @@ const reducer = (state = intitialState, action) => {
         }
       });
 
-      if (chosenProductAvailableQuantity < chosenQuantity) {
+      if (chosenProductAvailableQuantity < payload.chosenQuantity) {
         cartCopy[foundMatchIndex].notInStock = 'notInStock';
 
         return {
@@ -62,10 +62,12 @@ const reducer = (state = intitialState, action) => {
 
       if (foundMatchIndex >= 0) {
         cartCopy[foundMatchIndex].chosenOption.quantity =
-          cartCopy[foundMatchIndex].chosenOption.quantity + chosenQuantity;
+          cartCopy[foundMatchIndex].chosenOption.quantity +
+          payload.chosenQuantity;
 
         chosenProductSizeObjectReference.availableQuantity =
-          chosenProductSizeObjectReference.availableQuantity - chosenQuantity;
+          chosenProductSizeObjectReference.availableQuantity -
+          payload.chosenQuantity;
 
         return {
           ...state,
@@ -74,16 +76,17 @@ const reducer = (state = intitialState, action) => {
         };
       } else {
         const chosenProduct = _.cloneDeep(productsCopy).find(
-          (product) => product.productId === productId
+          (product) => product.productId === payload.productId
         );
-        chosenProduct.cartProductId = `${chosenProduct.productId}_${chosenSize}`;
+        chosenProduct.cartProductId = `${chosenProduct.productId}_${payload.chosenSize}`;
         chosenProduct.notInStock = '';
         chosenProduct.chosenOption = {};
-        chosenProduct.chosenOption.size = chosenSize;
-        chosenProduct.chosenOption.quantity = chosenQuantity;
+        chosenProduct.chosenOption.size = payload.chosenSize;
+        chosenProduct.chosenOption.quantity = payload.chosenQuantity;
 
         chosenProductSizeObjectReference.availableQuantity =
-          chosenProductSizeObjectReference.availableQuantity - chosenQuantity;
+          chosenProductSizeObjectReference.availableQuantity -
+          payload.chosenQuantity;
 
         return {
           ...state,
@@ -94,15 +97,15 @@ const reducer = (state = intitialState, action) => {
 
     case actionsTypes.REMOVE_PRODUCT_FROM_CART:
       const cartAfterRemoval = cartCopy.filter(
-        (product) => product.cartProductId !== cartProductId
+        (product) => product.cartProductId !== payload.cartProductId
       );
 
       const removedProduct = cartCopy.find(
-        (product) => product.cartProductId === cartProductId
+        (product) => product.cartProductId === payload.cartProductId
       );
 
       productsCopy.forEach((product) => {
-        if (product.productId === productId) {
+        if (product.productId === payload.productId) {
           product.sizes.forEach((size) => {
             if (size.size === removedProduct.chosenOption.size) {
               size.availableQuantity =
@@ -123,7 +126,7 @@ const reducer = (state = intitialState, action) => {
       let decreaseNotPossibleFlag = false;
 
       cartCopy.forEach((product) => {
-        if (product.cartProductId === cartProductId) {
+        if (product.cartProductId === payload.cartProductId) {
           handledProduct = product;
           if (product.chosenOption.quantity > 1) {
             product.chosenOption.quantity = product.chosenOption.quantity - 1;
@@ -134,7 +137,7 @@ const reducer = (state = intitialState, action) => {
       });
 
       productsCopy.forEach((product) => {
-        if (product.productId === productId) {
+        if (product.productId === payload.productId) {
           product.sizes.forEach((size) => {
             if (size.size === handledProduct.chosenOption.size) {
               size.availableQuantity = size.availableQuantity + 1;
@@ -153,7 +156,7 @@ const reducer = (state = intitialState, action) => {
 
     case actionsTypes.CLOSE_NOT_IN_STOCK_MESSAGE:
       cartCopy.forEach((product) => {
-        if (product.cartProductId === cartProductId) {
+        if (product.cartProductId === payload) {
           product.notInStock = '';
         }
       });
@@ -179,6 +182,19 @@ const reducer = (state = intitialState, action) => {
         ...state,
         counter: cartProductsCounter,
         totalPrice: totalPriceCounter,
+      };
+
+    case actionsTypes.SET_CURRENT_USER:
+      console.log('Redux - userLoggedIn: true');
+      return {
+        ...state,
+        currentUser: payload,
+      };
+
+    case actionsTypes.GET_PRODUCTS:
+      return {
+        ...state,
+        products: payload,
       };
 
     default:

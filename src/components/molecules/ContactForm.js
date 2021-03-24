@@ -24,6 +24,26 @@ const contactValidationSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
+  // const handleEmailSend = (e) => {
+  //   e.preventDefault();
+
+  //   emailjs
+  //     .sendForm(
+  //       'contact_service',
+  //       'contact_form',
+  //       e.target,
+  //       'user_CzpJ3EC6leOTAgc4zXdln'
+  //     )
+  //     .then(
+  //       (result) => {
+  //         console.log(result.text);
+  //       },
+  //       (error) => {
+  //         console.log(error.text);
+  //       }
+  //     );
+  // };
+
   return (
     <div>
       <Heading
@@ -43,23 +63,24 @@ const ContactForm = () => {
           onSubmit={(values, { resetForm }) => {
             console.log(values);
 
-            // emailjs
-            //   .sendForm(
-            //     'contact_service',
-            //     'contact_form',
-            //     e.target,
-            //     'user_CzpJ3EC6leOTAgc4zXdln'
-            //   )
-            //   .then(
-            //     (result) => {
-            //       console.log(result.text);
-            //     },
-            //     (error) => {
-            //       console.log(error.text);
-            //     }
-            //   );
+            emailjs
+              .send(
+                'contact_service',
+                'contact_form',
+                values,
+                process.env.REACT_APP_EMAILJS_USERID
+              )
+              .then(
+                (result) => {
+                  console.log(result.text);
+                },
+                (error) => {
+                  console.log(error.text);
+                }
+              );
 
             resetForm();
+            document.querySelector('#terms').checked = false;
           }}
         >
           {({ values, handleChange }) => (

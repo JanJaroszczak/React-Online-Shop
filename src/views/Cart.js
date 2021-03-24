@@ -9,6 +9,7 @@ import CartSummary from '../components/molecules/CartSummary';
 const StyledCartWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 `;
 
 const Cart = () => {

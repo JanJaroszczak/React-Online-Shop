@@ -52,10 +52,6 @@ const StyledPrice = styled.div`
 `;
 
 const CartContentTableRow = ({ product }) => {
-  const notInStockMessage = useSelector(
-    ({ notInStockMessage }) => notInStockMessage
-  );
-
   const dispatch = useDispatch();
 
   useEffect(() => {

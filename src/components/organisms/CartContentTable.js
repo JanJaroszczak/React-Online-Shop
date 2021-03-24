@@ -7,7 +7,6 @@ import CartContentTableRow from '../molecules/CartContentTableRow';
 const StyledTable = styled.table`
   display: grid;
   border-collapse: collapse;
-  max-width: 1200px;
   grid-template-columns: minmax(400px, 1fr) minmax(200px, auto) minmax(
       170px,
       auto

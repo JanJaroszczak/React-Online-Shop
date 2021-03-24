@@ -60,6 +60,7 @@ const StyledButton = styled.button`
 
 const CartSummary = ({ variant }) => {
   const totalPrice = useSelector(({ totalPrice }) => totalPrice);
+  const currentUser = useSelector(({ currentUser }) => currentUser);
 
   return (
     <StyledCartSummary variant={variant}>
@@ -79,7 +80,10 @@ const CartSummary = ({ variant }) => {
         </StyledListElement>
       </ul>
       {variant !== 'checkout' && (
-        <Link to={routes.checkout} style={{ textDecoration: 'none' }}>
+        <Link
+          to={currentUser ? routes.checkout : routes.authbeforecheckout}
+          style={{ textDecoration: 'none' }}
+        >
           <StyledButton>CHECKOUT</StyledButton>
         </Link>
       )}

@@ -1,6 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { routes } from '../../../routes';
+import { auth } from '../../../firebase/firebaseConfig';
 import styled from 'styled-components';
 
 import logo from '../../../assets/images/logo3.png';
@@ -8,11 +9,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCartOpen } from '../../../actions';
 
 const StyledNav = styled.div`
-  /* position: fixed;
-  z-index: 2; */
   width: 100%;
   background-color: ${({ theme }) => theme.colors.mainWhite};
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
+
   /* border: 1px solid black; */
 `;
 
@@ -56,10 +56,10 @@ const StyledLi = styled.li`
   /* border: 1px solid black; */
 `;
 
-const StyledLink = styled(NavLink)`
+const StyledNavLink = styled(NavLink)`
   display: block;
   position: relative;
-  padding: 10px 30px;
+  padding: 10px 20px;
   color: ${({ theme }) => theme.colors.mainDark};
   font-size: ${({ theme }) => theme.fontSizes.l};
   text-decoration: none;
@@ -87,7 +87,7 @@ const StyledLink = styled(NavLink)`
 const StyledNavIcons = styled.div`
   align-self: center;
   justify-self: center;
-  font-size: ${({ theme }) => theme.fontSizes.xl};
+  font-size: ${({ theme }) => theme.fontSizes.l};
   padding-right: 20px;
 
   /* border: 1px solid black; */
@@ -99,10 +99,78 @@ const StyledNavIcons = styled.div`
   }
 `;
 
+const StyledLink = styled(Link)`
+  position: relative;
+  margin: 0 12px;
+  vertical-align: 2px;
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  color: ${({ theme }) => theme.colors.mainDark};
+  text-decoration: none;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: ${({ theme }) => theme.colors.mainDark};
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+`;
+
+const StyledLogOutButton = styled.button`
+  position: relative;
+  margin: 0 12px;
+  vertical-align: 2px;
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-weight: ${({ theme }) => theme.fontWeights.light};
+  color: ${({ theme }) => theme.colors.mainDark};
+  border: none;
+  background-color: transparent;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: ${({ theme }) => theme.colors.mainDark};
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+`;
+
 const Navbar = () => {
   const dispatch = useDispatch();
 
   const cartCounter = useSelector(({ counter }) => counter);
+  const currentUser = useSelector(({ currentUser }) => currentUser);
+
+  const logout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        console.log('signed out');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <StyledNav>
@@ -113,14 +181,17 @@ const Navbar = () => {
         </StyledLogo>
         <StyledUl>
           <StyledLi>
-            <StyledLink to={routes.home}>Home</StyledLink>
+            <StyledNavLink to={routes.home}>Home</StyledNavLink>
           </StyledLi>
           <StyledLi>
-            <StyledLink to={routes.products}>Products</StyledLink>
+            <StyledNavLink to={routes.products}>Products</StyledNavLink>
           </StyledLi>
           <StyledLi>
-            <StyledLink to={routes.contact}>Contact</StyledLink>
+            <StyledNavLink to={routes.contact}>Contact</StyledNavLink>
           </StyledLi>
+          {/* <StyledLi>
+            <StyledNavLink to={routes.upload}>Upload</StyledNavLink>
+          </StyledLi> */}
         </StyledUl>
         <StyledNavIcons>
           <i className="fas fa-search"></i>
@@ -129,6 +200,16 @@ const Navbar = () => {
             className="fas fa-shopping-cart"
             onClick={() => dispatch(setCartOpen())}
           ></i>
+          {currentUser ? null : (
+            <StyledLink to={routes.signup}>Sign Up</StyledLink>
+          )}
+          {currentUser ? (
+            <StyledLogOutButton onClick={logout} type="button">
+              Log Out
+            </StyledLogOutButton>
+          ) : (
+            <StyledLink to={routes.login}>Log In</StyledLink>
+          )}
         </StyledNavIcons>
       </StyledNavWrapper>
     </StyledNav>

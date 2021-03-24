@@ -12,8 +12,6 @@ const StyledCategoriesWrapper = styled.div`
   column-gap: 10px;
   justify-content: space-between;
   margin: 60px auto;
-  max-width: 1200px;
-  width: 90%;
 
   /* border: 1px solid black; */
 `;

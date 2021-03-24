@@ -21,6 +21,7 @@ const StyledProductsGridWrapper = styled.div`
   column-gap: 10px;
   justify-content: space-between;
   margin: 40px 0 40px auto;
+  padding-right: 20px;
   width: 90%;
 
   /* border: 1px solid black; */

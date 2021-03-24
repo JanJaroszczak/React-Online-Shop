@@ -25,9 +25,9 @@ const StyledButton = styled.button`
     `}
 `;
 
-const Button = ({ type, variant, label }) => {
+const Button = ({ clicked, type, variant, label }) => {
   return (
-    <StyledButton type={type} variant={variant}>
+    <StyledButton onClick={clicked} type={type} variant={variant}>
       {label}
     </StyledButton>
   );
