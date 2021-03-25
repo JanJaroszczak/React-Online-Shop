@@ -9,6 +9,7 @@ const intitialState = {
   counter: 0,
   totalPrice: 0,
   currentUser: null,
+  successfulPaymentAlert: false,
 };
 
 const reducer = (state = intitialState, action) => {
@@ -207,6 +208,12 @@ const reducer = (state = intitialState, action) => {
       return {
         ...state,
         cart: [],
+      };
+
+    case actionsTypes.SUCCESSFUL_PAYMENT_ALERT:
+      return {
+        ...state,
+        successfulPaymentAlert: payload,
       };
 
     default:

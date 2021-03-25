@@ -1,20 +1,38 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import { updateProductQuantityInFirestore } from '../../firebase/firestoreUtils';
-import { clearCart } from '../../actions';
+import {
+  updateProductQuantityInFirestore,
+  addOrderToOrderHistory,
+} from '../../firebase/firestoreUtils';
+import { clearCart, successfulPaymentAlert } from '../../actions';
+import { routes } from '../../routes';
+import _ from 'lodash';
 
 const StyledPayPalButtonsWrapper = styled.div`
   padding-top: 15px;
 `;
 
 export default function Paypal() {
+  const [redirectToOrderSummary, setRedirectToOrderSummary] = useState(false);
+
   const paypal = useRef();
   const totalPrice = useSelector(({ totalPrice }) => totalPrice);
   const cart = useSelector(({ cart }) => cart);
   const products = useSelector(({ products }) => products);
+  const currentUser = useSelector(({ currentUser }) => currentUser);
+
+  const cartCopy = _.cloneDeep(cart);
+  const totalPriceCopy = totalPrice;
+
+  const { userId } = currentUser;
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setRedirectToOrderSummary(false);
+  }, []);
 
   useEffect(() => {
     window.paypal
@@ -57,7 +75,13 @@ export default function Paypal() {
             }
           });
 
+          addOrderToOrderHistory(cartCopy, userId);
+
+          setRedirectToOrderSummary(true);
+
           dispatch(clearCart());
+
+          dispatch(successfulPaymentAlert(true));
 
           // updateProductQuantityInFirestore
         },
@@ -71,6 +95,14 @@ export default function Paypal() {
   return (
     <StyledPayPalButtonsWrapper>
       <div ref={paypal}></div>
+      {redirectToOrderSummary && (
+        <Redirect
+          to={{
+            pathname: routes.ordersummary,
+            state: { cart: cartCopy, totalPrice: totalPriceCopy },
+          }}
+        />
+      )}
     </StyledPayPalButtonsWrapper>
   );
 }

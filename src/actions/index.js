@@ -80,3 +80,8 @@ export const getCartFromLocalStorage = (cartData) => ({
 export const clearCart = () => ({
   type: actionsTypes.CLEAR_CART,
 });
+
+export const successfulPaymentAlert = (isOn) => ({
+  type: actionsTypes.SUCCESSFUL_PAYMENT_ALERT,
+  payload: isOn,
+});

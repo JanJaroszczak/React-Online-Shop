@@ -9,4 +9,5 @@ export const routes = {
   signup: '/signup',
   login: '/login',
   authbeforecheckout: '/authbeforecheckout',
+  ordersummary: '/ordersummary',
 };

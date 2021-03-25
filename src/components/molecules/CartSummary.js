@@ -16,6 +16,12 @@ const StyledCartSummary = styled.div`
       justify-self: center;
       margin: 123px 50px 0 0;
     `}
+
+  ${({ orderSummary }) =>
+    orderSummary &&
+    css`
+      margin: 0;
+    `}
 `;
 
 const StyledCartSummaryHeading = styled.h3`
@@ -58,17 +64,19 @@ const StyledButton = styled.button`
   }
 `;
 
-const CartSummary = ({ variant }) => {
+const CartSummary = ({ variant, totalOrderPrice, orderSummary }) => {
   const totalPrice = useSelector(({ totalPrice }) => totalPrice);
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
   return (
     <StyledCartSummary variant={variant}>
-      <StyledCartSummaryHeading>CART SUMMARY</StyledCartSummaryHeading>
+      <StyledCartSummaryHeading>
+        {orderSummary ? 'COSTS DETAILS' : 'CART SUMMARY'}
+      </StyledCartSummaryHeading>
       <ul>
         <StyledListElement>
           PRODUCTS
-          <span>$ {totalPrice}</span>
+          <span>$ {orderSummary ? totalOrderPrice : totalPrice}</span>
         </StyledListElement>
         <StyledListElement>
           SHIPPING
@@ -76,10 +84,10 @@ const CartSummary = ({ variant }) => {
         </StyledListElement>
         <StyledListElement total>
           TOTAL
-          <span>$ {10 + totalPrice}</span>
+          <span>$ {orderSummary ? totalOrderPrice + 10 : totalPrice + 10}</span>
         </StyledListElement>
       </ul>
-      {variant !== 'checkout' && (
+      {variant !== 'checkout' && !orderSummary && (
         <Link
           to={currentUser ? routes.checkout : routes.authbeforecheckout}
           style={{ textDecoration: 'none' }}

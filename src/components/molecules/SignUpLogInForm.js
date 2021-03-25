@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { routes } from '../../routes';
@@ -10,6 +10,7 @@ import { usersCollection } from '../../firebase/firestoreUtils';
 import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
+import Alert from '../atoms/Alert';
 
 const StyledError = styled.div`
   margin: 10px 0;
@@ -19,8 +20,23 @@ const StyledError = styled.div`
 
 const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   const [logInError, setLogInError] = useState('');
+  const [redirectReady, setRedirectReady] = useState(false);
+  const [whichButtonPressed, setWhichButtonPressed] = useState('');
 
   const currentUser = useSelector(({ currentUser }) => currentUser);
+
+  useEffect(() => {
+    setRedirectReady(false);
+    setWhichButtonPressed('');
+  }, []);
+
+  useEffect(() => {
+    if (currentUser) {
+      setTimeout(() => {
+        setRedirectReady(true);
+      }, 2500);
+    }
+  }, [currentUser]);
 
   return (
     <div>
@@ -52,6 +68,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
             auth
               .createUserWithEmailAndPassword(userEmail, userPassword)
               .then((user) => {
+                setWhichButtonPressed('signup');
                 const userId = user.user.uid;
 
                 const newUser = {
@@ -59,13 +76,12 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
                   userEmail,
                   userPassword,
                   userId,
+                  ordersHistory: [],
                 };
 
                 usersCollection.doc(userId).set({
                   ...newUser,
                 });
-
-                setLogInError('');
               })
               .catch((err) => {
                 console.log(err);
@@ -76,6 +92,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
               .signInWithEmailAndPassword(userEmail, userPassword)
               .then((user) => {
                 console.log(user);
+                setWhichButtonPressed('login');
                 setLogInError('');
               })
               .catch((err) => {
@@ -120,9 +137,30 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
           </Form>
         )}
       </Formik>
-      {beforeCheckout && currentUser ? (
+      {/* {currentUser && (
+        <Alert
+          severity="success"
+          message={
+            isSignUp
+              ? 'You have been successfully signed up!'
+              : 'You have been successfully logged in!'
+          }
+        />
+      )} */}
+      {isSignUp && whichButtonPressed === 'signup' ? (
+        <Alert
+          severity="success"
+          message="You have been successfully signed up!"
+        />
+      ) : !isSignUp && whichButtonPressed === 'login' ? (
+        <Alert
+          severity="success"
+          message="You have been successfully logged in!"
+        />
+      ) : null}
+      {beforeCheckout && redirectReady ? (
         <Redirect to={routes.checkout} />
-      ) : !beforeCheckout && currentUser ? (
+      ) : !beforeCheckout && redirectReady ? (
         <Redirect to={routes.home} />
       ) : null}
     </div>

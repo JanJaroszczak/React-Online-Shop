@@ -48,12 +48,24 @@ const StyledTable = styled.table`
   }
 `;
 
-const CartContentTable = () => {
+const CartContentTable = ({ order, orderSummary }) => {
   const cartProducts = useSelector(({ cart }) => cart);
 
   const cartContentRows = cartProducts.map((product) => (
     <CartContentTableRow product={product} key={product.cartProductId} />
   ));
+
+  let orderContentRows = null;
+
+  if (orderSummary) {
+    orderContentRows = order.map((product) => (
+      <CartContentTableRow
+        product={product}
+        key={product.cartProductId}
+        orderRow
+      />
+    ));
+  }
 
   return (
     <>
@@ -65,7 +77,7 @@ const CartContentTable = () => {
             <th>SUBTOTAL</th>
           </tr>
         </thead>
-        <tbody>{cartContentRows}</tbody>
+        <tbody>{orderSummary ? orderContentRows : cartContentRows}</tbody>
       </StyledTable>
     </>
   );

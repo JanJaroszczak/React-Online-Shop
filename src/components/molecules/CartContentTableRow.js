@@ -51,7 +51,7 @@ const StyledPrice = styled.div`
   }
 `;
 
-const CartContentTableRow = ({ product }) => {
+const CartContentTableRow = ({ product, orderRow }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -70,54 +70,63 @@ const CartContentTableRow = ({ product }) => {
       <td>
         <StyledQuantityChoice cart>
           <StyledQuantityInput cart>
-            <button
-              type="button"
-              onClick={() =>
-                dispatch(
-                  decreaseProductCartQuantity(
-                    product.productId,
-                    product.cartProductId
+            {!orderRow && (
+              <button
+                type="button"
+                onClick={() =>
+                  dispatch(
+                    decreaseProductCartQuantity(
+                      product.productId,
+                      product.cartProductId
+                    )
                   )
-                )
-              }
-            >
-              -
-            </button>
+                }
+              >
+                -
+              </button>
+            )}
             <input
               id="quantity"
               type="number"
               value={product.chosenOption.quantity}
               readOnly
             />
-            <button
-              type="button"
-              onClick={() =>
-                dispatch(
-                  addProductToCart(
-                    product.productId,
-                    product.chosenOption.size,
-                    1
+            {!orderRow && (
+              <button
+                type="button"
+                onClick={() =>
+                  dispatch(
+                    addProductToCart(
+                      product.productId,
+                      product.chosenOption.size,
+                      1
+                    )
                   )
-                )
-              }
-              className={`${product.notInStock}`}
-            >
-              +
-            </button>
+                }
+                className={`${product.notInStock}`}
+              >
+                +
+              </button>
+            )}
           </StyledQuantityInput>
         </StyledQuantityChoice>
       </td>
       <td>
         <StyledPrice>
           $ {product.chosenOption.quantity * product.productPrice}
-          <i
-            className="fas fa-times"
-            onClick={() =>
-              dispatch(
-                removeProductFromCart(product.productId, product.cartProductId)
-              )
-            }
-          ></i>
+          {!orderRow && (
+            <i
+              className="fas fa-times"
+              onClick={() =>
+                dispatch(
+                  removeProductFromCart(
+                    product.productId,
+                    product.cartProductId
+                  )
+                )
+              }
+            ></i>
+          )}
         </StyledPrice>
       </td>
     </StyledTableRow>

@@ -15,6 +15,8 @@ export const mainTheme = {
     heading: '#222',
     note: '#777',
     price: '#333',
+    success: '#EDF7ED',
+    successIcon: '#5CB660',
   },
 
   fontSizes: {

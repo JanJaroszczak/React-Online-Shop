@@ -11,6 +11,7 @@ import DatabaseUpload from '../views/DatabaseUpload';
 import SignUpPage from '../views/SignUpPage';
 import LogInPage from '../views/LogInPage';
 import AuthBeforeCheckout from '../views/AuthBeforeCheckout';
+import OrderSummary from '../views/OrderSummary';
 
 // import ProductPageInfo from '../components/molecules/ProductPageInfo';
 
@@ -50,6 +51,7 @@ const Router = () => {
       <Route path={routes.signup} component={SignUpPage} />
       <Route path={routes.login} component={LogInPage} />
       <Route path={routes.authbeforecheckout} component={AuthBeforeCheckout} />
+      <Route path={routes.ordersummary} component={OrderSummary} />
 
       {/* <Route exact path={routes.home} component={ProductPageInfo} /> */}
 

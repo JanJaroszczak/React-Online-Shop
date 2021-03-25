@@ -8,10 +8,9 @@ import Footer from '../components/organisms/navigations/Footer';
 import CartModal from '../components/organisms/CartModal';
 
 const StyledWrapper = styled.div`
-  /* max-width: 1200px;
-  margin: 0 auto; */
-  /* min-height: 100vh;
-  margin-bottom: -70px; */
+  min-height: 100vh;
+  padding-bottom: 70px;
+  margin-bottom: -70px;
 `;
 
 const MainTemplate = ({ children }) => {
