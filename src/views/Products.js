@@ -29,6 +29,7 @@ const StyledProductsGridWrapper = styled.div`
 
 const Products = () => {
   const availableProducts = useSelector(({ products }) => products);
+
   const [productsToDisplay, setProductsToDisplay] = useState(availableProducts);
 
   const filteredProductsHandler = useCallback((filteredProducts) => {

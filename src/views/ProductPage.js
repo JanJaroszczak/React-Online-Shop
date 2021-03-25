@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import PhotoCarousel from '../components/molecules/PhotoCarousel';
 import ProductPageInfo from '../components/molecules/ProductPageInfo';
@@ -17,10 +18,19 @@ const StyledProductWrapper = styled.div`
 `;
 
 const ProductPage = ({ match }) => {
+  const availableProducts = useSelector(({ products }) => products);
+
   return (
     <StyledProductWrapper>
-      <PhotoCarousel id={match.params.productId} />
-      <ProductPageInfo id={match.params.productId} />
+      {availableProducts.length > 0 && (
+        <PhotoCarousel id={match.params.productId} />
+      )}
+      {availableProducts.length > 0 && (
+        <ProductPageInfo
+          products={availableProducts}
+          id={match.params.productId}
+        />
+      )}
     </StyledProductWrapper>
   );
 };

@@ -4,6 +4,7 @@ export const loadState = () => {
     if (serializedState === null) {
       return undefined;
     }
+    console.log('loaded from local storage');
     return JSON.parse(serializedState);
   } catch (err) {
     return undefined;

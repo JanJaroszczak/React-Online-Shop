@@ -1,11 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { auth } from '../firebase/firebaseConfig';
 // import styled, { css } from 'styled-components';
 
 import MainTemplate from '../templates/MainTemplate';
 import Router from '../routing/Router';
-import { calculateCartTotals, setCurrentUser, getProducts } from '../actions';
+import {
+  calculateCartTotals,
+  setCurrentUser,
+  alignProductsAndCart,
+  getCartFromLocalStorage,
+} from '../actions';
 import {
   productsCollection,
   usersCollection,
@@ -44,8 +49,27 @@ import {
 // `
 
 const Root = () => {
+  const [firstPageLoad, setFirstPageLoad] = useState(false);
+
   const cartProducts = useSelector(({ cart }) => cart);
   const dispatch = useDispatch();
+
+  let cart = null;
+
+  useEffect(() => {
+    setFirstPageLoad(true);
+  }, []);
+
+  useEffect(() => {
+    if (firstPageLoad) {
+      localStorage.setItem('cart', JSON.stringify(cartProducts));
+    }
+  }, [cartProducts, firstPageLoad]);
+
+  useEffect(() => {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    dispatch(getCartFromLocalStorage(cart));
+  }, [dispatch]);
 
   useEffect(() => {
     const subscribe = productsCollection.onSnapshot((snapshot) => {
@@ -55,17 +79,18 @@ const Root = () => {
         };
       });
 
-      dispatch(getProducts(dataFormProductsCollection));
+      dispatch(alignProductsAndCart(dataFormProductsCollection, cart));
+      console.log('products loaded from Firestore');
     });
 
     return () => {
       subscribe();
     };
-  }, []);
+  }, [dispatch]);
 
   auth.onAuthStateChanged((user) => {
     if (user) {
-      console.log('Root - logged n');
+      console.log('Root - logged in');
 
       const currentUserData = usersCollection.doc(user.uid);
 

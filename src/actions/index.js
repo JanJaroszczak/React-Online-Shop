@@ -37,7 +37,46 @@ export const setCurrentUser = (user) => ({
   payload: user,
 });
 
-export const getProducts = (productsData) => ({
+export const getProducts = (alignedProductsData) => ({
   type: actionsTypes.GET_PRODUCTS,
-  payload: productsData,
+  payload: alignedProductsData,
+});
+
+export const alignProductsAndCart = (productsData, cart) => {
+  return (dispatch) => {
+    console.log(cart);
+    if (cart.length > 0) {
+      console.log('alignment ON');
+      const productsInCart = cart.map((product) => [
+        product.productId,
+        product.chosenOption.size,
+        product.chosenOption.quantity,
+      ]);
+
+      productsInCart.forEach((cartProduct) => {
+        productsData.forEach((dbProduct) => {
+          const { productId, sizes } = dbProduct;
+
+          if (cartProduct[0] === productId) {
+            sizes.forEach((size) => {
+              if (size.size === cartProduct[1]) {
+                size.availableQuantity =
+                  size.availableQuantity - cartProduct[2];
+              }
+            });
+          }
+        });
+      });
+    }
+    dispatch(getProducts(productsData));
+  };
+};
+
+export const getCartFromLocalStorage = (cartData) => ({
+  type: actionsTypes.GET_CART_FROM_LOCAL_STORAGE,
+  payload: cartData,
+});
+
+export const clearCart = () => ({
+  type: actionsTypes.CLEAR_CART,
 });

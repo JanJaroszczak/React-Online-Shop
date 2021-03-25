@@ -97,6 +97,31 @@ const StyledNavIcons = styled.div`
 
     /* border: 1px solid black; */
   }
+
+  i.fa-shopping-cart {
+    position: relative;
+  }
+`;
+
+const StyledCartCounter = styled.div`
+  position: absolute;
+  top: 3px;
+  right: 11px;
+  display: block;
+  font-size: ${({ theme }) => theme.fontSizes.ss};
+  font-weight: ${({ theme }) => theme.fontWeights.light};
+  background-color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.mainWhite};
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+
+  span {
+    position: absolute;
+    top: 3px;
+    left: 5.5px;
+    font-family: 'Roboto Condensed', sans-serif;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -195,11 +220,15 @@ const Navbar = () => {
         </StyledUl>
         <StyledNavIcons>
           <i className="fas fa-search"></i>
-          {cartCounter}
           <i
             className="fas fa-shopping-cart"
             onClick={() => dispatch(setCartOpen())}
-          ></i>
+          >
+            <StyledCartCounter>
+              <span>{cartCounter}</span>
+            </StyledCartCounter>
+          </i>
+
           {currentUser ? null : (
             <StyledLink to={routes.signup}>Sign Up</StyledLink>
           )}

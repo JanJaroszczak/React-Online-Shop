@@ -197,6 +197,18 @@ const reducer = (state = intitialState, action) => {
         products: payload,
       };
 
+    case actionsTypes.GET_CART_FROM_LOCAL_STORAGE:
+      return {
+        ...state,
+        cart: payload,
+      };
+
+    case actionsTypes.CLEAR_CART:
+      return {
+        ...state,
+        cart: [],
+      };
+
     default:
       return state;
   }

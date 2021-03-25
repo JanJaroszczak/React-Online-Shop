@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import Heading from '../atoms/Heading';
 import { addProductToCart } from '../../actions';
@@ -17,7 +17,7 @@ import {
   StyledQuantityInput,
 } from './styles/StyledQuantitySelector';
 
-const ProductPageInfo = ({ id }) => {
+const ProductPageInfo = ({ products, id }) => {
   const [chosenSize, setChosenSize] = useState('-');
   const [chosenQuantity, setChosenQuantity] = useState(1);
 
@@ -28,11 +28,7 @@ const ProductPageInfo = ({ id }) => {
 
   const dispatch = useDispatch();
 
-  const availableProducts = useSelector(({ products }) => products);
-
-  const currentProduct = availableProducts.find(
-    (product) => product.productId === id
-  );
+  const currentProduct = products.find((product) => product.productId === id);
 
   const sizeOptions = currentProduct.sizes.map((size) => {
     if (size.availableQuantity > 0) {
