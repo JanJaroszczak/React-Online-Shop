@@ -151,11 +151,13 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
         <Alert
           severity="success"
           message="You have been successfully signed up!"
+          visible={true}
         />
       ) : !isSignUp && whichButtonPressed === 'login' ? (
         <Alert
           severity="success"
           message="You have been successfully logged in!"
+          visible={true}
         />
       ) : null}
       {beforeCheckout && redirectReady ? (

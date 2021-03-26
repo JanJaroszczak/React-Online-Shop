@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   addProductToCart,
   decreaseProductCartQuantity,
@@ -58,7 +58,7 @@ const CartContentTableRow = ({ product, orderRow }) => {
     setTimeout(() => {
       dispatch(closeNotInStockMessage(product.cartProductId));
     }, 2000);
-  }, [product.notInStock, dispatch]);
+  }, [product.notInStock, product.cartProductId, dispatch]);
 
   return (
     <StyledTableRow>

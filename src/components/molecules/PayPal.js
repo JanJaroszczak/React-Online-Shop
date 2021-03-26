@@ -60,11 +60,6 @@ export default function Paypal() {
           //   clientDetails: {},
           //   products: [],
           // };
-
-          console.log(cart);
-
-          console.log(products);
-
           const productsInCartId = cart.map((product) => product.productId);
 
           products.forEach((product) => {
@@ -90,7 +85,7 @@ export default function Paypal() {
         },
       })
       .render(paypal.current);
-  }, [totalPrice, cart, products, dispatch]);
+  }, [totalPrice, cart, cartCopy, userId, products, dispatch]);
 
   return (
     <StyledPayPalButtonsWrapper>

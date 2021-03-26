@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 
+import { routes } from '../routes';
 import Heading from '../components/atoms/Heading';
 import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
 import Alert from '../components/atoms/Alert';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCart, successfulPaymentAlert } from '../actions';
+import { successfulPaymentAlert } from '../actions';
 
 const StyledOrderSummaryWrapper = styled.div`
   max-width: 1200px;
@@ -15,11 +17,10 @@ const StyledOrderSummaryWrapper = styled.div`
 `;
 
 const OrderSummary = (props) => {
-  // const [purchaseSuccessAlert, setPurchaseSuccessAlert] = useState(true);
-
   const isSuccessfulPaymentAlert = useSelector(
     ({ successfulPaymentAlert }) => successfulPaymentAlert
   );
+  const currentUser = useSelector(({ currentUser }) => currentUser);
 
   const dispatch = useDispatch();
 
@@ -28,10 +29,9 @@ const OrderSummary = (props) => {
 
   useEffect(() => {
     setTimeout(() => {
-      // setPurchaseSuccessAlert(false);
       dispatch(successfulPaymentAlert(false));
     }, 2500);
-  }, []);
+  }, [dispatch]);
 
   return (
     <StyledOrderSummaryWrapper>
@@ -51,6 +51,7 @@ const OrderSummary = (props) => {
         totalOrderPrice={totalPrice}
         orderSummary
       />
+      {!currentUser && <Redirect to={routes.authbeforecheckout} />}
     </StyledOrderSummaryWrapper>
   );
 };

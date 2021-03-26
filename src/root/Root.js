@@ -57,10 +57,6 @@ const Root = () => {
   let cart = null;
 
   useEffect(() => {
-    setFirstPageLoad(true);
-  }, []);
-
-  useEffect(() => {
     if (firstPageLoad) {
       localStorage.setItem('cart', JSON.stringify(cartProducts));
     }
@@ -68,7 +64,12 @@ const Root = () => {
 
   useEffect(() => {
     cart = JSON.parse(localStorage.getItem('cart'));
-    dispatch(getCartFromLocalStorage(cart));
+    if (cart) {
+      dispatch(getCartFromLocalStorage(cart));
+    }
+
+    // console.log('FIRST LOAD');
+    setFirstPageLoad(true);
   }, [dispatch]);
 
   useEffect(() => {
@@ -79,8 +80,11 @@ const Root = () => {
         };
       });
 
-      dispatch(alignProductsAndCart(dataFormProductsCollection, cart));
-      console.log('products loaded from Firestore');
+      cart = JSON.parse(localStorage.getItem('cart'));
+      if (cart) {
+        dispatch(alignProductsAndCart(dataFormProductsCollection, cart));
+        console.log('products loaded from Firestore');
+      }
     });
 
     return () => {
@@ -110,7 +114,10 @@ const Root = () => {
   });
 
   useEffect(() => {
-    dispatch(calculateCartTotals());
+    cart = JSON.parse(localStorage.getItem('cart'));
+    if (cart) {
+      dispatch(calculateCartTotals());
+    }
   }, [cartProducts, dispatch]);
 
   return (
