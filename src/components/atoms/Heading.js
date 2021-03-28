@@ -47,6 +47,12 @@ const StyledDiv = styled.div`
       margin: 0;
       padding-left: 0;
     `}
+
+            ${({ type }) =>
+    type === 'orderSummary' &&
+    css`
+      margin-top: 30px;
+    `}
 `;
 
 const StyledHeading = styled.h2`
@@ -71,7 +77,7 @@ const StyledHeading = styled.h2`
 const StyledHeadingDescription = styled.h3`
   font-size: ${({ theme }) => theme.fontSizes.xs};
   font-weight: ${({ theme }) => theme.fontWeights.light};
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.gray};
   margin-top: 8px;
 
   ${({ type }) =>

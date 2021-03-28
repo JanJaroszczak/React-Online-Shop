@@ -27,7 +27,7 @@ const StyledProductsGridWrapper = styled.div`
   /* border: 1px solid black; */
 `;
 
-const Products = () => {
+const ProductsPage = () => {
   const availableProducts = useSelector(({ products }) => products);
 
   const [productsToDisplay, setProductsToDisplay] = useState(availableProducts);
@@ -57,4 +57,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;

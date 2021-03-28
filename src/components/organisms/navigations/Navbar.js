@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { routes } from '../../../routes';
-import { auth } from '../../../firebase/firebaseConfig';
 import styled from 'styled-components';
 
 import logo from '../../../assets/images/logo3.png';
@@ -11,7 +10,7 @@ import { setCartOpen } from '../../../actions';
 const StyledNav = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.mainWhite};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
 
   /* border: 1px solid black; */
 `;
@@ -124,34 +123,34 @@ const StyledCartCounter = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
-  position: relative;
-  margin: 0 12px;
-  vertical-align: 2px;
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  color: ${({ theme }) => theme.colors.mainDark};
-  text-decoration: none;
+// const StyledLink = styled(Link)`
+//   position: relative;
+//   margin: 0 12px;
+//   vertical-align: 2px;
+//   font-size: ${({ theme }) => theme.fontSizes.m};
+//   color: ${({ theme }) => theme.colors.mainDark};
+//   text-decoration: none;
 
-  &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: ${({ theme }) => theme.colors.mainDark};
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
-  }
+//   &:before {
+//     content: '';
+//     position: absolute;
+//     width: 100%;
+//     height: 2px;
+//     bottom: -5px;
+//     left: 0;
+//     background-color: ${({ theme }) => theme.colors.mainDark};
+//     visibility: hidden;
+//     transform: scaleX(0);
+//     transition: all 0.3s ease-in-out;
+//   }
 
-  &:hover:before {
-    visibility: visible;
-    transform: scaleX(1);
-  }
-`;
+//   &:hover:before {
+//     visibility: visible;
+//     transform: scaleX(1);
+//   }
+// `;
 
-const StyledLogOutButton = styled.button`
+const StyledAccountNavLink = styled(NavLink)`
   position: relative;
   margin: 0 12px;
   vertical-align: 2px;
@@ -160,6 +159,7 @@ const StyledLogOutButton = styled.button`
   color: ${({ theme }) => theme.colors.mainDark};
   border: none;
   background-color: transparent;
+  text-decoration: none;
 
   &:before {
     content: '';
@@ -186,17 +186,6 @@ const Navbar = () => {
   const cartCounter = useSelector(({ counter }) => counter);
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
-  const logout = () => {
-    auth
-      .signOut()
-      .then(() => {
-        console.log('signed out');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   return (
     <StyledNav>
       <StyledNavWrapper>
@@ -214,9 +203,7 @@ const Navbar = () => {
           <StyledLi>
             <StyledNavLink to={routes.contact}>Contact</StyledNavLink>
           </StyledLi>
-          {/* <StyledLi>
-            <StyledNavLink to={routes.upload}>Upload</StyledNavLink>
-          </StyledLi> */}
+          <StyledLi></StyledLi>
         </StyledUl>
         <StyledNavIcons>
           <i className="fas fa-search"></i>
@@ -230,14 +217,21 @@ const Navbar = () => {
           </i>
 
           {currentUser ? null : (
-            <StyledLink to={routes.signup}>Sign Up</StyledLink>
+            <StyledAccountNavLink to={routes.signup}>
+              Sign Up
+            </StyledAccountNavLink>
           )}
           {currentUser ? (
-            <StyledLogOutButton onClick={logout} type="button">
-              Log Out
-            </StyledLogOutButton>
+            // <StyledLogOutButton onClick={logout} type="button">
+            //   My account
+            // </StyledLogOutButton>
+            <StyledAccountNavLink to={routes.accountOrders}>
+              My Account
+            </StyledAccountNavLink>
           ) : (
-            <StyledLink to={routes.login}>Log In</StyledLink>
+            <StyledAccountNavLink to={routes.login}>
+              Log In
+            </StyledAccountNavLink>
           )}
         </StyledNavIcons>
       </StyledNavWrapper>

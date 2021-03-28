@@ -10,4 +10,9 @@ export const routes = {
   login: '/login',
   authbeforecheckout: '/authbeforecheckout',
   ordersummary: '/ordersummary',
+  account: '/account/:subPage',
+  accountOrders: '/account/ordershistory',
+  accountOrder: '/account/ordershistory/:orderId',
+  accountAddresses: '/account/addresses',
+  accountDetails: '/account/details',
 };

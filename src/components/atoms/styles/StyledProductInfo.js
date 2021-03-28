@@ -20,7 +20,7 @@ export const StyledModelName = styled.h3`
 
 export const StyledBrandName = styled.span`
   display: block;
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.gray};
   font-size: ${({ theme }) => theme.fontSizes.xxs};
   margin-top: 5px;
   line-height: 20px;

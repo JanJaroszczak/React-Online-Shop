@@ -19,7 +19,7 @@ const StyledContactPageWrapper = styled.div`
   /* border: 1px solid black; */
 `;
 
-const Contact = () => {
+const ContactPage = () => {
   return (
     <div>
       <StyledMapWrapper>
@@ -38,4 +38,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactPage;

@@ -15,7 +15,7 @@ const StyledHomeWrapper = styled.div`
   /* border: 1px solid black; */
 `;
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Header />
@@ -39,4 +39,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

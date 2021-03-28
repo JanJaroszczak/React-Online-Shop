@@ -58,10 +58,10 @@ const CartContentTable = ({ order, orderSummary }) => {
   let orderContentRows = null;
 
   if (orderSummary) {
-    orderContentRows = order.map((product) => (
+    orderContentRows = order.map((product, index) => (
       <CartContentTableRow
         product={product}
-        key={product.cartProductId}
+        key={`${product.productId}_${index}`}
         orderRow
       />
     ));

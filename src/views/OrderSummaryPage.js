@@ -16,7 +16,7 @@ const StyledOrderSummaryWrapper = styled.div`
   padding: 0 20px;
 `;
 
-const OrderSummary = (props) => {
+const OrderSummaryPage = (props) => {
   const isSuccessfulPaymentAlert = useSelector(
     ({ successfulPaymentAlert }) => successfulPaymentAlert
   );
@@ -35,13 +35,8 @@ const OrderSummary = (props) => {
 
   return (
     <StyledOrderSummaryWrapper>
-      <Alert
-        severity="success"
-        message="Payment successful!"
-        visible={isSuccessfulPaymentAlert}
-      />
       <Heading
-        // type={'specialOffer'}
+        type={'orderSummary'}
         heading={'ORDER SUMMARY'}
         headingDescription={`WE HOPE TO SEE YOU AGAIN!`}
       />
@@ -52,8 +47,13 @@ const OrderSummary = (props) => {
         orderSummary
       />
       {!currentUser && <Redirect to={routes.authbeforecheckout} />}
+      <Alert
+        severity="success"
+        message="Payment successful!"
+        visible={isSuccessfulPaymentAlert}
+      />
     </StyledOrderSummaryWrapper>
   );
 };
 
-export default OrderSummary;
+export default OrderSummaryPage;

@@ -18,7 +18,7 @@ const StyledGridWrapper = styled.div`
   grid-template-rows: auto;
 `;
 
-const AuthBeforeCheckout = () => {
+const AuthBeforeCheckoutPage = () => {
   return (
     <StyledSignUpPageWrapper>
       <Heading
@@ -34,4 +34,4 @@ const AuthBeforeCheckout = () => {
   );
 };
 
-export default AuthBeforeCheckout;
+export default AuthBeforeCheckoutPage;

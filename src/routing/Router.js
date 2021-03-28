@@ -1,17 +1,18 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { routes } from '../routes';
-import Cart from '../views/Cart';
-import Checkout from '../views/Checkout';
-import Contact from '../views/Contact';
-import Home from '../views/Home';
+import CartPage from '../views/CartPage';
+import CheckoutPage from '../views/CheckoutPage';
+import ContactPage from '../views/ContactPage';
+import HomePage from '../views/HomePage';
 import ProductPage from '../views/ProductPage';
-import Products from '../views/Products';
+import ProductsPage from '../views/ProductsPage';
 import DatabaseUpload from '../views/DatabaseUpload';
 import SignUpPage from '../views/SignUpPage';
 import LogInPage from '../views/LogInPage';
-import AuthBeforeCheckout from '../views/AuthBeforeCheckout';
-import OrderSummary from '../views/OrderSummary';
+import AuthBeforeCheckoutPage from '../views/AuthBeforeCheckoutPage';
+import OrderSummaryPage from '../views/OrderSummaryPage';
+import AccountPage from '../views/AccountPage';
 
 // import ProductPageInfo from '../components/molecules/ProductPageInfo';
 
@@ -41,17 +42,22 @@ const Router = () => {
     <Switch>
       {/* <Route exact path={routes.home} component={CheckboxFiltersColumn} /> */}
 
-      <Route exact path={routes.home} component={Home} />
-      <Route path={routes.products} component={Products} />
-      <Route path={routes.cart} component={Cart} />
-      <Route path={routes.checkout} component={Checkout} />
-      <Route path={routes.contact} component={Contact} />
+      <Route exact path={routes.home} component={HomePage} />
+      <Route path={routes.products} component={ProductsPage} />
+      <Route path={routes.cart} component={CartPage} />
+      <Route path={routes.checkout} component={CheckoutPage} />
+      <Route path={routes.contact} component={ContactPage} />
       <Route path={routes.singleProduct} component={ProductPage} />
       <Route path={routes.upload} component={DatabaseUpload} />
       <Route path={routes.signup} component={SignUpPage} />
       <Route path={routes.login} component={LogInPage} />
-      <Route path={routes.authbeforecheckout} component={AuthBeforeCheckout} />
-      <Route path={routes.ordersummary} component={OrderSummary} />
+      <Route
+        path={routes.authbeforecheckout}
+        component={AuthBeforeCheckoutPage}
+      />
+      <Route path={routes.ordersummary} component={OrderSummaryPage} />
+      <Route path={routes.accountOrder} component={AccountPage} />
+      <Route path={routes.account} component={AccountPage} />
 
       {/* <Route exact path={routes.home} component={ProductPageInfo} /> */}
 

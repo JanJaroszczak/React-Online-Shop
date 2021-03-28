@@ -12,7 +12,7 @@ const StyledCartWrapper = styled.div`
   padding: 0 20px;
 `;
 
-const Cart = () => {
+const CartPage = () => {
   const cartCounter = useSelector(({ counter }) => counter);
 
   return (
@@ -28,4 +28,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartPage;

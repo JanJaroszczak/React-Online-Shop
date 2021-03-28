@@ -16,6 +16,9 @@ export const updateProductQuantityInFirestore = (productId, sizes) => {
 };
 
 export const addOrderToOrderHistory = (cart, userId) => {
+  const date = new Date();
+  const isoDate = date.toISOString();
+
   cart.forEach((element) => {
     const {
       productBrand,
@@ -25,18 +28,22 @@ export const addOrderToOrderHistory = (cart, userId) => {
       productName,
       productPrice,
       chosenOption,
+      productImage,
     } = element;
+
+    const imageForOrdersHistory = productImage.slice(0, 1);
 
     usersCollection.doc(userId).update({
       ordersHistory: firebase.firestore.FieldValue.arrayUnion({
+        orderId: `${isoDate}`,
         productId,
         productName,
         productBrand,
         productPrice,
         productCategory,
         productColor,
-        size: chosenOption.size,
-        quantity: chosenOption.quantity,
+        chosenOption,
+        productImage: imageForOrdersHistory,
       }),
     });
   });

@@ -16,7 +16,7 @@ const StyledCheckoutPageWrapper = styled.div`
   /* border: 1px solid black; */
 `;
 
-const Checkout = () => {
+const CheckoutPage = () => {
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
   return (
@@ -30,4 +30,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default CheckoutPage;
