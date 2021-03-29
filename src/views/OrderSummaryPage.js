@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Redirect } from 'react-router-dom';
 
-import { routes } from '../routes';
 import Heading from '../components/atoms/Heading';
 import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
@@ -46,7 +44,6 @@ const OrderSummaryPage = (props) => {
         totalOrderPrice={totalPrice}
         orderSummary
       />
-      {!currentUser && <Redirect to={routes.authbeforecheckout} />}
       <Alert
         severity="success"
         message="Payment successful!"

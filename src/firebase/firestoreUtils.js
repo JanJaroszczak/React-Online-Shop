@@ -6,13 +6,20 @@ export const usersCollection = firestore.collection('users');
 export const productsCollection = firestore.collection('products');
 
 export const updateProductQuantityInFirestore = (productId, sizes) => {
-  console.log(productId);
-  console.log(sizes);
-
   productsCollection.doc(productId).update({
     sizes,
   });
-  console.log('Firestore update');
+  console.log('Firestore availability update');
+};
+
+export const updateUserDataInFirestore = (
+  userId,
+  userDataToUpdateInFirestore
+) => {
+  usersCollection.doc(userId).update({
+    ...userDataToUpdateInFirestore,
+  });
+  console.log('Firestore user update');
 };
 
 export const addOrderToOrderHistory = (cart, userId) => {

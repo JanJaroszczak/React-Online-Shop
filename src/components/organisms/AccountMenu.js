@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { routes } from '../../routes';
 import { auth } from '../../firebase/firebaseConfig';
+import { clearCart } from '../../actions';
 
 const StyledAccountMenuWrapper = styled.div`
   display: grid;
@@ -73,11 +75,14 @@ const StyledLink = styled(NavLink)`
 `;
 
 const AccountMenu = () => {
+  const dispatch = useDispatch();
+
   const logout = () => {
     auth
       .signOut()
       .then(() => {
         console.log('signed out');
+        dispatch(clearCart());
       })
       .catch((error) => {
         console.log(error);

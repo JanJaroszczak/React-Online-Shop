@@ -4,8 +4,8 @@ export const setCartOpen = () => ({
   type: actionsTypes.SET_CART_OPEN,
 });
 
-export const setCartClose = () => ({
-  type: actionsTypes.SET_CART_CLOSE,
+export const setCartClosed = () => ({
+  type: actionsTypes.SET_CART_CLOSED,
 });
 
 export const addProductToCart = (productId, chosenSize, chosenQuantity) => ({

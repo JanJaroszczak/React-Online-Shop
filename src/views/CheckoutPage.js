@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
-import { routes } from '../routes';
 import ClientDataForm from '../components/molecules/ClientDataForm';
 import CartSummary from '../components/molecules/CartSummary';
 
@@ -25,7 +23,6 @@ const CheckoutPage = () => {
         <ClientDataForm />
         <CartSummary variant="checkout" />
       </StyledCheckoutPageWrapper>
-      {!currentUser && <Redirect to={routes.authbeforecheckout} />}
     </div>
   );
 };

@@ -9,7 +9,7 @@ import CartModal from '../components/organisms/CartModal';
 
 const StyledWrapper = styled.div`
   min-height: 100vh;
-  padding-bottom: 70px;
+  padding-bottom: 110px;
   margin-bottom: -70px;
 `;
 

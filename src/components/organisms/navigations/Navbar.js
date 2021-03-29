@@ -77,7 +77,8 @@ const StyledNavLink = styled(NavLink)`
     transition: all 0.3s ease-in-out;
   }
 
-  &:hover:before {
+  &:hover:before,
+  &.active:before {
     visibility: visible;
     transform: scaleX(1);
   }
@@ -174,7 +175,8 @@ const StyledAccountNavLink = styled(NavLink)`
     transition: all 0.3s ease-in-out;
   }
 
-  &:hover:before {
+  &:hover:before,
+  &.active:before {
     visibility: visible;
     transform: scaleX(1);
   }
@@ -195,7 +197,9 @@ const Navbar = () => {
         </StyledLogo>
         <StyledUl>
           <StyledLi>
-            <StyledNavLink to={routes.home}>Home</StyledNavLink>
+            <StyledNavLink to={routes.home} exact>
+              Home
+            </StyledNavLink>
           </StyledLi>
           <StyledLi>
             <StyledNavLink to={routes.products}>Products</StyledNavLink>

@@ -34,7 +34,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
     if (currentUser) {
       setTimeout(() => {
         setRedirectReady(true);
-      }, 2500);
+      }, 2000);
     }
   }, [currentUser]);
 
@@ -73,10 +73,15 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
 
                 const newUser = {
                   userName,
+                  userSurname: '',
                   userEmail,
                   userPassword,
                   userId,
                   ordersHistory: [],
+                  userPhone: '',
+                  userStreet: '',
+                  userZipCode: '',
+                  userCity: '',
                 };
 
                 usersCollection.doc(userId).set({

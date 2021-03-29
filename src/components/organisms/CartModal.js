@@ -6,7 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCartClose } from '../../actions';
+import { setCartClosed } from '../../actions';
 
 import CartModalElement from '../molecules/CartModalElement';
 import './styles/stylesCartModal.css';
@@ -52,7 +52,7 @@ const CartModal = () => {
       aria-describedby="transition-modal-description"
       className={classes.modal}
       open={selectedIsCartOpen}
-      onClose={() => dispatch(setCartClose())}
+      onClose={() => dispatch(setCartClosed())}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
@@ -69,7 +69,7 @@ const CartModal = () => {
               <div className="modalFooterWrapper">
                 <div className="buttonViewCart">
                   <Link to={routes.cart}>
-                    <button onClick={() => dispatch(setCartClose())}>
+                    <button onClick={() => dispatch(setCartClosed())}>
                       View Cart Details
                     </button>
                   </Link>
@@ -80,7 +80,7 @@ const CartModal = () => {
                       currentUser ? routes.checkout : routes.authbeforecheckout
                     }
                   >
-                    <button onClick={() => dispatch(setCartClose())}>
+                    <button onClick={() => dispatch(setCartClosed())}>
                       Checkout
                     </button>
                   </Link>

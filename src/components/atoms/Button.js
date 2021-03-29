@@ -23,6 +23,12 @@ const StyledButton = styled.button`
       align-self: center;
       justify-self: center;
     `}
+
+  ${({ variant }) =>
+    variant === 'questionModal' &&
+    css`
+      display: inline-block;
+    `}
 `;
 
 const Button = ({ clicked, type, variant, label }) => {

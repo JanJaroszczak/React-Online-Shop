@@ -25,7 +25,7 @@ const reducer = (state = intitialState, action) => {
         isCartOpen: true,
       };
 
-    case actionsTypes.SET_CART_CLOSE:
+    case actionsTypes.SET_CART_CLOSED:
       return {
         ...state,
         isCartOpen: false,
