@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { routes } from '../../../routes';
 import styled from 'styled-components';
@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import logo from '../../../assets/images/logo3.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCartOpen } from '../../../actions';
+
+import SearchProductsPopper from '../../molecules/SearchProductsPopper';
 
 const StyledNav = styled.div`
   width: 100%;
@@ -188,6 +190,12 @@ const Navbar = () => {
   const cartCounter = useSelector(({ counter }) => counter);
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
+  const [isSearchBarOpen, setIsSearchOpen] = useState(false);
+
+  const toggleSearchBarVisiblity = () => {
+    setIsSearchOpen(!isSearchBarOpen);
+  };
+
   return (
     <StyledNav>
       <StyledNavWrapper>
@@ -210,7 +218,18 @@ const Navbar = () => {
           <StyledLi></StyledLi>
         </StyledUl>
         <StyledNavIcons>
-          <i className="fas fa-search"></i>
+          {isSearchBarOpen ? (
+            <>
+              <SearchProductsPopper />
+              <i
+                className="fas fa-close"
+                onClick={toggleSearchBarVisiblity}
+              ></i>
+            </>
+          ) : (
+            <i className="fas fa-search" onClick={toggleSearchBarVisiblity}></i>
+          )}
+
           <i
             className="fas fa-shopping-cart"
             onClick={() => dispatch(setCartOpen())}

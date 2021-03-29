@@ -90,14 +90,14 @@ export default function Paypal() {
   return (
     <StyledPayPalButtonsWrapper>
       <div ref={paypal}></div>
-      {redirectToOrderSummary && (
+      {/* {redirectToOrderSummary && (
         <Redirect
           to={{
             pathname: routes.ordersummary,
             state: { cart: cartCopy, totalPrice: totalPriceCopy },
           }}
         />
-      )}
+      )} */}
     </StyledPayPalButtonsWrapper>
   );
 }

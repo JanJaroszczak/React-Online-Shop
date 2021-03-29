@@ -10,6 +10,7 @@ const intitialState = {
   totalPrice: 0,
   currentUser: null,
   successfulPaymentAlert: false,
+  isCurrentUserChecked: false,
 };
 
 const reducer = (state = intitialState, action) => {
@@ -214,6 +215,12 @@ const reducer = (state = intitialState, action) => {
       return {
         ...state,
         successfulPaymentAlert: payload,
+      };
+
+    case actionsTypes.CURRENT_USER_CHECKED:
+      return {
+        ...state,
+        isCurrentUserChecked: payload,
       };
 
     default:

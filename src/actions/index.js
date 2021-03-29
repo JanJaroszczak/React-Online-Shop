@@ -85,3 +85,8 @@ export const successfulPaymentAlert = (isOn) => ({
   type: actionsTypes.SUCCESSFUL_PAYMENT_ALERT,
   payload: isOn,
 });
+
+export const currentUserChecked = (isChecked) => ({
+  type: actionsTypes.CURRENT_USER_CHECKED,
+  payload: isChecked,
+});

@@ -20,6 +20,9 @@ const StyledAccountPageWrapper = styled.div`
 
 const AccountPage = ({ history, match }) => {
   const currentUser = useSelector(({ currentUser }) => currentUser);
+  const isCurrentUserChecked = useSelector(
+    ({ isCurrentUserChecked }) => isCurrentUserChecked
+  );
 
   console.log('current user:', currentUser);
   console.log('match:', match);
@@ -37,7 +40,7 @@ const AccountPage = ({ history, match }) => {
           />
         )}
       </div>
-      {!currentUser && <Redirect to={routes.home} />}
+      {isCurrentUserChecked && !currentUser && <Redirect to={routes.home} />}
     </StyledAccountPageWrapper>
   );
 };

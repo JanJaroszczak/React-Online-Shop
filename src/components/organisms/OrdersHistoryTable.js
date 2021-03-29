@@ -44,8 +44,18 @@ const StyledTable = styled.table`
   }
 `;
 
+const StyledTdMessage = styled.td`
+  margin-top: 15px;
+  font-size: ${({ theme }) => theme.fontSizes.s};
+
+  span {
+    color: ${({ theme }) => theme.colors.mainDark};
+  }
+`;
+
 const OrdersHistoryTable = () => {
-  const [ordersHistoryRows, setOrdersHistoryRows] = useState(null);
+  const [ordersHistoryRows, setOrdersHistoryRows] = useState({});
+
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
   useEffect(() => {
@@ -74,8 +84,6 @@ const OrdersHistoryTable = () => {
         };
       });
 
-      console.log('ordersHistoryRowData:', ordersHistoryRowData);
-
       const ordersHistoryRows = ordersHistoryRowData.map((order) => (
         <OrdersHistoryTableRow
           orderDate={order.orderDate}
@@ -85,11 +93,15 @@ const OrdersHistoryTable = () => {
         />
       ));
 
-      console.log('ordersHistoryRows:', ordersHistoryRows);
-
       setOrdersHistoryRows(ordersHistoryRows);
     }
   }, [currentUser]);
+
+  console.log(ordersHistoryRows);
+  console.log(typeof ordersHistoryRows);
+  console.log(Boolean(ordersHistoryRows));
+  console.log(Object.keys(ordersHistoryRows));
+  console.log(Object.keys(ordersHistoryRows).length);
 
   return (
     <>
@@ -100,7 +112,23 @@ const OrdersHistoryTable = () => {
             <th>TOTAL PRICE</th>
           </tr>
         </thead>
-        <tbody>{ordersHistoryRows}</tbody>
+        <tbody>
+          {!currentUser && Object.keys(ordersHistoryRows).length === 0 ? (
+            <tr>
+              <StyledTdMessage>
+                <span>Loading...</span>
+              </StyledTdMessage>
+            </tr>
+          ) : currentUser && Object.keys(ordersHistoryRows).length === 0 ? (
+            <tr>
+              <StyledTdMessage>
+                <span>You haven't purchased anything yet.</span>
+              </StyledTdMessage>
+            </tr>
+          ) : (
+            ordersHistoryRows
+          )}
+        </tbody>
       </StyledTable>
     </>
   );

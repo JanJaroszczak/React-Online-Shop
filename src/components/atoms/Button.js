@@ -29,6 +29,11 @@ const StyledButton = styled.button`
     css`
       display: inline-block;
     `}
+    ${({ variant }) =>
+    variant === 'noCapitalize' &&
+    css`
+      text-transform: none;
+    `}
 `;
 
 const Button = ({ clicked, type, variant, label }) => {

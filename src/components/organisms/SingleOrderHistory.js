@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
+import { routes } from '../../routes';
 import Heading from '../../components/atoms/Heading';
 import CartContentTable from '../../components/organisms/CartContentTable';
 import CartSummary from '../../components/molecules/CartSummary';
 import { useSelector } from 'react-redux';
+import Button from '../atoms/Button';
 
 const StyledOrderSummaryWrapper = styled.div`
   max-width: 1200px;
@@ -26,6 +29,8 @@ const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
     );
   }
 
+  const onGoBackToAllOrdersHandler = () => {};
+
   return (
     <StyledOrderSummaryWrapper>
       {currentUser && (
@@ -43,6 +48,14 @@ const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
           />
         </>
       )}
+      <Link to={routes.accountOrders} style={{ textDecoration: 'none' }}>
+        <Button
+          clicked={onGoBackToAllOrdersHandler}
+          variant="noCapitalize"
+          type="button"
+          label="Go back to All Orders History"
+        />
+      </Link>
     </StyledOrderSummaryWrapper>
   );
 };

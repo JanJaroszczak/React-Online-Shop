@@ -150,8 +150,13 @@ const ClientDataForm = () => {
             validationSchema={contactValidationSchema}
             onSubmit={(values) => {
               console.log(values);
-              // setCheckout(true);
-              setIsModalOpen(true);
+
+              if (emptyUserFields.length > 0) {
+                setIsModalOpen(true);
+              } else {
+                setCheckout(true);
+              }
+
               setSubmittedFormValues(values);
             }}
           >

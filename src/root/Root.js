@@ -10,6 +10,7 @@ import {
   setCurrentUser,
   alignProductsAndCart,
   getCartFromLocalStorage,
+  currentUserChecked,
 } from '../actions';
 import {
   productsCollection,
@@ -128,12 +129,14 @@ const Root = () => {
           console.log(item.data());
 
           dispatch(setCurrentUser(item.data()));
+          dispatch(currentUserChecked(true));
         } else {
           console.error('no user!');
         }
       });
     } else {
       console.log('Root- logged out');
+      dispatch(currentUserChecked(true));
       dispatch(setCurrentUser(null));
     }
   });
@@ -165,3 +168,5 @@ const Root = () => {
 };
 
 export default Root;
+
+// git commit -m "Title" -m "Desc...."
