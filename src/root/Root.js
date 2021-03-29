@@ -50,8 +50,10 @@ import {
 
 const Root = () => {
   const [firstPageLoad, setFirstPageLoad] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState('');
 
   const cartProducts = useSelector(({ cart }) => cart);
+  // const currentUser = useSelector(({ currentUser }) => currentUser);
   const dispatch = useDispatch();
 
   let cart = null;
@@ -73,8 +75,8 @@ const Root = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const subscribe = productsCollection.onSnapshot((snapshot) => {
-      const dataFormProductsCollection = snapshot.docs.map((doc) => {
+    const subscribeProducts = productsCollection.onSnapshot((snapshot) => {
+      const dataFromProductsCollection = snapshot.docs.map((doc) => {
         return {
           ...doc.data(),
         };
@@ -82,21 +84,44 @@ const Root = () => {
 
       cart = JSON.parse(localStorage.getItem('cart'));
       if (cart) {
-        dispatch(alignProductsAndCart(dataFormProductsCollection, cart));
+        dispatch(alignProductsAndCart(dataFromProductsCollection, cart));
         console.log('products loaded from Firestore');
       }
     });
 
     return () => {
-      subscribe();
+      subscribeProducts();
     };
   }, [dispatch]);
+
+  useEffect(() => {
+    const subscribeUsers = usersCollection.onSnapshot((snapshot) => {
+      const dataFromUsersCollection = snapshot.docs.map((doc) => {
+        return {
+          ...doc.data(),
+        };
+      });
+
+      const currentUserData = dataFromUsersCollection.filter(
+        (user) => user.userId === currentUserId
+      );
+      console.log(dataFromUsersCollection);
+      console.log('user data loaded from Firestore');
+      dispatch(setCurrentUser(...currentUserData));
+    });
+
+    return () => {
+      subscribeUsers();
+    };
+  }, []);
 
   auth.onAuthStateChanged((user) => {
     if (user) {
       console.log('Root - logged in');
 
       const currentUserData = usersCollection.doc(user.uid);
+
+      setCurrentUserId(user.uid);
 
       currentUserData.get().then((item) => {
         if (item.exists) {
