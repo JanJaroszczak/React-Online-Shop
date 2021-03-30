@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { auth } from '../firebase/firebaseConfig';
-import firebase from 'firebase';
 // import styled, { css } from 'styled-components';
 
 import MainTemplate from '../templates/MainTemplate';
@@ -57,7 +56,7 @@ const Root = () => {
 
   const dispatch = useDispatch();
 
-  let cart = null;
+  let cart = [];
 
   useEffect(() => {
     if (firstPageLoad) {
@@ -70,8 +69,6 @@ const Root = () => {
     if (cart) {
       dispatch(getCartFromLocalStorage(cart));
     }
-
-    // console.log('FIRST LOAD');
     setFirstPageLoad(true);
   }, [dispatch]);
 
@@ -107,7 +104,8 @@ const Root = () => {
         };
       });
 
-      const currentUser = firebase.auth().currentUser;
+      const currentUser = auth.currentUser;
+      console.log(currentUser);
 
       let currentUserId = null;
 
@@ -130,28 +128,30 @@ const Root = () => {
     };
   }, [dispatch]);
 
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      console.log('Root - logged in');
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log('Root - logged in');
 
-      const currentUserData = usersCollection.doc(user.uid);
+        const currentUserData = usersCollection.doc(user.uid);
 
-      currentUserData.get().then((item) => {
-        if (item.exists) {
-          console.log(item.data().userId);
+        currentUserData.get().then((item) => {
+          if (item.exists) {
+            console.log(item.data().userId);
 
-          dispatch(setCurrentUser(item.data()));
-          dispatch(currentUserChecked(true));
-        } else {
-          console.error('root - no user!');
-        }
-      });
-    } else {
-      console.log('Root- logged out');
-      dispatch(currentUserChecked(true));
-      dispatch(setCurrentUser(null));
-    }
-  });
+            dispatch(setCurrentUser(item.data()));
+            dispatch(currentUserChecked(true));
+          } else {
+            console.error('root - no user!');
+          }
+        });
+      } else {
+        console.log('Root- logged out');
+        dispatch(currentUserChecked(true));
+        dispatch(setCurrentUser(null));
+      }
+    });
+  }, []);
 
   useEffect(() => {
     cart = JSON.parse(localStorage.getItem('cart'));
