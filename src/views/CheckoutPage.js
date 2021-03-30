@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 
 import ClientDataForm from '../components/molecules/ClientDataForm';
 import CartSummary from '../components/molecules/CartSummary';
@@ -15,8 +14,6 @@ const StyledCheckoutPageWrapper = styled.div`
 `;
 
 const CheckoutPage = () => {
-  const currentUser = useSelector(({ currentUser }) => currentUser);
-
   return (
     <div>
       <StyledCheckoutPageWrapper>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { auth } from '../firebase/firebaseConfig';
+import firebase from 'firebase';
 // import styled, { css } from 'styled-components';
 
 import MainTemplate from '../templates/MainTemplate';
@@ -51,10 +52,9 @@ import {
 
 const Root = () => {
   const [firstPageLoad, setFirstPageLoad] = useState(false);
-  const [currentUserId, setCurrentUserId] = useState('');
 
   const cartProducts = useSelector(({ cart }) => cart);
-  // const currentUser = useSelector(({ currentUser }) => currentUser);
+
   const dispatch = useDispatch();
 
   let cart = null;
@@ -96,6 +96,10 @@ const Root = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log('root reload');
+  }, []);
+
+  useEffect(() => {
     const subscribeUsers = usersCollection.onSnapshot((snapshot) => {
       const dataFromUsersCollection = snapshot.docs.map((doc) => {
         return {
@@ -103,18 +107,28 @@ const Root = () => {
         };
       });
 
-      const currentUserData = dataFromUsersCollection.filter(
-        (user) => user.userId === currentUserId
-      );
-      console.log(dataFromUsersCollection);
-      console.log('user data loaded from Firestore');
-      dispatch(setCurrentUser(...currentUserData));
+      const currentUser = firebase.auth().currentUser;
+
+      let currentUserId = null;
+
+      if (currentUser) {
+        currentUserId = currentUser.uid;
+
+        const currentUserData = dataFromUsersCollection.filter(
+          (user) => user.userId === currentUserId
+        );
+
+        console.log('user data loaded from Firestore');
+        dispatch(setCurrentUser(...currentUserData));
+      } else {
+        console.log('user not logged in');
+      }
     });
 
     return () => {
       subscribeUsers();
     };
-  }, []);
+  }, [dispatch]);
 
   auth.onAuthStateChanged((user) => {
     if (user) {
@@ -122,16 +136,14 @@ const Root = () => {
 
       const currentUserData = usersCollection.doc(user.uid);
 
-      setCurrentUserId(user.uid);
-
       currentUserData.get().then((item) => {
         if (item.exists) {
-          console.log(item.data());
+          console.log(item.data().userId);
 
           dispatch(setCurrentUser(item.data()));
           dispatch(currentUserChecked(true));
         } else {
-          console.error('no user!');
+          console.error('root - no user!');
         }
       });
     } else {

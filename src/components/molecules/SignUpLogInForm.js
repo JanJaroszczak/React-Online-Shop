@@ -165,11 +165,11 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
           visible={true}
         />
       ) : null}
-      {beforeCheckout && redirectReady ? (
+      {/* {beforeCheckout && redirectReady ? (
         <Redirect to={routes.checkout} />
       ) : !beforeCheckout && redirectReady ? (
         <Redirect to={routes.home} />
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

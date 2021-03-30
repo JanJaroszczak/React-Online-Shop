@@ -85,19 +85,22 @@ export default function Paypal() {
         },
       })
       .render(paypal.current);
-  }, [totalPrice, cart, cartCopy, userId, products, dispatch]);
+    console.log(paypal.current);
+  }, []);
 
   return (
     <StyledPayPalButtonsWrapper>
       <div ref={paypal}></div>
-      {/* {redirectToOrderSummary && (
+      {redirectToOrderSummary && (
         <Redirect
           to={{
             pathname: routes.ordersummary,
             state: { cart: cartCopy, totalPrice: totalPriceCopy },
           }}
         />
-      )} */}
+      )}
     </StyledPayPalButtonsWrapper>
   );
 }
+
+//totalPrice, cart, cartCopy, userId, products, dispatch

@@ -102,7 +102,7 @@ const AccountMenu = () => {
       </StyledAccountHeading>
       <ul>
         <li>
-          <StyledLink to={routes.accountOrders}>orders</StyledLink>
+          <StyledLink to={routes.accountOrders}>orders history</StyledLink>
         </li>
         <li>
           <StyledLink to={routes.accountAddresses}>addresses</StyledLink>

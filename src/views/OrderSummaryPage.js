@@ -18,7 +18,6 @@ const OrderSummaryPage = (props) => {
   const isSuccessfulPaymentAlert = useSelector(
     ({ successfulPaymentAlert }) => successfulPaymentAlert
   );
-  const currentUser = useSelector(({ currentUser }) => currentUser);
 
   const dispatch = useDispatch();
 

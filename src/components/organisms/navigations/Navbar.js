@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { routes } from '../../../routes';
 import styled from 'styled-components';
 
@@ -126,33 +126,6 @@ const StyledCartCounter = styled.div`
   }
 `;
 
-// const StyledLink = styled(Link)`
-//   position: relative;
-//   margin: 0 12px;
-//   vertical-align: 2px;
-//   font-size: ${({ theme }) => theme.fontSizes.m};
-//   color: ${({ theme }) => theme.colors.mainDark};
-//   text-decoration: none;
-
-//   &:before {
-//     content: '';
-//     position: absolute;
-//     width: 100%;
-//     height: 2px;
-//     bottom: -5px;
-//     left: 0;
-//     background-color: ${({ theme }) => theme.colors.mainDark};
-//     visibility: hidden;
-//     transform: scaleX(0);
-//     transition: all 0.3s ease-in-out;
-//   }
-
-//   &:hover:before {
-//     visibility: visible;
-//     transform: scaleX(1);
-//   }
-// `;
-
 const StyledAccountNavLink = styled(NavLink)`
   position: relative;
   margin: 0 12px;
@@ -200,7 +173,6 @@ const Navbar = () => {
     <StyledNav>
       <StyledNavWrapper>
         <StyledLogo>
-          {/* <StyledImg src={'../../../assets/images/logo.png'} /> */}
           <img src={logo} alt="Logo" />
         </StyledLogo>
         <StyledUl>
@@ -245,9 +217,6 @@ const Navbar = () => {
             </StyledAccountNavLink>
           )}
           {currentUser ? (
-            // <StyledLogOutButton onClick={logout} type="button">
-            //   My account
-            // </StyledLogOutButton>
             <StyledAccountNavLink to={routes.accountOrders}>
               My Account
             </StyledAccountNavLink>

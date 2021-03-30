@@ -78,13 +78,15 @@ const ClientDataForm = () => {
 
   // console.log(onFormSubmitQuestion);
 
-  // useEffect(() => {
-  //   setCheckout(false);
-  //   setIsModalOpen(false);
-  // }, []);
+  useEffect(() => {
+    console.log('checkout set false');
+    setCheckout(false);
+    setIsModalOpen(false);
+  }, []);
 
   const noAnswerHandler = () => {
     setIsModalOpen(false);
+    console.log('checkout set true');
     setCheckout(true);
   };
 
@@ -113,6 +115,7 @@ const ClientDataForm = () => {
     updateUserDataInFirestore(currentUser.userId, userDataToUpdateInFirestore);
 
     setIsModalOpen(false);
+    console.log('checkout set true');
     setCheckout(true);
   };
 
@@ -154,6 +157,7 @@ const ClientDataForm = () => {
               if (emptyUserFields.length > 0) {
                 setIsModalOpen(true);
               } else {
+                console.log('checkout set true');
                 setCheckout(true);
               }
 

@@ -10,7 +10,7 @@ const intitialState = {
   totalPrice: 0,
   currentUser: null,
   successfulPaymentAlert: false,
-  isCurrentUserChecked: false,
+  isCurrentUserChecked: null,
 };
 
 const reducer = (state = intitialState, action) => {
