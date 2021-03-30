@@ -27,7 +27,7 @@ const OrderSummaryPage = (props) => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(successfulPaymentAlert(false));
-    }, 2500);
+    }, 3000);
   }, [dispatch]);
 
   return (

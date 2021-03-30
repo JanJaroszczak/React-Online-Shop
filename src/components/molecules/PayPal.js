@@ -85,7 +85,6 @@ export default function Paypal() {
         },
       })
       .render(paypal.current);
-    console.log(paypal.current);
   }, []);
 
   return (
