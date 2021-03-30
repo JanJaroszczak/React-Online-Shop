@@ -29,6 +29,7 @@ div.modalWrapper {
 
 div.productsListWrapper {
   overflow: auto;
+  max-height: 60vh;
 
   /* border: 1px solid red; */
 }
