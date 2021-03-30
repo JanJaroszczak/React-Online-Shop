@@ -67,4 +67,9 @@ export const StyledSubmitButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.colors.extraDarkGray};
   }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.lightGray};
+    cursor: not-allowed;
+  }
 `;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Heading from '../atoms/Heading';
@@ -21,16 +21,24 @@ const ProductPageInfo = ({ products, id }) => {
   const [chosenSize, setChosenSize] = useState('-');
   const [chosenQuantity, setChosenQuantity] = useState(1);
 
-  const [errorVisibility, setError] = useState('hidden');
-  const [noSizeSelectionFailure, setNoSizeSelectionFailure] = useState(false);
+  const [errorVisibility, setErrorVisibility] = useState('hidden');
+  const [errorMessage, setErrorMessage] = useState('Please choose a size!');
+  const [isAddToCartButtonDisabled, setIsAddToCartButtonDisabled] = useState(
+    false
+  );
+  const [sizeSelectChosenIndex, setSizeSelectChosenIndex] = useState(2);
+  // const [noSizeSelectionFailure, setNoSizeSelectionFailure] = useState(false);
 
   const [notInStockMessageOn, setNotInStockMessageOn] = useState('');
+
+  const select = useRef();
 
   const dispatch = useDispatch();
 
   const currentProduct = products.find((product) => product.productId === id);
 
   const sizeOptions = currentProduct.sizes.map((size) => {
+    console.log('size check');
     if (size.availableQuantity > 0) {
       return (
         <option key={size.size} value={size.size}>
@@ -43,9 +51,24 @@ const ProductPageInfo = ({ products, id }) => {
   });
 
   useEffect(() => {
-    if (noSizeSelectionFailure)
-      chosenSize !== '-' ? setError('hidden') : setError('visible');
-  }, [chosenSize, noSizeSelectionFailure]);
+    if (chosenSize !== '-') setErrorVisibility('hidden');
+    setChosenQuantity(1);
+
+    const isAnySizeAvailable = sizeOptions.filter(
+      (size) => size.props.children !== '-'
+    );
+
+    console.log(isAnySizeAvailable);
+    console.log(isAnySizeAvailable.length);
+
+    if (isAnySizeAvailable.length === 0) {
+      console.log('error message change');
+      setErrorMessage('No sizes available.');
+      setErrorVisibility('visible');
+      setIsAddToCartButtonDisabled(true);
+    }
+    console.log(sizeOptions[0].key);
+  }, [chosenSize]);
 
   const addToCart = (event) => {
     event.preventDefault();
@@ -53,18 +76,22 @@ const ProductPageInfo = ({ products, id }) => {
     if (chosenSize !== '-') {
       dispatch(addProductToCart(id, chosenSize, chosenQuantity));
       dispatch(setCartOpen());
-      setNoSizeSelectionFailure(false);
-      setError('hidden');
+      setChosenSize('-');
+      setChosenQuantity(1);
+      select.current.selectedIndex = 0;
+      // setSizeSelectChosenIndex(0);
+      // setNoSizeSelectionFailure(false);
+      setErrorVisibility('hidden');
     } else {
-      setNoSizeSelectionFailure(true);
-      setError('visible');
+      // setNoSizeSelectionFailure(true);
+      setErrorVisibility('visible');
     }
   };
 
   const checkAvailableQuantityPerSize = () => {
     if (chosenSize === '-') {
-      setError('visible');
-      setNoSizeSelectionFailure(true);
+      setErrorVisibility('visible');
+      // setNoSizeSelectionFailure(true);
       return;
     }
     const sizeToCheck = currentProduct.sizes.find(
@@ -114,6 +141,8 @@ const ProductPageInfo = ({ products, id }) => {
           <label htmlFor="size">Size:</label>
           <StyledSelect
             id="size"
+            ref={select}
+            // selectedIndex={sizeSelectChosenIndex}
             onChange={(e) => {
               setChosenSize(
                 e.target.value === '-' ? '-' : Number(e.target.value)
@@ -146,9 +175,11 @@ const ProductPageInfo = ({ products, id }) => {
           </StyledQuantityInput>
         </StyledQuantityChoice>
         <StyledError style={{ visibility: `${errorVisibility}` }}>
-          Please choose a size!
+          {errorMessage}
         </StyledError>
-        <StyledSubmitButton type="submit">ADD TO CART</StyledSubmitButton>
+        <StyledSubmitButton type="submit" disabled={isAddToCartButtonDisabled}>
+          ADD TO CART
+        </StyledSubmitButton>
       </form>
     </StyledProductInfoWrapper>
   );
