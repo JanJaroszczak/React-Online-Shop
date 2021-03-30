@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 2, 3),
     borderRadius: '20px',
     outline: 'none',
-    width: '35vw',
+    minWidth: '450px',
   },
 }));
 
@@ -60,6 +60,7 @@ const CartModal = () => {
     >
       <Fade in={selectedIsCartOpen}>
         <div className={classes.paper}>
+          <h3 className="cartHeading">Your cart:</h3>
           {cartProducts.length > 0 && (
             <div className="modalWrapper">
               <div className="productsListWrapper">
@@ -83,6 +84,11 @@ const CartModal = () => {
                       Checkout
                     </button>
                   </Link>
+                </div>
+                <div className="buttonContinueShopping">
+                  <button onClick={() => dispatch(setCartClosed())}>
+                    Continue Shopping
+                  </button>
                 </div>
                 <div className="totalPrice">
                   <span>Total price: ${cartTotalPrice}</span>

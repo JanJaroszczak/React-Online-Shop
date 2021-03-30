@@ -59,7 +59,7 @@ export const StyledSubmitButton = styled.button`
   padding: 7px 15px;
   font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
-  background-color: ${({ theme }) => theme.colors.lightDark};
+  background-color: ${({ theme }) => theme.colors.mainDark};
   color: ${({ theme }) => theme.colors.mainWhite};
   border: none;
   transition: 0.3s;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Heading from '../atoms/Heading';
-import { addProductToCart } from '../../actions';
+import { addProductToCart, setCartOpen } from '../../actions';
 import {
   StyledProductInfoWrapper,
   StyledProductDescription,
@@ -52,6 +52,7 @@ const ProductPageInfo = ({ products, id }) => {
 
     if (chosenSize !== '-') {
       dispatch(addProductToCart(id, chosenSize, chosenQuantity));
+      dispatch(setCartOpen());
       setNoSizeSelectionFailure(false);
       setError('hidden');
     } else {
