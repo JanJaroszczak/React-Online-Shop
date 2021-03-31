@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   color: ${({ theme }) => theme.colors.mainWhite};
   font-family: 'Roboto Condensed', sans-serif;
   text-transform: capitalize;
-  border-radius: 2px;
+  border-radius: 4px;
   border: none;
   transition: 0.3s;
 

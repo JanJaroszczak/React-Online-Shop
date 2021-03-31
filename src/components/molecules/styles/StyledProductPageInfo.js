@@ -62,6 +62,7 @@ export const StyledSubmitButton = styled.button`
   background-color: ${({ theme }) => theme.colors.mainDark};
   color: ${({ theme }) => theme.colors.mainWhite};
   border: none;
+  border-radius: 4px;
   transition: 0.3s;
 
   &:hover {

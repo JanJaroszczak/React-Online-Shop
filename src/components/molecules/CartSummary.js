@@ -57,6 +57,7 @@ const StyledButton = styled.button`
   font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
   border: none;
+  border-radius: 4px;
   transition: 0.3s;
 
   &:hover {
@@ -92,7 +93,7 @@ const CartSummary = ({ variant, totalOrderPrice, orderSummary }) => {
           to={currentUser ? routes.checkout : routes.authbeforecheckout}
           style={{ textDecoration: 'none' }}
         >
-          <StyledButton>CHECKOUT</StyledButton>
+          <StyledButton type="button">CHECKOUT</StyledButton>
         </Link>
       )}
     </StyledCartSummary>

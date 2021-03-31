@@ -72,7 +72,10 @@ const CartModal = () => {
               <div className="modalFooterWrapper">
                 <div className="buttonViewCart">
                   <Link to={routes.cart}>
-                    <button onClick={() => dispatch(setCartClosed())}>
+                    <button
+                      type="button"
+                      onClick={() => dispatch(setCartClosed())}
+                    >
                       View Cart Details
                     </button>
                   </Link>
@@ -83,13 +86,19 @@ const CartModal = () => {
                       currentUser ? routes.checkout : routes.authbeforecheckout
                     }
                   >
-                    <button onClick={() => dispatch(setCartClosed())}>
+                    <button
+                      type="button"
+                      onClick={() => dispatch(setCartClosed())}
+                    >
                       Checkout
                     </button>
                   </Link>
                 </div>
                 <div className="buttonContinueShopping">
-                  <button onClick={() => dispatch(setCartClosed())}>
+                  <button
+                    type="button"
+                    onClick={() => dispatch(setCartClosed())}
+                  >
                     Continue Shopping
                   </button>
                 </div>

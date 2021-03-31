@@ -95,7 +95,7 @@ const Header = () => {
           <StyledSubheading>
             The widest offer of football shoes on the Internet
           </StyledSubheading>
-          <StyledButton>shop now</StyledButton>
+          <StyledButton type="button">shop now</StyledButton>
         </StyledHeadingWrapper>
       </Swiper>
     </>
