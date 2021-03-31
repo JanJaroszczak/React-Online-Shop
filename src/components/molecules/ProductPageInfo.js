@@ -26,8 +26,6 @@ const ProductPageInfo = ({ products, id }) => {
   const [isAddToCartButtonDisabled, setIsAddToCartButtonDisabled] = useState(
     false
   );
-  const [sizeSelectChosenIndex, setSizeSelectChosenIndex] = useState(2);
-  // const [noSizeSelectionFailure, setNoSizeSelectionFailure] = useState(false);
 
   const [notInStockMessageOn, setNotInStockMessageOn] = useState('');
 
@@ -38,7 +36,6 @@ const ProductPageInfo = ({ products, id }) => {
   const currentProduct = products.find((product) => product.productId === id);
 
   const sizeOptions = currentProduct.sizes.map((size) => {
-    console.log('size check');
     if (size.availableQuantity > 0) {
       return (
         <option key={size.size} value={size.size}>
@@ -58,16 +55,11 @@ const ProductPageInfo = ({ products, id }) => {
       (size) => size.props.children !== '-'
     );
 
-    console.log(isAnySizeAvailable);
-    console.log(isAnySizeAvailable.length);
-
     if (isAnySizeAvailable.length === 0) {
-      console.log('error message change');
       setErrorMessage('No sizes available.');
       setErrorVisibility('visible');
       setIsAddToCartButtonDisabled(true);
     }
-    console.log(sizeOptions[0].key);
   }, [chosenSize]);
 
   const addToCart = (event) => {
@@ -79,11 +71,9 @@ const ProductPageInfo = ({ products, id }) => {
       setChosenSize('-');
       setChosenQuantity(1);
       select.current.selectedIndex = 0;
-      // setSizeSelectChosenIndex(0);
-      // setNoSizeSelectionFailure(false);
+
       setErrorVisibility('hidden');
     } else {
-      // setNoSizeSelectionFailure(true);
       setErrorVisibility('visible');
     }
   };
@@ -91,7 +81,6 @@ const ProductPageInfo = ({ products, id }) => {
   const checkAvailableQuantityPerSize = () => {
     if (chosenSize === '-') {
       setErrorVisibility('visible');
-      // setNoSizeSelectionFailure(true);
       return;
     }
     const sizeToCheck = currentProduct.sizes.find(
@@ -142,7 +131,6 @@ const ProductPageInfo = ({ products, id }) => {
           <StyledSelect
             id="size"
             ref={select}
-            // selectedIndex={sizeSelectChosenIndex}
             onChange={(e) => {
               setChosenSize(
                 e.target.value === '-' ? '-' : Number(e.target.value)

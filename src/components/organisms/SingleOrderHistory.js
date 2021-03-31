@@ -29,8 +29,6 @@ const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
     );
   }
 
-  const onGoBackToAllOrdersHandler = () => {};
-
   return (
     <StyledOrderSummaryWrapper>
       {currentUser && (
@@ -50,7 +48,6 @@ const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
       )}
       <Link to={routes.accountOrders} style={{ textDecoration: 'none' }}>
         <Button
-          clicked={onGoBackToAllOrdersHandler}
           variant="noCapitalize"
           type="button"
           label="Go back to All Orders History"
