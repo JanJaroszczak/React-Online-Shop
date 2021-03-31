@@ -33,21 +33,21 @@ const StyledHeading = styled.h1`
 `;
 
 const StyledSubheading = styled.h2`
+  margin-top: 15px;
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: ${({ theme }) => theme.fontWeights.light};
-  margin-top: 15px;
 
   /* border: 1px solid white; */
 `;
 
 const StyledButton = styled.button`
+  margin-top: 40px;
+  padding: 10px 20px 10px;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.mainWhite};
   font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
   text-transform: uppercase;
-  margin-top: 40px;
-  padding: 13px 20px 10px;
   border: 2px solid ${({ theme }) => theme.colors.mainWhite};
   transition: 0.3s;
 

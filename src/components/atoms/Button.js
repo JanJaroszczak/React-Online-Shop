@@ -22,6 +22,7 @@ const StyledButton = styled.button`
     css`
       align-self: center;
       justify-self: center;
+      font-size: ${({ theme }) => theme.fontSizes.m};
     `}
 
   ${({ variant }) =>
