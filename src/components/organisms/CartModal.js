@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '20px',
     outline: 'none',
     minWidth: '450px',
+    minHeight: '100px',
   },
 }));
 
@@ -60,7 +61,9 @@ const CartModal = () => {
     >
       <Fade in={selectedIsCartOpen}>
         <div className={classes.paper}>
-          <h3 className="cartHeading">Your cart:</h3>
+          {cartProducts.length !== 0 && (
+            <h3 className="cartHeading">Your cart:</h3>
+          )}
           {cartProducts.length > 0 && (
             <div className="modalWrapper">
               <div className="productsListWrapper">
