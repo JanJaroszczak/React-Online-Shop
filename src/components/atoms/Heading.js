@@ -21,6 +21,13 @@ const StyledDiv = styled.div`
     `}
 
   ${({ type }) =>
+    type === 'productsPage' &&
+    css`
+      padding-left: 0;
+      margin-left: 62px;
+    `}
+
+  ${({ type }) =>
     type === 'productPage' &&
     css`
       margin: 0;

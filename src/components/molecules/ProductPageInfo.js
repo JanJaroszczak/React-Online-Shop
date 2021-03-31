@@ -145,7 +145,7 @@ const ProductPageInfo = ({ products, id }) => {
           <label htmlFor="quantity">Quantity:</label>
           <StyledQuantityInput>
             <button type="button" onClick={decreaseQuantity}>
-              -
+              <span style={{ fontWeight: '700' }}>-</span>
             </button>
             <input
               id="quantity"
