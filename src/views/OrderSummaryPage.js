@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { routes } from '../routes';
 import Heading from '../components/atoms/Heading';
 import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
 import Alert from '../components/atoms/Alert';
-import { useDispatch, useSelector } from 'react-redux';
 import { successfulPaymentAlert } from '../actions';
+import Button from '../components/atoms/Button';
 
 const StyledOrderSummaryWrapper = styled.div`
   max-width: 1200px;
@@ -43,6 +46,13 @@ const OrderSummaryPage = (props) => {
         totalOrderPrice={totalPrice}
         orderSummary
       />
+      <Link to={routes.home} style={{ textDecoration: 'none' }}>
+        <Button
+          variant="noCapitalize"
+          type="button"
+          label="Go back to Home Page"
+        />
+      </Link>
       <Alert
         severity="success"
         message="Payment successful!"
