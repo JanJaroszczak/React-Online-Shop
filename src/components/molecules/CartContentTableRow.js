@@ -55,9 +55,15 @@ const CartContentTableRow = ({ product, orderRow }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(closeNotInStockMessage(product.cartProductId));
-    }, 2000);
+    dispatch(closeNotInStockMessage(product.cartProductId));
+  }, []);
+
+  useEffect(() => {
+    if (product.notInStock !== '') {
+      setTimeout(() => {
+        dispatch(closeNotInStockMessage(product.cartProductId));
+      }, 2000);
+    }
   }, [product.notInStock, product.cartProductId, dispatch]);
 
   return (
