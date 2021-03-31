@@ -69,7 +69,9 @@ const ClientDataForm = () => {
 
       const question = `Do you want to set entered ${allFieldsButLast.join(
         ', '
-      )} and ${lastField} as default for your account?`;
+      )} ${
+        emptyUserFieldsNamesToDisplay.length > 1 ? 'and' : ''
+      } ${lastField} as default for your account?`;
 
       // console.log(onFormSubmitQuestion);
       setOnFormSubmitQuestion(question);
