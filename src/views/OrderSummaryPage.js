@@ -8,7 +8,7 @@ import Heading from '../components/atoms/Heading';
 import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
 import Alert from '../components/atoms/Alert';
-import { successfulPaymentAlert } from '../actions';
+import { successfulPaymentAlert, clearCart } from '../actions';
 import Button from '../components/atoms/Button';
 
 const StyledOrderSummaryWrapper = styled.div`
@@ -28,10 +28,11 @@ const OrderSummaryPage = (props) => {
   const totalPrice = props.location.state.totalPrice;
 
   useEffect(() => {
+    dispatch(clearCart());
     setTimeout(() => {
       dispatch(successfulPaymentAlert(false));
     }, 3000);
-  }, [dispatch]);
+  }, []);
 
   return (
     <StyledOrderSummaryWrapper>
@@ -47,11 +48,7 @@ const OrderSummaryPage = (props) => {
         orderSummary
       />
       <Link to={routes.home} style={{ textDecoration: 'none' }}>
-        <Button
-          variant="noCapitalize"
-          type="button"
-          label="Go back to Home Page"
-        />
+        <Button variant="noCapitalize" type="button" label="Go to Home Page" />
       </Link>
       <Alert
         severity="success"

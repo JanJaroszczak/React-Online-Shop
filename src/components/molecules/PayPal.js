@@ -72,12 +72,8 @@ export default function Paypal() {
 
           addOrderToOrderHistory(cartCopy, userId);
 
-          setRedirectToOrderSummary(true);
-
-          dispatch(clearCart());
-
           dispatch(successfulPaymentAlert(true));
-
+          setRedirectToOrderSummary(true);
           // updateProductQuantityInFirestore
         },
         onError: (err) => {
