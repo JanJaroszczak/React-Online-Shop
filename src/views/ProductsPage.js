@@ -60,9 +60,9 @@ const StyledProductsGridWrapper = styled.div`
 `;
 
 const ProductsPage = () => {
-  const availableProducts = useSelector(({ products }) => products);
+  // const availableProducts = useSelector(({ products }) => products);
 
-  const [productsToDisplay, setProductsToDisplay] = useState(availableProducts);
+  const [productsToDisplay, setProductsToDisplay] = useState(null);
   const [sortingOption, setSortingOption] = useState(sortingOptions.new.value);
 
   const selectOptions = Object.entries(sortingOptions).map((option) => (
@@ -127,9 +127,10 @@ const ProductsPage = () => {
             </StyledSortingOptionChoice>
           </StyledHeadingAndSortingWrapper>
           <StyledProductsGridWrapper>
-            {productsToDisplay.map((product) => (
-              <ProductCard {...product} key={product.productId} />
-            ))}
+            {productsToDisplay &&
+              productsToDisplay.map((product) => (
+                <ProductCard {...product} key={product.productId} />
+              ))}
           </StyledProductsGridWrapper>
         </div>
       </StyledProductsPageWrapper>
