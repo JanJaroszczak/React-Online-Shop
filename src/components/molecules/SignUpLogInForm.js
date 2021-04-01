@@ -31,11 +31,15 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   }, []);
 
   useEffect(() => {
+    let timer = null;
     if (currentUser) {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setRedirectReady(true);
       }, 2000);
     }
+    return () => {
+      clearTimeout(timer);
+    };
   }, [currentUser]);
 
   return (
