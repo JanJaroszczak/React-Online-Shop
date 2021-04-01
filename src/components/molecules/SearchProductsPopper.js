@@ -31,7 +31,7 @@ const SearchProductsPopper = () => {
   const products = useSelector(({ products }) => products);
 
   const handleClick = (event) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
+    setAnchorEl(event.currentTarget);
     setSearchInputValue(event.target.value);
   };
 
