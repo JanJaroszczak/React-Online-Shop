@@ -8,7 +8,6 @@ const StyledTable = styled.table`
   display: grid;
   border-collapse: collapse;
   grid-template-columns: minmax(300px, 1fr) minmax(250px, auto);
-  margin-top: 40px;
 
   thead,
   tbody,
