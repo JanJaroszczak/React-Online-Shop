@@ -13,6 +13,7 @@ const StyledNav = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.mainWhite};
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
+  /* overflow: visible; */
 
   /* border: 1px solid black; */
 `;
@@ -86,16 +87,21 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const StyledNavIcons = styled.div`
+const StyledNavRightHandSideWrapper = styled.div`
   align-self: center;
   justify-self: center;
+  display: flex;
+  align-items: center;
   font-size: ${({ theme }) => theme.fontSizes.l};
   padding-right: 20px;
 
   /* border: 1px solid black; */
 
   i {
-    padding: 10px 20px;
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+    padding: 10px 0;
 
     /* border: 1px solid black; */
   }
@@ -105,10 +111,14 @@ const StyledNavIcons = styled.div`
   }
 `;
 
+const StyledSearchPanelWrapper = styled.div`
+  /* display: inline-block; */
+`;
+
 const StyledCartCounter = styled.div`
   position: absolute;
   top: 3px;
-  right: 11px;
+  right: 3px;
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.ss};
   font-weight: ${({ theme }) => theme.fontWeights.light};
@@ -120,7 +130,7 @@ const StyledCartCounter = styled.div`
 
   span {
     position: absolute;
-    top: 3px;
+    top: 4px;
     left: 5.5px;
     font-family: 'Roboto Condensed', sans-serif;
   }
@@ -136,6 +146,8 @@ const StyledAccountNavLink = styled(NavLink)`
   border: none;
   background-color: transparent;
   text-decoration: none;
+
+  /* border: 1px solid black; */
 
   &:before {
     content: '';
@@ -187,14 +199,13 @@ const Navbar = () => {
           <StyledLi>
             <StyledNavLink to={routes.contact}>Contact</StyledNavLink>
           </StyledLi>
-          <StyledLi></StyledLi>
         </StyledUl>
-        <StyledNavIcons>
+        <StyledNavRightHandSideWrapper>
           {isSearchBarOpen ? (
             <>
-              <SearchProductsPopper />
+              <SearchProductsPopper style={{ zIndex: '10' }} />
               <i
-                className="fas fa-close"
+                className="fas fa-times"
                 onClick={toggleSearchBarVisiblity}
               ></i>
             </>
@@ -225,7 +236,7 @@ const Navbar = () => {
               Log In
             </StyledAccountNavLink>
           )}
-        </StyledNavIcons>
+        </StyledNavRightHandSideWrapper>
       </StyledNavWrapper>
     </StyledNav>
   );

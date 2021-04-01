@@ -59,6 +59,13 @@ const ClientDataForm = () => {
 
       setEmptyUserFields(emptyUserKeys);
 
+      console.log(currentUser);
+      console.log(Object.entries(currentUser));
+      console.log(
+        Object.entries(currentUser).filter((entry) => entry[1] === '')
+      );
+      console.log(emptyUserKeys);
+
       const emptyUserFieldsNamesToDisplay = emptyUserKeys.map((key) =>
         key.substring(4)
       );
@@ -98,6 +105,17 @@ const ClientDataForm = () => {
       ...emptyUserFields.map((key) => ({ [key]: submittedFormValues[key] }))
     );
 
+    console.log(...emptyUserFields);
+    console.log(userDataToUpdateInFirestore);
+
+    const userDataToUpdateInFirestore2 = Object.assign(
+      {},
+      emptyUserFields.map((key) => ({ [key]: submittedFormValues[key] }))
+    );
+
+    console.log(emptyUserFields);
+    console.log(userDataToUpdateInFirestore2);
+
     //Explanation:
     // const raw = {
     //   item1: { key: 'sdfd', value: 'sdfd' },
@@ -111,8 +129,6 @@ const ClientDataForm = () => {
     //   {},
     //   ...filteredKeys.map((key) => ({ [key]: raw[key] }))
     // );
-
-    console.log(userDataToUpdateInFirestore);
 
     updateUserDataInFirestore(currentUser.userId, userDataToUpdateInFirestore);
 

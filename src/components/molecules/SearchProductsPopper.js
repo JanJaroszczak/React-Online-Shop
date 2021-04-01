@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
 import Popper from '@material-ui/core/Popper';
 import Fade from '@material-ui/core/Fade';
 import { useSelector } from 'react-redux';
@@ -13,6 +14,17 @@ const useStyles = makeStyles((theme) => ({
     height: '500px',
   },
 }));
+
+// const StyledPopperWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   z-index: 5;
+// `;
+
+const StyledSearchInput = styled.input`
+  height: 45px;
+  width: 230px;
+`;
 
 const SearchProductsPopper = () => {
   const classes = useStyles();
@@ -50,6 +62,7 @@ const SearchProductsPopper = () => {
   return (
     <div>
       <input
+        className="input"
         aria-describedby="transitions-popper"
         type="text"
         value={searchInputValue}
@@ -70,7 +83,7 @@ const SearchProductsPopper = () => {
               ) : (
                 <ul>
                   {searchProducts.map((item) => {
-                    return <li>{item.productName}</li>;
+                    return <li key={item.productId}>{item.productName}</li>;
                   })}
                 </ul>
               )}
