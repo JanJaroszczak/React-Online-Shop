@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase';
-import { useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
-import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { routes } from '../../routes';
 import { auth } from '../../firebase/firebaseConfig';
-import { usersCollection } from '../../firebase/firestoreUtils';
-import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
@@ -32,15 +27,13 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
   const [isSuccessAlert, setIsSuccessAlert] = useState(false);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsSuccessAlert(false);
     }, 3000);
     return () => {
-      clearTimeout(timeoutId);
+      clearTimeout(timer);
     };
   }, [isSuccessAlert]);
-
-  const currentUser = useSelector(({ currentUser }) => currentUser);
 
   return (
     <div>
@@ -49,7 +42,6 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
           userOldPassword: '',
           userNewPassword: '',
         }}
-        // validationSchema={contactValidationSchema}
         onSubmit={(values, { resetForm }) => {
           console.log(values);
           console.log('submit');
@@ -98,34 +90,6 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
               }
               setOldPasswordErrorVisibility('visible');
             });
-
-          // if (isSignUp) {
-          //   auth
-          //     .createUserWithEmailAndPassword(userEmail, userPassword)
-          //     .then((user) => {
-          //       // const userId = user.user.uid;
-
-          //       usersCollection.doc(userId).set({
-          //         ...newUser,
-          //       });
-          //     })
-          //     .catch((err) => {
-          //       console.log(err);
-          //       setLogInError(err.message);
-          //     });
-          // } else {
-          //   auth
-          //     .signInWithEmailAndPassword(userEmail, userPassword)
-          //     .then((user) => {
-          //       console.log(user);
-          //       setWhichButtonPressed('login');
-          //       setLogInError('');
-          //     })
-          //     .catch((err) => {
-          //       console.log(err);
-          //       setLogInError(err.message);
-          //     });
-          // }
 
           resetForm();
         }}

@@ -60,8 +60,6 @@ const StyledProductsGridWrapper = styled.div`
 `;
 
 const ProductsPage = () => {
-  // const availableProducts = useSelector(({ products }) => products);
-
   const [productsToDisplay, setProductsToDisplay] = useState(null);
   const [sortingOption, setSortingOption] = useState(sortingOptions.new.value);
 
