@@ -117,6 +117,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
           <Form>
             {isSignUp && (
               <Input
+                id="userName"
                 type="text"
                 name="userName"
                 label="*Name:"
@@ -126,6 +127,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
               />
             )}
             <Input
+              id={`userEmail${isSignUp ? 'onSignUp' : 'onLogIn'}`}
               type="email"
               name="userEmail"
               label="*Email:"
@@ -134,6 +136,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
               onChangeHandler={handleChange}
             />
             <Input
+              id={`userPassword${isSignUp ? 'onSignUp' : 'onLogIn'}`}
               type="password"
               name="userPassword"
               label={isSignUp ? '*Choose your password:' : '*Password:'}

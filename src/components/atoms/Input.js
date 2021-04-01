@@ -42,6 +42,7 @@ const StyledErrorWrapper = styled.div`
 
 const Input = ({
   variant,
+  id,
   type,
   name,
   label,
@@ -55,7 +56,7 @@ const Input = ({
       <StyledLabel htmlFor={name}>{label}</StyledLabel>
       <StyledInput
         variant={variant}
-        id={name}
+        id={id}
         type={type}
         name={name}
         placeholder={placeholder}
