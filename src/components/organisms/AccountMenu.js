@@ -105,7 +105,7 @@ const AccountMenu = () => {
           <StyledLink to={routes.accountOrders}>orders history</StyledLink>
         </li>
         <li>
-          <StyledLink to={routes.accountAddresses}>addresses</StyledLink>
+          <StyledLink to={routes.passwordChange}>Password Change</StyledLink>
         </li>
         <li>
           <StyledLink to={routes.accountDetails}>account details</StyledLink>

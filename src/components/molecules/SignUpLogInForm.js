@@ -142,16 +142,6 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
           </Form>
         )}
       </Formik>
-      {/* {currentUser && (
-        <Alert
-          severity="success"
-          message={
-            isSignUp
-              ? 'You have been successfully signed up!'
-              : 'You have been successfully logged in!'
-          }
-        />
-      )} */}
       {isSignUp && whichButtonPressed === 'signup' ? (
         <Alert
           severity="success"

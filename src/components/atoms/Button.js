@@ -30,6 +30,13 @@ const StyledButton = styled.button`
     css`
       display: inline-block;
     `}
+
+      ${({ variant }) =>
+    variant === 'passwordChange' &&
+    css`
+      margin-top: 10px;
+    `}
+
     ${({ variant }) =>
     variant === 'noCapitalize' &&
     css`

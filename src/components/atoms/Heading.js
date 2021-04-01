@@ -60,6 +60,13 @@ const StyledDiv = styled.div`
     css`
       margin-top: 30px;
     `}
+
+              ${({ type }) =>
+    type === 'passwordChange' &&
+    css`
+      margin-top: 30px;
+      padding-left: 0;
+    `}
 `;
 
 const StyledHeading = styled.h2`

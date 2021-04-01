@@ -1,7 +1,7 @@
 import React from 'react';
 import { ErrorMessage } from 'formik';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledInputWrapper = styled.div`
   position: relative;
@@ -24,6 +24,12 @@ const StyledInput = styled.input`
   font-size: ${({ theme }) => theme.fontSizes.xs};
   outline: none;
   border: none;
+
+  ${({ variant }) =>
+    variant === 'passwordChange' &&
+    css`
+      margin-bottom: 0;
+    `}
 `;
 
 const StyledErrorWrapper = styled.div`
@@ -35,6 +41,7 @@ const StyledErrorWrapper = styled.div`
 `;
 
 const Input = ({
+  variant,
   type,
   name,
   label,
@@ -47,6 +54,7 @@ const Input = ({
     <StyledInputWrapper>
       <StyledLabel htmlFor={name}>{label}</StyledLabel>
       <StyledInput
+        variant={variant}
         id={name}
         type={type}
         name={name}

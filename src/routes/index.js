@@ -13,6 +13,6 @@ export const routes = {
   account: '/account/:subPage',
   accountOrders: '/account/ordershistory',
   accountOrder: '/account/ordershistory/:orderId',
-  accountAddresses: '/account/addresses',
+  passwordChange: '/account/passwordchange',
   accountDetails: '/account/details',
 };
