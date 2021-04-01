@@ -13,7 +13,6 @@ const StyledNav = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.mainWhite};
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
-  /* overflow: visible; */
 
   /* border: 1px solid black; */
 `;
@@ -111,10 +110,6 @@ const StyledNavRightHandSideWrapper = styled.div`
   }
 `;
 
-const StyledSearchPanelWrapper = styled.div`
-  /* display: inline-block; */
-`;
-
 const StyledCartCounter = styled.div`
   position: absolute;
   top: 3px;
@@ -203,7 +198,7 @@ const Navbar = () => {
         <StyledNavRightHandSideWrapper>
           {isSearchBarOpen ? (
             <>
-              <SearchProductsPopper style={{ zIndex: '10' }} />
+              <SearchProductsPopper />
               <i
                 className="fas fa-times"
                 onClick={toggleSearchBarVisiblity}

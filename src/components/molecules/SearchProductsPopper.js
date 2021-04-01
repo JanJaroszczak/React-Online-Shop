@@ -15,15 +15,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const StyledPopperWrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-//   z-index: 5;
-// `;
-
 const StyledSearchInput = styled.input`
   height: 45px;
   width: 230px;
+  padding: 0 5px;
+  font-size: ${({ theme }) => theme.fontSizes.s};
 `;
 
 const SearchProductsPopper = () => {
@@ -61,7 +57,7 @@ const SearchProductsPopper = () => {
 
   return (
     <div>
-      <input
+      <StyledSearchInput
         className="input"
         aria-describedby="transitions-popper"
         type="text"
