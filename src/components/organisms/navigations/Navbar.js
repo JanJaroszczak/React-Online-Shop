@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { routes } from '../../../routes';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 
 import logo from '../../../assets/images/logo3.png';
-import { useSelector, useDispatch } from 'react-redux';
 import { setCartOpen } from '../../../actions';
-
 import SearchProductsPopper from '../../molecules/SearchProductsPopper';
 
 const StyledNav = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.mainWhite};
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
+  z-index: 200;
 
   /* border: 1px solid black; */
 `;
@@ -110,6 +110,16 @@ const StyledNavRightHandSideWrapper = styled.div`
   }
 `;
 
+const StyledAdjustedIcon = styled.i`
+  display: inline-block;
+  width: 50px;
+  padding: 10px 0;
+  text-align: center;
+  vertical-align: -5px;
+
+  /* border: 1px solid black; */
+`;
+
 const StyledCartCounter = styled.div`
   position: absolute;
   top: 3px;
@@ -165,12 +175,16 @@ const StyledAccountNavLink = styled(NavLink)`
 `;
 
 const Navbar = () => {
+  const ref = useRef();
   const dispatch = useDispatch();
 
   const cartCounter = useSelector(({ counter }) => counter);
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
   const [isSearchBarOpen, setIsSearchOpen] = useState(false);
+
+  // Call hook passing in the ref and a function to call on outside click
+  useOnClickOutside(ref, () => setIsSearchOpen(false));
 
   const toggleSearchBarVisiblity = () => {
     setIsSearchOpen(!isSearchBarOpen);
@@ -197,13 +211,13 @@ const Navbar = () => {
         </StyledUl>
         <StyledNavRightHandSideWrapper>
           {isSearchBarOpen ? (
-            <>
+            <div ref={ref}>
               <SearchProductsPopper />
-              <i
+              <StyledAdjustedIcon
                 className="fas fa-times"
                 onClick={toggleSearchBarVisiblity}
-              ></i>
-            </>
+              ></StyledAdjustedIcon>
+            </div>
           ) : (
             <i className="fas fa-search" onClick={toggleSearchBarVisiblity}></i>
           )}
@@ -236,5 +250,35 @@ const Navbar = () => {
     </StyledNav>
   );
 };
+
+function useOnClickOutside(ref, handler) {
+  useEffect(
+    () => {
+      const listener = (event) => {
+        // Do nothing if clicking ref's element or descendent elements
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+
+        handler(event);
+      };
+
+      document.addEventListener('mousedown', listener);
+      document.addEventListener('touchstart', listener);
+
+      return () => {
+        document.removeEventListener('mousedown', listener);
+        document.removeEventListener('touchstart', listener);
+      };
+    },
+    // Add ref and handler to effect dependencies
+    // It's worth noting that because passed in handler is a new ...
+    // ... function on every render that will cause this effect ...
+    // ... callback/cleanup to run every render. It's not a big deal ...
+    // ... but to optimize you can wrap handler in useCallback before ...
+    // ... passing it into this hook.
+    [ref, handler]
+  );
+}
 
 export default Navbar;

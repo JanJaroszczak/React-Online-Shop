@@ -1,53 +1,155 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import styled from 'styled-components';
-import Popper from '@material-ui/core/Popper';
-import Fade from '@material-ui/core/Fade';
+import styled, { css } from 'styled-components';
 import { useSelector } from 'react-redux';
+import CartModalElement from './CartModalElement';
+import { WorkOffOutlined } from '@material-ui/icons';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    border: '1px solid',
-    padding: theme.spacing(1),
-    backgroundColor: theme.palette.background.paper,
-    width: '400px',
-    height: '500px',
-  },
-}));
+const StyledSearchPanelWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+`;
 
 const StyledSearchInput = styled.input`
   height: 45px;
   width: 230px;
   padding: 0 5px;
+  margin-bottom: 2px;
+  font-size: ${({ theme }) => theme.fontSizes.s};
+  border-radius: 7px;
+  outline: none;
+
+  border: 1px solid black;
+`;
+
+const StyledSearchList = styled.div`
+  position: absolute;
+  top: 50px;
+  right: 0;
+  display: none;
+  /* height: 300px; */
+  width: 400px;
+  overflow: auto;
+  max-height: 60vh;
+  background-color: ${({ theme }) => theme.colors.mainWhite};
+  border: 1px solid black;
+  border-radius: 7px;
+
+  ${({ open }) =>
+    open &&
+    css`
+      display: block;
+    `}
+`;
+
+const StyledNoResult = styled.p`
+  padding: 10px;
   font-size: ${({ theme }) => theme.fontSizes.s};
 `;
 
 const SearchProductsPopper = () => {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
   const [searchInputValue, setSearchInputValue] = useState('');
-  const [searchProducts, setSearchProducts] = useState([]);
+  const [foundProducts, setFoundProducts] = useState([]);
 
   const products = useSelector(({ products }) => products);
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
     setSearchInputValue(event.target.value);
   };
 
   const filterProducts = () => {
     if (searchInputValue.length > 0) {
       const filteredProducts = products.filter((product) => {
-        const productNameLowerCase = product.productName.toLowerCase();
-        const searchToLowerCase = searchInputValue.toLowerCase();
+        // console.log(Object.entries(product));
+
+        const productSearchString = Object.entries(product)
+          .filter(
+            (entry) =>
+              entry[0] === 'productColor' ||
+              entry[0] === 'productName' ||
+              entry[0] === 'productBrand'
+          )
+          .map((entryName) => entryName[1])
+          .join(' ');
+
+        // console.log(Object.entries(product));
+        // console.log(
+        //   Object.entries(product).filter(
+        //     (entry) =>
+        //       entry[0] === 'productColor' ||
+        //       entry[0] === 'productName' ||
+        //       entry[0] === 'productBrand' ||
+        //       entry[0] === 'productCategory' ||
+        //       entry[0] === 'productFamily'
+        //   )
+        // );
+
+        // console.log(
+        //   Object.entries(product)
+        //     .filter(
+        //       (entry) =>
+        //         entry[0] === 'productColor' ||
+        //         entry[0] === 'productName' ||
+        //         entry[0] === 'productBrand' ||
+        //         entry[0] === 'productCategory' ||
+        //         entry[0] === 'productFamily'
+        //     )
+        //     .map((entryName) => entryName[1])
+        // );
+
+        // console.log(
+        //   Object.entries(product)
+        //     .filter(
+        //       (entry) =>
+        //         entry[0] === 'productColor' ||
+        //         entry[0] === 'productName' ||
+        //         entry[0] === 'productBrand' ||
+        //         entry[0] === 'productCategory' ||
+        //         entry[0] === 'productFamily'
+        //     )
+        //     .map((entryName) => entryName[1])
+        //     .join('')
+        // );
+
+        // console.log(productSearchString);
+
+        const productSearchStringToLowerCase = productSearchString.toLowerCase();
+        const arrayFromProductSearchStringToLowerCase = productSearchStringToLowerCase.split(
+          ' '
+        );
+
+        const searchInputToLowerCase = searchInputValue.toLowerCase();
+        const arrayFromSearchInputToLowerCase = searchInputToLowerCase.split(
+          ' '
+        );
+        console.log(productSearchStringToLowerCase);
+        console.log(arrayFromProductSearchStringToLowerCase);
+        console.log(arrayFromSearchInputToLowerCase);
+
+        const finalCheckArray = arrayFromProductSearchStringToLowerCase.filter(
+          (item) =>
+            arrayFromSearchInputToLowerCase.some((input) =>
+              item.includes(input)
+            )
+        );
 
         return (
-          searchToLowerCase ===
-          productNameLowerCase.slice(0, searchInputValue.length)
+          // searchToLowerCase ===
+          // productSearchStringToLowerCase.slice(0, searchInputValue.length)
+          // productSearchStringToLowerCase.includes(searchToLowerCase)
+          finalCheckArray.length === arrayFromSearchInputToLowerCase.length
         );
       });
 
-      setSearchProducts(filteredProducts);
+      const productToDisplay = filteredProducts.map((product) => (
+        // <li key={item.productId}>{item.productName}</li>
+        <CartModalElement
+          key={product.productId}
+          product={product}
+          searchModal
+        />
+      ));
+
+      setFoundProducts(productToDisplay);
     }
   };
 
@@ -56,8 +158,9 @@ const SearchProductsPopper = () => {
   }, [searchInputValue]);
 
   return (
-    <div>
+    <StyledSearchPanelWrapper>
       <StyledSearchInput
+        autoFocus
         className="input"
         aria-describedby="transitions-popper"
         type="text"
@@ -65,29 +168,14 @@ const SearchProductsPopper = () => {
         onChange={handleClick}
       />
 
-      <Popper
-        id="transitions-popper"
-        open={searchInputValue.length > 0 ? true : false}
-        anchorEl={anchorEl}
-        transition
-      >
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
-            <div className={classes.paper}>
-              {searchProducts.length === 0 ? (
-                <p>no such product</p>
-              ) : (
-                <ul>
-                  {searchProducts.map((item) => {
-                    return <li key={item.productId}>{item.productName}</li>;
-                  })}
-                </ul>
-              )}
-            </div>
-          </Fade>
+      <StyledSearchList open={searchInputValue.length > 0 ? true : false}>
+        {foundProducts.length === 0 ? (
+          <StyledNoResult>No products found.</StyledNoResult>
+        ) : (
+          <ul>{foundProducts}</ul>
         )}
-      </Popper>
-    </div>
+      </StyledSearchList>
+    </StyledSearchPanelWrapper>
   );
 };
 

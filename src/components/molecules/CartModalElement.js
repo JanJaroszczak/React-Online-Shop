@@ -19,12 +19,15 @@ const StyledPrice = styled.div`
   /* border: 1px solid black; */
 `;
 
-const CartModalElement = ({ product }) => {
+const CartModalElement = ({ product, searchModal }) => {
   return (
     <StyledCartElementWrapper>
-      <CartElementInfo product={product} />
+      <CartElementInfo product={product} searchModal={searchModal} />
       <StyledPrice>
-        $ {product.chosenOption.quantity * product.productPrice}
+        ${' '}
+        {searchModal
+          ? product.productPrice
+          : product.chosenOption.quantity * product.productPrice}
       </StyledPrice>
     </StyledCartElementWrapper>
   );
