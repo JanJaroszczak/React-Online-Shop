@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { toggleSearchPanel } from '../../actions';
 import CartElementInfo from '../atoms/CartElementInfo';
 import { useDispatch } from 'react-redux';
@@ -17,22 +17,16 @@ const CartModalElement = ({
   index,
   cursor,
 }) => {
-  const [isFocus, setIsFocus] = useState(false);
   const dispatch = useDispatch();
 
   const onClickSearchPanelHandler = () => {
     dispatch(toggleSearchPanel());
   };
 
-  useEffect(() => {
-    if (index === cursor) setIsFocus(true);
-  }, [cursor]);
-
   return (
     <>
       {searchModal ? (
         <StyledModalElementWrapper
-          // autoFocus={isFocus}
           className={`${index === cursor ? 'active' : ''}`}
           onMouseEnter={() => setHovered(index)}
           onMouseLeave={() => setHovered(undefined)}
