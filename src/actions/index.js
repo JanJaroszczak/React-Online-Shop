@@ -90,3 +90,7 @@ export const currentUserChecked = (isChecked) => ({
   type: actionsTypes.CURRENT_USER_CHECKED,
   payload: isChecked,
 });
+
+export const toggleSearchPanel = () => ({
+  type: actionsTypes.TOGGLE_SEARCH_PANEL,
+});

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 
 import logo from '../../../assets/images/logo3.png';
-import { setCartOpen } from '../../../actions';
+import { setCartOpen, toggleSearchPanel } from '../../../actions';
 import SearchProductsPopper from '../../molecules/SearchProductsPopper';
 
 const StyledNav = styled.div`
@@ -135,7 +135,7 @@ const StyledCartCounter = styled.div`
 
   span {
     position: absolute;
-    top: 4px;
+    top: 3px;
     left: 5.5px;
     font-family: 'Roboto Condensed', sans-serif;
   }
@@ -180,14 +180,16 @@ const Navbar = () => {
 
   const cartCounter = useSelector(({ counter }) => counter);
   const currentUser = useSelector(({ currentUser }) => currentUser);
+  const isSearchPanelOn = useSelector(({ isSearchPanelOn }) => isSearchPanelOn);
 
-  const [isSearchBarOpen, setIsSearchOpen] = useState(false);
+  // const [isSearchBarOpen, setIsSearchOpen] = useState(false);
 
   // Call hook passing in the ref and a function to call on outside click
-  useOnClickOutside(ref, () => setIsSearchOpen(false));
+  useOnClickOutside(ref, () => dispatch(toggleSearchPanel()));
 
   const toggleSearchBarVisiblity = () => {
-    setIsSearchOpen(!isSearchBarOpen);
+    // setIsSearchOpen(!isSearchBarOpen);
+    dispatch(toggleSearchPanel());
   };
 
   return (
@@ -210,7 +212,7 @@ const Navbar = () => {
           </StyledLi>
         </StyledUl>
         <StyledNavRightHandSideWrapper>
-          {isSearchBarOpen ? (
+          {isSearchPanelOn ? (
             <div ref={ref}>
               <SearchProductsPopper />
               <StyledAdjustedIcon

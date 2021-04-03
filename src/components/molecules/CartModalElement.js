@@ -1,35 +1,66 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import { toggleSearchPanel } from '../../actions';
 import CartElementInfo from '../atoms/CartElementInfo';
+import { useDispatch } from 'react-redux';
 
-const StyledCartElementWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 80px auto 80px;
-  grid-template-rows: 100px;
+import {
+  StyledModalElementWrapper,
+  StyledLink,
+  StyledCartElementWrapper,
+  StyledPrice,
+} from './styles/StyledCartModalElement';
 
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
-`;
+const CartModalElement = ({
+  product,
+  searchModal,
+  setHovered,
+  index,
+  cursor,
+}) => {
+  const [isFocus, setIsFocus] = useState(false);
+  const dispatch = useDispatch();
 
-const StyledPrice = styled.div`
-  align-self: center;
-  justify-self: center;
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
+  const onClickSearchPanelHandler = () => {
+    dispatch(toggleSearchPanel());
+  };
 
-  /* border: 1px solid black; */
-`;
+  useEffect(() => {
+    if (index === cursor) setIsFocus(true);
+  }, [cursor]);
 
-const CartModalElement = ({ product, searchModal }) => {
   return (
-    <StyledCartElementWrapper>
-      <CartElementInfo product={product} searchModal={searchModal} />
-      <StyledPrice>
-        ${' '}
-        {searchModal
-          ? product.productPrice
-          : product.chosenOption.quantity * product.productPrice}
-      </StyledPrice>
-    </StyledCartElementWrapper>
+    <>
+      {searchModal ? (
+        <StyledModalElementWrapper
+          // autoFocus={isFocus}
+          className={`${index === cursor ? 'active' : ''}`}
+          onMouseEnter={() => setHovered(index)}
+          onMouseLeave={() => setHovered(undefined)}
+          onMouseEnter={() => setHovered(index)}
+          onMouseLeave={() => setHovered(undefined)}
+          searchModal={searchModal}
+        >
+          <StyledLink
+            onClick={onClickSearchPanelHandler}
+            to={`/product/${product.productId}`}
+          >
+            <StyledCartElementWrapper>
+              <CartElementInfo product={product} searchModal={searchModal} />
+              <StyledPrice>$ {product.productPrice}</StyledPrice>
+            </StyledCartElementWrapper>
+          </StyledLink>
+        </StyledModalElementWrapper>
+      ) : (
+        <StyledModalElementWrapper searchModal={searchModal}>
+          <StyledCartElementWrapper>
+            <CartElementInfo product={product} searchModal={searchModal} />
+            <StyledPrice>
+              $ {product.chosenOption.quantity * product.productPrice}
+            </StyledPrice>
+          </StyledCartElementWrapper>
+        </StyledModalElementWrapper>
+      )}
+    </>
   );
 };
 

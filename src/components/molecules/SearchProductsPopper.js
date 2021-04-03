@@ -1,56 +1,90 @@
 import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
 import CartModalElement from './CartModalElement';
-import { WorkOffOutlined } from '@material-ui/icons';
+import { toggleSearchPanel } from '../../actions';
+import {
+  StyledSearchPanelWrapper,
+  StyledSearchInput,
+  StyledSearchListWrapper,
+  StyledSearchList,
+  StyledNoResult,
+} from './styles/StyledSearchProductsPopper';
 
-const StyledSearchPanelWrapper = styled.div`
-  position: relative;
-  display: inline-block;
-`;
+const useKeyPress = function (targetKey) {
+  const [keyPressed, setKeyPressed] = useState(false);
 
-const StyledSearchInput = styled.input`
-  height: 45px;
-  width: 230px;
-  padding: 0 5px;
-  margin-bottom: 2px;
-  font-size: ${({ theme }) => theme.fontSizes.s};
-  border-radius: 7px;
-  outline: none;
+  function downHandler({ key }) {
+    if (key === targetKey) {
+      setKeyPressed(true);
+    }
+  }
 
-  border: 1px solid black;
-`;
+  const upHandler = ({ key }) => {
+    if (key === targetKey) {
+      setKeyPressed(false);
+    }
+  };
 
-const StyledSearchList = styled.div`
-  position: absolute;
-  top: 50px;
-  right: 0;
-  display: none;
-  /* height: 300px; */
-  width: 400px;
-  overflow: auto;
-  max-height: 60vh;
-  background-color: ${({ theme }) => theme.colors.mainWhite};
-  border: 1px solid black;
-  border-radius: 7px;
+  useEffect(() => {
+    window.addEventListener('keydown', downHandler);
+    window.addEventListener('keyup', upHandler);
 
-  ${({ open }) =>
-    open &&
-    css`
-      display: block;
-    `}
-`;
+    return () => {
+      window.removeEventListener('keydown', downHandler);
+      window.removeEventListener('keyup', upHandler);
+    };
+  });
 
-const StyledNoResult = styled.p`
-  padding: 10px;
-  font-size: ${({ theme }) => theme.fontSizes.s};
-`;
+  return keyPressed;
+};
 
 const SearchProductsPopper = () => {
   const [searchInputValue, setSearchInputValue] = useState('');
   const [foundProducts, setFoundProducts] = useState([]);
+  const [selectedSearchProduct, setSelectedSearchProduct] = useState(undefined);
+  const [cursor, setCursor] = useState(-1);
+  const [hovered, setHovered] = useState(undefined);
+
+  const downPress = useKeyPress('ArrowDown');
+  const upPress = useKeyPress('ArrowUp');
+  const enterPress = useKeyPress('Enter');
+
+  const dispatch = useDispatch();
 
   const products = useSelector(({ products }) => products);
+
+  useEffect(() => {
+    if (foundProducts.length && downPress) {
+      setCursor((prevState) =>
+        prevState < foundProducts.length - 1 ? prevState + 1 : prevState
+      );
+    }
+  }, [downPress]);
+  useEffect(() => {
+    if (foundProducts.length && upPress) {
+      setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
+    }
+  }, [upPress]);
+  useEffect(() => {
+    if (foundProducts.length && enterPress) {
+      setSelectedSearchProduct(foundProducts[cursor].key);
+    }
+  }, [enterPress]);
+  useEffect(() => {
+    if (foundProducts.length && hovered >= 0) {
+      setCursor(hovered);
+    }
+  }, [hovered]);
+
+  useEffect(() => {
+    if (selectedSearchProduct) dispatch(toggleSearchPanel());
+  }, [selectedSearchProduct]);
+
+  useEffect(() => {
+    if (searchInputValue === '') setCursor(-1);
+  }, [searchInputValue]);
 
   const handleClick = (event) => {
     setSearchInputValue(event.target.value);
@@ -58,10 +92,10 @@ const SearchProductsPopper = () => {
 
   const filterProducts = () => {
     if (searchInputValue.length > 0) {
+      //Creates an array of product which match search input values entered by a user.
       const filteredProducts = products.filter((product) => {
-        // console.log(Object.entries(product));
-
-        const productSearchString = Object.entries(product)
+        //Creates an all lower case string, of productColor, productName and productBrand values, sperated by space (e.g. 'tiempo 8 nike black'), for a given product.
+        const productSearchStringToLowerCase = Object.entries(product)
           .filter(
             (entry) =>
               entry[0] === 'productColor' ||
@@ -69,83 +103,68 @@ const SearchProductsPopper = () => {
               entry[0] === 'productBrand'
           )
           .map((entryName) => entryName[1])
-          .join(' ');
+          .join(' ')
+          .toLowerCase();
 
-        // console.log(Object.entries(product));
-        // console.log(
-        //   Object.entries(product).filter(
-        //     (entry) =>
-        //       entry[0] === 'productColor' ||
-        //       entry[0] === 'productName' ||
-        //       entry[0] === 'productBrand' ||
-        //       entry[0] === 'productCategory' ||
-        //       entry[0] === 'productFamily'
-        //   )
-        // );
-
-        // console.log(
-        //   Object.entries(product)
-        //     .filter(
-        //       (entry) =>
-        //         entry[0] === 'productColor' ||
-        //         entry[0] === 'productName' ||
-        //         entry[0] === 'productBrand' ||
-        //         entry[0] === 'productCategory' ||
-        //         entry[0] === 'productFamily'
-        //     )
-        //     .map((entryName) => entryName[1])
-        // );
-
-        // console.log(
-        //   Object.entries(product)
-        //     .filter(
-        //       (entry) =>
-        //         entry[0] === 'productColor' ||
-        //         entry[0] === 'productName' ||
-        //         entry[0] === 'productBrand' ||
-        //         entry[0] === 'productCategory' ||
-        //         entry[0] === 'productFamily'
-        //     )
-        //     .map((entryName) => entryName[1])
-        //     .join('')
-        // );
-
-        // console.log(productSearchString);
-
-        const productSearchStringToLowerCase = productSearchString.toLowerCase();
+        //Creates an array from the abovementioned lower case string (e.g. ["tiempo", "8", "nike", "black"]).
         const arrayFromProductSearchStringToLowerCase = productSearchStringToLowerCase.split(
           ' '
         );
 
+        // Converts input to lower case and changes it into an array (e.g. ["nike", "tiempo"]).
         const searchInputToLowerCase = searchInputValue.toLowerCase();
         const arrayFromSearchInputToLowerCase = searchInputToLowerCase.split(
           ' '
         );
-        console.log(productSearchStringToLowerCase);
-        console.log(arrayFromProductSearchStringToLowerCase);
-        console.log(arrayFromSearchInputToLowerCase);
 
-        const finalCheckArray = arrayFromProductSearchStringToLowerCase.filter(
-          (item) =>
-            arrayFromSearchInputToLowerCase.some((input) =>
-              item.includes(input)
-            )
+        //If a user types a name and a space, for example 'nike ', arrayFromSearchInputToLowerCase would be ["nike", ""], therefore below the empty string is removed from array.
+        const arrayFromSearchInputToLowerCaseExcludingEmptyString = arrayFromSearchInputToLowerCase.filter(
+          (element) => element !== ''
         );
 
+        // Creates a final array of products filtered out depending on user search input.
+        const finalCheckArray = arrayFromSearchInputToLowerCaseExcludingEmptyString.filter(
+          (input, index) => {
+            //If a user enters only one word or a part of a word, the condition below will return true it user input is contained in arrayFromProductSearchStringToLowerCase.
+            if (index === 0) {
+              return arrayFromProductSearchStringToLowerCase.some((item) =>
+                item.includes(input)
+              );
+            }
+            //If user enters more than one word or one or more words and a part of a next word, the condition below will return true if last but one word will be equal to one of arrayFromProductSearchStringToLowerCase elements and if last word(or a string) will be included in one of arrayFromProductSearchStringToLowerCase elements. It could be improved to check the first condition for all input strings except the last one, but for a way that the current products are named, it fully serves its purpose.
+            else {
+              return (
+                arrayFromProductSearchStringToLowerCase.some(
+                  (item) =>
+                    item ===
+                    arrayFromSearchInputToLowerCaseExcludingEmptyString[
+                      index - 1
+                    ]
+                ) &&
+                arrayFromProductSearchStringToLowerCase.some((item) =>
+                  item.includes(input)
+                )
+              );
+            }
+          }
+        );
+
+        //Condition for the initial filter method.
         return (
-          // searchToLowerCase ===
-          // productSearchStringToLowerCase.slice(0, searchInputValue.length)
-          // productSearchStringToLowerCase.includes(searchToLowerCase)
-          finalCheckArray.length === arrayFromSearchInputToLowerCase.length
+          finalCheckArray.length >=
+          arrayFromSearchInputToLowerCaseExcludingEmptyString.length
         );
       });
 
-      const productToDisplay = filteredProducts.map((product) => (
-        // <li key={item.productId}>{item.productName}</li>
+      const productToDisplay = filteredProducts.map((product, index) => (
         <CartModalElement
           key={product.productId}
           product={product}
           searchModal
+          index={index}
+          cursor={cursor}
+          setSelectedSearchProduct={setSelectedSearchProduct}
+          setHovered={setHovered}
         />
       ));
 
@@ -155,7 +174,7 @@ const SearchProductsPopper = () => {
 
   useEffect(() => {
     filterProducts();
-  }, [searchInputValue]);
+  }, [cursor, searchInputValue]);
 
   return (
     <StyledSearchPanelWrapper>
@@ -167,14 +186,20 @@ const SearchProductsPopper = () => {
         value={searchInputValue}
         onChange={handleClick}
       />
-
-      <StyledSearchList open={searchInputValue.length > 0 ? true : false}>
-        {foundProducts.length === 0 ? (
-          <StyledNoResult>No products found.</StyledNoResult>
-        ) : (
-          <ul>{foundProducts}</ul>
-        )}
-      </StyledSearchList>
+      <StyledSearchListWrapper
+        open={searchInputValue.length > 0 ? true : false}
+      >
+        <StyledSearchList>
+          {foundProducts.length === 0 ? (
+            <StyledNoResult>No products found.</StyledNoResult>
+          ) : (
+            <ul>{foundProducts}</ul>
+          )}
+        </StyledSearchList>
+      </StyledSearchListWrapper>
+      {selectedSearchProduct && (
+        <Redirect to={`/product/${selectedSearchProduct}`} />
+      )}
     </StyledSearchPanelWrapper>
   );
 };

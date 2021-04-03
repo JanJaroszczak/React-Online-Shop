@@ -11,6 +11,7 @@ const intitialState = {
   currentUser: null,
   successfulPaymentAlert: false,
   isCurrentUserChecked: null,
+  isSearchPanelOn: false,
 };
 
 const reducer = (state = intitialState, action) => {
@@ -221,6 +222,12 @@ const reducer = (state = intitialState, action) => {
       return {
         ...state,
         isCurrentUserChecked: payload,
+      };
+
+    case actionsTypes.TOGGLE_SEARCH_PANEL:
+      return {
+        ...state,
+        isSearchPanelOn: !state.isSearchPanelOn,
       };
 
     default:
