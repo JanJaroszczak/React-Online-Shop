@@ -12,7 +12,7 @@ const StyledNav = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.mainWhite};
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
-  z-index: 200;
+  /* z-index: 200; */
 
   /* border: 1px solid black; */
 `;
@@ -266,11 +266,11 @@ function useOnClickOutside(ref, handler) {
       };
 
       document.addEventListener('mousedown', listener);
-      document.addEventListener('touchstart', listener);
+      // document.addEventListener('touchstart', listener);
 
       return () => {
         document.removeEventListener('mousedown', listener);
-        document.removeEventListener('touchstart', listener);
+        // document.removeEventListener('touchstart', listener);
       };
     },
     // Add ref and handler to effect dependencies

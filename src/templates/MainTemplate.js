@@ -1,6 +1,6 @@
 import React from 'react';
-import Media from 'react-media';
 import GlobalStyle from '../globalStyles/GlobalStyles';
+import { useMediaQuery } from 'react-responsive';
 import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../themes/mainTheme';
 import styled from 'styled-components';
@@ -15,31 +15,22 @@ const StyledWrapper = styled.div`
   margin-bottom: -70px;
 `;
 
-// const StyledNavbarSwitch;
-
 const MainTemplate = ({ children }) => {
+  const isDesktop = useMediaQuery({
+    query: '(min-device-width: 1024px)',
+  });
+
+  const isTablet = useMediaQuery({
+    query: '(min-device-width: 800px)',
+  });
+
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={mainTheme}>
         <StyledWrapper>
-          {/* <StyledNavbarSwitch> */}
-          <Media
-            queries={{
-              small: '(max-width: 874px)',
-              // medium: '(min-width: 600px) and (max-width: 1199px)',
-              large: '(min-width: 875px)',
-            }}
-          >
-            {(matches) => (
-              <>
-                {/* {matches.small && <p>I am small!</p>} */}
-                {matches.small && <NavbarMobile />}
-                {matches.large && <Navbar />}
-              </>
-            )}
-          </Media>
-          {/* </StyledNavbarSwitch> */}
+          {/* {isDesktop ? <Navbar /> : <NavbarMobile />} */}
+          <Navbar />
           <CartModal />
           {/* To co ma widok */}
           {children}
