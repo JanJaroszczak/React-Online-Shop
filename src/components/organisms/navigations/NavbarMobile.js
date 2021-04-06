@@ -89,6 +89,7 @@ const StyledMenu = styled.div`
   top: -300px;
   padding: 10px 0;
   z-index: 90;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.midGray};
   /* color: ${({ theme }) => theme.colors.mainDark}; */
   background-color: ${({ theme }) => theme.colors.extraLightGray};
   transition: 0.3s;

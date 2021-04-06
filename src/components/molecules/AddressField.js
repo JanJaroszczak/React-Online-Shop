@@ -28,7 +28,7 @@ const AddressField = () => {
   return (
     <StyledAddressWrapper>
       <Heading
-        // type={isMobile ? 'mobile' : null}
+        type={'contact'}
         heading={'our address'}
         headingDescription={'you can find us here:'}
       />

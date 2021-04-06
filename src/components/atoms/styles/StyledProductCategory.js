@@ -6,16 +6,13 @@ export const StyledDiv = styled.div`
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.mainDark};
   font-size: 0;
+  margin: 0 auto;
+
+  /* border: 1px solid black; */
 
   &:hover img {
     transform: scale(1.1);
   }
-
-  /* border: 1px solid black; */
-
-  /* @media (max-width: 1230px) {
-    flex-direction: column;
-  } */
 `;
 
 export const StyledImg = styled.img`

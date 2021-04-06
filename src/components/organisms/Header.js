@@ -5,9 +5,9 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.css';
 import './styles/stylesHeader.css';
 
-import img1 from '../../assets/images/header1.jpg';
-import img2 from '../../assets/images/header2.jpg';
-import img3 from '../../assets/images/header3.jpg';
+import img1 from '../../assets/images/header1mobile.jpg';
+import img2 from '../../assets/images/header2mobile.jpg';
+import img3 from '../../assets/images/header3mobile.jpg';
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
@@ -30,6 +30,10 @@ const StyledHeading = styled.h1`
   text-transform: uppercase;
 
   /* border: 1px solid white; */
+
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.fontSizes.xxl};
+  } ;
 `;
 
 const StyledSubheading = styled.h2`
@@ -38,6 +42,10 @@ const StyledSubheading = styled.h2`
   font-weight: ${({ theme }) => theme.fontWeights.light};
 
   /* border: 1px solid white; */
+
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.fontSizes.l};
+  } ;
 `;
 
 const StyledButton = styled.button`

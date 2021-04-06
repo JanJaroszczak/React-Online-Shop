@@ -8,6 +8,7 @@
 #main .swiper-slide {
   position: relative;
   background-size: cover;
+  background-position: center;
 }
 
 #main .swiper-button-prev,
@@ -17,4 +18,10 @@
 
 #main .swiper-pagination-bullet {
   background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  #main.swiper-container {
+    height: calc(100vh - 50px);
+  }
 }

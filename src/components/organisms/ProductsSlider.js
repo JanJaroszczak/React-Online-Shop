@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.css';
@@ -10,6 +11,10 @@ import ProductCard from '../molecules/ProductCard';
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const ProductsSlider = () => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
+
   const selectedProducts = useSelector(({ products }) => products);
 
   const cards = selectedProducts.map((product) => (
@@ -27,7 +32,7 @@ const ProductsSlider = () => {
         // centeredSlides={true}
         // centeredSlidesBounds={true}
         // spaceBetween={10}
-        slidesPerView={4}
+        slidesPerView={isMobile ? 1 : 4}
         // autoplay={{ delay: 3000, disableOnInteraction: false }}
         // loop
       >

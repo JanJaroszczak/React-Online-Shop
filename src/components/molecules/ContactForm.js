@@ -27,7 +27,7 @@ const ContactForm = () => {
   return (
     <div>
       <Heading
-        // type={isMobile ? 'mobile' : null}
+        type={'contact'}
         heading={'contact form'}
         headingDescription={'feel free to ask us any question'}
       />
