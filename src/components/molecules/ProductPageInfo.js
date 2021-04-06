@@ -124,7 +124,7 @@ const ProductPageInfo = ({ products, id }) => {
         ducimus, hic reiciendis architecto omnis sequi perferendis commodi
         obcaecati ullam? Dicta, iure.
       </StyledProductDescription>
-      <StyledPrice>$ 100</StyledPrice>
+      <StyledPrice>$ {currentProduct.productPrice}</StyledPrice>
       <form onSubmit={addToCart}>
         <StyledSizeChoice>
           <label htmlFor="size">Size:</label>

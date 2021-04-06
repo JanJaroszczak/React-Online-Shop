@@ -94,7 +94,7 @@ const AccountMenu = () => {
       <StyledAccountHeading>
         <i className="fas fa-user-circle"></i>
         <StyledNameLogoutWrapper>
-          <h3>Tomek</h3>
+          <h3>Jan</h3>
           <button onClick={logout} type="button">
             Log Out
           </button>

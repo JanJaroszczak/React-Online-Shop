@@ -29,8 +29,8 @@ const MainTemplate = ({ children }) => {
       <GlobalStyle />
       <ThemeProvider theme={mainTheme}>
         <StyledWrapper>
-          {/* {isDesktop ? <Navbar /> : <NavbarMobile />} */}
-          <Navbar />
+          {isDesktop ? <Navbar /> : <NavbarMobile />}
+          {/* <Navbar /> */}
           <CartModal />
           {/* To co ma widok */}
           {children}
