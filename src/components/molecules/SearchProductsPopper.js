@@ -127,8 +127,8 @@ const SearchProductsPopper = () => {
           (input, index) => {
             //If a user enters only one word or a part of a word, the condition below will return true it user input is contained in arrayFromProductSearchStringToLowerCase.
             if (index === 0) {
-              return arrayFromProductSearchStringToLowerCase.some((item) =>
-                item.includes(input)
+              return arrayFromProductSearchStringToLowerCase.some(
+                (item) => input === item.slice(0, input.length)
               );
             }
             //If user enters more than one word or one or more words and a part of a next word, the condition below will return true if last but one word will be equal to one of arrayFromProductSearchStringToLowerCase elements and if last word(or a string) will be included in one of arrayFromProductSearchStringToLowerCase elements. It could be improved to check the first condition for all input strings except the last one, but for a way that the current products are named, it fully serves its purpose.
