@@ -24,30 +24,10 @@ const contactValidationSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
-  // const handleEmailSend = (e) => {
-  //   e.preventDefault();
-
-  //   emailjs
-  //     .sendForm(
-  //       'contact_service',
-  //       'contact_form',
-  //       e.target,
-  //       'user_CzpJ3EC6leOTAgc4zXdln'
-  //     )
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //       }
-  //     );
-  // };
-
   return (
     <div>
       <Heading
-        // type={'specialOffer'}
+        // type={isMobile ? 'mobile' : null}
         heading={'contact form'}
         headingDescription={'feel free to ask us any question'}
       />
@@ -101,6 +81,7 @@ const ContactForm = () => {
                 value={values.userEmail}
                 onChangeHandler={handleChange}
               />
+
               <StyledInputWrapper>
                 <StyledTextAreaLabel htmlFor="userMessage">
                   *Message:

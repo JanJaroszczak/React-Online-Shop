@@ -12,10 +12,18 @@ export const StyledFormWrapper = styled.div`
       width: 300px;
       margin-left: 0;
     `}
+
+  @media (max-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  } ;
 `;
 
 export const StyledInputWrapper = styled.div`
   position: relative;
+
+  /* border: 1px solid black; */
 `;
 
 export const StyledErrorWrapper = styled.div`
@@ -43,6 +51,10 @@ export const StyledTextarea = styled.textarea`
   font-size: ${({ theme }) => theme.fontSizes.xs};
   outline: none;
   border: none;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  } ;
 `;
 
 export const StyledTermsWrapper = styled.div`

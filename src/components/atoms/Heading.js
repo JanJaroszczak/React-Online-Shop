@@ -66,7 +66,13 @@ const StyledDiv = styled.div`
     css`
       margin-top: 30px;
       padding-left: 0;
-    `}
+    `} 
+    
+    @media (max-width: 768px) {
+    margin: 30px 0;
+    padding: 0;
+    text-align: center;
+  } ;
 `;
 
 const StyledHeading = styled.h2`

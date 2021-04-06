@@ -3,6 +3,12 @@ import styled from 'styled-components';
 
 import Heading from '../atoms/Heading';
 
+const StyledAddressWrapper = styled.div`
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  } ;
+`;
+
 const StyledAddress = styled.address`
   margin-top: 30px;
   padding-left: 80px;
@@ -11,18 +17,23 @@ const StyledAddress = styled.address`
   font-weight: ${({ theme }) => theme.fontWeights.regular};
 
   /* border: 1px solid black; */
+
+  @media (max-width: 768px) {
+    padding: 0;
+    text-align: center;
+  } ;
 `;
 
 const AddressField = () => {
   return (
-    <div>
+    <StyledAddressWrapper>
       <Heading
-        // type={'specialOffer'}
+        // type={isMobile ? 'mobile' : null}
         heading={'our address'}
         headingDescription={'you can find us here:'}
       />
       <StyledAddress>
-        Example.com
+        Cool Cleats
         <br />
         Box 564, Disneyland
         <br />
@@ -32,7 +43,7 @@ const AddressField = () => {
         (571) 400-1255 <br />
         info@info.com
       </StyledAddress>
-    </div>
+    </StyledAddressWrapper>
   );
 };
 

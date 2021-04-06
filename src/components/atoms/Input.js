@@ -1,16 +1,19 @@
 import React from 'react';
 import { ErrorMessage } from 'formik';
-
 import styled, { css } from 'styled-components';
 
 const StyledInputWrapper = styled.div`
   position: relative;
+
+  /* border: 1px solid black; */
 `;
 
 const StyledLabel = styled.label`
   display: block;
   margin-bottom: 3px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
+
+  /* border: 1px solid black; */
 `;
 
 const StyledInput = styled.input`
@@ -25,11 +28,17 @@ const StyledInput = styled.input`
   outline: none;
   border: none;
 
+  /* border: 1px solid black; */
+
   ${({ variant }) =>
     variant === 'passwordChange' &&
     css`
       margin-bottom: 0;
     `}
+
+  @media (max-width: 768px) {
+    width: 100%;
+  } ;
 `;
 
 const StyledErrorWrapper = styled.div`

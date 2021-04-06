@@ -1,7 +1,8 @@
 import React from 'react';
-import ContactForm from '../components/molecules/ContactForm';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 
+import ContactForm from '../components/molecules/ContactForm';
 import AddressField from '../components/molecules/AddressField';
 import MapWrapped from '../components/organisms/Map';
 
@@ -17,6 +18,11 @@ const StyledContactPageWrapper = styled.div`
   margin: 30px auto;
 
   /* border: 1px solid black; */
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    margin: 10px auto;
+  } ;
 `;
 
 const ContactPage = () => {
