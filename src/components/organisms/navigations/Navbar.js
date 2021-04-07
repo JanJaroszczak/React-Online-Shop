@@ -9,10 +9,13 @@ import { setCartOpen, toggleSearchPanel } from '../../../actions';
 import SearchProductsPopper from '../../molecules/SearchProductsPopper';
 
 const StyledNav = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.mainWhite};
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
-  /* z-index: 200; */
+  z-index: 200;
 
   /* border: 1px solid black; */
 `;
@@ -182,13 +185,10 @@ const Navbar = () => {
   const currentUser = useSelector(({ currentUser }) => currentUser);
   const isSearchPanelOn = useSelector(({ isSearchPanelOn }) => isSearchPanelOn);
 
-  // const [isSearchBarOpen, setIsSearchOpen] = useState(false);
-
   // Call hook passing in the ref and a function to call on outside click
   useOnClickOutside(ref, () => dispatch(toggleSearchPanel()));
 
   const toggleSearchBarVisiblity = () => {
-    // setIsSearchOpen(!isSearchBarOpen);
     dispatch(toggleSearchPanel());
   };
 

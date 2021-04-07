@@ -12,6 +12,8 @@ const StyledMobileNavbar = styled.nav`
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr;
   position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 50px;
   background-color: ${({ theme }) => theme.colors.mainWhite};
