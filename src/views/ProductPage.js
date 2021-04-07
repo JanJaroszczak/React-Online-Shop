@@ -11,10 +11,17 @@ const StyledProductWrapper = styled.div`
   grid-template-rows: 1fr;
   column-gap: 10px;
   max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 30px 20px;
 
   /* border: 1px solid black; */
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 0 10px;
+    margin: 80px auto -30px;
+  } ;
 `;
 
 const ProductPage = ({ match }) => {

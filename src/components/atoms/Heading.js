@@ -50,7 +50,7 @@ const StyledDiv = styled.div`
       ${({ type }) =>
     type === 'auth' &&
     css`
-      margin-top: 30px;
+      padding-top: 30px;
       padding-left: 0;
     `}
 

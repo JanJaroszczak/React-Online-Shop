@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Thumbs } from 'swiper';
@@ -10,6 +11,10 @@ SwiperCore.use([Navigation, Pagination, Thumbs]);
 
 const PhotoCarousel = ({ id }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
 
   const availableProducts = useSelector(({ products }) => products);
 
@@ -22,24 +27,6 @@ const PhotoCarousel = ({ id }) => {
       <img src={img} alt={`${index + 1}`} style={{ width: `100%` }} />
     </SwiperSlide>
   ));
-
-  // const thumbs = [
-  //   <SwiperSlide key={1} tag="li">
-  //     <img src={imgProduct1} alt="altText6" style={{ width: `100%` }} />
-  //   </SwiperSlide>,
-  //   <SwiperSlide key={2} tag="li">
-  //     <img src={imgProduct2} alt="altText7" style={{ width: `100%` }} />
-  //   </SwiperSlide>,
-  //   <SwiperSlide key={3} tag="li">
-  //     <img src={imgProduct3} alt="altTex8" style={{ width: `100%` }} />
-  //   </SwiperSlide>,
-  //   <SwiperSlide key={4} tag="li">
-  //     <img src={imgProduct4} alt="altText9" style={{ width: `100%` }} />
-  //   </SwiperSlide>,
-  //   <SwiperSlide key={5} tag="li">
-  //     <img src={imgProduct5} alt="altText99" style={{ width: `100%` }} />
-  //   </SwiperSlide>,
-  // ];
 
   return (
     <div>
@@ -55,14 +42,16 @@ const PhotoCarousel = ({ id }) => {
         {slides}
       </Swiper>
 
-      <Swiper
-        id="thumbsProductPage"
-        spaceBetween={10}
-        slidesPerView={5}
-        onSwiper={setThumbsSwiper}
-      >
-        {slides}
-      </Swiper>
+      {!isMobile && (
+        <Swiper
+          id="thumbsProductPage"
+          spaceBetween={10}
+          slidesPerView={5}
+          onSwiper={setThumbsSwiper}
+        >
+          {slides}
+        </Swiper>
+      )}
     </div>
   );
 };

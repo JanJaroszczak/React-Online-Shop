@@ -4,13 +4,20 @@ export const StyledProductInfoWrapper = styled.div`
   max-width: 700px;
   margin: 0 auto;
   padding: 50px 30px;
+  overflow: hidden;
   /* border: 1px solid black; */
+
+  @media (max-width: 768px) {
+    width: 83vw;
+    padding: 10px 0;
+  } ;
 `;
 
 export const StyledProductDescription = styled.p`
   margin-top: 20px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
+  text-align: justify;
 `;
 
 export const StyledPrice = styled.div`

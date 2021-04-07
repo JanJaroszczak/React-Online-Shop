@@ -65,6 +65,14 @@ export const StyledQuantityInput = styled.div`
     border-top: 7px solid transparent;
     border-bottom: 7px solid transparent;
     transition: 1s linear;
+
+    @media (max-width: 768px) {
+      top: -10px;
+      left: 5px;
+      border-right: 7px solid transparent;
+      border-left: 7px solid transparent;
+      border-top: 25px solid black;
+    }
   }
 
   .notInStock::after {
@@ -81,5 +89,38 @@ export const StyledQuantityInput = styled.div`
     line-height: 26px;
     text-align: center;
     transition: 1s linear;
+
+    @media (max-width: 768px) {
+      top: -50px;
+      left: -50px;
+    }
   }
+
+  /* .notInStock::before {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: 5px;
+    transform: translateY(-50%);
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid black;
+    transition: 1s linear;
+  }
+
+  .notInStock::after {
+    content: 'NO MORE PAIRS AVAILABLE';
+    position: absolute;
+    z-index: 3;
+    width: 170px;
+    height: 26px;
+    bottom: -34px;
+    left: -50px;
+    background-color: #000;
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: 26px;
+    text-align: center;
+    transition: 1s linear;
+  } */
 `;
