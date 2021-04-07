@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import Button from '../atoms/Button';
 
 import CheckboxFilters from '../molecules/CheckboxFilters';
 import {
@@ -8,7 +9,11 @@ import {
   StyledPriceFilter,
 } from './styles/StyledCheckboxFiltersColumn';
 
-const CheckboxFiltersColumn = ({ onFilteredProducts }) => {
+const CheckboxFiltersColumn = ({
+  onFilteredProducts,
+  isMobile,
+  onMobileClose,
+}) => {
   const availableProducts = useSelector(({ products }) => products);
 
   const [bottomFilterPrice, setBottomFilterPrice] = useState('');
@@ -149,7 +154,7 @@ const CheckboxFiltersColumn = ({ onFilteredProducts }) => {
   ]);
 
   return (
-    <StyledColumn>
+    <StyledColumn isMobile={isMobile}>
       <StyledColumnTitle>FILTER PRODUCTS:</StyledColumnTitle>
       {allCheckboxFiltersToDisplay}
       <StyledPriceFilter>
@@ -175,6 +180,14 @@ const CheckboxFiltersColumn = ({ onFilteredProducts }) => {
           }}
         />
       </StyledPriceFilter>
+      {isMobile && (
+        <Button
+          type="submit"
+          label="apply chosen filters"
+          variant="mobile"
+          clicked={onMobileClose}
+        />
+      )}
     </StyledColumn>
   );
 };

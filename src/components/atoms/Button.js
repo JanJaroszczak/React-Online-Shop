@@ -42,6 +42,12 @@ const StyledButton = styled.button`
     css`
       text-transform: none;
     `}
+
+     ${({ variant }) =>
+    variant === 'mobile' &&
+    css`
+      margin: 20px auto;
+    `}
 `;
 
 const Button = ({ clicked, type, variant, label }) => {

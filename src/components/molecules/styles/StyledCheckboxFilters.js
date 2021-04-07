@@ -6,11 +6,23 @@ export const StyledCheckboxesWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.mainDark};
   border-bottom: 1px solid ${({ theme }) => theme.colors.mainWhite};
 
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-left: 45px;
+
+    background-color: ${({ theme }) => theme.colors.mainWhite};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
+  }
+
   h3 {
     margin-bottom: 15px;
     color: ${({ theme }) => theme.colors.mainWhite};
     font-size: ${({ theme }) => theme.fontSizes.m};
     font-weight: ${({ theme }) => theme.fontWeights.light};
+
+    @media (max-width: 768px) {
+      color: ${({ theme }) => theme.colors.mainDark};
+    }
   }
 
   div input[type='checkbox'] {
@@ -29,6 +41,10 @@ export const StyledCheckboxesWrapper = styled.div`
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+
+    @media (max-width: 768px) {
+      color: ${({ theme }) => theme.colors.mainDark};
+    }
   }
 
   div input[type='checkbox'] + label:before {
@@ -43,6 +59,10 @@ export const StyledCheckboxesWrapper = styled.div`
     opacity: 0.6;
     -webkit-transition: all 0.12s, border-color 0.08s;
     transition: all 0.12s, border-color 0.08s;
+
+    @media (max-width: 768px) {
+      border: 1px solid ${({ theme }) => theme.colors.mainDark};
+    }
   }
 
   div input[type='checkbox']:checked + label:before {

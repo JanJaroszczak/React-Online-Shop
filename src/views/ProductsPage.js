@@ -1,7 +1,6 @@
-import React, { useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-// import { routes } from '../routes';
+import React, { useState, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 
 import { sortingOptions } from './utils/ProductsPageSortingOptions';
 import Heading from '../components/atoms/Heading';
@@ -10,20 +9,46 @@ import CheckboxFiltersColumn from '../components/organisms/CheckboxFiltersColumn
 
 const StyledProductsPageWrapper = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto 1fr;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto;
+  } ;
 `;
 
 const StyledHeadingAndSortingWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
+
+  /* border: 1px solid black; */
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  } ;
 `;
 
 const StyledSortingOptionChoice = styled.div`
   margin: 60px 30px 20px 0;
   display: inline-block;
   font-size: ${({ theme }) => theme.fontSizes.xs};
+
+  /* border: 1px solid black; */
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 50px;
+    margin: 0 auto;
+  } ;
+`;
+
+const StyledFilterIcon = styled.div`
+  /* margin-top: 2px; */
+  font-size: 4.1rem;
+  color: ${({ theme }) => theme.colors.declicateGray};
 
   /* border: 1px solid black; */
 `;
@@ -57,11 +82,27 @@ const StyledProductsGridWrapper = styled.div`
   margin: 40px 20px 40px 52px;
 
   /* border: 1px solid black; */
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    justify-content: center;
+
+    margin: 30px auto 0;
+    width: 90%;
+  } ;
 `;
 
 const ProductsPage = () => {
   const [productsToDisplay, setProductsToDisplay] = useState(null);
   const [sortingOption, setSortingOption] = useState(sortingOptions.new.value);
+  const [mobileFiltersColumnToggle, setMobileFiltersColumnToggle] = useState(
+    false
+  );
+
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
 
   const selectOptions = Object.entries(sortingOptions).map((option) => (
     <option key={option[1].value} value={option[1].value}>
@@ -100,37 +141,57 @@ const ProductsPage = () => {
     [sortingOption]
   );
 
+  const handleMobileFiltersColumn = () => {
+    setMobileFiltersColumnToggle((prevState) => !prevState);
+  };
+
   return (
     <>
       <StyledProductsPageWrapper>
-        <CheckboxFiltersColumn onFilteredProducts={filteredProductsHandler} />
-        <div>
-          <StyledHeadingAndSortingWrapper>
-            <Heading
-              type={'productsPage'}
-              heading={'all products'}
-              headingDescription={'all currently available cleats'}
-            />
-            <StyledSortingOptionChoice>
-              <label htmlFor="size">Sort:</label>
-              <StyledSelect
-                id="size"
-                value={sortingOption}
-                onChange={(e) => {
-                  setSortingOption(e.target.value);
-                }}
-              >
-                {selectOptions}
-              </StyledSelect>
-            </StyledSortingOptionChoice>
-          </StyledHeadingAndSortingWrapper>
-          <StyledProductsGridWrapper>
-            {productsToDisplay &&
-              productsToDisplay.map((product) => (
-                <ProductCard {...product} key={product.productId} />
-              ))}
-          </StyledProductsGridWrapper>
-        </div>
+        <CheckboxFiltersColumn
+          onFilteredProducts={filteredProductsHandler}
+          isMobile={mobileFiltersColumnToggle}
+          onMobileClose={handleMobileFiltersColumn}
+        />
+        {!mobileFiltersColumnToggle && (
+          <div>
+            <StyledHeadingAndSortingWrapper>
+              <Heading
+                type={isMobile ? 'mobile' : 'productsPage'}
+                heading={'all products'}
+                headingDescription={'all currently available cleats'}
+              />
+              <StyledSortingOptionChoice>
+                {isMobile && (
+                  <div>
+                    <label htmlFor="size">Filter:</label>
+                    <StyledFilterIcon onClick={handleMobileFiltersColumn}>
+                      <i className="fas fa-filter"></i>
+                    </StyledFilterIcon>
+                  </div>
+                )}
+                <div>
+                  <label htmlFor="size">Sort:</label>
+                  <StyledSelect
+                    id="size"
+                    value={sortingOption}
+                    onChange={(e) => {
+                      setSortingOption(e.target.value);
+                    }}
+                  >
+                    {selectOptions}
+                  </StyledSelect>
+                </div>
+              </StyledSortingOptionChoice>
+            </StyledHeadingAndSortingWrapper>
+            <StyledProductsGridWrapper>
+              {productsToDisplay &&
+                productsToDisplay.map((product) => (
+                  <ProductCard {...product} key={product.productId} />
+                ))}
+            </StyledProductsGridWrapper>
+          </div>
+        )}
       </StyledProductsPageWrapper>
     </>
   );
