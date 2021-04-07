@@ -15,4 +15,5 @@ export const routes = {
   accountOrder: '/account/ordershistory/:orderId',
   passwordChange: '/account/passwordchange',
   accountDetails: '/account/details',
+  mobileSearch: '/search',
 };

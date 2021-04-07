@@ -210,10 +210,9 @@ const NavbarMobile = () => {
         </StyledLogo>
         <StyledIconsWrapper>
           <StyledIcon>
-            <i
-              className="fas fa-search"
-              // onClick={toggleSearchBarVisiblity}
-            ></i>
+            <StyledNavLink to={routes.mobileSearch}>
+              <i className="fas fa-search"></i>
+            </StyledNavLink>
           </StyledIcon>
 
           <StyledIcon>
