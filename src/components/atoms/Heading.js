@@ -80,10 +80,9 @@ const StyledDiv = styled.div`
     text-align: center;
 
     ${({ type }) =>
-      type === 'mobileAuth' &&
+      type === 'mobileTopHeading' &&
       css`
-        /* margin-top: 30px; */
-        padding-top: 20px;
+        padding-top: 30px;
         padding-left: 0;
       `}
   } ;
