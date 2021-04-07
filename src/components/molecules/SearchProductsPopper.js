@@ -180,8 +180,6 @@ const SearchProductsPopper = () => {
     <StyledSearchPanelWrapper>
       <StyledSearchInput
         autoFocus
-        className="input"
-        aria-describedby="transitions-popper"
         type="text"
         value={searchInputValue}
         onChange={handleClick}
