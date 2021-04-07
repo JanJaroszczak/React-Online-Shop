@@ -78,6 +78,14 @@ const StyledDiv = styled.div`
     margin: 30px 0;
     padding: 0;
     text-align: center;
+
+    ${({ type }) =>
+      type === 'mobileAuth' &&
+      css`
+        /* margin-top: 30px; */
+        padding-top: 20px;
+        padding-left: 0;
+      `}
   } ;
 `;
 

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 
 import { routes } from '../../routes';
 import { auth } from '../../firebase/firebaseConfig';
@@ -22,6 +23,10 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   const [logInError, setLogInError] = useState('');
   const [redirectReady, setRedirectReady] = useState(false);
   const [whichButtonPressed, setWhichButtonPressed] = useState('');
+
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
 
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
@@ -45,7 +50,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   return (
     <div>
       <Heading
-        type={'auth'}
+        type={isMobile ? 'mobileAuth' : 'auth'}
         heading={beforeCheckout ? '' : isSignUp ? 'sign up' : 'log in'}
         headingDescription={
           beforeCheckout && isSignUp

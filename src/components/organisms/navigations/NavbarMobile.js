@@ -120,6 +120,7 @@ const StyledLi = styled.li`
 
 const StyledNavLink = styled(NavLink)`
   display: block;
+  position: relative;
   padding: 10px 20px;
   /* color: ${({ theme }) => theme.colors.mainWhite}; */
   color: ${({ theme }) => theme.colors.mainDark};
@@ -127,6 +128,24 @@ const StyledNavLink = styled(NavLink)`
   font-size: ${({ theme }) => theme.fontSizes.l};
   text-decoration: none;
   text-transform: uppercase;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    bottom: 5px;
+    left: 15%;
+    background-color: ${({ theme }) => theme.colors.mainDark};
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.active:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
 `;
 
 const StyledAccountUl = styled.ul`
@@ -147,12 +166,31 @@ const StyledAccountNavLink = styled(NavLink)`
   text-decoration: none; */
 
   display: block;
+  position: relative;
   padding: 10px 20px;
   /* color: ${({ theme }) => theme.colors.mainWhite}; */
   color: ${({ theme }) => theme.colors.mainDark};
 
   font-size: ${({ theme }) => theme.fontSizes.l};
   text-decoration: none;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    bottom: 5px;
+    left: 15%;
+    background-color: ${({ theme }) => theme.colors.mainDark};
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.active:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
 `;
 
 const NavbarMobile = () => {
@@ -189,11 +227,6 @@ const NavbarMobile = () => {
             </i>
           </StyledIcon>
           <StyledIcon menuToggle={menuToggle} burger>
-            {/* {menuToggle ? (
-              <i className="fas fa-angle-up" onClick={handleMenuClick}></i>
-            ) : (
-              <i className="fas fa-bars" onClick={handleMenuClick}></i>
-            )} */}
             <HamburgerMenu
               isOpen={menuToggle}
               menuClicked={handleMenuClick}
