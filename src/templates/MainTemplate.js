@@ -14,7 +14,12 @@ const StyledWrapper = styled.div`
   /* position: relative; */
   min-height: 100vh;
   padding-bottom: 110px;
+  margin-top: 70px;
   margin-bottom: -70px;
+
+  @media (max-width: 768px) {
+    margin-top: 50px;
+  } ;
 `;
 
 const MainTemplate = ({ children }) => {
@@ -26,8 +31,8 @@ const MainTemplate = ({ children }) => {
     <>
       <GlobalStyle />
       <ThemeProvider theme={mainTheme}>
+        {isTablet ? <Navbar /> : <NavbarMobile />}
         <StyledWrapper>
-          {isTablet ? <Navbar /> : <NavbarMobile />}
           {/* <Navbar /> */}
           <CartModal />
           {/* To co ma widok */}
