@@ -16,7 +16,7 @@ html{
 
 body{
     font-family: 'Roboto Condensed', sans-serif;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 button {
