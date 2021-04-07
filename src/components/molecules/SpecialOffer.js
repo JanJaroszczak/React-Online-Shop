@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 
 import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
@@ -24,13 +25,27 @@ const StyledDiv = styled.div`
     bottom: -4px;
     border: 1px solid ${({ theme }) => theme.colors.moderateGray};
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+    margin: 0 auto 60px;
+    padding: 0;
+    padding-bottom: 30px;
+    text-align: center;
+  } ;
 `;
 
-const SpecialOffer = ({ heading, headingDescription }) => {
+const SpecialOffer = () => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
+
   return (
     <StyledDiv>
       <Heading
-        type={'specialOffer'}
+        type={isMobile ? null : 'specialOffer'}
         heading={'march sale'}
         headingDescription={'free shipping for orders over $100'}
       />

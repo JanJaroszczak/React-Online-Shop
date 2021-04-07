@@ -3,11 +3,15 @@ import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.css';
+import { useMediaQuery } from 'react-responsive';
 import './styles/stylesHeader.css';
 
-import img1 from '../../assets/images/header1mobile.jpg';
-import img2 from '../../assets/images/header2mobile.jpg';
-import img3 from '../../assets/images/header3mobile.jpg';
+import img1 from '../../assets/images/header1.jpg';
+import img1mobile from '../../assets/images/header1mobile.jpg';
+import img2 from '../../assets/images/header2.jpg';
+import img2mobile from '../../assets/images/header2mobile.jpg';
+import img3 from '../../assets/images/header3.jpg';
+import img3mobile from '../../assets/images/header3mobile.jpg';
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
@@ -66,19 +70,23 @@ const StyledButton = styled.button`
 `;
 
 const Header = () => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
+
   const slides = [
     <SwiperSlide
-      style={{ backgroundImage: `url(${img1})` }}
+      style={{ backgroundImage: `url(${isMobile ? img1mobile : img1})` }}
       key={1}
       id="headerPhoto1"
     />,
     <SwiperSlide
-      style={{ backgroundImage: `url(${img2})` }}
+      style={{ backgroundImage: `url(${isMobile ? img2mobile : img2})` }}
       key={2}
       id="headerPhoto2"
     />,
     <SwiperSlide
-      style={{ backgroundImage: `url(${img3})` }}
+      style={{ backgroundImage: `url(${isMobile ? img3mobile : img3})` }}
       key={3}
       id="headerPhoto3"
     />,
