@@ -40,7 +40,6 @@ const MainTemplate = ({ children }) => {
           {/* To co ma widok */}
           {children}
         </StyledWrapper>
-        -webkit-tap-highlight-color: transparent;
         <ScrollUpButton
           style={{ outline: 'none', WebkitTapHighlightColor: 'transparent' }}
         />

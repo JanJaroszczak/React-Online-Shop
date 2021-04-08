@@ -46,6 +46,7 @@ export const StyledSelect = styled.select`
   background-color: ${({ theme }) => theme.colors.declicateGray};
   color: ${({ theme }) => theme.colors.mainDark};
   border: none;
+  outline: none;
 
   /* border: 1px solid black; */
 
