@@ -18,6 +18,13 @@ const StyledOrderSummaryWrapper = styled.div`
   padding: 0 20px;
 `;
 
+const StyledLink = styled(Link)`
+  @media (max-width: 768px) {
+    display: block;
+    margin-top: 30px;
+  }
+`;
+
 const OrderSummaryPage = (props) => {
   const isSuccessfulPaymentAlert = useSelector(
     ({ successfulPaymentAlert }) => successfulPaymentAlert
@@ -36,30 +43,40 @@ const OrderSummaryPage = (props) => {
     dispatch(clearCart());
     setTimeout(() => {
       dispatch(successfulPaymentAlert(false));
-    }, 3000);
+    }, 2000);
   }, []);
 
   return (
     <StyledOrderSummaryWrapper>
-      <Heading
-        type={isMobile ? 'mobileTopHeading' : 'topHeading'}
-        heading={'ORDER SUMMARY'}
-        headingDescription={`WE HOPE TO SEE YOU AGAIN!`}
-      />
-      <CartContentTable order={order} orderSummary />
-      <CartSummary
-        // variant="checkout"
-        totalOrderPrice={totalPrice}
-        orderSummary
-      />
-      <Link to={routes.home} style={{ textDecoration: 'none' }}>
-        <Button variant="noCapitalize" type="button" label="Go to Home Page" />
-      </Link>
-      <Alert
-        severity="success"
-        message="Payment successful!"
-        visible={isSuccessfulPaymentAlert}
-      />
+      {isSuccessfulPaymentAlert ? (
+        <Alert
+          severity="success"
+          message="Payment successful!"
+          visible={isSuccessfulPaymentAlert}
+          variant="orderSummary"
+        />
+      ) : (
+        <>
+          <Heading
+            type={isMobile ? 'mobileTopHeading' : 'topHeading'}
+            heading={'ORDER SUMMARY'}
+            headingDescription={`WE HOPE TO SEE YOU AGAIN!`}
+          />
+          <CartContentTable order={order} orderSummary />
+          <CartSummary
+            // variant="checkout"
+            totalOrderPrice={totalPrice}
+            orderSummary
+          />
+          <StyledLink to={routes.home} style={{ textDecoration: 'none' }}>
+            <Button
+              variant="noCapitalize"
+              type="button"
+              label="Go to Home Page"
+            />
+          </StyledLink>
+        </>
+      )}
     </StyledOrderSummaryWrapper>
   );
 };

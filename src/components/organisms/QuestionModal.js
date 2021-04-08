@@ -20,7 +20,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 2, 3),
     borderRadius: '20px',
     outline: 'none',
+    textAlign: 'center',
     width: '35vw',
+    '@media (max-width: 768px)': {
+      width: '80vw',
+    },
   },
 }));
 

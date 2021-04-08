@@ -33,6 +33,11 @@ const StyledCheckoutWrapper = styled.div`
   margin-left: 50px;
 
   /* border: 1px solid black; */
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+    margin-left: 0;
+  } ;
 `;
 
 const ClientDataForm = () => {

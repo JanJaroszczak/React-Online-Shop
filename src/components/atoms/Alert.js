@@ -22,13 +22,19 @@ const StyledAlert = styled.div`
     css`
       visibility: hidden;
     `}
+
+  ${({ variant }) =>
+    variant === 'orderSummary' &&
+    css`
+      margin-top: 93px;
+    `}
 `;
 
-const Alert = ({ severity, message, visible }) => {
+const Alert = ({ severity, message, visible, variant }) => {
   // Severity options: error (red), warning (yellow), info (blue), success (green).
 
   return (
-    <StyledAlert severity={severity} visible={visible}>
+    <StyledAlert severity={severity} visible={visible} variant={variant}>
       <span>
         <i className="far fa-check-circle"></i>
       </span>
