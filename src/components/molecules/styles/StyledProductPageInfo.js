@@ -36,6 +36,7 @@ export const StyledSizeChoice = styled.div`
 export const StyledSelect = styled.select`
   display: block;
   width: 45px;
+  width: 45px;
   height: 40px;
   margin-top: 3px;
   font-size: ${({ theme }) => theme.fontSizes.m};
@@ -51,6 +52,10 @@ export const StyledSelect = styled.select`
   option {
     font-weight: inherit;
   }
+
+  @media (max-width: 768px) {
+    width: 58px;
+  } ;
 `;
 
 export const StyledError = styled.span`
