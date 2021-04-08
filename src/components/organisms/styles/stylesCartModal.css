@@ -142,8 +142,11 @@ div.modalFooterWrapper {
 }
 
 @media (max-width: 768px) {
-  .buttonCheckout button {
+  .buttonCheckout button,
+  .buttonContinueShopping button,
+  .buttonViewCart button {
     width: 155px;
+    font-size: 1.5rem;
   }
 }
 
