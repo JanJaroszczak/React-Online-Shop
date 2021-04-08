@@ -17,6 +17,10 @@ const StyledAccountPageWrapper = styled.div`
   padding: 0 20px;
 
   /* border: 1px solid black; */
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const AccountPage = ({ history, match }) => {

@@ -41,6 +41,10 @@ const StyledTable = styled.table`
     padding-bottom: 10px;
     color: #808080;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto 1fr;
+  }
 `;
 
 const StyledTdMessage = styled.td`

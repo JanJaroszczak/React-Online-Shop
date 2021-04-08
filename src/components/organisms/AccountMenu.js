@@ -30,6 +30,10 @@ const StyledAccountHeading = styled.div`
     font-size: 6rem;
     color: ${({ theme }) => theme.colors.lightGray};
   }
+
+  @media (max-width: 768px) {
+    border-right: none;
+  }
 `;
 
 const StyledNameLogoutWrapper = styled.div`
@@ -70,6 +74,10 @@ const StyledLink = styled(NavLink)`
 
   &.active {
     color: ${({ theme }) => theme.colors.mainDark};
+    border-right: none;
+  }
+
+  @media (max-width: 768px) {
     border-right: none;
   }
 `;

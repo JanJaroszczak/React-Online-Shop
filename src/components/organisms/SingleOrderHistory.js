@@ -13,6 +13,17 @@ const StyledOrderSummaryWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  @media (max-width: 768px) {
+    display: block;
+    margin-top: 30px;
+  }
 `;
 
 const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
@@ -46,13 +57,13 @@ const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
           />
         </>
       )}
-      <Link to={routes.accountOrders} style={{ textDecoration: 'none' }}>
+      <StyledLink to={routes.accountOrders} style={{ textDecoration: 'none' }}>
         <Button
           variant="noCapitalize"
           type="button"
           label="Go back to All Orders History"
         />
-      </Link>
+      </StyledLink>
     </StyledOrderSummaryWrapper>
   );
 };
