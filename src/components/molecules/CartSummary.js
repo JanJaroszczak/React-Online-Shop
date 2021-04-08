@@ -22,6 +22,11 @@ const StyledCartSummary = styled.div`
     css`
       margin: 0;
     `}
+
+    @media (max-width: 768px) {
+    width: auto;
+    margin: 30px auto 0;
+  }
 `;
 
 const StyledCartSummaryHeading = styled.h3`
@@ -62,6 +67,10 @@ const StyledButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.extraDarkGray};
+  }
+
+  @media (max-width: 768px) {
+    margin: 20px auto 0;
   }
 `;
 

@@ -54,6 +54,13 @@ const StyledDiv = styled.div`
       padding-left: 0;
     `}
 
+        ${({ type }) =>
+    type === 'topHeading' &&
+    css`
+      padding-top: 30px;
+      padding-left: 80px;
+    `}
+
          ${({ type }) =>
     type === 'authBeforeCheckout' &&
     css`

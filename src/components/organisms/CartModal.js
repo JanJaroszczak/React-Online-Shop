@@ -46,7 +46,7 @@ const CartModal = () => {
 
   const cartProductsModalList = cartProducts.map((product) => (
     <li key={product.cartProductId}>
-      <CartModalElement product={product} />
+      <CartModalElement product={product} cartModal />
     </li>
   ));
 

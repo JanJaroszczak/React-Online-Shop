@@ -1,10 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const StyledWrapper = styled.div`
-  /* display: grid; */
-`;
-
 export const StyledLink = styled(Link)`
   align-self: center;
   text-decoration: none;
@@ -32,6 +28,14 @@ export const StyledProductInfo = styled.div`
 
   /* border: 1px solid black; */
 
+  @media (max-width: 768px) {
+    ${({ cartModal }) =>
+      !cartModal &&
+      css`
+        padding-left: 0;
+      `}
+  }
+
   h3 {
     font-size: 1.8rem;
     color: ${({ theme }) => theme.colors.mainDark};
@@ -46,6 +50,15 @@ export const StyledProductInfo = styled.div`
         margin-left: 10px;
         margin-bottom: 0;
       `}
+
+    @media (max-width: 768px) {
+      ${({ cartModal }) =>
+        !cartModal &&
+        css`
+          font-size: ${({ theme }) => theme.fontSizes.xs};
+          margin-bottom: 10px;
+        `}
+    }
   }
 
   span {

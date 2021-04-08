@@ -4,6 +4,7 @@ export const StyledQuantityChoice = styled.div`
   display: inline-block;
   margin-left: 50px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
+
   /* border: 1px solid black; */
 
   ${({ cart }) =>
@@ -14,6 +15,14 @@ export const StyledQuantityChoice = styled.div`
       height: 100%;
       margin-left: 0;
     `}
+
+  @media (max-width: 768px) {
+    ${({ cart }) =>
+      cart &&
+      css`
+        margin-left: 3px;
+      `}
+  }
 `;
 
 export const StyledQuantityInput = styled.div`
@@ -33,6 +42,23 @@ export const StyledQuantityInput = styled.div`
     color: ${({ theme }) => theme.colors.mainDark};
     border: none;
     outline: none;
+    border-radius: 0;
+
+    @media (max-width: 768px) {
+      ${({ cart }) =>
+        cart &&
+        css`
+          height: 25px;
+          width: 25px;
+        `}
+    }
+    @media (max-width: 768px) {
+      ${({ orderRow }) =>
+        orderRow &&
+        css`
+          margin-left: 18px;
+        `}
+    }
   }
 
   input::-webkit-inner-spin-button,
@@ -53,6 +79,15 @@ export const StyledQuantityInput = styled.div`
     transition: 1s linear;
 
     border: none;
+
+    @media (max-width: 768px) {
+      ${({ cart }) =>
+        cart &&
+        css`
+          height: 25px;
+          width: 17px;
+        `}
+    }
   }
 
   .notInStock::before {

@@ -1,17 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import { setCartClosed } from '../../actions';
 import {
-  StyledWrapper,
   StyledLink,
   StyledImg,
   StyledProductInfo,
 } from './styles/StyledCartElementInfo';
 
-const CartElementInfo = ({ product, searchModal }) => {
+const CartElementInfo = ({ product, cartModal, searchModal }) => {
   const dispatch = useDispatch();
+
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
 
   const onClickCartModalHandler = () => {
     dispatch(setCartClosed());
@@ -37,7 +40,7 @@ const CartElementInfo = ({ product, searchModal }) => {
           />
         </StyledLink>
       )}
-      <StyledProductInfo searchModal={searchModal}>
+      <StyledProductInfo searchModal={searchModal} cartModal={cartModal}>
         {searchModal ? (
           <h3>{`${product.productBrand} ${product.productName}`}</h3>
         ) : (
@@ -46,7 +49,8 @@ const CartElementInfo = ({ product, searchModal }) => {
             onClick={onClickCartModalHandler}
           >
             <h3>
-              {product.productName} (Size: {product.chosenOption.size})
+              {product.productName} {!cartModal && isMobile ? <br /> : null}
+              (Size: {product.chosenOption.size})
             </h3>
           </StyledLink>
         )}

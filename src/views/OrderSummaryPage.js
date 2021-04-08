@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import { routes } from '../routes';
 import Heading from '../components/atoms/Heading';
@@ -22,6 +23,10 @@ const OrderSummaryPage = (props) => {
     ({ successfulPaymentAlert }) => successfulPaymentAlert
   );
 
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
+
   const dispatch = useDispatch();
 
   const order = props.location.state.cart;
@@ -37,7 +42,7 @@ const OrderSummaryPage = (props) => {
   return (
     <StyledOrderSummaryWrapper>
       <Heading
-        type={'orderSummary'}
+        type={isMobile ? 'mobileTopHeading' : 'topHeading'}
         heading={'ORDER SUMMARY'}
         headingDescription={`WE HOPE TO SEE YOU AGAIN!`}
       />

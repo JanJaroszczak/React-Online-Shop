@@ -24,6 +24,11 @@ const StyledTableRow = styled.tr`
     grid-template-columns: 100px auto;
 
     /* border: 1px solid black; */
+
+    @media (max-width: 768px) {
+      grid-template-columns: 100px;
+      grid-template-rows: auto auto;
+    }
   }
 `;
 
@@ -75,7 +80,7 @@ const CartContentTableRow = ({ product, orderRow }) => {
       </td>
       <td>
         <StyledQuantityChoice cart>
-          <StyledQuantityInput cart>
+          <StyledQuantityInput cart orderRow={orderRow}>
             {!orderRow && (
               <button
                 type="button"

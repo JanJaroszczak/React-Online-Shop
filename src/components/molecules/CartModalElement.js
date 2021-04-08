@@ -12,6 +12,7 @@ import {
 
 const CartModalElement = ({
   product,
+  cartModal,
   searchModal,
   setHovered,
   index,
@@ -47,7 +48,11 @@ const CartModalElement = ({
       ) : (
         <StyledModalElementWrapper searchModal={searchModal}>
           <StyledCartElementWrapper>
-            <CartElementInfo product={product} searchModal={searchModal} />
+            <CartElementInfo
+              product={product}
+              searchModal={searchModal}
+              cartModal={cartModal}
+            />
             <StyledPrice>
               $ {product.chosenOption.quantity * product.productPrice}
             </StyledPrice>

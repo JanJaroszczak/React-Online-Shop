@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import Heading from '../components/atoms/Heading';
 import CartContentTable from '../components/organisms/CartContentTable';
@@ -15,10 +16,14 @@ const StyledCartWrapper = styled.div`
 const CartPage = () => {
   const cartCounter = useSelector(({ counter }) => counter);
 
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
+
   return (
     <StyledCartWrapper>
       <Heading
-        // type={'specialOffer'}
+        type={isMobile ? 'mobileTopHeading' : 'topHeading'}
         heading={'CART'}
         headingDescription={`YOU'VE GOT ${cartCounter} PRODUCTS IN YOUR CART`}
       />

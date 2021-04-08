@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import CartContentTableRow from '../molecules/CartContentTableRow';
 
@@ -24,9 +24,13 @@ const StyledTable = styled.table`
     padding: 15px;
     /* overflow: hidden; */
     text-overflow: ellipsis;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 
     /* border: 1px solid black; */
+
+    @media (max-width: 768px) {
+      padding: 0;
+    }
   }
 
   th {
@@ -36,7 +40,6 @@ const StyledTable = styled.table`
     text-align: left;
     font-weight: normal;
     font-size: ${({ theme }) => theme.fontSizes.s};
-
     color: black;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
   }
@@ -46,6 +49,16 @@ const StyledTable = styled.table`
     padding-bottom: 10px;
     color: #808080;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 90px 95px;
+
+    ${({ orderSummary }) =>
+      orderSummary &&
+      css`
+        grid-template-columns: 1fr 90px auto;
+      `}
+  } ;
 `;
 
 const CartContentTable = ({ order, orderSummary }) => {
@@ -69,7 +82,7 @@ const CartContentTable = ({ order, orderSummary }) => {
 
   return (
     <>
-      <StyledTable>
+      <StyledTable orderSummary={orderSummary}>
         <thead>
           <tr>
             <th>PRODUCT</th>
