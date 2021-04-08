@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../themes/mainTheme';
 import styled from 'styled-components';
+import ScrollUpButton from 'react-scroll-up-button';
 
 import GlobalStyle from '../globalStyles/GlobalStyles';
 import Navbar from '../components/organisms/navigations/Navbar';
@@ -39,6 +40,10 @@ const MainTemplate = ({ children }) => {
           {/* To co ma widok */}
           {children}
         </StyledWrapper>
+        -webkit-tap-highlight-color: transparent;
+        <ScrollUpButton
+          style={{ outline: 'none', WebkitTapHighlightColor: 'transparent' }}
+        />
         <Footer />
       </ThemeProvider>
     </>
