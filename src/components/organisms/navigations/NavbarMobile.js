@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import HamburgerMenu from 'react-hamburger-menu';
 
+import { setCartOpen } from '../../../actions';
 import { routes } from '../../../routes';
 import logo from '../../../assets/images/logo3.png';
 
@@ -196,6 +197,8 @@ const StyledAccountNavLink = styled(NavLink)`
 const NavbarMobile = () => {
   const [menuToggle, setMenuToggle] = useState(false);
 
+  const dispatch = useDispatch();
+
   const cartCounter = useSelector(({ counter }) => counter);
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
@@ -218,7 +221,7 @@ const NavbarMobile = () => {
           <StyledIcon>
             <i
               className="fas fa-shopping-cart"
-              // onClick={() => dispatch(setCartOpen())}
+              onClick={() => dispatch(setCartOpen())}
             >
               <StyledCartCounter>
                 <span>{cartCounter}</span>

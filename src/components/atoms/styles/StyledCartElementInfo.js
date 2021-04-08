@@ -1,14 +1,23 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const StyledWrapper = styled.div`
+  /* display: grid; */
+`;
+
 export const StyledLink = styled(Link)`
+  align-self: center;
   text-decoration: none;
   outline: none;
+
+  /* border: 1px solid black; */
 `;
 
 export const StyledImg = styled.img`
   align-self: center;
   width: 100%;
+
+  /* border: 1px solid black; */
 
   ${({ searchModal }) =>
     searchModal &&

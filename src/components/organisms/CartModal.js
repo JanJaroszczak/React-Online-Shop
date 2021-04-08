@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    position: 'reltive',
+    // position: 'relative',
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 2, 3),
@@ -27,6 +27,12 @@ const useStyles = makeStyles((theme) => ({
     outline: 'none',
     minWidth: '450px',
     minHeight: '100px',
+    '@media (max-width: 768px)': {
+      minWidth: '50px',
+      width: '90vw',
+      maxHeight: '80vh',
+      padding: theme.spacing(1, 1, 1),
+    },
   },
 }));
 

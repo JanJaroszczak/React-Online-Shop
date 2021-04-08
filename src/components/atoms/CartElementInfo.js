@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { setCartClosed } from '../../actions';
 import {
+  StyledWrapper,
   StyledLink,
   StyledImg,
   StyledProductInfo,
@@ -25,7 +26,7 @@ const CartElementInfo = ({ product, searchModal }) => {
           searchModal={searchModal}
         />
       ) : (
-        <Link
+        <StyledLink
           to={`/product/${product.productId}`}
           onClick={onClickCartModalHandler}
         >
@@ -34,7 +35,7 @@ const CartElementInfo = ({ product, searchModal }) => {
             alt={''}
             searchModal={searchModal}
           />
-        </Link>
+        </StyledLink>
       )}
       <StyledProductInfo searchModal={searchModal}>
         {searchModal ? (

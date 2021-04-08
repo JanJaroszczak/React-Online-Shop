@@ -27,6 +27,12 @@ div.modalWrapper {
   /* border: 1px solid blue; */
 }
 
+@media (max-width: 768px) {
+  div.modalWrapper {
+    grid-template-rows: auto auto;
+  }
+}
+
 h3.cartHeading {
   margin: 5px auto;
   font-size: 2.3rem;
@@ -42,6 +48,12 @@ div.productsListWrapper {
   /* border: 1px solid red; */
 }
 
+@media (max-width: 768px) {
+  div.productsListWrapper {
+    max-height: 40vh;
+  }
+}
+
 div.modalFooterWrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -54,6 +66,20 @@ div.modalFooterWrapper {
   height: 100px;
 
   /* border: 1px solid red; */
+}
+
+@media (max-width: 768px) {
+  div.modalFooterWrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      'button1'
+      'button2'
+      'button3'
+      'price';
+    height: auto;
+    padding-top: 5px;
+  }
 }
 
 .buttonViewCart {
@@ -90,11 +116,17 @@ div.modalFooterWrapper {
   /* border: 1px solid red; */
 }
 
+@media (max-width: 768px) {
+  .totalPrice {
+    margin-top: 5px;
+  }
+}
+
 .buttonCheckout button,
 .buttonContinueShopping button,
 .buttonViewCart button {
   height: 30px;
-  width: 100px;
+  width: 155px;
   margin-top: 10px;
   background-color: #000;
   color: #fff;
@@ -105,17 +137,19 @@ div.modalFooterWrapper {
   border-radius: 4px;
 }
 
-.buttonViewCart button {
-  width: 155px;
+.buttonCheckout button {
+  width: 100px;
+}
+
+@media (max-width: 768px) {
+  .buttonCheckout button {
+    width: 155px;
+  }
 }
 
 .buttonCheckout button:disabled {
   background-color: #999999;
   cursor: default;
-}
-
-.buttonContinueShopping button {
-  width: 155px;
 }
 
 .buttonCheckout button:hover:enabled,
