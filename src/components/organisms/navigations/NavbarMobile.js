@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import HamburgerMenu from 'react-hamburger-menu';
 
@@ -202,6 +202,11 @@ const NavbarMobile = () => {
   const cartCounter = useSelector(({ counter }) => counter);
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
+  const handleCartIconClick = () => {
+    setMenuToggle(false);
+    dispatch(setCartOpen());
+  };
+
   const handleMenuClick = () => {
     setMenuToggle((prevState) => !prevState);
   };
@@ -209,20 +214,22 @@ const NavbarMobile = () => {
     <>
       <StyledMobileNavbar>
         <StyledLogo>
-          <img src={logo} alt="Logo" />
+          <Link to={routes.home}>
+            <img src={logo} alt="Logo" />
+          </Link>
         </StyledLogo>
         <StyledIconsWrapper>
           <StyledIcon>
-            <StyledNavLink to={routes.mobileSearch}>
+            <StyledNavLink
+              to={routes.mobileSearch}
+              onClick={() => setMenuToggle(false)}
+            >
               <i className="fas fa-search"></i>
             </StyledNavLink>
           </StyledIcon>
 
           <StyledIcon>
-            <i
-              className="fas fa-shopping-cart"
-              onClick={() => dispatch(setCartOpen())}
-            >
+            <i className="fas fa-shopping-cart" onClick={handleCartIconClick}>
               <StyledCartCounter>
                 <span>{cartCounter}</span>
               </StyledCartCounter>

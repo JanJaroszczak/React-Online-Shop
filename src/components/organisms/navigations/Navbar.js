@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useRef, useEffect } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { routes } from '../../../routes';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
@@ -196,7 +196,9 @@ const Navbar = () => {
     <StyledNav>
       <StyledNavWrapper>
         <StyledLogo>
-          <img src={logo} alt="Logo" />
+          <Link to={routes.home} exact>
+            <img src={logo} alt="Logo" />
+          </Link>
         </StyledLogo>
         <StyledUl>
           <StyledLi>
