@@ -137,7 +137,7 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
       {isSuccessAlert && (
         <Alert
           severity="success"
-          message="Your password has been succesfully changed!"
+          message="Password succesfully changed!"
           visible={true}
         />
       )}
