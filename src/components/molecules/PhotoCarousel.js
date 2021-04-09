@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Thumbs } from 'swiper';
@@ -11,10 +10,6 @@ SwiperCore.use([Navigation, Pagination, Thumbs]);
 
 const PhotoCarousel = ({ id }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
-  const isTablet = useMediaQuery({
-    query: '(max-width: 768px)',
-  });
 
   const availableProducts = useSelector(({ products }) => products);
 
@@ -42,16 +37,14 @@ const PhotoCarousel = ({ id }) => {
         {slides}
       </Swiper>
 
-      {!isTablet && (
-        <Swiper
-          id="thumbsProductPage"
-          spaceBetween={10}
-          slidesPerView={5}
-          onSwiper={setThumbsSwiper}
-        >
-          {slides}
-        </Swiper>
-      )}
+      <Swiper
+        id="thumbsProductPage"
+        spaceBetween={10}
+        slidesPerView={5}
+        onSwiper={setThumbsSwiper}
+      >
+        {slides}
+      </Swiper>
     </div>
   );
 };
