@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const StyledFormWrapper = styled.div`
   margin-top: 30px;
-  margin-left: 80px;
+  margin-left: 50px;
 
   /* border: 1px solid black; */
 
@@ -52,7 +52,7 @@ export const StyledTextarea = styled.textarea`
   outline: none;
   border: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 100%;
   } ;
 `;

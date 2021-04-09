@@ -45,6 +45,15 @@ const StyledDiv = styled.div`
     type === 'contact' &&
     css`
       margin: 0;
+      padding-left: 50px;
+    `}
+
+    
+        ${({ type }) =>
+    type === 'address' &&
+    css`
+      margin: 0;
+      padding-left: 80px;
     `}
 
       ${({ type }) =>
