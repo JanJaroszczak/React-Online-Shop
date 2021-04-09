@@ -9,8 +9,9 @@ import ProductCard from '../components/molecules/ProductCard';
 const StyledInputWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
-  width: 80vw;
+  max-width: 460px;
   margin: 0 auto;
+  padding: 0 20px;
 
   /* border: 1px solid black; */
 `;
@@ -18,7 +19,8 @@ const StyledInputWrapper = styled.div`
 const StyledSearchInput = styled.input`
   display: inline-block;
   height: 45px;
-  /* width: 85%; */
+  min-width: 100px;
+  max-width: 400px;
   padding: 0 5px;
   font-size: ${({ theme }) => theme.fontSizes.s};
   border-radius: 7px;
