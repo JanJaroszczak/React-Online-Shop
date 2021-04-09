@@ -196,7 +196,7 @@ const Navbar = () => {
     <StyledNav>
       <StyledNavWrapper>
         <StyledLogo>
-          <Link to={routes.home} exact>
+          <Link to={routes.home}>
             <img src={logo} alt="Logo" />
           </Link>
         </StyledLogo>
