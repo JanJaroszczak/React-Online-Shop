@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledProductInfoWrapper = styled.div`
   max-width: 700px;
   margin: 0 auto;
-  padding: 50px 30px;
+  padding: 50px 30px 0;
   overflow: hidden;
   /* border: 1px solid black; */
 
