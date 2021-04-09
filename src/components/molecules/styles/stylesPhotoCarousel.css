@@ -20,14 +20,14 @@
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 570px) {
   #productPage.swiper-container {
     width: 90vw;
     /* border: 1px solid black; */
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 570px) {
   #thumbsProductPage.swiper-container {
     display: none;
   }

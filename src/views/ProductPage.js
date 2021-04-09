@@ -16,7 +16,7 @@ const StyledProductWrapper = styled.div`
 
   /* border: 1px solid black; */
 
-  @media (max-width: 768px) {
+  @media (max-width: 820px) {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     padding: 0 10px;
