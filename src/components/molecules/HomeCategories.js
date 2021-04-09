@@ -15,9 +15,10 @@ const StyledCategoriesWrapper = styled.div`
 
   /* border: 1px solid black; */
 
-  @media (max-width: 768px) {
+  @media (max-width: 450px) {
     grid-template-columns: 1fr;
     row-gap: 30px;
+    justify-content: center;
   } ;
 `;
 

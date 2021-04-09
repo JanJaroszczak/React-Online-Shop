@@ -34,6 +34,10 @@ const StyledLogo = styled.div`
   img {
     height: 40px;
   }
+
+  @media (max-width: 310px) {
+    padding: 0 10px;
+  }
 `;
 
 const StyledIconsWrapper = styled.div`

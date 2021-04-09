@@ -11,8 +11,16 @@ import ProductCard from '../molecules/ProductCard';
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const ProductsSlider = () => {
-  const isTablet = useMediaQuery({
-    query: '(max-width: 768px)',
+  const is650 = useMediaQuery({
+    query: '(max-width: 650px)',
+  });
+
+  const is900 = useMediaQuery({
+    query: '(max-width: 900px)',
+  });
+
+  const isMobile = useMediaQuery({
+    query: '(max-width: 480px)',
   });
 
   const selectedProducts = useSelector(({ products }) => products);
@@ -32,7 +40,7 @@ const ProductsSlider = () => {
         // centeredSlides={true}
         // centeredSlidesBounds={true}
         // spaceBetween={10}
-        slidesPerView={isTablet ? 1 : 4}
+        slidesPerView={isMobile ? 1 : is650 ? 2 : is900 ? 3 : 4}
         // autoplay={{ delay: 3000, disableOnInteraction: false }}
         // loop
       >

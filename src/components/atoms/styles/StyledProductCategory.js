@@ -26,13 +26,23 @@ export const StyledCategory = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   height: 80px;
-  width: 150px;
+  width: 160px;
   border: 2px solid white;
+
+  @media (max-width: 600px) {
+    height: 60px;
+    width: 120px;
+  }
+
+  @media (max-width: 450px) {
+    height: 80px;
+    width: 160px;
+  } ;
 `;
 
 export const StyledCategoryName = styled.div`
   position: absolute;
-  width: 150px;
+  width: 160px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -42,6 +52,16 @@ export const StyledCategoryName = styled.div`
   text-align: center;
   text-transform: uppercase;
   border: 2px solid white;
+
+  @media (max-width: 600px) {
+    width: 120px;
+    font-size: ${({ theme }) => theme.fontSizes.l};
+  }
+
+  @media (max-width: 450px) {
+    width: 160px;
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+  } ;
 `;
 
 export const StyledFade = styled.div`
