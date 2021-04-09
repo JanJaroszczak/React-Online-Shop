@@ -47,7 +47,7 @@ const StyledUl = styled.ul`
   display: grid;
   grid-template-columns: auto auto auto 1fr;
   grid-template-rows: 1fr;
-  padding-left: 40px;
+  padding-left: 30px;
 
   /* border: 1px solid black; */
 `;
@@ -63,7 +63,7 @@ const StyledLi = styled.li`
 const StyledNavLink = styled(NavLink)`
   display: block;
   position: relative;
-  padding: 10px 20px;
+  padding: 10px 10px;
   color: ${({ theme }) => theme.colors.mainDark};
   font-size: ${({ theme }) => theme.fontSizes.l};
   text-decoration: none;

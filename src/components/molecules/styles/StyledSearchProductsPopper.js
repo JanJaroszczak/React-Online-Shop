@@ -7,7 +7,7 @@ export const StyledSearchPanelWrapper = styled.div`
 
 export const StyledSearchInput = styled.input`
   height: 45px;
-  width: 230px;
+  width: 180px;
   padding: 0 5px;
   margin-bottom: 2px;
   font-size: ${({ theme }) => theme.fontSizes.s};
