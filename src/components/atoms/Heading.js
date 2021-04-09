@@ -62,6 +62,15 @@ const StyledDiv = styled.div`
     `}
 
          ${({ type }) =>
+    type === 'topSearchPageHeading' &&
+    css`
+      margin: 30px 0;
+      padding-top: 30px;
+      padding-left: 0;
+      text-align: center;
+    `}
+
+         ${({ type }) =>
     type === 'authBeforeCheckout' &&
     css`
       padding-top: 30px;

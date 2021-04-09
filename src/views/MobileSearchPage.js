@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import Heading from '../components/atoms/Heading';
 import ProductCard from '../components/molecules/ProductCard';
@@ -54,6 +55,10 @@ const StyledProductsGridWrapper = styled.div`
 const MobileSearchPage = () => {
   const [searchInputValue, setSearchInputValue] = useState('');
   const [foundProducts, setFoundProducts] = useState([]);
+
+  const isTablet = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
 
   const products = useSelector(({ products }) => products);
 
@@ -142,7 +147,7 @@ const MobileSearchPage = () => {
   return (
     <>
       <Heading
-        type={'mobileTopHeading'}
+        type={isTablet ? 'mobileTopHeading' : 'topSearchPageHeading'}
         heading={'SEARCH PANEL'}
         headingDescription={``}
       />

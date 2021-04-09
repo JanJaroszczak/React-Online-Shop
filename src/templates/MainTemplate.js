@@ -16,7 +16,7 @@ const StyledWrapper = styled.div`
   padding-bottom: 30px;
   margin-top: 70px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 815px) {
     min-height: calc(100vh - 50px);
     padding-bottom: 100px;
     margin-top: 50px;
@@ -25,15 +25,15 @@ const StyledWrapper = styled.div`
 `;
 
 const MainTemplate = ({ children }) => {
-  const isTablet = useMediaQuery({
-    query: '(min-width: 769px)',
+  const isDesktopNavbar = useMediaQuery({
+    query: '(min-width: 750px)',
   });
 
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={mainTheme}>
-        {isTablet ? <Navbar /> : <NavbarMobile />}
+        {isDesktopNavbar ? <Navbar /> : <NavbarMobile />}
         <StyledWrapper>
           {/* <Navbar /> */}
           <CartModal />

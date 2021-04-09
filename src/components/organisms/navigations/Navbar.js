@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { routes } from '../../../routes';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import logo from '../../../assets/images/logo3.png';
 import { setCartOpen, toggleSearchPanel } from '../../../actions';
@@ -50,6 +51,10 @@ const StyledUl = styled.ul`
   padding-left: 30px;
 
   /* border: 1px solid black; */
+
+  @media (max-width: 860px) {
+    padding-left: 20px;
+  }
 `;
 
 const StyledLi = styled.li`
@@ -58,6 +63,10 @@ const StyledLi = styled.li`
   margin: 0 10px;
 
   /* border: 1px solid black; */
+
+  @media (max-width: 860px) {
+    margin: 0 5px;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -72,10 +81,10 @@ const StyledNavLink = styled(NavLink)`
   &:before {
     content: '';
     position: absolute;
-    width: 70%;
+    width: 84%;
     height: 2px;
     bottom: 5px;
-    left: 15%;
+    left: 8%;
     background-color: ${({ theme }) => theme.colors.mainDark};
     visibility: hidden;
     transform: scaleX(0);
@@ -86,6 +95,16 @@ const StyledNavLink = styled(NavLink)`
   &.active:before {
     visibility: visible;
     transform: scaleX(1);
+  }
+
+  @media (max-width: 860px) {
+    font-size: ${({ theme }) => theme.fontSizes.m};
+
+    ${({ search }) =>
+      search &&
+      css`
+        font-size: ${({ theme }) => theme.fontSizes.l};
+      `}
   }
 `;
 
@@ -175,6 +194,10 @@ const StyledAccountNavLink = styled(NavLink)`
     visibility: visible;
     transform: scaleX(1);
   }
+
+  @media (max-width: 860px) {
+    font-size: ${({ theme }) => theme.fontSizes.s};
+  }
 `;
 
 const Navbar = () => {
@@ -184,6 +207,10 @@ const Navbar = () => {
   const cartCounter = useSelector(({ counter }) => counter);
   const currentUser = useSelector(({ currentUser }) => currentUser);
   const isSearchPanelOn = useSelector(({ isSearchPanelOn }) => isSearchPanelOn);
+
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1024px)',
+  });
 
   // Call hook passing in the ref and a function to call on outside click
   useOnClickOutside(ref, () => dispatch(toggleSearchPanel()));
@@ -222,8 +249,12 @@ const Navbar = () => {
                 onClick={toggleSearchBarVisiblity}
               ></StyledAdjustedIcon>
             </div>
-          ) : (
+          ) : isDesktop ? (
             <i className="fas fa-search" onClick={toggleSearchBarVisiblity}></i>
+          ) : (
+            <StyledNavLink to={routes.mobileSearch} search>
+              <i className="fas fa-search"></i>
+            </StyledNavLink>
           )}
 
           <i
