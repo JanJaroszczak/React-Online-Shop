@@ -83,13 +83,24 @@ const StyledProductsGridWrapper = styled.div`
 
   /* border: 1px solid black; */
 
-  @media (max-width: 768px) {
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
 
     margin: 30px auto 0;
     width: 90%;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 630px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: auto;
   } ;
 `;
 
