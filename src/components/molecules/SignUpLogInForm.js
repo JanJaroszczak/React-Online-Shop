@@ -50,7 +50,13 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   return (
     <div>
       <Heading
-        type={isMobile ? 'mobileTopHeading' : 'auth'}
+        type={
+          isMobile
+            ? 'mobileAuthBeforeCheckoutSubheading'
+            : beforeCheckout
+            ? 'authBeforeCheckoutSubheading'
+            : 'auth'
+        }
         heading={beforeCheckout ? '' : isSignUp ? 'sign up' : 'log in'}
         headingDescription={
           beforeCheckout && isSignUp

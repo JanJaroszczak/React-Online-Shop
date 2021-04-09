@@ -64,7 +64,14 @@ const StyledDiv = styled.div`
          ${({ type }) =>
     type === 'authBeforeCheckout' &&
     css`
-      margin: 0;
+      padding-top: 30px;
+      padding-left: 0;
+    `}
+
+          ${({ type }) =>
+    type === 'authBeforeCheckoutSubheading' &&
+    css`
+      margin: 0 0 30px;
       padding-left: 0;
     `}
 
@@ -87,6 +94,21 @@ const StyledDiv = styled.div`
     text-align: center;
 
     ${({ type }) =>
+      type === 'mobileAuthBeforeCheckout' &&
+      css`
+        margin-bottom: -15px;
+        padding-top: 30px;
+        padding-left: 0;
+      `}
+
+    ${({ type }) =>
+      type === 'mobileAuthBeforeCheckoutSubheading' &&
+      css`
+        margin: 30px 0;
+        padding: 0;
+      `}
+
+    ${({ type }) =>
       type === 'mobileTopHeading' &&
       css`
         padding-top: 30px;
@@ -104,14 +126,12 @@ const StyledHeading = styled.h2`
     (type === 'productPage' &&
       css`
         font-size: ${({ theme }) => theme.fontSizes.xxl};
-      `)}
-
-  ${({ type }) =>
+      `)}/* ${({ type }) =>
     type === 'authBeforeCheckout' &&
     css`
       /* margin: 0; */
-      margin-top: 30px;
-    `}
+      /* margin-top: 30px; */
+    `} */
 `;
 
 const StyledHeadingDescription = styled.h3`
