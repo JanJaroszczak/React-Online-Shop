@@ -30,7 +30,7 @@ const OrderSummaryPage = (props) => {
     ({ successfulPaymentAlert }) => successfulPaymentAlert
   );
 
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
@@ -58,7 +58,7 @@ const OrderSummaryPage = (props) => {
       ) : (
         <>
           <Heading
-            type={isMobile ? 'mobileTopHeading' : 'topHeading'}
+            type={isTablet ? 'mobileTopHeading' : 'topHeading'}
             heading={'ORDER SUMMARY'}
             headingDescription={`WE HOPE TO SEE YOU AGAIN!`}
           />

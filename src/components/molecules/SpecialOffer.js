@@ -38,14 +38,14 @@ const StyledDiv = styled.div`
 `;
 
 const SpecialOffer = () => {
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
   return (
     <StyledDiv>
       <Heading
-        type={isMobile ? null : 'specialOffer'}
+        type={isTablet ? null : 'specialOffer'}
         heading={'march sale'}
         headingDescription={'free shipping for orders over $100'}
       />

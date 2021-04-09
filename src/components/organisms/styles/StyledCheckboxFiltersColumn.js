@@ -9,8 +9,8 @@ export const StyledColumn = styled.div`
   @media (max-width: 768px) {
     display: none;
 
-    ${({ isMobile }) =>
-      isMobile &&
+    ${({ isTablet }) =>
+      isTablet &&
       css`
         display: block;
         width: 100%;

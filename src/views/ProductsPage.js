@@ -100,7 +100,7 @@ const ProductsPage = () => {
     false
   );
 
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
@@ -150,19 +150,19 @@ const ProductsPage = () => {
       <StyledProductsPageWrapper>
         <CheckboxFiltersColumn
           onFilteredProducts={filteredProductsHandler}
-          isMobile={mobileFiltersColumnToggle}
+          isTablet={mobileFiltersColumnToggle}
           onMobileClose={handleMobileFiltersColumn}
         />
         {!mobileFiltersColumnToggle && (
           <div>
             <StyledHeadingAndSortingWrapper>
               <Heading
-                type={isMobile ? 'mobile' : 'productsPage'}
+                type={isTablet ? 'mobile' : 'productsPage'}
                 heading={'all products'}
                 headingDescription={'all currently available cleats'}
               />
               <StyledSortingOptionChoice>
-                {isMobile && (
+                {isTablet && (
                   <div>
                     <label htmlFor="size">Filter:</label>
                     <StyledFilterIcon onClick={handleMobileFiltersColumn}>

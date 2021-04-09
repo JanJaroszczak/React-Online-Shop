@@ -12,7 +12,7 @@ SwiperCore.use([Navigation, Pagination, Thumbs]);
 const PhotoCarousel = ({ id }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
@@ -42,7 +42,7 @@ const PhotoCarousel = ({ id }) => {
         {slides}
       </Swiper>
 
-      {!isMobile && (
+      {!isTablet && (
         <Swiper
           id="thumbsProductPage"
           spaceBetween={10}

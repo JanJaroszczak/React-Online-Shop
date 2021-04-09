@@ -19,16 +19,16 @@ const StyledCheckoutPageWrapper = styled.div`
 `;
 
 const CheckoutPage = () => {
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
   return (
     <div>
       <StyledCheckoutPageWrapper>
-        {isMobile && <CartSummary variant="checkout" />}
+        {isTablet && <CartSummary variant="checkout" />}
         <ClientDataForm />
-        {!isMobile && <CartSummary variant="checkout" />}
+        {!isTablet && <CartSummary variant="checkout" />}
       </StyledCheckoutPageWrapper>
     </div>
   );

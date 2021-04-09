@@ -25,14 +25,14 @@ const StyledGridWrapper = styled.div`
 `;
 
 const AuthBeforeCheckoutPage = () => {
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
   return (
     <StyledSignUpPageWrapper>
       <Heading
-        type={isMobile ? 'mobileAuthBeforeCheckout' : 'authBeforeCheckout'}
+        type={isTablet ? 'mobileAuthBeforeCheckout' : 'authBeforeCheckout'}
         heading={'sign up or log in'}
         headingDescription={''}
       />

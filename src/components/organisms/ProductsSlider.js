@@ -11,7 +11,7 @@ import ProductCard from '../molecules/ProductCard';
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const ProductsSlider = () => {
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
@@ -32,7 +32,7 @@ const ProductsSlider = () => {
         // centeredSlides={true}
         // centeredSlidesBounds={true}
         // spaceBetween={10}
-        slidesPerView={isMobile ? 1 : 4}
+        slidesPerView={isTablet ? 1 : 4}
         // autoplay={{ delay: 3000, disableOnInteraction: false }}
         // loop
       >

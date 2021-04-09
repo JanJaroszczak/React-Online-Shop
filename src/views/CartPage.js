@@ -16,14 +16,14 @@ const StyledCartWrapper = styled.div`
 const CartPage = () => {
   const cartCounter = useSelector(({ counter }) => counter);
 
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
   return (
     <StyledCartWrapper>
       <Heading
-        type={isMobile ? 'mobileTopHeading' : 'topHeading'}
+        type={isTablet ? 'mobileTopHeading' : 'topHeading'}
         heading={'CART'}
         headingDescription={`YOU'VE GOT ${cartCounter} PRODUCTS IN YOUR CART`}
       />

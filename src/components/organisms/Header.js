@@ -70,23 +70,23 @@ const StyledButton = styled.button`
 `;
 
 const Header = () => {
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
   const slides = [
     <SwiperSlide
-      style={{ backgroundImage: `url(${isMobile ? img1mobile : img1})` }}
+      style={{ backgroundImage: `url(${isTablet ? img1mobile : img1})` }}
       key={1}
       id="headerPhoto1"
     />,
     <SwiperSlide
-      style={{ backgroundImage: `url(${isMobile ? img2mobile : img2})` }}
+      style={{ backgroundImage: `url(${isTablet ? img2mobile : img2})` }}
       key={2}
       id="headerPhoto2"
     />,
     <SwiperSlide
-      style={{ backgroundImage: `url(${isMobile ? img3mobile : img3})` }}
+      style={{ backgroundImage: `url(${isTablet ? img3mobile : img3})` }}
       key={3}
       id="headerPhoto3"
     />,

@@ -11,7 +11,7 @@ import {
 
 const CheckboxFiltersColumn = ({
   onFilteredProducts,
-  isMobile,
+  isTablet,
   onMobileClose,
 }) => {
   const availableProducts = useSelector(({ products }) => products);
@@ -154,7 +154,7 @@ const CheckboxFiltersColumn = ({
   ]);
 
   return (
-    <StyledColumn isMobile={isMobile}>
+    <StyledColumn isTablet={isTablet}>
       <StyledColumnTitle>FILTER PRODUCTS:</StyledColumnTitle>
       {allCheckboxFiltersToDisplay}
       <StyledPriceFilter>
@@ -180,7 +180,7 @@ const CheckboxFiltersColumn = ({
           }}
         />
       </StyledPriceFilter>
-      {isMobile && (
+      {isTablet && (
         <Button
           type="submit"
           label="apply chosen filters"

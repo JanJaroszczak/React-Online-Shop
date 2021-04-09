@@ -12,7 +12,7 @@ import {
 const CartElementInfo = ({ product, cartModal, searchModal }) => {
   const dispatch = useDispatch();
 
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
@@ -49,7 +49,7 @@ const CartElementInfo = ({ product, cartModal, searchModal }) => {
             onClick={onClickCartModalHandler}
           >
             <h3>
-              {product.productName} {!cartModal && isMobile ? <br /> : null}
+              {product.productName} {!cartModal && isTablet ? <br /> : null}
               (Size: {product.chosenOption.size})
             </h3>
           </StyledLink>

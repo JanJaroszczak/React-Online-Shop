@@ -24,7 +24,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   const [redirectReady, setRedirectReady] = useState(false);
   const [whichButtonPressed, setWhichButtonPressed] = useState('');
 
-  const isMobile = useMediaQuery({
+  const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
@@ -51,7 +51,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
     <div>
       <Heading
         type={
-          isMobile
+          isTablet
             ? 'mobileAuthBeforeCheckoutSubheading'
             : beforeCheckout
             ? 'authBeforeCheckoutSubheading'
