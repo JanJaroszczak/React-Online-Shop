@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { Redirect } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 
 import { routes } from '../../routes';
@@ -12,6 +12,14 @@ import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
+
+const StyledWrapper = styled.div`
+  ${({ beforeCheckout }) =>
+    beforeCheckout &&
+    css`
+      padding: 0 10px;
+    `}
+`;
 
 const StyledError = styled.div`
   margin: 10px 0;
@@ -48,7 +56,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   }, [currentUser]);
 
   return (
-    <div>
+    <StyledWrapper beforeCheckout={beforeCheckout}>
       <Heading
         type={
           isTablet
@@ -60,7 +68,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
         heading={beforeCheckout ? '' : isSignUp ? 'sign up' : 'log in'}
         headingDescription={
           beforeCheckout && isSignUp
-            ? "please fill in your data if you haven't signed up to Cool Cleats yet"
+            ? "please fill in your data if you haven't signed yet"
             : beforeCheckout && !isSignUp
             ? 'please log in if you have your account already'
             : isSignUp
@@ -163,13 +171,13 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
       {isSignUp && whichButtonPressed === 'signup' ? (
         <Alert
           severity="success"
-          message="You have been successfully signed up!"
+          message="You have been signed up!"
           visible={true}
         />
       ) : !isSignUp && whichButtonPressed === 'login' ? (
         <Alert
           severity="success"
-          message="You have been successfully logged in!"
+          message="You have been logged in!"
           visible={true}
         />
       ) : null}
@@ -178,7 +186,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
       ) : !beforeCheckout && redirectReady ? (
         <Redirect to={routes.home} />
       ) : null}
-    </div>
+    </StyledWrapper>
   );
 };
 

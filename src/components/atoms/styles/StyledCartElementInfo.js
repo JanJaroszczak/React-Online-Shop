@@ -28,7 +28,7 @@ export const StyledProductInfo = styled.div`
 
   /* border: 1px solid black; */
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     ${({ cartModal }) =>
       !cartModal &&
       css`
@@ -51,13 +51,17 @@ export const StyledProductInfo = styled.div`
         margin-bottom: 0;
       `}
 
-    @media (max-width: 768px) {
+    @media (max-width: 480px) {
       ${({ cartModal }) =>
         !cartModal &&
         css`
           font-size: ${({ theme }) => theme.fontSizes.xs};
           margin-bottom: 10px;
         `}
+    }
+
+    @media (max-width: 350px) {
+      font-size: ${({ theme }) => theme.fontSizes.xxs};
     }
   }
 
@@ -67,5 +71,9 @@ export const StyledProductInfo = styled.div`
     color: ${({ theme }) => theme.colors.gray};
 
     /* border: 1px solid black; */
+
+    @media (max-width: 350px) {
+      font-size: ${({ theme }) => theme.fontSizes.xxs};
+    }
   }
 `;

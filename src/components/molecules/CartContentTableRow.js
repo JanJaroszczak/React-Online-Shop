@@ -25,8 +25,13 @@ const StyledTableRow = styled.tr`
 
     /* border: 1px solid black; */
 
-    @media (max-width: 768px) {
+    @media (max-width: 480px) {
       grid-template-columns: 100px;
+      grid-template-rows: auto auto;
+    }
+
+    @media (max-width: 350px) {
+      grid-template-columns: 80px;
       grid-template-rows: auto auto;
     }
   }

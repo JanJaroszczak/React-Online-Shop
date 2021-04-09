@@ -101,7 +101,7 @@ const StyledNavLink = styled(NavLink)`
     font-size: ${({ theme }) => theme.fontSizes.m};
 
     ${({ search }) =>
-      search &&
+      search === 'diff' &&
       css`
         font-size: ${({ theme }) => theme.fontSizes.l};
       `}
@@ -114,7 +114,7 @@ const StyledNavRightHandSideWrapper = styled.div`
   display: flex;
   align-items: center;
   font-size: ${({ theme }) => theme.fontSizes.l};
-  padding-right: 20px;
+  padding-right: 10px;
 
   /* border: 1px solid black; */
 
@@ -252,7 +252,7 @@ const Navbar = () => {
           ) : isDesktop ? (
             <i className="fas fa-search" onClick={toggleSearchBarVisiblity}></i>
           ) : (
-            <StyledNavLink to={routes.mobileSearch} search>
+            <StyledNavLink to={routes.mobileSearch} search="diff">
               <i className="fas fa-search"></i>
             </StyledNavLink>
           )}
