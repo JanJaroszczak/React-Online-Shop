@@ -141,8 +141,8 @@ const SearchProductsPopper = () => {
                       index - 1
                     ]
                 ) &&
-                arrayFromProductSearchStringToLowerCase.some((item) =>
-                  item.includes(input)
+                arrayFromProductSearchStringToLowerCase.some(
+                  (item) => input === item.slice(0, input.length)
                 )
               );
             }
