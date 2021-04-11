@@ -24,7 +24,7 @@ const StyledCartSummary = styled.div`
     `}
 
     @media (max-width: 768px) {
-    width: 90vw;
+    width: 80vw;
     margin: 30px auto 0;
   }
 `;

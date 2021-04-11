@@ -31,7 +31,7 @@ const StyledAccountHeading = styled.div`
     color: ${({ theme }) => theme.colors.lightGray};
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     border-right: none;
   }
 `;
@@ -77,7 +77,7 @@ const StyledLink = styled(NavLink)`
     border-right: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     border-right: none;
   }
 `;

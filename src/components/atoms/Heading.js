@@ -99,14 +99,20 @@ const StyledDiv = styled.div`
       margin-top: 30px;
     `}
 
+      ${({ type }) =>
+    type === 'ordersHistory' &&
+    css`
+      margin-top: 30px;
+    `}
+
               ${({ type }) =>
     type === 'passwordChange' &&
     css`
       margin-top: 30px;
       padding-left: 0;
     `} 
-    
-    @media (max-width: 768px) {
+
+  @media (max-width: 768px) {
     margin: 30px 0;
     padding: 0;
     text-align: center;
@@ -132,7 +138,39 @@ const StyledDiv = styled.div`
         padding-top: 30px;
         padding-left: 0;
       `}
-  } ;
+
+        ${({ type }) =>
+      type === 'ordersHistory' &&
+      css`
+        margin-top: 30px;
+        padding-left: 80px;
+        text-align: left;
+      `}
+
+                 ${({ type }) =>
+      type === 'passwordChange' &&
+      css`
+        margin-top: 30px;
+        padding-left: 0;
+        text-align: left;
+      `}
+  }
+
+  @media (max-width: 600px) {
+    ${({ type }) =>
+      type === 'ordersHistory' &&
+      css`
+        margin: 30px 0;
+        padding: 0;
+        text-align: center;
+      `}
+
+    ${({ type }) =>
+      type === 'passwordChange' &&
+      css`
+        text-align: center;
+      `}
+  }
 `;
 
 const StyledHeading = styled.h2`
@@ -144,12 +182,7 @@ const StyledHeading = styled.h2`
     (type === 'productPage' &&
       css`
         font-size: ${({ theme }) => theme.fontSizes.xxl};
-      `)}/* ${({ type }) =>
-    type === 'authBeforeCheckout' &&
-    css`
-      /* margin: 0; */
-      /* margin-top: 30px; */
-    `} */
+      `)}
 `;
 
 const StyledHeadingDescription = styled.h3`

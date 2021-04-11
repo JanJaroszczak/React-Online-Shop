@@ -8,6 +8,15 @@ import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
 
+const StyledInputsWrapper = styled.div`
+  @media (max-width: 600px) {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  /* border: 1px solid black; */
+`;
+
 const StyledError = styled.div`
   margin: 5px 0;
   font-size: ${({ theme }) => theme.fontSizes.xs};
@@ -96,41 +105,43 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
       >
         {({ values, handleChange }) => (
           <Form>
-            <Input
-              variant="passwordChange"
-              type="password"
-              name="userOldPassword"
-              label="*Old password:"
-              placeholder="Type your old password"
-              value={values.userOldPassword}
-              onChangeHandler={handleChange}
-            />
-            <StyledError
-              style={{ visibility: `${oldPasswordErrorVisibility}` }}
-            >
-              {oldPasswordError}
-            </StyledError>
+            <StyledInputsWrapper>
+              <Input
+                variant="passwordChange"
+                type="password"
+                name="userOldPassword"
+                label="*Old password:"
+                placeholder="Type your old password"
+                value={values.userOldPassword}
+                onChangeHandler={handleChange}
+              />
+              <StyledError
+                style={{ visibility: `${oldPasswordErrorVisibility}` }}
+              >
+                {oldPasswordError}
+              </StyledError>
 
-            <Input
-              variant="passwordChange"
-              type="password"
-              name="userNewPassword"
-              label="*New password:"
-              placeholder="Type your new password"
-              value={values.userNewPassword}
-              onChangeHandler={handleChange}
-            />
-            <StyledError
-              style={{ visibility: `${newPasswordErrorVisibility}` }}
-            >
-              {newPasswordError}
-            </StyledError>
+              <Input
+                variant="passwordChange"
+                type="password"
+                name="userNewPassword"
+                label="*New password:"
+                placeholder="Type your new password"
+                value={values.userNewPassword}
+                onChangeHandler={handleChange}
+              />
+              <StyledError
+                style={{ visibility: `${newPasswordErrorVisibility}` }}
+              >
+                {newPasswordError}
+              </StyledError>
 
-            <Button
-              variant="passwordChange"
-              type="submit"
-              label="Change Password"
-            />
+              <Button
+                variant="passwordChange"
+                type="submit"
+                label="Change Password"
+              />
+            </StyledInputsWrapper>
           </Form>
         )}
       </Formik>

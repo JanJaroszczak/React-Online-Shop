@@ -9,7 +9,7 @@ const StyledOrdersHistoryWrapper = styled.div`
   margin: 0 auto;
   padding: 0 20px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     padding: 0;
   }
 `;
@@ -18,7 +18,7 @@ const OrdersHistory = () => {
   return (
     <StyledOrdersHistoryWrapper>
       <Heading
-        type={'orderSummary'}
+        type={'ordersHistory'}
         heading={'ORDERS HISTORY'}
         headingDescription={``}
       />

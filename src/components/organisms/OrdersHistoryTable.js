@@ -4,10 +4,14 @@ import styled from 'styled-components';
 
 import OrdersHistoryTableRow from '../molecules/OrdersHistoryTableRow';
 
-const StyledTable = styled.table`
+const StyledOrdersHistoryTable = styled.table`
   display: grid;
   border-collapse: collapse;
   grid-template-columns: minmax(300px, 1fr) minmax(250px, auto);
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto 1fr;
+  }
 
   thead,
   tbody,
@@ -22,6 +26,10 @@ const StyledTable = styled.table`
     white-space: nowrap;
 
     /* border: 1px solid black; */
+
+    @media (max-width: 300px) {
+      padding: 10px;
+    }
   }
 
   th {
@@ -34,16 +42,16 @@ const StyledTable = styled.table`
     color: ${({ theme }) => theme.colors.gray};
 
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+
+    @media (max-width: 380px) {
+      font-size: ${({ theme }) => theme.fontSizes.xxs};
+    }
   }
 
   td {
     padding-top: 10px;
     padding-bottom: 10px;
     color: #808080;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: auto 1fr;
   }
 `;
 
@@ -108,7 +116,7 @@ const OrdersHistoryTable = () => {
 
   return (
     <>
-      <StyledTable>
+      <StyledOrdersHistoryTable>
         <thead>
           <tr>
             <th>ORDER DATE</th>
@@ -132,7 +140,7 @@ const OrdersHistoryTable = () => {
             ordersHistoryRows
           )}
         </tbody>
-      </StyledTable>
+      </StyledOrdersHistoryTable>
     </>
   );
 };

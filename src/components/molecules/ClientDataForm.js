@@ -12,6 +12,7 @@ import {
   StyledErrorWrapper,
   StyledTermsWrapper,
   StyledCheckboxLabel,
+  StyledClientDataInputsWrapper,
 } from './styles/StyledContactForm';
 import { useSelector } from 'react-redux';
 import QuestionModal from '../organisms/QuestionModal';
@@ -189,85 +190,87 @@ const ClientDataForm = () => {
           >
             {({ values, handleChange }) => (
               <Form>
-                <Input
-                  type="text"
-                  name="userName"
-                  label="*Name:"
-                  placeholder="Type your name"
-                  value={values.userName}
-                  onChangeHandler={handleChange}
-                />
-                <Input
-                  type="text"
-                  name="userSurname"
-                  label="*Surname:"
-                  placeholder="Type your surname"
-                  value={values.userSurname}
-                  onChangeHandler={handleChange}
-                />
-                <Input
-                  type="email"
-                  name="userEmail"
-                  label="*Email:"
-                  placeholder="Type your email"
-                  value={values.userEmail}
-                  onChangeHandler={handleChange}
-                />
-                <Input
-                  type="text"
-                  name="userStreet"
-                  label="*Street:"
-                  placeholder="Type your street"
-                  value={values.userStreet}
-                  onChangeHandler={handleChange}
-                />
-                <Input
-                  type="text"
-                  name="userZipCode"
-                  label="*Zip code:"
-                  placeholder="Type your zip code"
-                  value={values.userZipCode}
-                  onChangeHandler={handleChange}
-                />
-                <Input
-                  type="text"
-                  name="userCity"
-                  label="*City:"
-                  placeholder="Type your city"
-                  value={values.userCity}
-                  onChangeHandler={handleChange}
-                />
-                <Input
-                  type="text"
-                  name="userPhone"
-                  label="*Phone number:"
-                  placeholder="Type your phone number"
-                  value={values.userPhone}
-                  onChangeHandler={handleChange}
-                />
-                <StyledTermsWrapper>
-                  <input
-                    style={{ width: '20px', height: '20px' }}
-                    id="terms"
-                    type="checkbox"
-                    name="acceptTerms"
-                    value={values.acceptTerms}
-                    onChange={handleChange}
+                <StyledClientDataInputsWrapper>
+                  <Input
+                    type="text"
+                    name="userName"
+                    label="*Name:"
+                    placeholder="Type your name"
+                    value={values.userName}
+                    onChangeHandler={handleChange}
                   />
-                  <StyledCheckboxLabel htmlFor={'terms'}>
-                    Accept Terms and Conditions
-                  </StyledCheckboxLabel>
-                  <StyledErrorWrapper>
-                    <ErrorMessage name="acceptTerms" />
-                  </StyledErrorWrapper>
-                </StyledTermsWrapper>
-                {checkout ? (
-                  <PayPal />
-                ) : (
-                  <Button type="submit" label="payment" />
-                )}
-                {/* <Button type="submit" label="payment" />
+                  <Input
+                    type="text"
+                    name="userSurname"
+                    label="*Surname:"
+                    placeholder="Type your surname"
+                    value={values.userSurname}
+                    onChangeHandler={handleChange}
+                  />
+                  <Input
+                    type="email"
+                    name="userEmail"
+                    label="*Email:"
+                    placeholder="Type your email"
+                    value={values.userEmail}
+                    onChangeHandler={handleChange}
+                  />
+                  <Input
+                    type="text"
+                    name="userStreet"
+                    label="*Street:"
+                    placeholder="Type your street"
+                    value={values.userStreet}
+                    onChangeHandler={handleChange}
+                  />
+                  <Input
+                    type="text"
+                    name="userZipCode"
+                    label="*Zip code:"
+                    placeholder="Type your zip code"
+                    value={values.userZipCode}
+                    onChangeHandler={handleChange}
+                  />
+                  <Input
+                    type="text"
+                    name="userCity"
+                    label="*City:"
+                    placeholder="Type your city"
+                    value={values.userCity}
+                    onChangeHandler={handleChange}
+                  />
+                  <Input
+                    type="text"
+                    name="userPhone"
+                    label="*Phone number:"
+                    placeholder="Type your phone number"
+                    value={values.userPhone}
+                    onChangeHandler={handleChange}
+                  />
+                  <StyledTermsWrapper>
+                    <input
+                      style={{ width: '20px', height: '20px' }}
+                      id="terms"
+                      type="checkbox"
+                      name="acceptTerms"
+                      value={values.acceptTerms}
+                      onChange={handleChange}
+                    />
+                    <StyledCheckboxLabel htmlFor={'terms'}>
+                      Accept Terms and Conditions
+                    </StyledCheckboxLabel>
+                    <StyledErrorWrapper>
+                      <ErrorMessage name="acceptTerms" />
+                    </StyledErrorWrapper>
+                  </StyledTermsWrapper>
+                  {checkout ? (
+                    <PayPal />
+                  ) : (
+                    <Button type="submit" label="payment" />
+                  )}
+                  {/* <Button type="submit" label="payment" />
               {checkout && <PayPal />} */}
+                </StyledClientDataInputsWrapper>
               </Form>
             )}
           </Formik>

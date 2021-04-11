@@ -26,6 +26,15 @@ export const StyledInputWrapper = styled.div`
   /* border: 1px solid black; */
 `;
 
+export const StyledClientDataInputsWrapper = styled.div`
+  @media (max-width: 768px) {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  /* border: 1px solid black; */
+`;
+
 export const StyledErrorWrapper = styled.div`
   position: absolute;
   bottom: -17px;

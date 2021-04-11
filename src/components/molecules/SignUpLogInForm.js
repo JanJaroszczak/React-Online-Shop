@@ -14,11 +14,22 @@ import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
 
 const StyledWrapper = styled.div`
+  /* border: 1px solid black; */
+
   ${({ beforeCheckout }) =>
     beforeCheckout &&
     css`
       padding: 0 10px;
     `}
+`;
+
+const StyledInputsWrapper = styled.div`
+  @media (max-width: 768px) {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  /* border: 1px solid black; */
 `;
 
 const StyledError = styled.div`
@@ -59,7 +70,9 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
     <StyledWrapper beforeCheckout={beforeCheckout}>
       <Heading
         type={
-          isTablet
+          isTablet && !beforeCheckout
+            ? 'mobileTopHeading'
+            : isTablet
             ? 'mobileAuthBeforeCheckoutSubheading'
             : beforeCheckout
             ? 'authBeforeCheckoutSubheading'
@@ -134,37 +147,39 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
       >
         {({ values, handleChange }) => (
           <Form>
-            {isSignUp && (
+            <StyledInputsWrapper>
+              {isSignUp && (
+                <Input
+                  id="userName"
+                  type="text"
+                  name="userName"
+                  label="*Name:"
+                  placeholder="Type your name"
+                  value={values.userName}
+                  onChangeHandler={handleChange}
+                />
+              )}
               <Input
-                id="userName"
-                type="text"
-                name="userName"
-                label="*Name:"
-                placeholder="Type your name"
-                value={values.userName}
+                id={`userEmail${isSignUp ? 'onSignUp' : 'onLogIn'}`}
+                type="email"
+                name="userEmail"
+                label="*Email:"
+                placeholder="Type your email"
+                value={values.userEmail}
                 onChangeHandler={handleChange}
               />
-            )}
-            <Input
-              id={`userEmail${isSignUp ? 'onSignUp' : 'onLogIn'}`}
-              type="email"
-              name="userEmail"
-              label="*Email:"
-              placeholder="Type your email"
-              value={values.userEmail}
-              onChangeHandler={handleChange}
-            />
-            <Input
-              id={`userPassword${isSignUp ? 'onSignUp' : 'onLogIn'}`}
-              type="password"
-              name="userPassword"
-              label={isSignUp ? '*Choose your password:' : '*Password:'}
-              placeholder="Type your password"
-              value={values.userPassword}
-              onChangeHandler={handleChange}
-            />
-            <Button type="submit" label={isSignUp ? 'Sign Up' : 'Log In'} />
-            <StyledError>{logInError}</StyledError>
+              <Input
+                id={`userPassword${isSignUp ? 'onSignUp' : 'onLogIn'}`}
+                type="password"
+                name="userPassword"
+                label={isSignUp ? '*Choose your password:' : '*Password:'}
+                placeholder="Type your password"
+                value={values.userPassword}
+                onChangeHandler={handleChange}
+              />
+              <Button type="submit" label={isSignUp ? 'Sign Up' : 'Log In'} />
+              <StyledError>{logInError}</StyledError>
+            </StyledInputsWrapper>
           </Form>
         )}
       </Formik>

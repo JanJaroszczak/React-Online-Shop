@@ -42,6 +42,10 @@ const StyledTable = styled.table`
     font-size: ${({ theme }) => theme.fontSizes.s};
     color: black;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+
+    @media (max-width: 350px) {
+      font-size: ${({ theme }) => theme.fontSizes.xxs};
+    }
   }
 
   td {
@@ -75,7 +79,7 @@ const StyledTable = styled.table`
   }
 
   @media (max-width: 350px) {
-    grid-template-columns: 1fr 80px 85px;
+    grid-template-columns: 1fr 80px 75px;
   }
 `;
 

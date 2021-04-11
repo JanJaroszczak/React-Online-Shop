@@ -26,7 +26,7 @@ const StyledWrapper = styled.div`
 
 const MainTemplate = ({ children }) => {
   const isDesktopNavbar = useMediaQuery({
-    query: '(min-width: 750px)',
+    query: '(min-width: 751px)',
   });
 
   return (

@@ -9,7 +9,9 @@ const StyledPasswordChangeWrapper = styled.div`
   margin: 0 auto;
   padding: 0 40px;
 
-  @media (max-width: 768px) {
+  /* border: 1px solid black; */
+
+  @media (max-width: 600px) {
     padding: 0;
   }
 `;
