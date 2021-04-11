@@ -33,7 +33,7 @@ const AuthBeforeCheckoutPage = () => {
     <StyledSignUpPageWrapper>
       <Heading
         type={isTablet ? 'mobileAuthBeforeCheckout' : 'authBeforeCheckout'}
-        heading={'sign up or log in'}
+        heading={'log in or sign up '}
         headingDescription={''}
       />
       <StyledGridWrapper>
