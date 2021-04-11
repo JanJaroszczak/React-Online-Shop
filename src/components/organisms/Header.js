@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { useMediaQuery } from 'react-responsive';
+import { useSelector } from 'react-redux';
 import './styles/stylesHeader.css';
 
 import img1 from '../../assets/images/header1.jpg';
@@ -70,6 +71,8 @@ const StyledButton = styled.button`
 `;
 
 const Header = () => {
+  const isSearchPanelOn = useSelector(({ isSearchPanelOn }) => isSearchPanelOn);
+
   const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
@@ -104,6 +107,7 @@ const Header = () => {
         slidesPerView={1}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop
+        style={isSearchPanelOn ? { zIndex: '-1' } : null} //without this temporary change useOnClickOutside for Search Popper won't work
       >
         {slides}
         <StyledHeadingWrapper>
