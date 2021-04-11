@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { toggleSearchPanel } from '../../actions';
 import CartElementInfo from '../atoms/CartElementInfo';
 import { useDispatch } from 'react-redux';
@@ -20,6 +20,14 @@ const CartModalElement = ({
 }) => {
   const dispatch = useDispatch();
 
+  const popperRef = useRef(null);
+
+  useEffect(() => {
+    if (cursor === index) {
+      popperRef.current.focus();
+    }
+  }, [cursor]);
+
   const onClickSearchPanelHandler = () => {
     dispatch(toggleSearchPanel());
   };
@@ -31,13 +39,12 @@ const CartModalElement = ({
           className={`${index === cursor ? 'active' : ''}`}
           onMouseEnter={() => setHovered(index)}
           onMouseLeave={() => setHovered(undefined)}
-          onMouseEnter={() => setHovered(index)}
-          onMouseLeave={() => setHovered(undefined)}
           searchModal={searchModal}
         >
           <StyledLink
             onClick={onClickSearchPanelHandler}
             to={`/product/${product.productId}`}
+            ref={popperRef}
           >
             <StyledCartElementWrapper>
               <CartElementInfo product={product} searchModal={searchModal} />
