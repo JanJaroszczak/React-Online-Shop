@@ -147,6 +147,7 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
       </Formik>
       {isSuccessAlert && (
         <Alert
+          variant="passwordChange"
           severity="success"
           message="Password succesfully changed!"
           visible={true}

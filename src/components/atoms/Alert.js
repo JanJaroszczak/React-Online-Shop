@@ -28,6 +28,16 @@ const StyledAlert = styled.div`
     css`
       margin-top: 93px;
     `}
+
+      @media (max-width: 768px) {
+    text-align: center;
+
+    ${({ variant }) =>
+      variant === 'passwordChange' &&
+      css`
+        text-align: left;
+      `}
+  } ;
 `;
 
 const Alert = ({ severity, message, visible, variant }) => {
