@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../themes/mainTheme';
 import styled from 'styled-components';
 import ScrollUpButton from 'react-scroll-up-button';
+import useOnClickOutside from '../hoc/useOnClickOutside';
 
 import GlobalStyle from '../globalStyles/GlobalStyles';
 import Navbar from '../components/organisms/navigations/Navbar';
@@ -25,6 +26,18 @@ const StyledWrapper = styled.div`
 `;
 
 const MainTemplate = ({ children }) => {
+  const [mobileMenuOn, setMobileMenuOn] = useState(false);
+  const outsideClickRef = useRef();
+
+  useOnClickOutside(outsideClickRef, () => {
+    console.log('outside click');
+    if (mobileMenuOn) setMobileMenuOn(false);
+  });
+
+  const onMobileMenuChangeHandler = () => {
+    setMobileMenuOn(true);
+  };
+
   const isDesktopNavbar = useMediaQuery({
     query: '(min-width: 751px)',
   });
@@ -33,11 +46,18 @@ const MainTemplate = ({ children }) => {
     <>
       <GlobalStyle />
       <ThemeProvider theme={mainTheme}>
-        {isDesktopNavbar ? <Navbar /> : <NavbarMobile />}
+        {isDesktopNavbar ? (
+          <Navbar />
+        ) : (
+          <div ref={outsideClickRef}>
+            <NavbarMobile
+              mobileMenuOn={mobileMenuOn}
+              onMobileMenuChange={onMobileMenuChangeHandler}
+            />
+          </div>
+        )}
         <StyledWrapper>
-          {/* <Navbar /> */}
           <CartModal />
-          {/* To co ma widok */}
           {children}
         </StyledWrapper>
         <ScrollUpButton

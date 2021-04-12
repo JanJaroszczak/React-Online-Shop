@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -198,7 +198,7 @@ const StyledAccountNavLink = styled(NavLink)`
   }
 `;
 
-const NavbarMobile = () => {
+const NavbarMobile = ({ mobileMenuOn, onMobileMenuChange }) => {
   const [menuToggle, setMenuToggle] = useState(false);
 
   const dispatch = useDispatch();
@@ -214,11 +214,20 @@ const NavbarMobile = () => {
   const handleMenuClick = () => {
     setMenuToggle((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    onMobileMenuChange();
+  }, [menuToggle]);
+
+  useEffect(() => {
+    setMenuToggle(false);
+  }, [mobileMenuOn]);
+
   return (
     <>
       <StyledMobileNavbar>
         <StyledLogo>
-          <Link to={routes.home}>
+          <Link to={routes.home} onClick={() => setMenuToggle(false)}>
             <img src={logo} alt="Logo" />
           </Link>
         </StyledLogo>
