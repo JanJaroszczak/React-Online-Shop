@@ -1,12 +1,12 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { routes } from '../../../routes';
 import styled, { css } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
+import { setCartOpen, toggleSearchPanel } from '../../../actions';
 
 import logo from '../../../assets/images/logo3.png';
-import { setCartOpen, toggleSearchPanel } from '../../../actions';
 import SearchProductsPopper from '../../molecules/SearchProductsPopper';
 import useOnClickOutside from '../../../hoc/useOnClickOutside';
 
@@ -202,7 +202,7 @@ const StyledAccountNavLink = styled(NavLink)`
 `;
 
 const Navbar = () => {
-  const ref = useRef();
+  const outsideClickRef = useRef();
   const dispatch = useDispatch();
 
   const cartCounter = useSelector(({ counter }) => counter);
@@ -214,7 +214,7 @@ const Navbar = () => {
   });
 
   // Call hook passing in the ref and a function to call on outside click
-  useOnClickOutside(ref, () => dispatch(toggleSearchPanel()));
+  useOnClickOutside(outsideClickRef, () => dispatch(toggleSearchPanel()));
 
   const toggleSearchBarVisiblity = () => {
     dispatch(toggleSearchPanel());
@@ -243,7 +243,7 @@ const Navbar = () => {
         </StyledUl>
         <StyledNavRightHandSideWrapper>
           {isSearchPanelOn ? (
-            <div ref={ref}>
+            <div ref={outsideClickRef}>
               <SearchProductsPopper />
               <StyledAdjustedIcon
                 className="fas fa-times"
@@ -286,35 +286,5 @@ const Navbar = () => {
     </StyledNav>
   );
 };
-
-// const useOnClickOutside = (ref, handler) => {
-//   useEffect(
-//     () => {
-//       const listener = (event) => {
-//         // Do nothing if clicking ref's element or descendent elements
-//         if (!ref.current || ref.current.contains(event.target)) {
-//           return;
-//         }
-
-//         handler(event);
-//       };
-
-//       document.addEventListener('mousedown', listener);
-//       // document.addEventListener('touchstart', listener);
-
-//       return () => {
-//         document.removeEventListener('mousedown', listener);
-//         // document.removeEventListener('touchstart', listener);
-//       };
-//     },
-//     // Add ref and handler to effect dependencies
-//     // It's worth noting that because passed in handler is a new ...
-//     // ... function on every render that will cause this effect ...
-//     // ... callback/cleanup to run every render. It's not a big deal ...
-//     // ... but to optimize you can wrap handler in useCallback before ...
-//     // ... passing it into this hook.
-//     [ref, handler]
-//   );
-// };
 
 export default Navbar;
