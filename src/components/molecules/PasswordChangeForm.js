@@ -32,6 +32,14 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
   const [newPasswordErrorVisibility, setNewPasswordErrorVisibility] = useState(
     'hidden'
   );
+  const [
+    newPasswordConfirmationError,
+    setNewPasswordConfirmationError,
+  ] = useState('-');
+  const [
+    newPasswordConfirmationErrorVisibility,
+    setNewPasswordConfirmationErrorVisibility,
+  ] = useState('hidden');
 
   const [isSuccessAlert, setIsSuccessAlert] = useState(false);
 
@@ -50,6 +58,7 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
         initialValues={{
           userOldPassword: '',
           userNewPassword: '',
+          userNewPasswordConfirmation: '',
         }}
         onSubmit={(values, { resetForm }) => {
           console.log(values);
@@ -57,8 +66,13 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
 
           setOldPasswordErrorVisibility('hidden');
           setNewPasswordErrorVisibility('hidden');
+          setNewPasswordConfirmationErrorVisibility('hidden');
 
-          const { userOldPassword, userNewPassword } = values;
+          const {
+            userOldPassword,
+            userNewPassword,
+            userNewPasswordConfirmation,
+          } = values;
 
           const user = auth.currentUser;
           const credential = firebase.auth.EmailAuthProvider.credential(
@@ -72,32 +86,94 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
             .reauthenticateWithCredential(credential)
             .then(() => {
               console.log('reauth ok');
-              user
-                .updatePassword(userNewPassword)
-                .then(() => {
-                  console.log('change password ok');
-                  setIsSuccessAlert(true);
-                })
-                .catch((error) => {
-                  console.log('change password error');
-                  if (userNewPassword) setNewPasswordError(error.message);
-                  else setNewPasswordError('Please enter a new password.');
-                  setNewPasswordErrorVisibility('visible');
-                });
+              if (
+                userNewPassword === userNewPasswordConfirmation &&
+                userNewPassword !== userOldPassword
+              ) {
+                user
+                  .updatePassword(userNewPassword)
+                  .then(() => {
+                    console.log('change password ok');
+                    setIsSuccessAlert(true);
+                  })
+                  .catch((error) => {
+                    console.log('change password error');
+                    if (userNewPassword) setNewPasswordError(error.message);
+                    else setNewPasswordError('Please enter a new password.');
+                    setNewPasswordErrorVisibility('visible');
+                  });
+              } else if (
+                userNewPassword === userNewPasswordConfirmation &&
+                userNewPassword === userOldPassword
+              ) {
+                setNewPasswordError(
+                  'Your new password must be different than the old one.'
+                );
+                setNewPasswordErrorVisibility('visible');
+              } else if (
+                userNewPassword &&
+                userNewPasswordConfirmation &&
+                userNewPassword !== userNewPasswordConfirmation
+              ) {
+                setNewPasswordError(
+                  "Your new password doesn't match its confirmation."
+                );
+                setNewPasswordErrorVisibility('visible');
+              } else if (!userNewPassword && userNewPasswordConfirmation) {
+                setNewPasswordError('Please enter a new password twice.');
+                setNewPasswordErrorVisibility('visible');
+              } else if (userNewPassword && !userNewPasswordConfirmation) {
+                setNewPasswordConfirmationError(
+                  'Please enter a new password twice.'
+                );
+                setNewPasswordConfirmationErrorVisibility('visible');
+              }
             })
             .catch((error) => {
               console.log('reauth error');
-              if (userOldPassword) setOldPasswordError(error.message);
-              else if (!userOldPassword && userNewPassword) {
+              if (userOldPassword) {
+                setOldPasswordError(error.message);
+              } else if (!userOldPassword) {
                 setOldPasswordError('Please enter your old password.');
-              } else {
-                setOldPasswordError('Please enter your old password.');
-                setOldPasswordErrorVisibility('visible');
-
-                setNewPasswordError('Please enter a new password.');
-                setNewPasswordErrorVisibility('visible');
               }
               setOldPasswordErrorVisibility('visible');
+
+              if (
+                userNewPassword &&
+                userNewPasswordConfirmation &&
+                userNewPassword !== userNewPasswordConfirmation
+              ) {
+                setNewPasswordError(
+                  "Your new password doesn't match its confirmation."
+                );
+                setNewPasswordErrorVisibility('visible');
+              } else if (!userNewPassword && userNewPasswordConfirmation) {
+                setNewPasswordError('Please enter a new password twice.');
+                setNewPasswordErrorVisibility('visible');
+              } else if (userNewPassword && !userNewPasswordConfirmation) {
+                setNewPasswordConfirmationError(
+                  'Please enter a new password twice.'
+                );
+                setNewPasswordConfirmationErrorVisibility('visible');
+              }
+
+              //   else if (
+              //     !userOldPassword &&
+              //     userNewPassword &&
+              //     userNewPasswordConfirmation &&
+              //     userNewPassword === userNewPasswordConfirmation
+              //   ) {
+              //     setOldPasswordError('Please enter your old password.');
+              //   } else if (!userOldPassword) {
+              //   }
+
+              // {
+              //   setOldPasswordError('Please enter your old password.');
+              //   setOldPasswordErrorVisibility('visible');
+
+              //   setNewPasswordError('Please enter a new password.');
+              //   setNewPasswordErrorVisibility('visible');
+              // }
             });
 
           resetForm();
@@ -134,6 +210,23 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
                 style={{ visibility: `${newPasswordErrorVisibility}` }}
               >
                 {newPasswordError}
+              </StyledError>
+
+              <Input
+                variant="passwordChange"
+                type="password"
+                name="userNewPasswordConfirmation"
+                label="*New password confirmation:"
+                placeholder="Type your new password confirmation"
+                value={values.userNewPasswordConfirmation}
+                onChangeHandler={handleChange}
+              />
+              <StyledError
+                style={{
+                  visibility: `${newPasswordConfirmationErrorVisibility}`,
+                }}
+              >
+                {newPasswordConfirmationError}
               </StyledError>
 
               <Button
