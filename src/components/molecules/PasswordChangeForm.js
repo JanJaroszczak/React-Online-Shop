@@ -52,6 +52,33 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
     };
   }, [isSuccessAlert]);
 
+  const commonNewPasswordCheck = (
+    userNewPassword,
+    userNewPasswordConfirmation
+  ) => {
+    if (
+      userNewPassword &&
+      userNewPasswordConfirmation &&
+      userNewPassword !== userNewPasswordConfirmation
+    ) {
+      setNewPasswordError("Your new password doesn't match its confirmation.");
+      setNewPasswordErrorVisibility('visible');
+    } else if (!userNewPassword && !userNewPasswordConfirmation) {
+      setNewPasswordError('Please enter a new password.');
+      setNewPasswordErrorVisibility('visible');
+      setNewPasswordConfirmationError(
+        'Please enter a new password confirmation.'
+      );
+      setNewPasswordConfirmationErrorVisibility('visible');
+    } else if (!userNewPassword && userNewPasswordConfirmation) {
+      setNewPasswordError('Please enter a new password twice.');
+      setNewPasswordErrorVisibility('visible');
+    } else if (userNewPassword && !userNewPasswordConfirmation) {
+      setNewPasswordConfirmationError('Please enter a new password twice.');
+      setNewPasswordConfirmationErrorVisibility('visible');
+    }
+  };
+
   return (
     <div>
       <Formik
@@ -98,7 +125,8 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
                   })
                   .catch((error) => {
                     console.log('change password error');
-                    if (userNewPassword) setNewPasswordError(error.message);
+                    if (userNewPassword)
+                      setNewPasswordError(`${error.message}.`);
                     else setNewPasswordError('Please enter a new password.');
                     setNewPasswordErrorVisibility('visible');
                   });
@@ -110,24 +138,12 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
                   'Your new password must be different than the old one.'
                 );
                 setNewPasswordErrorVisibility('visible');
-              } else if (
-                userNewPassword &&
-                userNewPasswordConfirmation &&
-                userNewPassword !== userNewPasswordConfirmation
-              ) {
-                setNewPasswordError(
-                  "Your new password doesn't match its confirmation."
-                );
-                setNewPasswordErrorVisibility('visible');
-              } else if (!userNewPassword && userNewPasswordConfirmation) {
-                setNewPasswordError('Please enter a new password twice.');
-                setNewPasswordErrorVisibility('visible');
-              } else if (userNewPassword && !userNewPasswordConfirmation) {
-                setNewPasswordConfirmationError(
-                  'Please enter a new password twice.'
-                );
-                setNewPasswordConfirmationErrorVisibility('visible');
               }
+
+              commonNewPasswordCheck(
+                userNewPassword,
+                userNewPasswordConfirmation
+              );
             })
             .catch((error) => {
               console.log('reauth error');
@@ -138,42 +154,10 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
               }
               setOldPasswordErrorVisibility('visible');
 
-              if (
-                userNewPassword &&
-                userNewPasswordConfirmation &&
-                userNewPassword !== userNewPasswordConfirmation
-              ) {
-                setNewPasswordError(
-                  "Your new password doesn't match its confirmation."
-                );
-                setNewPasswordErrorVisibility('visible');
-              } else if (!userNewPassword && userNewPasswordConfirmation) {
-                setNewPasswordError('Please enter a new password twice.');
-                setNewPasswordErrorVisibility('visible');
-              } else if (userNewPassword && !userNewPasswordConfirmation) {
-                setNewPasswordConfirmationError(
-                  'Please enter a new password twice.'
-                );
-                setNewPasswordConfirmationErrorVisibility('visible');
-              }
-
-              //   else if (
-              //     !userOldPassword &&
-              //     userNewPassword &&
-              //     userNewPasswordConfirmation &&
-              //     userNewPassword === userNewPasswordConfirmation
-              //   ) {
-              //     setOldPasswordError('Please enter your old password.');
-              //   } else if (!userOldPassword) {
-              //   }
-
-              // {
-              //   setOldPasswordError('Please enter your old password.');
-              //   setOldPasswordErrorVisibility('visible');
-
-              //   setNewPasswordError('Please enter a new password.');
-              //   setNewPasswordErrorVisibility('visible');
-              // }
+              commonNewPasswordCheck(
+                userNewPassword,
+                userNewPasswordConfirmation
+              );
             });
 
           resetForm();
