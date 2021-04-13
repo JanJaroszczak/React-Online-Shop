@@ -8,6 +8,7 @@ import OrdersHistory from '../components/organisms/OrdersHistory';
 import SingleOrderHistory from '../components/organisms/SingleOrderHistory';
 import { routes } from '../routes';
 import PasswordChange from '../components/organisms/PasswordChange';
+import AccountDetails from '../components/organisms/AccountDetails';
 
 const StyledAccountPageWrapper = styled.div`
   display: grid;
@@ -49,6 +50,7 @@ const AccountPage = ({ history, match }) => {
           />
         )}
         {match.url === routes.passwordChange && <PasswordChange />}
+        {match.url === routes.accountDetails && <AccountDetails />}
       </div>
       {isCurrentUserChecked && !currentUser && <Redirect to={routes.home} />}
     </StyledAccountPageWrapper>

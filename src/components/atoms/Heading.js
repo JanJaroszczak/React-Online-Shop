@@ -100,7 +100,7 @@ const StyledDiv = styled.div`
     `}
 
       ${({ type }) =>
-    type === 'ordersHistory' &&
+    type === 'accountPageWithoutSubheading' &&
     css`
       margin-top: 30px;
     `}
@@ -140,7 +140,7 @@ const StyledDiv = styled.div`
       `}
 
         ${({ type }) =>
-      type === 'ordersHistory' &&
+      type === 'accountPageWithoutSubheading' &&
       css`
         margin-top: 30px;
         padding-left: 80px;
@@ -158,7 +158,7 @@ const StyledDiv = styled.div`
 
   @media (max-width: 600px) {
     ${({ type }) =>
-      type === 'ordersHistory' &&
+      type === 'accountPageWithoutSubheading' &&
       css`
         margin: 30px 0;
         padding: 0;

@@ -18,7 +18,7 @@ const OrdersHistory = () => {
   return (
     <StyledOrdersHistoryWrapper>
       <Heading
-        type={'ordersHistory'}
+        type={'accountPageWithoutSubheading'}
         heading={'ORDERS HISTORY'}
         headingDescription={``}
       />

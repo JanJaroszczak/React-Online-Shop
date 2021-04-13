@@ -36,6 +36,12 @@ const StyledInput = styled.input`
       margin-bottom: 0;
     `}
 
+  ${({ readOnly }) =>
+    readOnly &&
+    css`
+      color: ${({ theme }) => theme.colors.gray};
+    `}
+
   @media (max-width: 768px) {
     width: 100%;
     max-width: 250px;
@@ -71,6 +77,8 @@ const Input = ({
   value,
   multiple,
   onChangeHandler,
+  readOnly,
+  required,
 }) => {
   return (
     <StyledInputWrapper>
@@ -84,6 +92,8 @@ const Input = ({
         value={value}
         multiple={multiple}
         onChange={onChangeHandler}
+        readOnly={readOnly}
+        required={required}
       />
       <StyledErrorWrapper>
         <ErrorMessage name={name} />
