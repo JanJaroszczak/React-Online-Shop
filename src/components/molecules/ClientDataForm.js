@@ -26,7 +26,10 @@ const contactValidationSchema = Yup.object().shape({
   userZipCode: Yup.string().required('Enter your zip code!'),
   userCity: Yup.string().required('Enter your city!'),
   userPhone: Yup.string().required('Enter your phone number!'),
-  acceptTerms: Yup.bool().oneOf([true], 'You must accept terms!'),
+  acceptTerms: Yup.bool().oneOf(
+    [true],
+    'You need to accept Terms and Conditions!'
+  ),
 });
 
 const StyledCheckoutWrapper = styled.div`

@@ -20,7 +20,10 @@ const contactValidationSchema = Yup.object().shape({
   userName: Yup.string().required('Enter your name!'),
   userEmail: Yup.string().email('Invalid email!').required('Enter email!'),
   userMessage: Yup.string().required('Enter message!').min(10, 'Min. 10 char.'),
-  acceptTerms: Yup.bool().oneOf([true], 'You must accept terms!'),
+  acceptTerms: Yup.bool().oneOf(
+    [true],
+    'You need to accept Terms and Conditions!'
+  ),
 });
 
 const ContactForm = () => {
