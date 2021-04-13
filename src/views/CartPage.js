@@ -25,7 +25,9 @@ const CartPage = () => {
       <Heading
         type={isTablet ? 'mobileTopHeading' : 'topHeading'}
         heading={'CART'}
-        headingDescription={`YOU'VE GOT ${cartCounter} PRODUCTS IN YOUR CART`}
+        headingDescription={`YOU'VE GOT ${cartCounter} PRODUCT${
+          cartCounter > 1 ? 'S' : ''
+        } IN YOUR CART`}
       />
       <CartContentTable />
       <CartSummary />
