@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase';
 import { Form, Formik } from 'formik';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import { auth } from '../../firebase/firebaseConfig';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
+import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 const StyledInputsWrapper = styled.div`
   @media (max-width: 600px) {
@@ -23,7 +25,7 @@ const StyledError = styled.div`
   color: red;
 `;
 
-const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
+const PasswordChangeForm = () => {
   const [oldPasswordError, setOldPasswordError] = useState('-');
   const [oldPasswordErrorVisibility, setOldPasswordErrorVisibility] = useState(
     'hidden'
@@ -42,6 +44,8 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
   ] = useState('hidden');
 
   const [isSuccessAlert, setIsSuccessAlert] = useState(false);
+
+  const currentUser = useSelector(({ currentUser }) => currentUser);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -121,6 +125,9 @@ const PasswordChangeForm = ({ isSignUp, beforeCheckout }) => {
                   .updatePassword(userNewPassword)
                   .then(() => {
                     console.log('change password ok');
+                    updateUserDataInFirestore(currentUser.userId, {
+                      userPassword: userNewPassword,
+                    });
                     setIsSuccessAlert(true);
                   })
                   .catch((error) => {
