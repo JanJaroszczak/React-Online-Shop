@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import Input from '../atoms/Input';
 import Heading from '../atoms/Heading';
@@ -14,7 +15,6 @@ import {
   StyledCheckboxLabel,
   StyledClientDataInputsWrapper,
 } from './styles/StyledContactForm';
-import { useSelector } from 'react-redux';
 import QuestionModal from '../organisms/QuestionModal';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
