@@ -53,7 +53,6 @@ const StyledDiv = styled.div`
     type === 'address' &&
     css`
       margin: 0;
-      padding-left: 80px;
     `}
 
       ${({ type }) =>
@@ -67,7 +66,6 @@ const StyledDiv = styled.div`
     type === 'topHeading' &&
     css`
       padding-top: 30px;
-      padding-left: 80px;
     `}
 
          ${({ type }) =>
@@ -106,7 +104,7 @@ const StyledDiv = styled.div`
     `}
 
               ${({ type }) =>
-    type === 'passwordChange' &&
+    type === 'accountPage' &&
     css`
       margin-top: 30px;
       padding-left: 0;
@@ -122,36 +120,24 @@ const StyledDiv = styled.div`
       css`
         margin-bottom: -15px;
         padding-top: 30px;
-        padding-left: 0;
-      `}
-
-    ${({ type }) =>
-      type === 'mobileAuthBeforeCheckoutSubheading' &&
-      css`
-        margin: 30px 0;
-        padding: 0;
       `}
 
     ${({ type }) =>
       type === 'mobileTopHeading' &&
       css`
         padding-top: 30px;
-        padding-left: 0;
       `}
 
         ${({ type }) =>
       type === 'accountPageWithoutSubheading' &&
       css`
-        margin-top: 30px;
         padding-left: 80px;
         text-align: left;
       `}
 
                  ${({ type }) =>
-      type === 'passwordChange' &&
+      type === 'accountPage' &&
       css`
-        margin-top: 30px;
-        padding-left: 0;
         text-align: left;
       `}
   }
@@ -166,7 +152,7 @@ const StyledDiv = styled.div`
       `}
 
     ${({ type }) =>
-      type === 'passwordChange' &&
+      type === 'accountPage' &&
       css`
         text-align: center;
       `}

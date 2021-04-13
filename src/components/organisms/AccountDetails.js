@@ -20,7 +20,7 @@ const AccountDetails = () => {
   return (
     <StyledPasswordChangeWrapper>
       <Heading
-        type={'accountPageWithoutSubheading'}
+        type={'accountPage'}
         heading={'ACCOUNT DETAILS'}
         headingDescription={``}
       />
