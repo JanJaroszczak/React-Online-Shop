@@ -7,21 +7,21 @@ import OrdersHistoryTable from './OrdersHistoryTable';
 const StyledOrdersHistoryWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px 30px 0;
 
   @media (max-width: 600px) {
-    padding: 0;
+    padding: 40px 0;
   }
 `;
 
 const OrdersHistory = () => {
   return (
     <StyledOrdersHistoryWrapper>
-      <Heading
+      {/* <Heading
         type={'accountPageWithoutSubheading'}
         heading={'ORDERS HISTORY'}
         headingDescription={``}
-      />
+      /> */}
       <OrdersHistoryTable />
     </StyledOrdersHistoryWrapper>
   );

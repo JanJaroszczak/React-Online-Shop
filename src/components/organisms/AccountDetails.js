@@ -21,8 +21,8 @@ const AccountDetails = () => {
     <StyledPasswordChangeWrapper>
       <Heading
         type={'accountPage'}
-        heading={'ACCOUNT DETAILS'}
-        headingDescription={``}
+        heading={''}
+        headingDescription={`DATA CURRENTLY SAVED ON YOUR ACCOUNT:`}
       />
       <AccountDataForm />
     </StyledPasswordChangeWrapper>
