@@ -20,7 +20,7 @@ const PasswordChange = () => {
   return (
     <StyledPasswordChangeWrapper>
       <Heading
-        type={'passwordChange'}
+        type={'accountPage'}
         heading={''}
         headingDescription={`enter your current password and a new one:`}
       />
