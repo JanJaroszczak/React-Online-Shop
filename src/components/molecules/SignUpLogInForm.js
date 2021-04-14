@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { Redirect } from 'react-router-dom';
-import styled, { css } from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 
 import { routes } from '../../routes';
@@ -12,31 +11,11 @@ import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
-
-const StyledWrapper = styled.div`
-  /* border: 1px solid black; */
-
-  ${({ beforeCheckout }) =>
-    beforeCheckout &&
-    css`
-      padding: 0 10px;
-    `}
-`;
-
-const StyledInputsWrapper = styled.div`
-  @media (max-width: 768px) {
-    max-width: 250px;
-    margin: 0 auto;
-  }
-
-  /* border: 1px solid black; */
-`;
-
-const StyledError = styled.div`
-  margin: 10px 0;
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-  color: red;
-`;
+import {
+  StyledWrapper,
+  StyledInputsWrapper,
+  StyledError,
+} from './styles/StyledSignUpLogInForm';
 
 const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   const [logInError, setLogInError] = useState('');

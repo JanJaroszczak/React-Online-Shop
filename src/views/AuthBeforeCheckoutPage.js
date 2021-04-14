@@ -1,21 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 
 import Heading from '../components/atoms/Heading';
 import SignUpLogInForm from '../components/molecules/SignUpLogInForm';
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
-
-const StyledGridWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-  } ;
-`;
+import { StyledGridWrapper } from './styles/StyledAuthBeforeCheckoutPage';
 
 const AuthBeforeCheckoutPage = () => {
   const isTablet = useMediaQuery({

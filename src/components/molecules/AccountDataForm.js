@@ -1,21 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Formik } from 'formik';
-import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
-
-const StyledInputsWrapper = styled.div`
-  @media (max-width: 600px) {
-    max-width: 250px;
-    margin: 0 auto;
-  }
-
-  /* border: 1px solid black; */
-`;
+import { StyledInputsWrapper } from './styles/StyledAccountDataForm';
 
 const AccountDataForm = () => {
   const [isSuccessAlert, setIsSuccessAlert] = useState(false);

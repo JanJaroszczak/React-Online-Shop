@@ -1,34 +1,12 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { useMediaQuery } from 'react-responsive';
 
 import ContactForm from '../components/molecules/ContactForm';
 import AddressField from '../components/molecules/AddressField';
 import MapWrapped from '../components/organisms/Map';
-
-const StyledMapWrapper = styled.div`
-  width: 100%;
-  height: 400px;
-`;
-
-const StyledContactPageWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 20px;
-
-  /* border: 1px solid black; */
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1.5fr 1fr;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    margin: 10px auto;
-  } ;
-`;
+import {
+  StyledMapWrapper,
+  StyledContactPageWrapper,
+} from './styles/StyledContactPage';
 
 const ContactPage = () => {
   return (

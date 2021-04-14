@@ -1,15 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import ProductImage from '../atoms/ProductImage';
 import ProductInfo from '../atoms/ProductInfo';
-
-const StyledDiv = styled.div`
-  max-width: 320px;
-  margin: 17px 10px;
-
-  /* border: 1px solid black; */
-`;
+import { StyledDiv } from './styles/StyledProductCard';
 
 const ProductCard = ({
   productName,

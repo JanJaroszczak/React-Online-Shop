@@ -1,18 +1,15 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import styled from 'styled-components';
+import _ from 'lodash';
+
 import {
   updateProductQuantityInFirestore,
   addOrderToOrderHistory,
 } from '../../firebase/firestoreUtils';
-import { clearCart, successfulPaymentAlert } from '../../actions';
+import { successfulPaymentAlert } from '../../actions';
 import { routes } from '../../routes';
-import _ from 'lodash';
-
-const StyledPayPalButtonsWrapper = styled.div`
-  padding-top: 15px;
-`;
+import { StyledPayPalButtonsWrapper } from './styles/StyledPayPal';
 
 export default function Paypal() {
   const [redirectToOrderSummary, setRedirectToOrderSummary] = useState(false);

@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
@@ -12,13 +10,7 @@ import Alert from '../components/atoms/Alert';
 import { successfulPaymentAlert, clearCart } from '../actions';
 import Button from '../components/atoms/Button';
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
-
-const StyledLink = styled(Link)`
-  @media (max-width: 768px) {
-    display: block;
-    margin-top: 30px;
-  }
-`;
+import { StyledLink } from './styles/StyledOrderSummaryPage';
 
 const OrderSummaryPage = (props) => {
   const isSuccessfulPaymentAlert = useSelector(

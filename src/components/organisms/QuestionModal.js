@@ -3,8 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import styled from 'styled-components';
+
 import Button from '../atoms/Button';
+import {
+  StyledQuestion,
+  StyledButtonsWrapper,
+} from './styles/StyledQuestionModal';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -27,19 +31,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-const StyledQuestion = styled.h2`
-  margin: 10px 0 20px;
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
-
-  /* border: 1px solid black; */
-`;
-
-const StyledButtonsWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
 
 const QuestionModal = ({
   isOpen,

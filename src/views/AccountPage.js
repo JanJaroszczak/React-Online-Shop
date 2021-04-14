@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
 
 import AccountMenu from '../components/organisms/AccountMenu';
@@ -10,24 +9,7 @@ import { routes } from '../routes';
 import PasswordChange from '../components/organisms/PasswordChange';
 import AccountDetails from '../components/organisms/AccountDetails';
 import EmailChange from '../components/organisms/EmailChange';
-
-const StyledAccountPageWrapper = styled.div`
-  display: grid;
-  grid-template-columns: minmax(150px, 1fr) 4fr;
-  max-width: 1200px;
-  margin: 0px auto;
-  padding: 0 20px;
-
-  /* border: 1px solid black; */
-
-  /* @media (max-width: 900px) {
-    grid-template-columns: minmax(150px, 1fr) 1fr;
-  } */
-
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-  }
-`;
+import { StyledAccountPageWrapper } from './styles/StyledAccountPage';
 
 const AccountPage = ({ history, match }) => {
   const currentUser = useSelector(({ currentUser }) => currentUser);
