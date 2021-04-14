@@ -112,7 +112,7 @@ const ProductPageInfo = ({ products, id }) => {
   );
 
   return (
-    <StyledProductInfoWrapper>
+    <StyledProductInfoWrapper extraState={currentProduct.extraState}>
       {currentProduct.extraState && (
         <StyledExtraState>{`${currentProduct.extraState}${
           currentProduct.extraState === 'sale'

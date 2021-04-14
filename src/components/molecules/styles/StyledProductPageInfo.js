@@ -9,9 +9,26 @@ export const StyledProductInfoWrapper = styled.div`
 
   /* border: 1px solid black; */
 
+  @media (max-width: 820px) {
+    padding-top: 80px;
+    padding-bottom: 20px;
+
+    ${({ extraState }) =>
+      !extraState &&
+      css`
+        padding-top: 40px;
+      `}
+  }
+
   @media (max-width: 768px) {
     width: 83vw;
-    padding: 10px 0;
+    padding-top: 50px;
+
+    ${({ extraState }) =>
+      !extraState &&
+      css`
+        padding-top: 10px;
+      `}
   } ;
 `;
 
@@ -24,6 +41,15 @@ export const StyledExtraState = styled.span`
   text-transform: uppercase;
 
   border: 1px solid ${({ theme }) => theme.colors.midGray};
+
+  @media (max-width: 820px) {
+    top: 31px;
+  }
+
+  @media (max-width: 768px) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
   &:before {
     z-index: -1;
