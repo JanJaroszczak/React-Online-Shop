@@ -11,12 +11,7 @@ import CartSummary from '../components/molecules/CartSummary';
 import Alert from '../components/atoms/Alert';
 import { successfulPaymentAlert, clearCart } from '../actions';
 import Button from '../components/atoms/Button';
-
-const StyledOrderSummaryWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
+import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 
 const StyledLink = styled(Link)`
   @media (max-width: 768px) {
@@ -47,7 +42,7 @@ const OrderSummaryPage = (props) => {
   }, []);
 
   return (
-    <StyledOrderSummaryWrapper>
+    <StyledCommonPageWrapper>
       {isSuccessfulPaymentAlert ? (
         <Alert
           severity="success"
@@ -77,7 +72,7 @@ const OrderSummaryPage = (props) => {
           </StyledLink>
         </>
       )}
-    </StyledOrderSummaryWrapper>
+    </StyledCommonPageWrapper>
   );
 };
 

@@ -1,17 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
 import Heading from '../components/atoms/Heading';
 import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
-
-const StyledCartWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
+import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 
 const CartPage = () => {
   const cartCounter = useSelector(({ counter }) => counter);
@@ -21,7 +15,7 @@ const CartPage = () => {
   });
 
   return (
-    <StyledCartWrapper>
+    <StyledCommonPageWrapper>
       <Heading
         type={isTablet ? 'mobileTopHeading' : 'topHeading'}
         heading={'CART'}
@@ -31,7 +25,7 @@ const CartPage = () => {
       />
       <CartContentTable />
       <CartSummary />
-    </StyledCartWrapper>
+    </StyledCommonPageWrapper>
   );
 };
 

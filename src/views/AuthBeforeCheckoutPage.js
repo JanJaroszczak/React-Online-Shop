@@ -4,14 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import Heading from '../components/atoms/Heading';
 import SignUpLogInForm from '../components/molecules/SignUpLogInForm';
-
-const StyledSignUpPageWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0px auto;
-  padding: 0 20px;
-
-  /* border: 1px solid black; */
-`;
+import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 
 const StyledGridWrapper = styled.div`
   display: grid;
@@ -30,7 +23,7 @@ const AuthBeforeCheckoutPage = () => {
   });
 
   return (
-    <StyledSignUpPageWrapper>
+    <StyledCommonPageWrapper>
       <Heading
         type={isTablet ? 'mobileAuthBeforeCheckout' : 'authBeforeCheckout'}
         heading={'log in or sign up '}
@@ -40,7 +33,7 @@ const AuthBeforeCheckoutPage = () => {
         <SignUpLogInForm isSignUp={false} beforeCheckout />
         <SignUpLogInForm isSignUp beforeCheckout />
       </StyledGridWrapper>
-    </StyledSignUpPageWrapper>
+    </StyledCommonPageWrapper>
   );
 };
 
