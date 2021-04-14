@@ -133,7 +133,7 @@ const AccountDataForm = () => {
                 />
 
                 <Button
-                  variant="passwordChange"
+                  variant="accountDataChange"
                   type="submit"
                   label={isInputReadOnly ? 'Edit Your Data' : 'Save Your Data'}
                 />
@@ -144,7 +144,7 @@ const AccountDataForm = () => {
       )}
       {isSuccessAlert && (
         <Alert
-          variant="passwordChange"
+          variant="accountDataChange"
           severity="success"
           message="Your data has been successfully updated!"
           visible={true}
