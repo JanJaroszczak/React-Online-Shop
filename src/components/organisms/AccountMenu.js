@@ -102,7 +102,7 @@ const AccountMenu = () => {
     <StyledAccountMenuWrapper>
       <StyledAccountHeading>
         <StyledNameLogoutWrapper>
-          <h3>{currentUser.userName}</h3>
+          {currentUser && <h3>{currentUser.userName}</h3>}
           <button onClick={logout} type="button">
             Log Out
           </button>
