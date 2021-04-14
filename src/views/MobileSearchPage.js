@@ -7,6 +7,11 @@ import searchProducts from '../utils/searchProducts';
 import Heading from '../components/atoms/Heading';
 import ProductCard from '../components/molecules/ProductCard';
 
+const StyledSearchPageWrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
 const StyledInputWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
@@ -45,7 +50,7 @@ const StyledSearchButton = styled.button`
 
 const StyledProductsGridWrapper = styled.div`
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   row-gap: 10px;
   justify-content: center;
@@ -53,6 +58,18 @@ const StyledProductsGridWrapper = styled.div`
   width: 90%;
 
   /* border: 1px solid black; */
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: auto;
+  }
 `;
 
 const MobileSearchPage = () => {
@@ -85,7 +102,7 @@ const MobileSearchPage = () => {
   };
 
   return (
-    <>
+    <StyledSearchPageWrapper>
       <Heading
         type={isTablet ? 'mobileTopHeading' : 'topSearchPageHeading'}
         heading={'SEARCH PANEL'}
@@ -107,7 +124,7 @@ const MobileSearchPage = () => {
         </StyledInputWrapper>
       </form>
       <StyledProductsGridWrapper>{foundProducts}</StyledProductsGridWrapper>
-    </>
+    </StyledSearchPageWrapper>
   );
 };
 
