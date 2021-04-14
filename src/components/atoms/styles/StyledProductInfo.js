@@ -28,23 +28,21 @@ export const StyledBrandName = styled.span`
   /* border: 1px solid black; */
 `;
 
-// export const StyledPlus = styled.span`
-//   position: absolute;
-//   top: 22px;
-//   right: 10px;
-//   color: ${({ theme }) => theme.colors.mainDark};
-//   font-size: ${({ theme }) => theme.fontSizes.s};
-// `;
-
 export const StyledPrice = styled.span`
   display: block;
   margin-top: 5px;
-  /* margin-bottom: 15px; */
   font-size: ${({ theme }) => theme.fontSizes.m};
 
   /* border: 1px solid black; */
 
   span {
     padding-left: 6px;
+  }
+
+  span.previousPrice {
+    padding-left: 12px;
+    font-size: ${({ theme }) => theme.fontSizes.xs};
+    text-decoration: line-through;
+    vertical-align: super;
   }
 `;

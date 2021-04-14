@@ -1,16 +1,40 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledProductInfoWrapper = styled.div`
+  position: relative;
   max-width: 700px;
   margin: 0 auto;
   padding: 50px 30px 0;
   overflow: hidden;
+
   /* border: 1px solid black; */
 
   @media (max-width: 768px) {
     width: 83vw;
     padding: 10px 0;
   } ;
+`;
+
+export const StyledExtraState = styled.span`
+  position: absolute;
+  left: 34px;
+  top: 13px;
+  padding: 2px 4px;
+  font-size: ${({ theme }) => theme.fontSizes.s};
+  text-transform: uppercase;
+
+  border: 1px solid ${({ theme }) => theme.colors.midGray};
+
+  &:before {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 1px solid ${({ theme }) => theme.colors.midGray};
+  }
 `;
 
 export const StyledProductDescription = styled.p`
@@ -24,6 +48,13 @@ export const StyledPrice = styled.div`
   margin: 20px 0;
   font-size: ${({ theme }) => theme.fontSizes.xxl};
   color: ${({ theme }) => theme.colors.lightDark};
+
+  span.previousPrice {
+    padding-left: 12px;
+    font-size: ${({ theme }) => theme.fontSizes.m};
+    text-decoration: line-through;
+    vertical-align: text-top;
+  }
 `;
 
 export const StyledSizeChoice = styled.div`

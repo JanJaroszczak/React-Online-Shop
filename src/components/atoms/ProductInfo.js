@@ -7,9 +7,14 @@ import {
   StyledBrandName,
   StyledPrice,
 } from './styles/StyledProductInfo';
-import './styles/stylesProductInfo.css';
 
-const ProductInfo = ({ model, brand, price, productId }) => {
+const ProductInfo = ({
+  model,
+  brand,
+  price,
+  productId,
+  productPreviousPrice,
+}) => {
   return (
     <StyledDiv>
       <Link
@@ -20,7 +25,10 @@ const ProductInfo = ({ model, brand, price, productId }) => {
       </Link>
       <StyledBrandName>{brand}</StyledBrandName>
       <StyledPrice>
-        £<span>{price.toFixed(2)}</span>
+        $<span>{price.toFixed(2)}</span>
+        <span className="previousPrice">
+          {productPreviousPrice ? `$ ${productPreviousPrice.toFixed(2)}` : null}
+        </span>
       </StyledPrice>
     </StyledDiv>
   );

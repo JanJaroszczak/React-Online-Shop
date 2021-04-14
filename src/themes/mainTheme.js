@@ -37,8 +37,4 @@ export const mainTheme = {
     regular: 400,
     bold: 700,
   },
-
-  // devices: {
-  //   mobile: '350px',
-  // },
 };

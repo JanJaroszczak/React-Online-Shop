@@ -17,19 +17,24 @@ const ProductCard = ({
   productPrice,
   productImage,
   productId,
+  productPreviousPrice,
+  extraState,
 }) => {
   return (
     <StyledDiv>
       <ProductImage
         img={productImage[0]}
         productId={productId}
-        circleInfo="sale"
+        productPrice={productPrice}
+        productPreviousPrice={productPreviousPrice}
+        extraState={extraState}
       />
       <ProductInfo
         model={productName}
         brand={productBrand}
         price={productPrice}
         productId={productId}
+        productPreviousPrice={productPreviousPrice}
       />
     </StyledDiv>
   );

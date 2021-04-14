@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// import image from '../../assets/images/test_photo.jpg';
+import salePercentageCalculation from '../../utils/salePercentageCalculation';
 
 const StyledDiv = styled.div`
   position: relative;
@@ -36,11 +36,17 @@ const StyledCircle = styled.div`
   position: absolute;
   top: -15px;
   right: -10px;
-  background-color: ${({ theme }) => theme.colors.mainDark};
+  background-color: ${({ extraState }) =>
+    extraState === 'sale'
+      ? 'black'
+      : extraState === 'new'
+      ? '#959595'
+      : 'black'};
   color: ${({ theme }) => theme.colors.mainWhite};
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  text-align: center;
 `;
 
 const StyledCircleInfo = styled.span`
@@ -53,7 +59,18 @@ const StyledCircleInfo = styled.span`
   text-transform: uppercase;
 `;
 
-const ProductImage = ({ circleInfo, img, productId }) => {
+const ProductImage = ({
+  img,
+  productId,
+  productPrice,
+  productPreviousPrice,
+  extraState,
+}) => {
+  const salePercentage = salePercentageCalculation(
+    productPrice,
+    productPreviousPrice
+  );
+
   return (
     <StyledDiv>
       <StyledOverflowHidde>
@@ -62,9 +79,13 @@ const ProductImage = ({ circleInfo, img, productId }) => {
         </Link>
         {/* <StyledBgImg img={img} /> */}
       </StyledOverflowHidde>
-      <StyledCircle>
-        <StyledCircleInfo>{circleInfo}</StyledCircleInfo>
-      </StyledCircle>
+      {extraState && (
+        <StyledCircle extraState={extraState}>
+          <StyledCircleInfo>{`${extraState}${
+            extraState === 'sale' ? `\n-${salePercentage}%` : ''
+          }`}</StyledCircleInfo>
+        </StyledCircle>
+      )}
     </StyledDiv>
   );
 };

@@ -5,6 +5,7 @@ import Heading from '../atoms/Heading';
 import { addProductToCart, setCartOpen } from '../../actions';
 import {
   StyledProductInfoWrapper,
+  StyledExtraState,
   StyledProductDescription,
   StyledPrice,
   StyledSizeChoice,
@@ -16,6 +17,7 @@ import {
   StyledQuantityChoice,
   StyledQuantityInput,
 } from './styles/StyledQuantitySelector';
+import salePercentageCalculation from '../../utils/salePercentageCalculation';
 
 const ProductPageInfo = ({ products, id }) => {
   const [chosenSize, setChosenSize] = useState('-');
@@ -104,8 +106,20 @@ const ProductPageInfo = ({ products, id }) => {
     if (chosenQuantity > 1) setChosenQuantity(chosenQuantity - 1);
   };
 
+  const salePercentage = salePercentageCalculation(
+    currentProduct.productPrice,
+    currentProduct.productPreviousPrice
+  );
+
   return (
     <StyledProductInfoWrapper>
+      {currentProduct.extraState && (
+        <StyledExtraState>{`${currentProduct.extraState}${
+          currentProduct.extraState === 'sale'
+            ? `\u00A0\u00A0-${salePercentage}%`
+            : ''
+        }`}</StyledExtraState>
+      )}
       <Heading
         type={'productPage'}
         heading={currentProduct.productName}
@@ -124,7 +138,14 @@ const ProductPageInfo = ({ products, id }) => {
         ducimus, hic reiciendis architecto omnis sequi perferendis commodi
         obcaecati ullam? Dicta, iure.
       </StyledProductDescription>
-      <StyledPrice>$ {currentProduct.productPrice}</StyledPrice>
+      <StyledPrice>
+        $ {currentProduct.productPrice.toFixed(2)}
+        <span className="previousPrice">
+          {currentProduct.productPreviousPrice
+            ? `$ ${currentProduct.productPreviousPrice.toFixed(2)}`
+            : null}
+        </span>
+      </StyledPrice>
       <form onSubmit={addToCart}>
         <StyledSizeChoice>
           <label htmlFor="size">Size:</label>
