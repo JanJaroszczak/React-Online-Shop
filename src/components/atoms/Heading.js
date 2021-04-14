@@ -191,13 +191,23 @@ const StyledHeadingDescription = styled.h3`
     `}
 `;
 
-const SectionHeader = ({ type, heading, headingDescription }) => {
+const SectionHeader = ({
+  type,
+  heading,
+  headingDescription,
+  headingDescriptionSecondLine,
+}) => {
   return (
     <StyledDiv type={type}>
       <StyledHeading type={type}>{heading}</StyledHeading>
       <StyledHeadingDescription type={type}>
         {headingDescription}
       </StyledHeadingDescription>
+      {headingDescriptionSecondLine && (
+        <StyledHeadingDescription type={type}>
+          {headingDescriptionSecondLine}
+        </StyledHeadingDescription>
+      )}
     </StyledDiv>
   );
 };
