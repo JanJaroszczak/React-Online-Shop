@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { routes } from '../../routes';
 import { auth } from '../../firebase/firebaseConfig';
@@ -17,19 +17,12 @@ const StyledAccountMenuWrapper = styled.div`
 
 const StyledAccountHeading = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 100px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
   border-right: 1px solid ${({ theme }) => theme.colors.midGray};
 
   /* border: 1px solid black; */
-
-  i {
-    margin: 0 10px;
-    align-self: center;
-    font-size: 6rem;
-    color: ${({ theme }) => theme.colors.lightGray};
-  }
 
   @media (max-width: 600px) {
     border-right: none;
@@ -37,12 +30,18 @@ const StyledAccountHeading = styled.div`
 `;
 
 const StyledNameLogoutWrapper = styled.div`
+  max-width: 145px;
   align-self: center;
 
   /* border: 1px solid black; */
 
   h3 {
     font-size: ${({ theme }) => theme.fontSizes.l};
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    /* border: 1px solid black; */
   }
 
   button {
@@ -85,6 +84,8 @@ const StyledLink = styled(NavLink)`
 const AccountMenu = () => {
   const dispatch = useDispatch();
 
+  const currentUser = useSelector(({ currentUser }) => currentUser);
+
   const logout = () => {
     auth
       .signOut()
@@ -100,9 +101,8 @@ const AccountMenu = () => {
   return (
     <StyledAccountMenuWrapper>
       <StyledAccountHeading>
-        <i className="fas fa-user-circle"></i>
         <StyledNameLogoutWrapper>
-          <h3>Jan</h3>
+          <h3>{currentUser.userName}</h3>
           <button onClick={logout} type="button">
             Log Out
           </button>
