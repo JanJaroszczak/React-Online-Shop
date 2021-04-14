@@ -32,7 +32,7 @@ const StyledButton = styled.button`
     `}
 
       ${({ variant }) =>
-    variant === 'passwordChange' &&
+    variant === 'accountDataChange' &&
     css`
       margin-top: 10px;
     `}

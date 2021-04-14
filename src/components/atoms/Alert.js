@@ -33,7 +33,7 @@ const StyledAlert = styled.div`
     text-align: center;
 
     ${({ variant }) =>
-      variant === 'passwordChange' &&
+      variant === 'accountDataChange' &&
       css`
         text-align: left;
       `}

@@ -31,7 +31,7 @@ const StyledInput = styled.input`
   /* border: 1px solid black; */
 
   ${({ variant }) =>
-    variant === 'passwordChange' &&
+    variant === 'accountDataChange' &&
     css`
       margin-bottom: 0;
     `}
@@ -47,7 +47,7 @@ const StyledInput = styled.input`
     max-width: 250px;
 
     ${({ variant }) =>
-      variant === 'passwordChange' &&
+      variant === 'accountDataChange' &&
       css`
         width: 250px;
       `}
