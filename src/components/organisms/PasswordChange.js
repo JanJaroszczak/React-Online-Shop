@@ -1,31 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Heading from '../atoms/Heading';
 import EmailOrPasswordChangeForm from '../molecules/EmailOrPasswordChangeForm';
-
-const StyledPasswordChangeWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-
-  /* border: 1px solid black; */
-
-  @media (max-width: 600px) {
-    padding: 0;
-  }
-`;
+import { StyledDataChangeWrapper } from './styles/StyledStyledDataChangeWrapper';
 
 const PasswordChange = () => {
   return (
-    <StyledPasswordChangeWrapper>
+    <StyledDataChangeWrapper>
       <Heading
         type={'accountPage'}
         heading={''}
         headingDescription={`enter your current password and a new one:`}
       />
       <EmailOrPasswordChangeForm />
-    </StyledPasswordChangeWrapper>
+    </StyledDataChangeWrapper>
   );
 };
 
