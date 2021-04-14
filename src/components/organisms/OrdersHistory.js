@@ -7,7 +7,7 @@ import OrdersHistoryTable from './OrdersHistoryTable';
 const StyledOrdersHistoryWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 30px 0;
+  padding: 30px 30px 20px;
 
   @media (max-width: 600px) {
     padding: 40px 0;
@@ -17,11 +17,6 @@ const StyledOrdersHistoryWrapper = styled.div`
 const OrdersHistory = () => {
   return (
     <StyledOrdersHistoryWrapper>
-      {/* <Heading
-        type={'accountPageWithoutSubheading'}
-        heading={'ORDERS HISTORY'}
-        headingDescription={``}
-      /> */}
       <OrdersHistoryTable />
     </StyledOrdersHistoryWrapper>
   );
