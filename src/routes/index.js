@@ -14,6 +14,7 @@ export const routes = {
   accountOrders: '/account/ordershistory',
   accountOrder: '/account/ordershistory/:orderId',
   passwordChange: '/account/passwordchange',
+  emailChange: '/account/emailchange',
   accountDetails: '/account/details',
   mobileSearch: '/search',
 };

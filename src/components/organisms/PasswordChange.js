@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Heading from '../atoms/Heading';
-import PasswordChangeForm from '../molecules/PasswordChangeForm';
+import EmailOrPasswordChangeForm from '../molecules/EmailOrPasswordChangeForm';
 
 const StyledPasswordChangeWrapper = styled.div`
   max-width: 1200px;
@@ -24,7 +24,7 @@ const PasswordChange = () => {
         heading={''}
         headingDescription={`enter your current password and a new one:`}
       />
-      <PasswordChangeForm />
+      <EmailOrPasswordChangeForm />
     </StyledPasswordChangeWrapper>
   );
 };

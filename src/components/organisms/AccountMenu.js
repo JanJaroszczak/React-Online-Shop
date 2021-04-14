@@ -113,10 +113,13 @@ const AccountMenu = () => {
           <StyledLink to={routes.accountOrders}>orders history</StyledLink>
         </li>
         <li>
-          <StyledLink to={routes.passwordChange}>Password Change</StyledLink>
+          <StyledLink to={routes.accountDetails}>account details</StyledLink>
         </li>
         <li>
-          <StyledLink to={routes.accountDetails}>account details</StyledLink>
+          <StyledLink to={routes.emailChange}>email change</StyledLink>
+        </li>
+        <li>
+          <StyledLink to={routes.passwordChange}>password change</StyledLink>
         </li>
       </ul>
     </StyledAccountMenuWrapper>
