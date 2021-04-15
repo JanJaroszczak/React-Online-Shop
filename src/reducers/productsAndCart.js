@@ -8,13 +8,13 @@ const intitialState = {
   products: [],
   counter: 0,
   totalPrice: 0,
-  currentUser: null,
-  successfulPaymentAlert: false,
-  isCurrentUserChecked: null,
-  isSearchPanelOn: false,
+  // currentUser: null,
+  // successfulPaymentAlert: false,
+  // isCurrentUserChecked: null,
+  // isSearchPanelOn: false,
 };
 
-const reducer = (state = intitialState, action) => {
+const productsAndCart = (state = intitialState, action) => {
   const { type, payload } = action;
 
   const productsCopy = _.cloneDeep(state.products);
@@ -187,12 +187,12 @@ const reducer = (state = intitialState, action) => {
         totalPrice: totalPriceCounter,
       };
 
-    case actionsTypes.SET_CURRENT_USER:
-      console.log('Redux - userLoggedIn: true');
-      return {
-        ...state,
-        currentUser: payload,
-      };
+    // case actionsTypes.SET_CURRENT_USER:
+    //   console.log('Redux - userLoggedIn: true');
+    //   return {
+    //     ...state,
+    //     currentUser: payload,
+    //   };
 
     case actionsTypes.GET_PRODUCTS:
       return {
@@ -212,27 +212,27 @@ const reducer = (state = intitialState, action) => {
         cart: [],
       };
 
-    case actionsTypes.SUCCESSFUL_PAYMENT_ALERT:
-      return {
-        ...state,
-        successfulPaymentAlert: payload,
-      };
+    // case actionsTypes.SUCCESSFUL_PAYMENT_ALERT:
+    //   return {
+    //     ...state,
+    //     successfulPaymentAlert: payload,
+    //   };
 
-    case actionsTypes.CURRENT_USER_CHECKED:
-      return {
-        ...state,
-        isCurrentUserChecked: payload,
-      };
+    // case actionsTypes.CURRENT_USER_CHECKED:
+    //   return {
+    //     ...state,
+    //     isCurrentUserChecked: payload,
+    //   };
 
-    case actionsTypes.TOGGLE_SEARCH_PANEL:
-      return {
-        ...state,
-        isSearchPanelOn: !state.isSearchPanelOn,
-      };
+    // case actionsTypes.TOGGLE_SEARCH_PANEL:
+    //   return {
+    //     ...state,
+    //     isSearchPanelOn: !state.isSearchPanelOn,
+    //   };
 
     default:
       return state;
   }
 };
 
-export default reducer;
+export default productsAndCart;

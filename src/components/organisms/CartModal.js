@@ -40,7 +40,11 @@ const CartModal = () => {
   const classes = useStyles();
 
   const selectedIsCartOpen = useSelector(({ isCartOpen }) => isCartOpen);
+
   const cartProducts = useSelector(({ cart }) => cart);
+  // const cartProducts = useSelector(({ rdc }) => rdc.cart);
+  // const cartProducts = useSelector((state) => state.rdc.cart);
+
   const cartTotalPrice = useSelector(({ totalPrice }) => totalPrice);
   const currentUser = useSelector(({ currentUser }) => currentUser);
 
