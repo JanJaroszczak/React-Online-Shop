@@ -23,6 +23,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   const [logInError, setLogInError] = useState('');
   const [redirectReady, setRedirectReady] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [whichAlertIsOn, setWhichAlertIsOn] = useState('');
   const [whichButtonPressed, setWhichButtonPressed] = useState('');
 
   const isTablet = useMediaQuery({
@@ -41,7 +42,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
     if (currentUser) {
       timer = setTimeout(() => {
         setRedirectReady(true);
-      }, 2000);
+      }, 1000);
     }
     return () => {
       clearTimeout(timer);
@@ -88,7 +89,8 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
             auth
               .createUserWithEmailAndPassword(userEmail, userPassword)
               .then((user) => {
-                setWhichButtonPressed('signup');
+                // setWhichButtonPressed('signup');
+                setWhichAlertIsOn('signup');
                 const userId = user.user.uid;
 
                 const newUser = {
@@ -111,7 +113,6 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
               .catch((err) => {
                 console.log(err);
                 setIsLoading(false);
-
                 setLogInError(err.message);
               });
           } else {
@@ -119,7 +120,9 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
               .signInWithEmailAndPassword(userEmail, userPassword)
               .then((user) => {
                 console.log(user);
-                setWhichButtonPressed('login');
+                // setWhichButtonPressed('login');
+                setWhichAlertIsOn('login');
+
                 setLogInError('');
               })
               .catch((err) => {
@@ -165,7 +168,15 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
                 onChangeHandler={handleChange}
               />
               <StyledButtonWrapper>
-                <Button type="submit" label={isSignUp ? 'Sign Up' : 'Log In'} />
+                <Button
+                  type="submit"
+                  label={isSignUp ? 'Sign Up' : 'Log In'}
+                  clicked={
+                    isSignUp
+                      ? () => setWhichButtonPressed('signup')
+                      : () => setWhichButtonPressed('login')
+                  }
+                />
 
                 {!isSignUp && whichButtonPressed === 'login' && isLoading && (
                   <Spinner
@@ -193,13 +204,13 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
           </Form>
         )}
       </Formik>
-      {isSignUp && whichButtonPressed === 'signup' ? (
+      {isSignUp && whichAlertIsOn === 'signup' ? (
         <Alert
           severity="success"
           message="You have been signed up!"
           visible={true}
         />
-      ) : !isSignUp && whichButtonPressed === 'login' ? (
+      ) : !isSignUp && whichAlertIsOn === 'login' ? (
         <Alert
           severity="success"
           message="You have been logged in!"
