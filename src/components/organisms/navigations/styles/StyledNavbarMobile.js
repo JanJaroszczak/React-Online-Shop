@@ -47,6 +47,7 @@ export const StyledIcon = styled.div`
   justify-content: center;
   width: ${({ burger }) => (burger ? '70px' : '50px')};
   font-size: 3rem;
+  padding: ${({ burger, cart }) => (burger ? '14px 0' : cart ? '10px 0' : '0')};
   /* z-index: 200; */
 
   /* border: 1px solid black; */

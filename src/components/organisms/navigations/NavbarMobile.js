@@ -20,7 +20,7 @@ import {
   StyledAccountNavLink,
 } from './styles/StyledNavbarMobile';
 
-const NavbarMobile = ({ mobileMenuOn, onMobileMenuChange }) => {
+const NavbarMobile = ({ mobileMenuOn }) => {
   const [menuToggle, setMenuToggle] = useState(false);
 
   const dispatch = useDispatch();
@@ -40,10 +40,6 @@ const NavbarMobile = ({ mobileMenuOn, onMobileMenuChange }) => {
   };
 
   useEffect(() => {
-    onMobileMenuChange();
-  }, [menuToggle]);
-
-  useEffect(() => {
     setMenuToggle(false);
   }, [mobileMenuOn]);
 
@@ -56,7 +52,7 @@ const NavbarMobile = ({ mobileMenuOn, onMobileMenuChange }) => {
           </Link>
         </StyledLogo>
         <StyledIconsWrapper>
-          <StyledIcon>
+          <StyledIcon search>
             <StyledNavLink
               to={routes.mobileSearch}
               onClick={() => setMenuToggle(false)}
@@ -65,7 +61,7 @@ const NavbarMobile = ({ mobileMenuOn, onMobileMenuChange }) => {
             </StyledNavLink>
           </StyledIcon>
 
-          <StyledIcon>
+          <StyledIcon cart>
             <i className="fas fa-shopping-cart" onClick={handleCartIconClick}>
               <StyledCartCounter>
                 <span>{cartCounter}</span>

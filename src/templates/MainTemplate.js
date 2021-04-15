@@ -18,7 +18,7 @@ const MainTemplate = ({ children }) => {
 
   useOnClickOutside(outsideClickRef, () => {
     console.log('outside click');
-    if (mobileMenuOn) setMobileMenuOn(false);
+    setMobileMenuOn((prevState) => !prevState);
   });
 
   const onMobileMenuChangeHandler = () => {
@@ -37,10 +37,7 @@ const MainTemplate = ({ children }) => {
           <Navbar />
         ) : (
           <div ref={outsideClickRef}>
-            <NavbarMobile
-              mobileMenuOn={mobileMenuOn}
-              onMobileMenuChange={onMobileMenuChangeHandler}
-            />
+            <NavbarMobile mobileMenuOn={mobileMenuOn} />
           </div>
         )}
         <StyledWrapper>
