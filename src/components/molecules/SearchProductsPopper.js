@@ -48,6 +48,8 @@ const SearchProductsPopper = () => {
   const [cursor, setCursor] = useState(-1);
   const [hovered, setHovered] = useState(undefined);
 
+  const [test, setTest] = useState(null);
+
   const downPress = useKeyPress('ArrowDown');
   const upPress = useKeyPress('ArrowUp');
   const enterPress = useKeyPress('Enter');
@@ -55,17 +57,48 @@ const SearchProductsPopper = () => {
   const dispatch = useDispatch();
 
   const products = useSelector(({ products }) => products);
+  // const isSearchPanelOn = useSelector(({ isSearchPanelOn }) => isSearchPanelOn);
+
+  // useEffect(() => {
+  //   if (isSearchPanelOn) {
+  //     window.addEventListener(
+  //       'keydown',
+  //       (e) => {
+  //         if (
+  //           [
+  //             'Space',
+  //             'ArrowUp',
+  //             'ArrowDown',
+  //             'ArrowLeft',
+  //             'ArrowRight',
+  //           ].indexOf(e.code) > -1
+  //         ) {
+  //           e.preventDefault();
+  //         }
+  //       },
+  //       false
+  //     );
+
+  //     console.log('blur');
+  //     // setTest(window.pageYOffset);
+  //     // window.blur();
+  //   }
+  // }, [isSearchPanelOn]);
 
   useEffect(() => {
+    // window.scrollTo(0, test);
     if (foundProducts.length && downPress) {
       setCursor((prevState) =>
         prevState < foundProducts.length - 1 ? prevState + 1 : prevState
       );
+      // window.pageYOffset = 1000;
     }
   }, [downPress]);
   useEffect(() => {
+    // window.scrollTo(0, test);
     if (foundProducts.length && upPress) {
       setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
+      // window.pageYOffset = 1000;
     }
   }, [upPress]);
   useEffect(() => {

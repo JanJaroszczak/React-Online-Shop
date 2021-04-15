@@ -51,12 +51,36 @@ import {
 
 const Root = () => {
   const [firstPageLoad, setFirstPageLoad] = useState(false);
+  // const [test, setTest] = useState(null);
 
   const cartProducts = useSelector(({ cart }) => cart);
+  // const isSearchPanelOn = useSelector(({ isSearchPanelOn }) => isSearchPanelOn);
 
   const dispatch = useDispatch();
 
   let cart = [];
+
+  // window.addEventListener(
+  //   'keydown',
+  //   (e) => {
+  //     if (
+  //       ['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(
+  //         e.code
+  //       ) > -1
+  //     ) {
+  //       e.preventDefault();
+  //     }
+  //   },
+  //   false
+  // );
+
+  // useEffect(() => {
+  //   if (isSearchPanelOn) {
+  //     console.log('blur');
+  //     setTest(window.pageYOffset);
+  //     // window.blur();
+  //   }
+  // }, [isSearchPanelOn]);
 
   useEffect(() => {
     if (firstPageLoad) {

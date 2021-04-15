@@ -25,6 +25,7 @@ const CartModalElement = ({
   useEffect(() => {
     if (cursor && cursor === index) {
       popperRef.current.focus();
+      console.log('Ruch');
     }
   }, [cursor]);
 
