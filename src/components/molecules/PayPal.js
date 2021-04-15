@@ -15,10 +15,14 @@ export default function Paypal() {
   const [redirectToOrderSummary, setRedirectToOrderSummary] = useState(false);
 
   const paypal = useRef();
-  const totalPrice = useSelector(({ totalPrice }) => totalPrice);
+  const totalPrice = useSelector(
+    ({ productsAndCart }) => productsAndCart.totalPrice
+  );
   const cart = useSelector(({ cart }) => cart);
-  const products = useSelector(({ products }) => products);
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const products = useSelector(
+    ({ productsAndCart }) => productsAndCart.products
+  );
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   const cartCopy = _.cloneDeep(cart);
   const totalPriceCopy = totalPrice;

@@ -56,8 +56,10 @@ const SearchProductsPopper = () => {
 
   const dispatch = useDispatch();
 
-  const products = useSelector(({ products }) => products);
-  // const isSearchPanelOn = useSelector(({ isSearchPanelOn }) => isSearchPanelOn);
+  const products = useSelector(
+    ({ productsAndCart }) => productsAndCart.products
+  );
+  // const isSearchPanelOn = useSelector(({ searchPanel }) => searchPanel.isSearchPanelOn);
 
   // useEffect(() => {
   //   if (isSearchPanelOn) {

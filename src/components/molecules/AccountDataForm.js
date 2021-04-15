@@ -12,7 +12,7 @@ const AccountDataForm = () => {
   const [isSuccessAlert, setIsSuccessAlert] = useState(false);
   const [isInputReadOnly, setIsInputReadOnly] = useState(true);
 
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   useEffect(() => {
     const timer = setTimeout(() => {

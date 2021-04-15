@@ -14,7 +14,7 @@ import {
 const AccountMenu = () => {
   const dispatch = useDispatch();
 
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   const logout = () => {
     auth

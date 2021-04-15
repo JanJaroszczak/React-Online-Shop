@@ -26,7 +26,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
     query: '(max-width: 768px)',
   });
 
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   useEffect(() => {
     setRedirectReady(false);

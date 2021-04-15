@@ -12,9 +12,9 @@ import EmailChange from '../components/organisms/EmailChange';
 import { StyledAccountPageWrapper } from './styles/StyledAccountPage';
 
 const AccountPage = ({ history, match }) => {
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const currentUser = useSelector(({ user }) => user.currentUser);
   const isCurrentUserChecked = useSelector(
-    ({ isCurrentUserChecked }) => isCurrentUserChecked
+    ({ user }) => user.isCurrentUserChecked
   );
 
   console.log('current user:', currentUser);

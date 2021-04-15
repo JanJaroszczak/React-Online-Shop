@@ -23,7 +23,9 @@ const ProductsSlider = () => {
     query: '(max-width: 480px)',
   });
 
-  const selectedProducts = useSelector(({ products }) => products);
+  const selectedProducts = useSelector(
+    ({ productsAndCart }) => productsAndCart.products
+  );
 
   const cards = selectedProducts.map((product) => (
     <SwiperSlide tag="li" key={product.productId}>

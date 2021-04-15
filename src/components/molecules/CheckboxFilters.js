@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import { StyledCheckboxesWrapper } from './styles/StyledCheckboxFilters';
 
 const CheckboxFilters = ({ onSetFilter, filterName, filterCategory }) => {
-  const availableProducts = useSelector(({ products }) => products);
+  const availableProducts = useSelector(
+    ({ productsAndCart }) => productsAndCart.products
+  );
 
   const allfilterCategoryValues = availableProducts.map(
     (product) => product[filterCategory]

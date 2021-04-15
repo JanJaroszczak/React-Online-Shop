@@ -11,8 +11,10 @@ import {
 } from './styles/StyledCartSummary';
 
 const CartSummary = ({ variant, totalOrderPrice, orderSummary }) => {
-  const totalPrice = useSelector(({ totalPrice }) => totalPrice);
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const totalPrice = useSelector(
+    ({ productsAndCart }) => productsAndCart.totalPrice
+  );
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   return (
     <StyledCartSummary variant={variant}>

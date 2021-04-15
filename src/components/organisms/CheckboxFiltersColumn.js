@@ -14,7 +14,9 @@ const CheckboxFiltersColumn = ({
   isTablet,
   onMobileClose,
 }) => {
-  const availableProducts = useSelector(({ products }) => products);
+  const availableProducts = useSelector(
+    ({ productsAndCart }) => productsAndCart.products
+  );
 
   const [bottomFilterPrice, setBottomFilterPrice] = useState('');
   const [upperFilterPrice, setUpperFilterPrice] = useState('');

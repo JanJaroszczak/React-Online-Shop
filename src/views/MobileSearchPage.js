@@ -21,7 +21,9 @@ const MobileSearchPage = () => {
     query: '(max-width: 768px)',
   });
 
-  const products = useSelector(({ products }) => products);
+  const products = useSelector(
+    ({ productsAndCart }) => productsAndCart.products
+  );
 
   const filterProducts = () => {
     const filteredProducts = searchProducts(searchInputValue, products);

@@ -14,7 +14,7 @@ import { StyledLink } from './styles/StyledOrderSummaryPage';
 
 const OrderSummaryPage = (props) => {
   const isSuccessfulPaymentAlert = useSelector(
-    ({ successfulPaymentAlert }) => successfulPaymentAlert
+    ({ paymentAlert }) => paymentAlert.successfulPaymentAlert
   );
 
   const isTablet = useMediaQuery({

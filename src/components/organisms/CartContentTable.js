@@ -5,7 +5,9 @@ import CartContentTableRow from '../molecules/CartContentTableRow';
 import { StyledTable } from './styles/StyledCartContentTable';
 
 const CartContentTable = ({ order, orderSummary }) => {
-  const cartProducts = useSelector(({ cart }) => cart);
+  const cartProducts = useSelector(
+    ({ productsAndCart }) => productsAndCart.cart
+  );
 
   const cartContentRows = cartProducts.map((product) => (
     <CartContentTableRow product={product} key={product.cartProductId} />

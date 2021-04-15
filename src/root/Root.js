@@ -53,8 +53,10 @@ const Root = () => {
   const [firstPageLoad, setFirstPageLoad] = useState(false);
   // const [test, setTest] = useState(null);
 
-  const cartProducts = useSelector(({ cart }) => cart);
-  // const isSearchPanelOn = useSelector(({ isSearchPanelOn }) => isSearchPanelOn);
+  const cartProducts = useSelector(
+    ({ productsAndCart }) => productsAndCart.cart
+  );
+  // const isSearchPanelOn = useSelector(({ searchPanel }) => searchPanel.isSearchPanelOn);
 
   const dispatch = useDispatch();
 

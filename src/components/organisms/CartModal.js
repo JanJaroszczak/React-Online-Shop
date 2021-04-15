@@ -39,14 +39,20 @@ const useStyles = makeStyles((theme) => ({
 const CartModal = () => {
   const classes = useStyles();
 
-  const selectedIsCartOpen = useSelector(({ isCartOpen }) => isCartOpen);
+  const selectedIsCartOpen = useSelector(
+    ({ productsAndCart }) => productsAndCart.isCartOpen
+  );
 
-  const cartProducts = useSelector(({ cart }) => cart);
-  // const cartProducts = useSelector(({ rdc }) => rdc.cart);
-  // const cartProducts = useSelector((state) => state.rdc.cart);
+  // const cartProducts = useSelector(({ productsAndCart }) => productsAndCart.cart);
+  const cartProducts = useSelector(
+    ({ productsAndCart }) => productsAndCart.cart
+  );
+  // const cartProducts = useSelector((state) => state.productsAndCart.cart);
 
-  const cartTotalPrice = useSelector(({ totalPrice }) => totalPrice);
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const cartTotalPrice = useSelector(
+    ({ productsAndCart }) => productsAndCart.totalPrice
+  );
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   const cartProductsModalList = cartProducts.map((product) => (
     <li key={product.cartProductId}>

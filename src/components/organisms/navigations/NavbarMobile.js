@@ -25,8 +25,10 @@ const NavbarMobile = ({ mobileMenuOn, onMobileMenuChange }) => {
 
   const dispatch = useDispatch();
 
-  const cartCounter = useSelector(({ counter }) => counter);
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const cartCounter = useSelector(
+    ({ productsAndCart }) => productsAndCart.counter
+  );
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   const handleCartIconClick = () => {
     setMenuToggle(false);

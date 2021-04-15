@@ -8,7 +8,9 @@ import CartSummary from '../components/molecules/CartSummary';
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 
 const CartPage = () => {
-  const cartCounter = useSelector(({ counter }) => counter);
+  const cartCounter = useSelector(
+    ({ productsAndCart }) => productsAndCart.counter
+  );
 
   const isTablet = useMediaQuery({
     query: '(max-width: 768px)',

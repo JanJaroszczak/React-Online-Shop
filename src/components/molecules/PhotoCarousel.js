@@ -11,7 +11,9 @@ SwiperCore.use([Navigation, Pagination, Thumbs]);
 const PhotoCarousel = ({ id }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  const availableProducts = useSelector(({ products }) => products);
+  const availableProducts = useSelector(
+    ({ productsAndCart }) => productsAndCart.products
+  );
 
   const currentProduct = availableProducts.find(
     (product) => product.productId === id

@@ -6,7 +6,9 @@ import ProductPageInfo from '../components/molecules/ProductPageInfo';
 import { StyledProductWrapper } from './styles/StyledProductPage';
 
 const ProductPage = ({ match }) => {
-  const availableProducts = useSelector(({ products }) => products);
+  const availableProducts = useSelector(
+    ({ productsAndCart }) => productsAndCart.products
+  );
 
   return (
     <StyledProductWrapper>

@@ -6,7 +6,7 @@ import EmailOrPasswordChangeForm from '../molecules/EmailOrPasswordChangeForm';
 import { StyledDataChangeWrapper } from './styles/StyledStyledDataChangeWrapper';
 
 const EmailChange = () => {
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   return (
     <StyledDataChangeWrapper>

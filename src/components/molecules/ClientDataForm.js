@@ -39,7 +39,7 @@ const ClientDataForm = () => {
   const [emptyUserFields, setEmptyUserFields] = useState(null);
   const [submittedFormValues, setSubmittedFormValues] = useState(null);
 
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   // let onFormSubmitQuestion = null;
 

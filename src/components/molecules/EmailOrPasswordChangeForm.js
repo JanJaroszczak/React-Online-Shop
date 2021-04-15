@@ -30,7 +30,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
 
   const [isSuccessAlert, setIsSuccessAlert] = useState(false);
 
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -22,7 +22,9 @@ import {
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Header = () => {
-  const isSearchPanelOn = useSelector(({ isSearchPanelOn }) => isSearchPanelOn);
+  const isSearchPanelOn = useSelector(
+    ({ searchPanel }) => searchPanel.isSearchPanelOn
+  );
 
   const isTablet = useMediaQuery({
     query: '(max-width: 768px)',

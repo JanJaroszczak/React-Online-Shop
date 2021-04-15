@@ -12,7 +12,7 @@ import {
 } from './styles/StyledSingleOrderHistory';
 
 const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   console.log(orderDate);
   console.log(totalOrderPrice);

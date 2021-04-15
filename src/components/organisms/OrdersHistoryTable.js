@@ -10,7 +10,7 @@ import {
 const OrdersHistoryTable = () => {
   const [ordersHistoryRows, setOrdersHistoryRows] = useState({});
 
-  const currentUser = useSelector(({ currentUser }) => currentUser);
+  const currentUser = useSelector(({ user }) => user.currentUser);
 
   useEffect(() => {
     if (currentUser) {
