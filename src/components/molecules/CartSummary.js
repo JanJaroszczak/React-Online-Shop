@@ -17,7 +17,7 @@ const CartSummary = ({ variant, totalOrderPrice, orderSummary }) => {
   const currentUser = useSelector(({ user }) => user.currentUser);
 
   return (
-    <StyledCartSummary variant={variant}>
+    <StyledCartSummary variant={variant} orderSummary={orderSummary}>
       <StyledCartSummaryHeading>
         {orderSummary ? 'COSTS DETAILS' : 'CART SUMMARY'}
       </StyledCartSummaryHeading>

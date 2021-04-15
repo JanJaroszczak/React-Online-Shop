@@ -50,11 +50,42 @@ export const StyledTable = styled.table`
     color: #808080;
   }
 
+  @media (max-width: 1000px) {
+    ${({ orderSummary }) =>
+      orderSummary &&
+      css`
+        grid-template-columns: minmax(280px, 1fr) minmax(150px, auto) minmax(
+            140px,
+            auto
+          );
+      `}
+  }
+
   @media (max-width: 820px) {
     grid-template-columns: minmax(280px, 1fr) minmax(150px, auto) minmax(
         140px,
         auto
       );
+
+    ${({ orderSummary }) =>
+      orderSummary &&
+      css`
+        grid-template-columns: minmax(230px, 1fr) minmax(120px, auto) minmax(
+            120px,
+            auto
+          );
+      `}
+  }
+
+  @media (max-width: 768px) {
+    ${({ orderSummary }) =>
+      orderSummary &&
+      css`
+        grid-template-columns: minmax(170px, 1fr) minmax(80px, auto) minmax(
+            80px,
+            auto
+          );
+      `}
   }
 
   @media (max-width: 600px) {

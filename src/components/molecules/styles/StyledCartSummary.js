@@ -13,15 +13,31 @@ export const StyledCartSummary = styled.div`
       margin: 123px 50px 0 0;
     `}
 
-  ${({ orderSummary }) =>
+  /* ${({ orderSummary }) =>
     orderSummary &&
     css`
       margin: 0;
-    `}
+    `} */
 
     @media (max-width: 768px) {
     width: 80vw;
     margin: 30px auto 0;
+
+    ${({ orderSummary }) =>
+      orderSummary &&
+      css`
+        width: 380px;
+        margin: 40px 0 40px auto;
+      `}
+  }
+
+  @media (max-width: 600px) {
+    ${({ orderSummary }) =>
+      orderSummary &&
+      css`
+        width: 80vw;
+        margin: 30px auto 0;
+      `}
   }
 `;
 

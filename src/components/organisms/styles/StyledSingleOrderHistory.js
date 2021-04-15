@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 export const StyledOrderSummaryWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 5px 0 20px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     padding: 0;
   }
 `;
 
 export const StyledLink = styled(Link)`
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     display: block;
     margin-top: 30px;
   }
