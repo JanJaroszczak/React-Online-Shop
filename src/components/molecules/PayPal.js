@@ -18,7 +18,7 @@ export default function Paypal() {
   const totalPrice = useSelector(
     ({ productsAndCart }) => productsAndCart.totalPrice
   );
-  const cart = useSelector(({ cart }) => cart);
+  const cart = useSelector(({ productsAndCart }) => productsAndCart.cart);
   const products = useSelector(
     ({ productsAndCart }) => productsAndCart.products
   );
