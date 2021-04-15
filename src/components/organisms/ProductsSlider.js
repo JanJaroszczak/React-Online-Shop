@@ -29,12 +29,12 @@ const ProductsSlider = () => {
 
   const cards = selectedProducts.map((product) => (
     <SwiperSlide tag="li" key={product.productId}>
-      <ProductCard {...product} />
+      <ProductCard {...product} products={selectedProducts} />
     </SwiperSlide>
   ));
 
   return (
-    <>
+    <div>
       <Swiper
         id="productSlider"
         wrapperTag="ul"
@@ -48,7 +48,7 @@ const ProductsSlider = () => {
       >
         {cards}
       </Swiper>
-    </>
+    </div>
   );
 };
 

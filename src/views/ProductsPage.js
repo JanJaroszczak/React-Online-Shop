@@ -13,6 +13,7 @@ import {
   StyledSelect,
   StyledProductsGridWrapper,
 } from './styles/StyledProductsPage';
+import Spinner from '../components/atoms/Spinner';
 
 const ProductsPage = () => {
   const [productsToDisplay, setProductsToDisplay] = useState(null);
@@ -48,6 +49,9 @@ const ProductsPage = () => {
 
       case sortingOptions.highPrice.value:
         return filteredProducts.sort((a, b) => b.productPrice - a.productPrice);
+
+      default:
+        return;
     }
   };
 
@@ -106,10 +110,20 @@ const ProductsPage = () => {
               </StyledSortingOptionChoice>
             </StyledHeadingAndSortingWrapper>
             <StyledProductsGridWrapper>
-              {productsToDisplay &&
+              {productsToDisplay ? (
                 productsToDisplay.map((product) => (
                   <ProductCard {...product} key={product.productId} />
-                ))}
+                ))
+              ) : (
+                <Spinner
+                  isLoading={1}
+                  left={'50%'}
+                  top={'20px'}
+                  size={100}
+                  translateX={'-50%'}
+                  translateY={'0'}
+                />
+              )}
             </StyledProductsGridWrapper>
           </div>
         )}

@@ -48,7 +48,7 @@ const SearchProductsPopper = () => {
   const [cursor, setCursor] = useState(-1);
   const [hovered, setHovered] = useState(undefined);
 
-  const [test, setTest] = useState(null);
+  // const [test, setTest] = useState(null);
 
   const downPress = useKeyPress('ArrowDown');
   const upPress = useKeyPress('ArrowUp');

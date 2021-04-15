@@ -67,6 +67,7 @@ export const StyledSelect = styled.select`
 `;
 
 export const StyledProductsGridWrapper = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;

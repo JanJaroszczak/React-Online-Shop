@@ -14,12 +14,15 @@ import Alert from '../atoms/Alert';
 import {
   StyledWrapper,
   StyledInputsWrapper,
+  StyledButtonWrapper,
   StyledError,
 } from './styles/StyledSignUpLogInForm';
+import Spinner from '../../components/atoms/Spinner';
 
 const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   const [logInError, setLogInError] = useState('');
   const [redirectReady, setRedirectReady] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [whichButtonPressed, setWhichButtonPressed] = useState('');
 
   const isTablet = useMediaQuery({
@@ -79,6 +82,8 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
           console.log(values);
           const { userEmail, userName, userPassword } = values;
 
+          setIsLoading(true);
+
           if (isSignUp) {
             auth
               .createUserWithEmailAndPassword(userEmail, userPassword)
@@ -105,6 +110,8 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
               })
               .catch((err) => {
                 console.log(err);
+                setIsLoading(false);
+
                 setLogInError(err.message);
               });
           } else {
@@ -117,6 +124,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
               })
               .catch((err) => {
                 console.log(err);
+                setIsLoading(false);
                 setLogInError(err.message);
               });
           }
@@ -156,7 +164,30 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
                 value={values.userPassword}
                 onChangeHandler={handleChange}
               />
-              <Button type="submit" label={isSignUp ? 'Sign Up' : 'Log In'} />
+              <StyledButtonWrapper>
+                <Button type="submit" label={isSignUp ? 'Sign Up' : 'Log In'} />
+
+                {!isSignUp && whichButtonPressed === 'login' && isLoading && (
+                  <Spinner
+                    isLoading={1}
+                    left={'100px'}
+                    top={'50%'}
+                    size={20}
+                    translateX={'0'}
+                    translateY={'-43%'}
+                  />
+                )}
+                {isSignUp && whichButtonPressed === 'signup' && isLoading && (
+                  <Spinner
+                    isLoading={1}
+                    left={'100px'}
+                    top={'50%'}
+                    size={20}
+                    translateX={'0'}
+                    translateY={'-43%'}
+                  />
+                )}
+              </StyledButtonWrapper>
               <StyledError>{logInError}</StyledError>
             </StyledInputsWrapper>
           </Form>

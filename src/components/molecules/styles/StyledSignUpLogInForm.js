@@ -10,6 +10,11 @@ export const StyledWrapper = styled.div`
     `}
 `;
 
+export const StyledButtonWrapper = styled.div`
+  position: relative;
+  /* border: 1px solid black; */
+`;
+
 export const StyledInputsWrapper = styled.div`
   @media (max-width: 768px) {
     max-width: 250px;

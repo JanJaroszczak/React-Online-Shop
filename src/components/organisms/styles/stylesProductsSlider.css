@@ -1,5 +1,7 @@
 #productSlider.swiper-container {
   margin-bottom: 60px;
+  min-height: 320px;
+  position: relative;
 
   /* border: 1px solid black; */
 }
