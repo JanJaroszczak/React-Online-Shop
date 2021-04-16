@@ -49,6 +49,7 @@ export const StyledIcon = styled.div`
   font-size: 3rem;
   padding: ${({ burger, cart }) => (burger ? '14px 0' : cart ? '10px 0' : '0')};
   /* z-index: 200; */
+  cursor: pointer;
 
   /* border: 1px solid black; */
 

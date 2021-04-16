@@ -115,6 +115,7 @@ export const StyledNavRightHandSideWrapper = styled.div`
     width: 50px;
     text-align: center;
     padding: 10px 0;
+    cursor: pointer;
 
     /* border: 1px solid black; */
   }
