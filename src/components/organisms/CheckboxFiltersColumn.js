@@ -8,6 +8,7 @@ import {
   StyledColumnTitle,
   StyledPriceFilter,
 } from './styles/StyledCheckboxFiltersColumn';
+import { StyledCheckboxesWrapper } from '../molecules/styles/StyledCheckboxFilters';
 
 const CheckboxFiltersColumn = ({
   onFilteredProducts,
@@ -159,6 +160,17 @@ const CheckboxFiltersColumn = ({
     <StyledColumn isTablet={isTablet}>
       <StyledColumnTitle>FILTER PRODUCTS:</StyledColumnTitle>
       {allCheckboxFiltersToDisplay}
+      <StyledCheckboxesWrapper className="boxes">
+        <h3>Others</h3>
+        <input
+          onChange={(e) =>
+            setCheckboxFilter(e.target.checked, 'sale', 'extraState')
+          }
+          type="checkbox"
+          id="extraState"
+        />
+        <label htmlFor="extraState">Sale</label>
+      </StyledCheckboxesWrapper>
       <StyledPriceFilter>
         <h3>Price</h3>
         <label htmlFor="priceFrom">From:</label>

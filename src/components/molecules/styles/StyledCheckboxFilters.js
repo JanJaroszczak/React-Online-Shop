@@ -25,11 +25,11 @@ export const StyledCheckboxesWrapper = styled.div`
     }
   }
 
-  div input[type='checkbox'] {
+  input[type='checkbox'] {
     display: none;
   }
 
-  div input[type='checkbox'] + label {
+  input[type='checkbox'] + label {
     display: inline-block;
     position: relative;
     padding-left: 35px;
@@ -47,7 +47,7 @@ export const StyledCheckboxesWrapper = styled.div`
     }
   }
 
-  div input[type='checkbox'] + label:before {
+  input[type='checkbox'] + label:before {
     content: '';
     display: block;
     width: 20px;
@@ -65,7 +65,7 @@ export const StyledCheckboxesWrapper = styled.div`
     }
   }
 
-  div input[type='checkbox']:checked + label:before {
+  input[type='checkbox']:checked + label:before {
     width: 10px;
     top: -7px;
     left: 5px;
