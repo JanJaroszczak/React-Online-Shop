@@ -49,6 +49,54 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
     };
   }, [currentUser]);
 
+  const renderAlertsAndRedirects = () => (
+    <>
+      {isSignUp && whichAlertIsOn === 'signup' ? (
+        <Alert
+          severity="success"
+          message="You have been signed up!"
+          visible={true}
+        />
+      ) : !isSignUp && whichAlertIsOn === 'login' ? (
+        <Alert
+          severity="success"
+          message="You have been logged in!"
+          visible={true}
+        />
+      ) : null}
+      {beforeCheckout && redirectReady ? (
+        <Redirect to={routes.checkout} />
+      ) : !beforeCheckout && redirectReady ? (
+        <Redirect to={routes.home} />
+      ) : null}
+    </>
+  );
+
+  const renderSpinners = () => (
+    <>
+      {!isSignUp && whichButtonPressed === 'login' && isLoading && (
+        <Spinner
+          isLoading={1}
+          left={'100px'}
+          top={'50%'}
+          size={20}
+          translateX={'0'}
+          translateY={'-43%'}
+        />
+      )}
+      {isSignUp && whichButtonPressed === 'signup' && isLoading && (
+        <Spinner
+          isLoading={1}
+          left={'100px'}
+          top={'50%'}
+          size={20}
+          translateX={'0'}
+          translateY={'-43%'}
+        />
+      )}
+    </>
+  );
+
   return (
     <StyledWrapper beforeCheckout={beforeCheckout}>
       <Heading
@@ -177,51 +225,14 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
                       : () => setWhichButtonPressed('login')
                   }
                 />
-
-                {!isSignUp && whichButtonPressed === 'login' && isLoading && (
-                  <Spinner
-                    isLoading={1}
-                    left={'100px'}
-                    top={'50%'}
-                    size={20}
-                    translateX={'0'}
-                    translateY={'-43%'}
-                  />
-                )}
-                {isSignUp && whichButtonPressed === 'signup' && isLoading && (
-                  <Spinner
-                    isLoading={1}
-                    left={'100px'}
-                    top={'50%'}
-                    size={20}
-                    translateX={'0'}
-                    translateY={'-43%'}
-                  />
-                )}
+                {renderSpinners()}
               </StyledButtonWrapper>
               <StyledError>{logInError}</StyledError>
             </StyledInputsWrapper>
           </Form>
         )}
       </Formik>
-      {isSignUp && whichAlertIsOn === 'signup' ? (
-        <Alert
-          severity="success"
-          message="You have been signed up!"
-          visible={true}
-        />
-      ) : !isSignUp && whichAlertIsOn === 'login' ? (
-        <Alert
-          severity="success"
-          message="You have been logged in!"
-          visible={true}
-        />
-      ) : null}
-      {beforeCheckout && redirectReady ? (
-        <Redirect to={routes.checkout} />
-      ) : !beforeCheckout && redirectReady ? (
-        <Redirect to={routes.home} />
-      ) : null}
+      {renderAlertsAndRedirects()}
     </StyledWrapper>
   );
 };
