@@ -1,27 +1,30 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import Button from '../atoms/Button';
+import { useMediaQuery } from 'react-responsive';
 
+import Button from '../atoms/Button';
 import CheckboxFilters from '../molecules/CheckboxFilters';
 import {
   StyledColumn,
-  StyledColumnTitle,
+  StyledColumnHeading,
   StyledPriceFilter,
 } from './styles/StyledCheckboxFiltersColumn';
 import { StyledCheckboxesWrapper } from '../molecules/styles/StyledCheckboxFilters';
 
-const CheckboxFiltersColumn = ({
-  onFilteredProducts,
-  isTablet,
-  onMobileClose,
-}) => {
+const CheckboxFiltersColumn = ({ onFilteredProducts, onMobileClose }) => {
   const availableProducts = useSelector(
     ({ productsAndCart }) => productsAndCart.products
   );
 
+  const isTablet = useMediaQuery({
+    query: '(max-width: 768px)',
+  });
+
   const [bottomFilterPrice, setBottomFilterPrice] = useState('');
   const [upperFilterPrice, setUpperFilterPrice] = useState('');
   const [markedCheckboxFilters, setMarkedCheckboxFilters] = useState([]);
+  const [areAllFiltersCleared, setAreAllFiltersCleared] = useState(false);
+  const [isSaleFilterChecked, setIsSaleFilterChecked] = useState(false);
   const inputRefBottomPrice = useRef();
   const inputRefUpperPrice = useRef();
 
@@ -33,6 +36,7 @@ const CheckboxFiltersColumn = ({
           filterValue,
         })
       );
+      setAreAllFiltersCleared(false);
     } else {
       setMarkedCheckboxFilters(
         markedCheckboxFilters.filter(
@@ -45,18 +49,28 @@ const CheckboxFiltersColumn = ({
   };
 
   const filterCategories = React.useMemo(
-    () => ['productBrand', 'productFamily', 'productCategory', 'productColor'],
+    () => [
+      'productBrand',
+      'productFamily',
+      'productCategory',
+      'productColor',
+      'extraState',
+    ],
     []
   );
 
-  const allCheckboxFiltersToDisplay = filterCategories.map((category) => (
-    <CheckboxFilters
-      key={category}
-      onSetFilter={setCheckboxFilter}
-      filterName={category.substring(7)}
-      filterCategory={category}
-    />
-  ));
+  const allCheckboxFiltersToDisplay = filterCategories.map((category) => {
+    if (category !== 'extraState')
+      return (
+        <CheckboxFilters
+          key={category}
+          onSetFilter={setCheckboxFilter}
+          filterName={category.substring(7)}
+          filterCategory={category}
+          areAllFiltersCleared={areAllFiltersCleared}
+        />
+      );
+  });
 
   const setPriceFilter = useCallback(
     (allCheckboxFilteredProducts) => {
@@ -124,6 +138,20 @@ const CheckboxFiltersColumn = ({
     setPriceFilter,
   ]);
 
+  const clearFilters = () => {
+    setBottomFilterPrice('');
+    setUpperFilterPrice('');
+    setMarkedCheckboxFilters([]);
+    setAreAllFiltersCleared(true);
+    setIsSaleFilterChecked(false);
+  };
+
+  const saleFilterClicked = (e) => {
+    setCheckboxFilter(e.target.checked, 'sale', 'extraState');
+    setIsSaleFilterChecked((prevState) => !prevState);
+    if (isSaleFilterChecked) setAreAllFiltersCleared(false);
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (bottomFilterPrice === inputRefBottomPrice.current.value) {
@@ -158,16 +186,30 @@ const CheckboxFiltersColumn = ({
 
   return (
     <StyledColumn isTablet={isTablet}>
-      <StyledColumnTitle>FILTER PRODUCTS:</StyledColumnTitle>
+      <StyledColumnHeading>
+        <h2>FILTERS</h2>
+        <Button
+          type="button"
+          label="clear all filters"
+          color={isTablet ? '' : 'white'}
+          variant={
+            bottomFilterPrice ||
+            upperFilterPrice ||
+            markedCheckboxFilters.length > 0
+              ? 'clearFilters'
+              : 'clearFiltersDisabled'
+          }
+          clicked={clearFilters}
+        />
+      </StyledColumnHeading>
       {allCheckboxFiltersToDisplay}
       <StyledCheckboxesWrapper className="boxes">
         <h3>Others</h3>
         <input
-          onChange={(e) =>
-            setCheckboxFilter(e.target.checked, 'sale', 'extraState')
-          }
           type="checkbox"
           id="extraState"
+          checked={isSaleFilterChecked}
+          onChange={(e) => saleFilterClicked(e)}
         />
         <label htmlFor="extraState">Sale</label>
       </StyledCheckboxesWrapper>

@@ -19,13 +19,16 @@ export const StyledColumn = styled.div`
   } ;
 `;
 
-export const StyledColumnTitle = styled.h2`
+export const StyledColumnHeading = styled.div`
   padding: 15px 25px;
   background-color: ${({ theme }) => theme.colors.mainDark};
   color: ${({ theme }) => theme.colors.mainWhite};
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
   border-bottom: 1px solid ${({ theme }) => theme.colors.mainWhite};
+
+  h2 {
+    font-size: ${({ theme }) => theme.fontSizes.m};
+    font-weight: ${({ theme }) => theme.fontWeights.regular};
+  }
 
   @media (max-width: 768px) {
     padding-left: 45px;
