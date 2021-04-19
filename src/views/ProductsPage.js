@@ -15,16 +15,21 @@ import {
 } from './styles/StyledProductsPage';
 import Spinner from '../components/atoms/Spinner';
 
-const ProductsPage = () => {
+const ProductsPage = ({ history }) => {
   const [productsToDisplay, setProductsToDisplay] = useState(null);
   const [sortingOption, setSortingOption] = useState(sortingOptions.new.value);
   const [mobileFiltersColumnToggle, setMobileFiltersColumnToggle] = useState(
     false
   );
+  const [preSetFilters, setPreSetFilters] = useState(null);
 
   const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
   });
+
+  useEffect(() => {
+    if (history.location.state) setPreSetFilters(history.location.state);
+  }, []);
 
   const selectOptions = Object.entries(sortingOptions).map((option) => (
     <option key={option[1].value} value={option[1].value}>
@@ -81,6 +86,7 @@ const ProductsPage = () => {
           onFilteredProducts={filteredProductsHandler}
           isTablet={mobileFiltersColumnToggle}
           onMobileClose={handleMobileFiltersColumn}
+          preSetFilters={preSetFilters}
         />
         {!mobileFiltersColumnToggle && (
           <div>

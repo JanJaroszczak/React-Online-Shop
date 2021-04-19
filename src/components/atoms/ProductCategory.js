@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { routes } from '../../routes';
 import {
   StyledDiv,
   StyledImg,
@@ -7,13 +10,23 @@ import {
   StyledFade,
 } from './styles/StyledProductCategory';
 
-const ProductCategory = ({ img, category }) => {
+const ProductCategory = ({ img, value }) => {
   return (
     <StyledDiv>
       <StyledImg src={img} alt={''} />
       <StyledFade />
       <StyledCategory />
-      <StyledCategoryName>{category}</StyledCategoryName>
+      <Link
+        to={{
+          pathname: routes.products,
+          state: {
+            category: 'productBrand',
+            values: [`${value[0].toUpperCase()}${value.slice(1)}`],
+          },
+        }}
+      >
+        <StyledCategoryName>{value}</StyledCategoryName>
+      </Link>
     </StyledDiv>
   );
 };

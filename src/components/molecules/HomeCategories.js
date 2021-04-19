@@ -9,9 +9,9 @@ import { StyledCategoriesWrapper } from './styles/StyledHomeCategories';
 const HomeCategories = () => {
   return (
     <StyledCategoriesWrapper>
-      <ProductCategory img={category1} category={'nike'} />
-      <ProductCategory img={category2} category={'adidas'} />
-      <ProductCategory img={category3} category={'puma'} />
+      <ProductCategory img={category1} value={'nike'} />
+      <ProductCategory img={category2} value={'adidas'} />
+      <ProductCategory img={category3} value={'puma'} />
     </StyledCategoriesWrapper>
   );
 };

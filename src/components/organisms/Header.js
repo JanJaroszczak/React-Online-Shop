@@ -4,7 +4,9 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+import { routes } from '../../routes';
 import img1 from '../../assets/images/header1.jpg';
 import img1mobile from '../../assets/images/header1mobile.jpg';
 import img2 from '../../assets/images/header2.jpg';
@@ -68,7 +70,9 @@ const Header = () => {
           <StyledSubheading>
             The widest offer of football shoes on the Internet
           </StyledSubheading>
-          <StyledButton type="button">shop now</StyledButton>
+          <Link to={routes.products}>
+            <StyledButton type="button">shop now</StyledButton>
+          </Link>
         </StyledHeadingWrapper>
       </Swiper>
     </>

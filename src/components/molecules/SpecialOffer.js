@@ -1,9 +1,10 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
+import { routes } from '../../routes';
 import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
-import { StyledDiv } from './styles/StyledSpecialOffer';
+import { StyledDiv, StyledLink } from './styles/StyledSpecialOffer';
 
 const SpecialOffer = () => {
   const isTablet = useMediaQuery({
@@ -17,7 +18,16 @@ const SpecialOffer = () => {
         heading={'march sale'}
         headingDescription={'free shipping for orders over $100'}
       />
-      <Button type="button" variant={'specialOffer'} label={'shop now'} />
+      <StyledLink
+        to={{
+          pathname: routes.products,
+          state: {
+            category: 'sale',
+          },
+        }}
+      >
+        <Button type="button" variant={'specialOffer'} label={'shop now'} />
+      </StyledLink>
     </StyledDiv>
   );
 };

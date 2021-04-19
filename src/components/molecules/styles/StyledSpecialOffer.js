@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const StyledDiv = styled.div`
   display: grid;
@@ -30,4 +31,10 @@ export const StyledDiv = styled.div`
     padding-bottom: 30px;
     text-align: center;
   } ;
+`;
+
+export const StyledLink = styled(Link)`
+  align-self: center;
+  justify-self: center;
+  text-decoration: none;
 `;

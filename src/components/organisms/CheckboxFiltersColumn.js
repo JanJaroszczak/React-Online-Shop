@@ -15,6 +15,7 @@ const CheckboxFiltersColumn = ({
   onFilteredProducts,
   isTablet,
   onMobileClose,
+  preSetFilters,
 }) => {
   const availableProducts = useSelector(
     ({ productsAndCart }) => productsAndCart.products
@@ -72,6 +73,7 @@ const CheckboxFiltersColumn = ({
           filterName={category.substring(7)}
           filterCategory={category}
           areAllFiltersCleared={areAllFiltersCleared}
+          preSetFilters={preSetFilters}
         />
       );
   });
@@ -155,6 +157,20 @@ const CheckboxFiltersColumn = ({
     setIsSaleFilterChecked((prevState) => !prevState);
     if (isSaleFilterChecked) setAreAllFiltersCleared(false);
   };
+
+  useEffect(() => {
+    if (
+      preSetFilters &&
+      preSetFilters.category &&
+      preSetFilters.values &&
+      preSetFilters.values.length > 0
+    ) {
+      setCheckboxFilter(true, preSetFilters.values[0], preSetFilters.category);
+    } else if (preSetFilters && preSetFilters.category === 'sale') {
+      setCheckboxFilter(true, 'sale', 'extraState');
+      setIsSaleFilterChecked((prevState) => !prevState);
+    }
+  }, [preSetFilters]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

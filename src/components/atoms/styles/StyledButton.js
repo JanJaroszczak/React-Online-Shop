@@ -33,11 +33,6 @@ export const StyledButton = styled.button`
     variant === 'clearFiltersDisabled' &&
     css`
       color: ${({ theme }) => theme.colors.extraDarkGray};
-
-      /* background-color: ${({ theme, color }) =>
-        color === 'white'
-          ? theme.colors.midGray
-          : theme.colors.extraDarkGray}; */
       background-color: ${({ theme }) => theme.colors.midGray};
       cursor: default;
 
@@ -49,8 +44,6 @@ export const StyledButton = styled.button`
   ${({ variant }) =>
     variant === 'specialOffer' &&
     css`
-      align-self: center;
-      justify-self: center;
       font-size: ${({ theme }) => theme.fontSizes.m};
     `}
 
