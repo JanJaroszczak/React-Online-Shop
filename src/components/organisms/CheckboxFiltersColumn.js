@@ -11,12 +11,16 @@ import {
 } from './styles/StyledCheckboxFiltersColumn';
 import { StyledCheckboxesWrapper } from '../molecules/styles/StyledCheckboxFilters';
 
-const CheckboxFiltersColumn = ({ onFilteredProducts, onMobileClose }) => {
+const CheckboxFiltersColumn = ({
+  onFilteredProducts,
+  isTablet,
+  onMobileClose,
+}) => {
   const availableProducts = useSelector(
     ({ productsAndCart }) => productsAndCart.products
   );
 
-  const isTablet = useMediaQuery({
+  const isTabletButton = useMediaQuery({
     query: '(max-width: 768px)',
   });
 
@@ -191,7 +195,7 @@ const CheckboxFiltersColumn = ({ onFilteredProducts, onMobileClose }) => {
         <Button
           type="button"
           label="clear all filters"
-          color={isTablet ? '' : 'white'}
+          color={isTabletButton ? '' : 'white'}
           variant={
             bottomFilterPrice ||
             upperFilterPrice ||

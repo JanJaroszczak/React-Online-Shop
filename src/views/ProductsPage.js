@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { sortingOptions } from './utils/ProductsPageSortingOptions';
@@ -69,6 +69,10 @@ const ProductsPage = () => {
   const handleMobileFiltersColumn = () => {
     setMobileFiltersColumnToggle((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    if (!isTablet) setMobileFiltersColumnToggle(false);
+  }, [isTablet]);
 
   return (
     <>
