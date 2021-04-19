@@ -51,12 +51,6 @@ const OrdersHistoryTable = () => {
     }
   }, [currentUser]);
 
-  console.log(ordersHistoryRows);
-  console.log(typeof ordersHistoryRows);
-  console.log(Boolean(ordersHistoryRows));
-  console.log(Object.keys(ordersHistoryRows));
-  console.log(Object.keys(ordersHistoryRows).length);
-
   return (
     <>
       <StyledOrdersHistoryTable>
