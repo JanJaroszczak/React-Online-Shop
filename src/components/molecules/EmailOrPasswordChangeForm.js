@@ -77,6 +77,25 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
     }
   };
 
+  const setAllErrorsHidden = () => {
+    setOldPasswordErrorVisibility('hidden');
+    setNewDataErrorVisibility('hidden');
+    setNewDataConfirmationErrorVisibility('hidden');
+  };
+
+  const renderAlert = () => (
+    <>
+      {isSuccessAlert && (
+        <Alert
+          variant="accountDataChange"
+          severity="success"
+          message={`${emailChange ? 'Email' : 'Password'} succesfully changed!`}
+          visible={true}
+        />
+      )}
+    </>
+  );
+
   return (
     <div>
       <Formik
@@ -89,9 +108,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
           console.log(values);
           console.log('submit');
 
-          setOldPasswordErrorVisibility('hidden');
-          setNewDataErrorVisibility('hidden');
-          setNewDataConfirmationErrorVisibility('hidden');
+          setAllErrorsHidden();
 
           const {
             userOldPassword,
@@ -239,18 +256,9 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
           </Form>
         )}
       </Formik>
-      {isSuccessAlert && (
-        <Alert
-          variant="accountDataChange"
-          severity="success"
-          message={`${emailChange ? 'Email' : 'Password'} succesfully changed!`}
-          visible={true}
-        />
-      )}
+      {renderAlert()}
     </div>
   );
 };
 
 export default EmailOrPasswordChangeForm;
-
-//
