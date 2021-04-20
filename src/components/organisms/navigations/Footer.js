@@ -15,7 +15,7 @@ const Footer = () => {
       <StyledUl>
         <StyledLi>{`Copyright \u00A9 ${new Date().getFullYear()} Jan Jaroszczak`}</StyledLi>
         <StyledLi>
-          <StyledLink to={routes.products}>Terms and Conditions</StyledLink>
+          <StyledLink to={routes.terms}>Terms and Conditions</StyledLink>
         </StyledLi>
       </StyledUl>
     </StyledFooter>

@@ -16,6 +16,7 @@ import AuthBeforeCheckoutPage from '../views/AuthBeforeCheckoutPage';
 import OrderSummaryPage from '../views/OrderSummaryPage';
 import AccountPage from '../views/AccountPage';
 import MobileSearchPage from '../views/MobileSearchPage';
+import TermsPage from '../views/TermsPage';
 
 // import ProductPageInfo from '../components/molecules/ProductPageInfo';
 
@@ -63,6 +64,7 @@ const Router = () => {
         <Route path={routes.accountOrder} component={AccountPage} />
         <Route path={routes.account} component={AccountPage} />
         <Route path={routes.mobileSearch} component={MobileSearchPage} />
+        <Route path={routes.terms} component={TermsPage} />
 
         {/* <Route exact path={routes.home} component={ProductPageInfo} /> */}
 
