@@ -1,14 +1,22 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 import Heading from '../components/atoms/Heading';
 
 import { StyledParagraph } from './styles/StyledTermsPage';
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
+import Button from '../components/atoms/Button';
 
 const TermsPage = () => {
+  const history = useHistory();
+
   const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
+  });
+
+  const is400 = useMediaQuery({
+    query: '(max-width: 400px)',
   });
 
   return (
@@ -53,6 +61,12 @@ const TermsPage = () => {
         similique omnis minima provident iure obcaecati dolore cumque saepe
         praesentium commodi tempore nobis.
       </StyledParagraph>
+      <Button
+        variant={is400 ? 'mobileTermsPage' : 'noCapitalize'}
+        type="button"
+        label="Go to the previous page"
+        clicked={history.goBack}
+      />
     </StyledCommonPageWrapper>
   );
 };
