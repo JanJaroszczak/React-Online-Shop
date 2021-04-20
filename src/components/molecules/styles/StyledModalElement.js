@@ -19,7 +19,7 @@ export const StyledLink = styled(Link)`
   outline: none;
 `;
 
-export const StyledCartElementWrapper = styled.div`
+export const StyledModalSubElementWrapper = styled.div`
   display: grid;
   grid-template-columns: 80px auto 80px;
   grid-template-rows: 100px;

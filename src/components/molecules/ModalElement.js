@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import { toggleSearchPanel } from '../../actions';
-import CartElementInfo from '../atoms/CartElementInfo';
+import ProductInfoCollection from '../atoms/ProductInfoCollection';
 import { useDispatch } from 'react-redux';
 
 import {
   StyledModalElementWrapper,
   StyledLink,
-  StyledCartElementWrapper,
+  StyledModalSubElementWrapper,
   StyledPrice,
-} from './styles/StyledCartModalElement';
+} from './styles/StyledModalElement';
 
-const CartModalElement = ({
+const ModalElement = ({
   product,
   cartModal,
   searchModal,
@@ -47,16 +47,19 @@ const CartModalElement = ({
             to={`/product/${product.productId}`}
             ref={popperRef}
           >
-            <StyledCartElementWrapper>
-              <CartElementInfo product={product} searchModal={searchModal} />
+            <StyledModalSubElementWrapper>
+              <ProductInfoCollection
+                product={product}
+                searchModal={searchModal}
+              />
               <StyledPrice>$ {product.productPrice}</StyledPrice>
-            </StyledCartElementWrapper>
+            </StyledModalSubElementWrapper>
           </StyledLink>
         </StyledModalElementWrapper>
       ) : (
         <StyledModalElementWrapper searchModal={searchModal}>
-          <StyledCartElementWrapper>
-            <CartElementInfo
+          <StyledModalSubElementWrapper>
+            <ProductInfoCollection
               product={product}
               searchModal={searchModal}
               cartModal={cartModal}
@@ -64,11 +67,11 @@ const CartModalElement = ({
             <StyledPrice>
               $ {product.chosenOption.quantity * product.productPrice}
             </StyledPrice>
-          </StyledCartElementWrapper>
+          </StyledModalSubElementWrapper>
         </StyledModalElementWrapper>
       )}
     </>
   );
 };
 
-export default CartModalElement;
+export default ModalElement;

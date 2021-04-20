@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import CartModalElement from './CartModalElement';
+import ModalElement from './ModalElement';
 import { toggleSearchPanel } from '../../actions';
 import searchProducts from '../../utils/searchProducts';
 import {
@@ -131,7 +131,7 @@ const SearchProductsPopper = () => {
 
     if (filteredProducts) {
       const productToDisplay = filteredProducts.map((product, index) => (
-        <CartModalElement
+        <ModalElement
           key={product.productId}
           product={product}
           searchModal

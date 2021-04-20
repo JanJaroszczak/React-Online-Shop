@@ -7,9 +7,9 @@ import {
   StyledLink,
   StyledImg,
   StyledProductInfo,
-} from './styles/StyledCartElementInfo';
+} from './styles/StyledProductInfoCollection';
 
-const CartElementInfo = ({ product, cartModal, searchModal }) => {
+const ProductInfoCollection = ({ product, cartModal, searchModal }) => {
   const dispatch = useDispatch();
 
   const isMobile = useMediaQuery({
@@ -64,4 +64,4 @@ const CartElementInfo = ({ product, cartModal, searchModal }) => {
   );
 };
 
-export default CartElementInfo;
+export default ProductInfoCollection;

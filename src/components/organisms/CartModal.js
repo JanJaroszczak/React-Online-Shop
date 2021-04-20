@@ -8,7 +8,7 @@ import Fade from '@material-ui/core/Fade';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCartClosed } from '../../actions';
 
-import CartModalElement from '../molecules/CartModalElement';
+import ModalElement from '../molecules/ModalElement';
 import './styles/stylesCartModal.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +56,7 @@ const CartModal = () => {
 
   const cartProductsModalList = cartProducts.map((product) => (
     <li key={product.cartProductId}>
-      <CartModalElement product={product} cartModal />
+      <ModalElement product={product} cartModal />
     </li>
   ));
 

@@ -8,7 +8,7 @@ import {
   removeProductFromCart,
 } from '../../actions';
 
-import CartElementInfo from '../atoms/CartElementInfo';
+import ProductInfoCollection from '../atoms/ProductInfoCollection';
 import {
   StyledQuantityChoice,
   StyledQuantityInput,
@@ -72,7 +72,7 @@ const CartContentTableRow = ({ product, orderRow }) => {
     <StyledTableRow>
       <td>
         <div className="gridWrapper">
-          <CartElementInfo product={product} />
+          <ProductInfoCollection product={product} />
         </div>
       </td>
       <td>
