@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
 import { setCartClosed } from '../../actions';
+
 import {
   StyledLink,
   StyledImg,

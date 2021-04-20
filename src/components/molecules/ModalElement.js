@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { toggleSearchPanel } from '../../actions';
-import ProductInfoCollection from '../atoms/ProductInfoCollection';
 import { useDispatch } from 'react-redux';
+
+import ProductInfoCollection from '../atoms/ProductInfoCollection';
 
 import {
   StyledModalElementWrapper,

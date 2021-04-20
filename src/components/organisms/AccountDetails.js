@@ -1,7 +1,8 @@
 import React from 'react';
 
-import Heading from '../atoms/Heading';
 import AccountDataForm from '../molecules/AccountDataForm';
+import Heading from '../atoms/Heading';
+
 import { StyledPasswordChangeWrapper } from './styles/StyledAccountDetails';
 
 const AccountDetails = () => {

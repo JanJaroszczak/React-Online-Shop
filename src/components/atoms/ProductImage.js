@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import salePercentageCalculation from '../../utils/salePercentageCalculation';
+
 import {
   StyledDiv,
   StyledOverflowHidde,

@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import Heading from '../components/atoms/Heading';
 import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
+import Heading from '../components/atoms/Heading';
+
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 
 const CartPage = () => {

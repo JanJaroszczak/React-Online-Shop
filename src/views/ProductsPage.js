@@ -1,10 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import { sortingOptions } from './utils/ProductsPageSortingOptions';
+import CheckboxFiltersColumn from '../components/organisms/CheckboxFiltersColumn';
 import Heading from '../components/atoms/Heading';
 import ProductCard from '../components/molecules/ProductCard';
-import CheckboxFiltersColumn from '../components/organisms/CheckboxFiltersColumn';
+import Spinner from '../components/atoms/Spinner';
+
+import { sortingOptions } from './utils/ProductsPageSortingOptions';
+
 import {
   StyledProductsPageWrapper,
   StyledHeadingAndSortingWrapper,
@@ -13,7 +16,6 @@ import {
   StyledSelect,
   StyledProductsGridWrapper,
 } from './styles/StyledProductsPage';
-import Spinner from '../components/atoms/Spinner';
 
 const ProductsPage = ({ history }) => {
   const [productsToDisplay, setProductsToDisplay] = useState(null);

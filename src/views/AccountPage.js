@@ -2,13 +2,15 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import AccountMenu from '../components/organisms/AccountMenu';
-import OrdersHistory from '../components/organisms/OrdersHistory';
-import SingleOrderHistory from '../components/organisms/SingleOrderHistory';
-import { routes } from '../routes';
-import PasswordChange from '../components/organisms/PasswordChange';
 import AccountDetails from '../components/organisms/AccountDetails';
+import AccountMenu from '../components/organisms/AccountMenu';
 import EmailChange from '../components/organisms/EmailChange';
+import OrdersHistory from '../components/organisms/OrdersHistory';
+import PasswordChange from '../components/organisms/PasswordChange';
+import SingleOrderHistory from '../components/organisms/SingleOrderHistory';
+
+import { routes } from '../routes';
+
 import { StyledAccountPageWrapper } from './styles/StyledAccountPage';
 
 const AccountPage = ({ history, match }) => {

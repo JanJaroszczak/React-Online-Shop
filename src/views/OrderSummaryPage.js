@@ -2,13 +2,15 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { routes } from '../routes';
-import Heading from '../components/atoms/Heading';
+import Alert from '../components/atoms/Alert';
+import Button from '../components/atoms/Button';
 import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
-import Alert from '../components/atoms/Alert';
+import Heading from '../components/atoms/Heading';
+
+import { routes } from '../routes';
 import { successfulPaymentAlert, clearCart } from '../actions';
-import Button from '../components/atoms/Button';
+
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 import { StyledLink } from './styles/StyledOrderSummaryPage';
 

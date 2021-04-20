@@ -1,11 +1,12 @@
 import React from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import emailjs from 'emailjs-com';
+import { Formik, Form, ErrorMessage } from 'formik';
 
-import Input from '../atoms/Input';
-import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
+import Heading from '../atoms/Heading';
+import Input from '../atoms/Input';
+
 import {
   StyledFormWrapper,
   StyledInputWrapper,

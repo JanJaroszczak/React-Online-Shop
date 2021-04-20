@@ -7,8 +7,9 @@ import {
   InfoWindow,
 } from 'react-google-maps';
 
-import icon from '../../assets/icons/football.png';
 import mapStyles from './styles/mapStyles';
+
+import icon from '../../assets/icons/football.png';
 
 const Map = () => {
   const [selectedShop, setSelectedShop] = useState(null);

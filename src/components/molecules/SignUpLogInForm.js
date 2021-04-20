@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { routes } from '../../routes';
-import { auth } from '../../firebase/firebaseConfig';
-import { usersCollection } from '../../firebase/firestoreUtils';
-import Heading from '../atoms/Heading';
-import Button from '../atoms/Button';
-import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
+import Button from '../atoms/Button';
+import Heading from '../atoms/Heading';
+import Input from '../atoms/Input';
+import Spinner from '../../components/atoms/Spinner';
+
+import { auth } from '../../firebase/firebaseConfig';
+import { routes } from '../../routes';
+import { usersCollection } from '../../firebase/firestoreUtils';
+
 import {
   StyledWrapper,
   StyledInputsWrapper,
   StyledButtonWrapper,
   StyledError,
 } from './styles/StyledSignUpLogInForm';
-import Spinner from '../../components/atoms/Spinner';
 
 const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   const [logInError, setLogInError] = useState('');

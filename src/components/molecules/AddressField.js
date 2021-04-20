@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Heading from '../atoms/Heading';
+
 import {
   StyledAddressWrapper,
   StyledAddress,

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSelector } from 'react-redux';
 import SwiperCore, { Navigation, Pagination, Thumbs } from 'swiper';
+
 import 'swiper/swiper-bundle.css';
 import './styles/stylesPhotoCarousel.css';
 

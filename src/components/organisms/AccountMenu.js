@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { routes } from '../../routes';
 import { auth } from '../../firebase/firebaseConfig';
 import { clearCart } from '../../actions';
+import { routes } from '../../routes';
+
 import {
   StyledAccountMenuWrapper,
   StyledAccountHeading,

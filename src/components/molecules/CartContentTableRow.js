@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
+import { useDispatch, useSelector } from 'react-redux';
+
+import ProductInfoCollection from '../atoms/ProductInfoCollection';
+
 import {
   addProductToCart,
   decreaseProductCartQuantity,
@@ -8,7 +11,6 @@ import {
   removeProductFromCart,
 } from '../../actions';
 
-import ProductInfoCollection from '../atoms/ProductInfoCollection';
 import {
   StyledQuantityChoice,
   StyledQuantityInput,

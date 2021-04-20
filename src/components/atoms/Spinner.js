@@ -1,5 +1,5 @@
 import ClipLoader from 'react-spinners/ClipLoader';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const StyledSpinnerWrapper = styled.div`
   position: absolute;

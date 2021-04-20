@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Heading from '../atoms/Heading';
 import EmailOrPasswordChangeForm from '../molecules/EmailOrPasswordChangeForm';
+import Heading from '../atoms/Heading';
+
 import { StyledDataChangeWrapper } from './styles/StyledStyledDataChangeWrapper';
 
 const EmailChange = () => {

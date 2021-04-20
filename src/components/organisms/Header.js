@@ -1,18 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
-import 'swiper/swiper-bundle.css';
 import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { routes } from '../../routes';
-import img1 from '../../assets/images/header1.jpg';
-import img1mobile from '../../assets/images/header1mobile.jpg';
-import img2 from '../../assets/images/header2.jpg';
-import img2mobile from '../../assets/images/header2mobile.jpg';
-import img3 from '../../assets/images/header3.jpg';
-import img3mobile from '../../assets/images/header3mobile.jpg';
+
+import 'swiper/swiper-bundle.css';
 import './styles/stylesHeader.css';
 import {
   StyledHeadingWrapper,
@@ -20,6 +15,13 @@ import {
   StyledSubheading,
   StyledButton,
 } from './styles/StyledHeader';
+
+import img1 from '../../assets/images/header1.jpg';
+import img1mobile from '../../assets/images/header1mobile.jpg';
+import img2 from '../../assets/images/header2.jpg';
+import img2mobile from '../../assets/images/header2mobile.jpg';
+import img3 from '../../assets/images/header3.jpg';
+import img3mobile from '../../assets/images/header3mobile.jpg';
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 

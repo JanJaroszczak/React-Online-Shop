@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Formik, Form, ErrorMessage } from 'formik';
 import { useSelector } from 'react-redux';
 
-import Input from '../atoms/Input';
-import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
+import Heading from '../atoms/Heading';
+import Input from '../atoms/Input';
 import PayPal from './PayPal';
+import QuestionModal from '../organisms/QuestionModal';
+
+import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
+
 import {
   StyledFormWrapper,
   StyledErrorWrapper,
@@ -15,8 +19,6 @@ import {
   StyledClientDataInputsWrapper,
   StyledCheckoutWrapper,
 } from './styles/StyledContactForm';
-import QuestionModal from '../organisms/QuestionModal';
-import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 const contactValidationSchema = Yup.object().shape({
   userName: Yup.string().required('Enter your name!'),

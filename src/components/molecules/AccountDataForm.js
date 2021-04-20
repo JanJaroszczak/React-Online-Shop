@@ -5,7 +5,9 @@ import { useSelector } from 'react-redux';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
+
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
+
 import { StyledInputsWrapper } from './styles/StyledAccountDataForm';
 
 const AccountDataForm = () => {

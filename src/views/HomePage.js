@@ -1,10 +1,11 @@
 import React from 'react';
 
-import HomeCategories from '../components/molecules/HomeCategories';
-import SpecialOffer from '../components/molecules/SpecialOffer';
-import Heading from '../components/atoms/Heading';
 import Header from '../components/organisms/Header';
+import Heading from '../components/atoms/Heading';
+import HomeCategories from '../components/molecules/HomeCategories';
 import ProductsSlider from '../components/organisms/ProductsSlider';
+import SpecialOffer from '../components/molecules/SpecialOffer';
+
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 
 const HomePage = () => {

@@ -1,7 +1,8 @@
 import React from 'react';
 
-import Heading from '../atoms/Heading';
 import EmailOrPasswordChangeForm from '../molecules/EmailOrPasswordChangeForm';
+import Heading from '../atoms/Heading';
+
 import { StyledDataChangeWrapper } from './styles/StyledStyledDataChangeWrapper';
 
 const PasswordChange = () => {

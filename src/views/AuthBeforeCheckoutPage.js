@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import Heading from '../components/atoms/Heading';
 import SignUpLogInForm from '../components/molecules/SignUpLogInForm';
+
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 import { StyledGridWrapper } from './styles/StyledAuthBeforeCheckoutPage';
 

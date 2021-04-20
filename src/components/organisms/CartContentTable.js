@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import CartContentTableRow from '../molecules/CartContentTableRow';
+
 import { StyledTable } from './styles/StyledCartContentTable';
 
 const CartContentTable = ({ order, orderSummary }) => {

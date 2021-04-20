@@ -3,11 +3,13 @@ import firebase from 'firebase';
 import { Form, Formik } from 'formik';
 import { useSelector } from 'react-redux';
 
-import { auth } from '../../firebase/firebaseConfig';
+import Alert from '../atoms/Alert';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
-import Alert from '../atoms/Alert';
+
+import { auth } from '../../firebase/firebaseConfig';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
+
 import {
   StyledInputsWrapper,
   StyledError,
@@ -246,7 +248,6 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
               >
                 {newDataConfirmationError}
               </StyledError>
-
               <Button
                 variant="accountDataChange"
                 type="submit"

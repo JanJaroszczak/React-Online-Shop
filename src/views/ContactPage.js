@@ -1,8 +1,9 @@
 import React from 'react';
 
-import ContactForm from '../components/molecules/ContactForm';
 import AddressField from '../components/molecules/AddressField';
+import ContactForm from '../components/molecules/ContactForm';
 import MapWrapped from '../components/organisms/Map';
+
 import {
   StyledMapWrapper,
   StyledContactPageWrapper,

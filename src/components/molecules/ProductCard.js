@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import ProductImage from '../atoms/ProductImage';
 import ProductInfo from '../atoms/ProductInfo';
-import { StyledDiv } from './styles/StyledProductCard';
 import Spinner from '../../components/atoms/Spinner';
+
+import { StyledDiv } from './styles/StyledProductCard';
 
 const ProductCard = ({
   productName,

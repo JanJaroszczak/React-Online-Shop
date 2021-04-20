@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
-import 'swiper/swiper-bundle.css';
-import './styles/stylesProductsSlider.css';
 
 import ProductCard from '../molecules/ProductCard';
+
+import 'swiper/swiper-bundle.css';
+import './styles/stylesProductsSlider.css';
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 

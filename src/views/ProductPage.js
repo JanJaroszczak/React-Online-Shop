@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import PhotoCarousel from '../components/molecules/PhotoCarousel';
 import ProductPageInfo from '../components/molecules/ProductPageInfo';
+
 import { StyledProductWrapper } from './styles/StyledProductPage';
 
 const ProductPage = ({ match }) => {

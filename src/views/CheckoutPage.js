@@ -1,8 +1,9 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import ClientDataForm from '../components/molecules/ClientDataForm';
 import CartSummary from '../components/molecules/CartSummary';
+import ClientDataForm from '../components/molecules/ClientDataForm';
+
 import { StyledCheckoutPageWrapper } from './styles/StyledCheckoutPage';
 
 const CheckoutPage = () => {

@@ -1,9 +1,11 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import { routes } from '../../routes';
-import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
+import Heading from '../atoms/Heading';
+
+import { routes } from '../../routes';
+
 import { StyledDiv, StyledLink } from './styles/StyledSpecialOffer';
 
 const SpecialOffer = () => {

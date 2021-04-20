@@ -2,7 +2,10 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Heading from '../atoms/Heading';
+import salePercentageCalculation from '../../utils/salePercentageCalculation';
+
 import { addProductToCart, setCartOpen } from '../../actions';
+
 import {
   StyledProductInfoWrapper,
   StyledExtraState,
@@ -17,7 +20,6 @@ import {
   StyledQuantityChoice,
   StyledQuantityInput,
 } from './styles/StyledQuantitySelector';
-import salePercentageCalculation from '../../utils/salePercentageCalculation';
 
 const ProductPageInfo = ({ products, id }) => {
   const [chosenSize, setChosenSize] = useState('-');

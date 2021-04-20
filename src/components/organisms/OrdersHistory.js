@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import OrdersHistoryTable from './OrdersHistoryTable';
-import { StyledOrdersHistoryWrapper } from './styles/StyledOrdersHistory';
 import Spinner from '../../components/atoms/Spinner';
+
+import { StyledOrdersHistoryWrapper } from './styles/StyledOrdersHistory';
 
 const OrdersHistory = () => {
   const [isTableMounted, setIsTableMounted] = useState(false);
