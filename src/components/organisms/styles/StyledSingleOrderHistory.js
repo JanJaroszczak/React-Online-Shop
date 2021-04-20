@@ -13,7 +13,8 @@ export const StyledOrderSummaryWrapper = styled.div`
 
 export const StyledLink = styled(Link)`
   @media (max-width: 600px) {
-    display: block;
+    display: flex;
+    justify-content: center;
     margin-top: 30px;
   }
 `;

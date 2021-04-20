@@ -35,11 +35,7 @@ const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
             headingDescription={`DATE: ${orderDate}`}
           />
           <CartContentTable order={orderToDisplay} orderSummary />
-          <CartSummary
-            // variant="checkout"
-            totalOrderPrice={totalOrderPrice}
-            orderSummary
-          />
+          <CartSummary totalOrderPrice={totalOrderPrice} orderSummary />
         </>
       )}
       <StyledLink to={routes.accountOrders} style={{ textDecoration: 'none' }}>

@@ -6,4 +6,9 @@ export const StyledLink = styled(Link)`
     display: block;
     margin-top: 30px;
   }
+
+  @media (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
