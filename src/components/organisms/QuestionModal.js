@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Button from '../atoms/Button';
 
+import { buttonVariants } from '../../utils/atomsTypesAndVariants';
+
 import {
   StyledQuestion,
   StyledButtonsWrapper,
@@ -61,13 +63,13 @@ const QuestionModal = ({
           <StyledButtonsWrapper>
             <Button
               clicked={onNoAnswer}
-              variant="questionModal"
+              variant={buttonVariants.questionModal}
               type="button"
               label="No"
             />
             <Button
               clicked={onYesAnswer}
-              variant="questionModal"
+              variant={buttonVariants.questionModal}
               type="button"
               label="Yes"
             />

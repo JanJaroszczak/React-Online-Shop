@@ -6,6 +6,7 @@ import CartContentTable from '../../components/organisms/CartContentTable';
 import CartSummary from '../../components/molecules/CartSummary';
 import Heading from '../../components/atoms/Heading';
 
+import { buttonVariants } from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {
@@ -42,7 +43,7 @@ const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
       )}
       <StyledLink to={routes.accountOrders} style={{ textDecoration: 'none' }}>
         <Button
-          variant="noCapitalize"
+          variant={buttonVariants.noCapitalize}
           type="button"
           label="Go back to All Orders History"
         />

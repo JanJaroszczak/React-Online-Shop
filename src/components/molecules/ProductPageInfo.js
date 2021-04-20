@@ -7,6 +7,7 @@ import Heading from '../atoms/Heading';
 import salePercentageCalculation from '../../utils/salePercentageCalculation';
 
 import { addProductToCart, setCartOpen } from '../../actions';
+import { buttonVariants } from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {
@@ -191,7 +192,7 @@ const ProductPageInfo = ({ products, id }) => {
       </form>
       <Link to={routes.products} style={{ textDecoration: 'none' }}>
         <Button
-          variant="productInfo"
+          variant={buttonVariants.productInfo}
           type="button"
           label="Go back to All Products"
         />

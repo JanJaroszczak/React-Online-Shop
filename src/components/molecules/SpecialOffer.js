@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
 
+import { buttonVariants } from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import { StyledDiv, StyledLink } from './styles/StyledSpecialOffer';
@@ -28,7 +29,11 @@ const SpecialOffer = () => {
           },
         }}
       >
-        <Button type="button" variant={'specialOffer'} label={'shop now'} />
+        <Button
+          type="button"
+          variant={buttonVariants.specialOffer}
+          label={'shop now'}
+        />
       </StyledLink>
     </StyledDiv>
   );

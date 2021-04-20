@@ -8,6 +8,7 @@ import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 
 import { auth } from '../../firebase/firebaseConfig';
+import { buttonVariants } from '../../utils/atomsTypesAndVariants';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 import {
@@ -249,7 +250,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
                 {newDataConfirmationError}
               </StyledError>
               <Button
-                variant="accountDataChange"
+                variant={buttonVariants.accountDataChange}
                 type="submit"
                 label={`Change ${emailChange ? 'Email' : 'Password'}`}
               />

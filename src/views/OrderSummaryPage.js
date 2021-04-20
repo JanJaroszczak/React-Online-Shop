@@ -8,6 +8,7 @@ import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
 import Heading from '../components/atoms/Heading';
 
+import { buttonVariants } from '../utils/atomsTypesAndVariants';
 import { routes } from '../routes';
 import { successfulPaymentAlert, clearCart } from '../actions';
 
@@ -59,7 +60,7 @@ const OrderSummaryPage = (props) => {
           />
           <StyledLink to={routes.home} style={{ textDecoration: 'none' }}>
             <Button
-              variant="noCapitalize"
+              variant={buttonVariants.noCapitalize}
               type="button"
               label="Go to Home Page"
             />

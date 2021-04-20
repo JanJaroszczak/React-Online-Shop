@@ -2,11 +2,13 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
+import Button from '../components/atoms/Button';
 import Heading from '../components/atoms/Heading';
+
+import { buttonVariants } from '../utils/atomsTypesAndVariants';
 
 import { StyledParagraph } from './styles/StyledTermsPage';
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
-import Button from '../components/atoms/Button';
 
 const TermsPage = () => {
   const history = useHistory();
@@ -62,7 +64,9 @@ const TermsPage = () => {
         praesentium commodi tempore nobis.
       </StyledParagraph>
       <Button
-        variant={is400 ? 'mobileTermsPage' : 'noCapitalize'}
+        variant={
+          is400 ? buttonVariants.mobileTermsPage : buttonVariants.noCapitalize
+        }
         type="button"
         label="Go to the previous page"
         clicked={history.goBack}

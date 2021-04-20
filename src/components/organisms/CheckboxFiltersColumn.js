@@ -5,6 +5,8 @@ import { useMediaQuery } from 'react-responsive';
 import Button from '../atoms/Button';
 import CheckboxFilters from '../molecules/CheckboxFilters';
 
+import { buttonVariants } from '../../utils/atomsTypesAndVariants';
+
 import {
   StyledColumn,
   StyledColumnHeading,
@@ -270,7 +272,11 @@ const CheckboxFiltersColumn = ({
           type="button"
           label="clear all filters"
           color={isTabletButton ? '' : 'white'}
-          variant={areAnyFiltersSet ? 'clearFilters' : 'clearFiltersDisabled'}
+          variant={
+            areAnyFiltersSet
+              ? buttonVariants.clearFilters
+              : buttonVariants.clearFiltersDisabled
+          }
           clicked={clearFilters}
         />
       </StyledColumnHeading>
@@ -283,7 +289,7 @@ const CheckboxFiltersColumn = ({
         <Button
           type="submit"
           label="apply chosen filters"
-          variant="mobile"
+          variant={buttonVariants.mobile}
           clicked={onMobileClose}
         />
       )}

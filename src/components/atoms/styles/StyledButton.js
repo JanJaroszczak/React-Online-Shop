@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { buttonVariants } from '../../../utils/atomsTypesAndVariants';
+
 export const StyledButton = styled.button`
   display: block;
   padding: 7px 15px;
@@ -22,7 +24,8 @@ export const StyledButton = styled.button`
   }
 
   ${({ variant }) =>
-    (variant === 'clearFilters' || variant === 'clearFiltersDisabled') &&
+    (variant === buttonVariants.clearFilters ||
+      variant === buttonVariants.clearFiltersDisabled) &&
     css`
       padding: 3px 6px;
       margin-top: 10px;
@@ -30,7 +33,7 @@ export const StyledButton = styled.button`
     `}
 
   ${({ variant }) =>
-    variant === 'clearFiltersDisabled' &&
+    variant === buttonVariants.clearFiltersDisabled &&
     css`
       color: ${({ theme }) => theme.colors.extraDarkGray};
       background-color: ${({ theme }) => theme.colors.midGray};
@@ -42,44 +45,44 @@ export const StyledButton = styled.button`
     `}
 
   ${({ variant }) =>
-    variant === 'specialOffer' &&
+    variant === buttonVariants.specialOffer &&
     css`
       font-size: ${({ theme }) => theme.fontSizes.m};
     `}
 
   ${({ variant }) =>
-    variant === 'questionModal' &&
+    variant === buttonVariants.questionModal &&
     css`
       display: inline-block;
     `}
 
       ${({ variant }) =>
-    variant === 'accountDataChange' &&
+    variant === buttonVariants.accountDataChange &&
     css`
       margin-top: 10px;
     `}
 
     ${({ variant }) =>
-    variant === 'noCapitalize' &&
+    variant === buttonVariants.noCapitalize &&
     css`
       text-transform: none;
     `}
 
      ${({ variant }) =>
-    variant === 'mobile' &&
+    variant === buttonVariants.mobile &&
     css`
       margin: 20px auto;
     `}
 
      ${({ variant }) =>
-    variant === 'mobileTermsPage' &&
+    variant === buttonVariants.mobileTermsPage &&
     css`
       margin: 0 auto;
       text-transform: none;
     `}
 
        ${({ variant }) =>
-    variant === 'productInfo' &&
+    variant === buttonVariants.productInfo &&
     css`
       padding: 5px 7px;
       text-transform: none;

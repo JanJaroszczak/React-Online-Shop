@@ -6,6 +6,7 @@ import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
 
+import { buttonVariants } from '../../utils/atomsTypesAndVariants';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 import { StyledInputsWrapper } from './styles/StyledAccountDataForm';
@@ -139,7 +140,7 @@ const AccountDataForm = () => {
                 />
 
                 <Button
-                  variant="accountDataChange"
+                  variant={buttonVariants.accountDataChange}
                   type="submit"
                   label={isInputReadOnly ? 'Edit Your Data' : 'Save Your Data'}
                 />
