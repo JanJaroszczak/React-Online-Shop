@@ -8,6 +8,7 @@ import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
 import Input from '../atoms/Input';
 
+import { headingTypes } from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {
@@ -34,7 +35,7 @@ const ContactForm = () => {
   return (
     <div>
       <Heading
-        type={'contact'}
+        type={headingTypes.contact}
         heading={'contact form'}
         headingDescription={'feel free to ask us any question'}
       />

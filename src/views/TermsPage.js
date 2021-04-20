@@ -6,6 +6,7 @@ import Button from '../components/atoms/Button';
 import Heading from '../components/atoms/Heading';
 
 import { buttonVariants } from '../utils/atomsTypesAndVariants';
+import { headingTypes } from '../utils/atomsTypesAndVariants';
 
 import { StyledParagraph } from './styles/StyledTermsPage';
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
@@ -24,7 +25,9 @@ const TermsPage = () => {
   return (
     <StyledCommonPageWrapper>
       <Heading
-        type={isTablet ? 'mobileTopHeading' : 'topHeading'}
+        type={
+          isTablet ? headingTypes.mobileTopHeading : headingTypes.topHeading
+        }
         heading={'Terms and Conditions'}
         headingDescription=""
       />

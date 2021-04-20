@@ -5,6 +5,7 @@ import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
 
 import { buttonVariants } from '../../utils/atomsTypesAndVariants';
+import { headingTypes } from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import { StyledDiv, StyledLink } from './styles/StyledSpecialOffer';
@@ -17,7 +18,7 @@ const SpecialOffer = () => {
   return (
     <StyledDiv>
       <Heading
-        type={isTablet ? null : 'specialOffer'}
+        type={isTablet ? null : headingTypes.specialOffer}
         heading={'march sale'}
         headingDescription={'free shipping for orders over $100'}
       />

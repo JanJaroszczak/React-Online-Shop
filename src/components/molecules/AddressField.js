@@ -2,6 +2,8 @@ import React from 'react';
 
 import Heading from '../atoms/Heading';
 
+import { headingTypes } from '../../utils/atomsTypesAndVariants';
+
 import {
   StyledAddressWrapper,
   StyledAddress,
@@ -11,7 +13,7 @@ const AddressField = () => {
   return (
     <StyledAddressWrapper>
       <Heading
-        type={'address'}
+        type={headingTypes.address}
         heading={'our address'}
         headingDescription={'you can find us here:'}
       />

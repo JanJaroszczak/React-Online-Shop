@@ -9,6 +9,7 @@ import CartSummary from '../components/molecules/CartSummary';
 import Heading from '../components/atoms/Heading';
 
 import { buttonVariants } from '../utils/atomsTypesAndVariants';
+import { headingTypes } from '../utils/atomsTypesAndVariants';
 import { routes } from '../routes';
 import { successfulPaymentAlert, clearCart } from '../actions';
 
@@ -48,7 +49,9 @@ const OrderSummaryPage = (props) => {
       ) : (
         <>
           <Heading
-            type={isTablet ? 'mobileTopHeading' : 'topHeading'}
+            type={
+              isTablet ? headingTypes.mobileTopHeading : headingTypes.topHeading
+            }
             heading={'ORDER SUMMARY'}
             headingDescription={`WE HOPE TO SEE YOU AGAIN!`}
           />

@@ -10,6 +10,7 @@ import Input from '../atoms/Input';
 import PayPal from './PayPal';
 import QuestionModal from '../organisms/QuestionModal';
 
+import { headingTypes } from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
@@ -150,7 +151,7 @@ const ClientDataForm = () => {
         onYesAnswer={yesAnswerHandler}
       />
       <Heading
-        type={'checkout'}
+        type={headingTypes.checkout}
         heading={'checkout'}
         headingDescription={'please fill in your data to proceed with payment'}
       />

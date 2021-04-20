@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import Button from '../components/atoms/Button';
 import CheckboxFiltersColumn from '../components/organisms/CheckboxFiltersColumn';
 import Heading from '../components/atoms/Heading';
 import ProductCard from '../components/molecules/ProductCard';
 import Spinner from '../components/atoms/Spinner';
 
+import { headingTypes } from '../utils/atomsTypesAndVariants';
 import { sortingOptions } from './utils/ProductsPageSortingOptions';
 
 import {
@@ -127,7 +127,7 @@ const ProductsPage = ({ history }) => {
           <div>
             <StyledHeadingAndSortingWrapper>
               <Heading
-                type={isTablet ? 'mobile' : 'productsPage'}
+                type={isTablet ? '' : headingTypes.productsPage}
                 heading={'all products'}
                 headingDescription={'all currently available cleats'}
               />

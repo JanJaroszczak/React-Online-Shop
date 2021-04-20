@@ -6,6 +6,8 @@ import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
 import Heading from '../components/atoms/Heading';
 
+import { headingTypes } from '../utils/atomsTypesAndVariants';
+
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 
 const CartPage = () => {
@@ -20,7 +22,9 @@ const CartPage = () => {
   return (
     <StyledCommonPageWrapper>
       <Heading
-        type={isTablet ? 'mobileTopHeading' : 'topHeading'}
+        type={
+          isTablet ? headingTypes.mobileTopHeading : headingTypes.topHeading
+        }
         heading={'CART'}
         headingDescription={`YOU'VE GOT ${cartCounter} PRODUCT${
           cartCounter > 1 ? 'S' : ''

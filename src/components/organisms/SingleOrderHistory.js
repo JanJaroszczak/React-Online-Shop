@@ -7,6 +7,7 @@ import CartSummary from '../../components/molecules/CartSummary';
 import Heading from '../../components/atoms/Heading';
 
 import { buttonVariants } from '../../utils/atomsTypesAndVariants';
+import { headingTypes } from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {
@@ -33,7 +34,7 @@ const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
       {currentUser && (
         <>
           <Heading
-            type={'orderSummary'}
+            type={headingTypes.orderSummary}
             heading={'ORDER SUMMARY'}
             headingDescription={`DATE: ${orderDate}`}
           />

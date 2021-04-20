@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { headingTypes } from '../../../utils/atomsTypesAndVariants';
+
 export const StyledDiv = styled.div`
   text-transform: uppercase;
   max-width: 1200px;
@@ -9,7 +11,7 @@ export const StyledDiv = styled.div`
   /* border: 1px solid black; */
 
   ${({ type }) =>
-    type === 'specialOffer' &&
+    type === headingTypes.specialOffer &&
     css`
       align-self: center;
       justify-self: start;
@@ -20,28 +22,28 @@ export const StyledDiv = styled.div`
     `}
 
   ${({ type }) =>
-    type === 'productsPage' &&
+    type === headingTypes.productsPage &&
     css`
       padding-left: 0;
       margin-left: 62px;
     `}
 
   ${({ type }) =>
-    type === 'productPage' &&
+    type === headingTypes.productPage &&
     css`
       margin: 0;
       padding: 0;
     `}
 
      ${({ type }) =>
-    type === 'checkout' &&
+    type === headingTypes.checkout &&
     css`
       margin: 0;
       padding-left: 0;
     `}
 
         ${({ type }) =>
-    type === 'contact' &&
+    type === headingTypes.contact &&
     css`
       margin: 0;
       padding-left: 50px;
@@ -49,26 +51,26 @@ export const StyledDiv = styled.div`
 
     
         ${({ type }) =>
-    type === 'address' &&
+    type === headingTypes.address &&
     css`
       margin: 0;
     `}
 
       ${({ type }) =>
-    type === 'auth' &&
+    type === headingTypes.auth &&
     css`
       padding-top: 30px;
       padding-left: 0;
     `}
 
         ${({ type }) =>
-    type === 'topHeading' &&
+    type === headingTypes.topHeading &&
     css`
       padding-top: 30px;
     `}
 
          ${({ type }) =>
-    type === 'topSearchPageHeading' &&
+    type === headingTypes.topSearchPageHeading &&
     css`
       margin: 30px 0;
       padding-top: 30px;
@@ -77,33 +79,33 @@ export const StyledDiv = styled.div`
     `}
 
          ${({ type }) =>
-    type === 'authBeforeCheckout' &&
+    type === headingTypes.authBeforeCheckout &&
     css`
       padding-top: 30px;
-      padding-left: 0;
+      padding-left: 10px;
     `}
 
           ${({ type }) =>
-    type === 'authBeforeCheckoutSubheading' &&
+    type === headingTypes.authBeforeCheckoutSubheading &&
     css`
       margin: 0 0 30px;
       padding-left: 0;
     `}
 
             ${({ type }) =>
-    type === 'orderSummary' &&
+    type === headingTypes.orderSummary &&
     css`
       margin-top: 30px;
     `}
 
       ${({ type }) =>
-    type === 'accountPageWithoutSubheading' &&
+    type === headingTypes.accountPageWithoutSubheading &&
     css`
       margin-top: 30px;
     `}
 
               ${({ type }) =>
-    type === 'accountPage' &&
+    type === headingTypes.accountPage &&
     css`
       margin-top: 30px;
       padding-left: 0;
@@ -115,27 +117,27 @@ export const StyledDiv = styled.div`
     text-align: center;
 
     ${({ type }) =>
-      type === 'mobileAuthBeforeCheckout' &&
+      type === headingTypes.mobileAuthBeforeCheckout &&
       css`
         margin-bottom: -15px;
         padding-top: 30px;
       `}
 
     ${({ type }) =>
-      type === 'mobileTopHeading' &&
+      type === headingTypes.mobileTopHeading &&
       css`
         padding-top: 30px;
       `}
 
         ${({ type }) =>
-      type === 'accountPageWithoutSubheading' &&
+      type === headingTypes.accountPageWithoutSubheading &&
       css`
         padding-left: 80px;
         text-align: left;
       `}
 
                  ${({ type }) =>
-      type === 'accountPage' &&
+      type === headingTypes.accountPage &&
       css`
         text-align: left;
       `}
@@ -143,7 +145,7 @@ export const StyledDiv = styled.div`
 
   @media (max-width: 600px) {
     ${({ type }) =>
-      type === 'accountPageWithoutSubheading' &&
+      type === headingTypes.accountPageWithoutSubheading &&
       css`
         margin: 30px 0;
         padding: 0;
@@ -151,7 +153,7 @@ export const StyledDiv = styled.div`
       `}
 
     ${({ type }) =>
-      type === 'accountPage' &&
+      type === headingTypes.accountPage &&
       css`
         text-align: center;
       `}
@@ -163,8 +165,8 @@ export const StyledHeading = styled.h2`
   font-weight: ${({ theme }) => theme.fontWeights.light};
 
   ${({ type }) =>
-    type === 'specialOffer' ||
-    (type === 'productPage' &&
+    type === headingTypes.specialOffer ||
+    (type === headingTypes.productPage &&
       css`
         font-size: ${({ theme }) => theme.fontSizes.xxl};
       `)}
@@ -177,14 +179,14 @@ export const StyledHeadingDescription = styled.h3`
   margin-top: 8px;
 
   ${({ type }) =>
-    type === 'specialOffer' &&
+    type === headingTypes.specialOffer &&
     css`
       font-size: ${({ theme }) => theme.fontSizes.s};
       margin-top: 12px;
     `}
 
   ${({ type }) =>
-    type === 'authBeforeCheckout' &&
+    type === headingTypes.authBeforeCheckout &&
     css`
       margin: 0;
     `}

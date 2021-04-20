@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import EmailOrPasswordChangeForm from '../molecules/EmailOrPasswordChangeForm';
 import Heading from '../atoms/Heading';
 
+import { headingTypes } from '../../utils/atomsTypesAndVariants';
+
 import { StyledDataChangeWrapper } from './styles/StyledStyledDataChangeWrapper';
 
 const EmailChange = () => {
@@ -13,7 +15,7 @@ const EmailChange = () => {
     <StyledDataChangeWrapper>
       {currentUser && (
         <Heading
-          type={'accountPage'}
+          type={headingTypes.accountPage}
           heading={''}
           headingDescription={`your current email is: ${currentUser.userEmail}`}
           headingDescriptionSecondLine="enter your password and a new email to change it:"

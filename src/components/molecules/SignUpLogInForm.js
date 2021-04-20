@@ -11,6 +11,7 @@ import Input from '../atoms/Input';
 import Spinner from '../../components/atoms/Spinner';
 
 import { auth } from '../../firebase/firebaseConfig';
+import { headingTypes } from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 import { usersCollection } from '../../firebase/firestoreUtils';
 
@@ -104,12 +105,12 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
       <Heading
         type={
           isTablet && !beforeCheckout
-            ? 'mobileTopHeading'
+            ? headingTypes.mobileTopHeading
             : isTablet
-            ? 'mobileAuthBeforeCheckoutSubheading'
+            ? ''
             : beforeCheckout
-            ? 'authBeforeCheckoutSubheading'
-            : 'auth'
+            ? headingTypes.authBeforeCheckoutSubheading
+            : headingTypes.auth
         }
         heading={beforeCheckout ? '' : isSignUp ? 'sign up' : 'log in'}
         headingDescription={

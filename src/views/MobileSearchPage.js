@@ -6,6 +6,8 @@ import Heading from '../components/atoms/Heading';
 import ProductCard from '../components/molecules/ProductCard';
 import searchProducts from '../utils/searchProducts';
 
+import { headingTypes } from '../utils/atomsTypesAndVariants';
+
 import {
   StyledSearchPageWrapper,
   StyledInputWrapper,
@@ -48,7 +50,11 @@ const MobileSearchPage = () => {
   return (
     <StyledSearchPageWrapper>
       <Heading
-        type={isTablet ? 'mobileTopHeading' : 'topSearchPageHeading'}
+        type={
+          isTablet
+            ? headingTypes.mobileTopHeading
+            : headingTypes.topSearchPageHeading
+        }
         heading={'SEARCH PANEL'}
         headingDescription={``}
       />

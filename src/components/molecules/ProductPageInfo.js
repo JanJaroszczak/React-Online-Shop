@@ -8,6 +8,7 @@ import salePercentageCalculation from '../../utils/salePercentageCalculation';
 
 import { addProductToCart, setCartOpen } from '../../actions';
 import { buttonVariants } from '../../utils/atomsTypesAndVariants';
+import { headingTypes } from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {
@@ -143,7 +144,7 @@ const ProductPageInfo = ({ products, id }) => {
         }`}</StyledExtraState>
       )}
       <Heading
-        type={'productPage'}
+        type={headingTypes.productPage}
         heading={currentProduct.productName}
         headingDescription={currentProduct.productBrand}
       />
