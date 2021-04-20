@@ -2,10 +2,13 @@ import React from 'react';
 import * as Yup from 'yup';
 import emailjs from 'emailjs-com';
 import { Formik, Form, ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
 
 import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
 import Input from '../atoms/Input';
+
+import { routes } from '../../routes';
 
 import {
   StyledFormWrapper,
@@ -111,8 +114,10 @@ const ContactForm = () => {
                   value={values.acceptTerms}
                   onChange={handleChange}
                 />
-                <StyledCheckboxLabel htmlFor={'terms'}>
-                  Accept Terms and Conditions
+                <StyledCheckboxLabel>
+                  <Link to={routes.terms} style={{ textDecoration: 'none' }}>
+                    Accept Terms and Conditions
+                  </Link>
                 </StyledCheckboxLabel>
                 <StyledErrorWrapper>
                   <ErrorMessage name="acceptTerms" />
