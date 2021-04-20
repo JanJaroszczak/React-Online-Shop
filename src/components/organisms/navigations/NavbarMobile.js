@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import HamburgerMenu from 'react-hamburger-menu';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import HamburgerMenu from 'react-hamburger-menu';
 
-import { setCartOpen } from '../../../actions';
 import { routes } from '../../../routes';
-import logo from '../../../assets/images/logo3.png';
+import { setCartOpen } from '../../../actions';
+
 import {
   StyledMobileNavbar,
   StyledIconsWrapper,
@@ -21,6 +21,8 @@ import {
   StyledNavLink,
   StyledCartCounter,
 } from './styles/StyledCommonNavbarElements';
+
+import logo from '../../../assets/images/logo3.png';
 
 const NavbarMobile = ({ mobileMenuOn }) => {
   const [menuToggle, setMenuToggle] = useState(false);

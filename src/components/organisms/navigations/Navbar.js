@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { routes } from '../../../routes';
-import { setCartOpen, toggleSearchPanel } from '../../../actions';
-import logo from '../../../assets/images/logo3.png';
 import SearchProductsPopper from '../../molecules/SearchProductsPopper';
 import useOnClickOutside from '../../../hoc/useOnClickOutside';
+
+import { routes } from '../../../routes';
+import { setCartOpen, toggleSearchPanel } from '../../../actions';
+
 import {
   StyledNav,
   StyledNavWrapper,
@@ -22,6 +23,8 @@ import {
   StyledNavLink,
   StyledCartCounter,
 } from './styles/StyledCommonNavbarElements';
+
+import logo from '../../../assets/images/logo3.png';
 
 const Navbar = () => {
   const outsideClickRef = useRef();
