@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
@@ -9,6 +10,7 @@ import Input from '../atoms/Input';
 import PayPal from './PayPal';
 import QuestionModal from '../organisms/QuestionModal';
 
+import { routes } from '../../routes';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 import {
@@ -247,8 +249,13 @@ const ClientDataForm = () => {
                       value={values.acceptTerms}
                       onChange={handleChange}
                     />
-                    <StyledCheckboxLabel htmlFor={'terms'}>
-                      Accept Terms and Conditions
+                    <StyledCheckboxLabel>
+                      <Link
+                        to={routes.terms}
+                        style={{ textDecoration: 'none' }}
+                      >
+                        Accept Terms and Conditions
+                      </Link>
                     </StyledCheckboxLabel>
                     <StyledErrorWrapper>
                       <ErrorMessage name="acceptTerms" />
