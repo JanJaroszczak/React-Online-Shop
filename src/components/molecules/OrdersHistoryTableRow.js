@@ -20,7 +20,6 @@ const OrdersHistoryTableRow = ({ orderDate, totalOrderPrice, orderId }) => {
       <td>
         <StyledRowDataWrapper>
           {`$ ${totalOrderPrice}`}
-
           <span>
             {' '}
             <StyledLink

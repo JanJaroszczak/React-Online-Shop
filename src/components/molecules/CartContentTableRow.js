@@ -68,6 +68,45 @@ const CartContentTableRow = ({ product, orderRow }) => {
     dispatch(removeProductFromCart(productsCopy, cartAfterRemoval));
   };
 
+  const renderQuantityInput = () => (
+    <>
+      {!orderRow && (
+        <button
+          type="button"
+          onClick={() =>
+            dispatch(
+              decreaseProductCartQuantity(
+                product.productId,
+                product.cartProductId
+              )
+            )
+          }
+        >
+          <span style={{ fontWeight: '700' }}>-</span>
+        </button>
+      )}
+      <input
+        id="quantity"
+        type="number"
+        value={product.chosenOption.quantity}
+        readOnly
+      />
+      {!orderRow && (
+        <button
+          type="button"
+          onClick={() =>
+            dispatch(
+              addProductToCart(product.productId, product.chosenOption.size, 1)
+            )
+          }
+          className={`${product.notInStock}`}
+        >
+          +
+        </button>
+      )}
+    </>
+  );
+
   return (
     <StyledTableRow>
       <td>
@@ -78,44 +117,7 @@ const CartContentTableRow = ({ product, orderRow }) => {
       <td>
         <StyledQuantityChoice cart>
           <StyledQuantityInput cart orderRow={orderRow}>
-            {!orderRow && (
-              <button
-                type="button"
-                onClick={() =>
-                  dispatch(
-                    decreaseProductCartQuantity(
-                      product.productId,
-                      product.cartProductId
-                    )
-                  )
-                }
-              >
-                <span style={{ fontWeight: '700' }}>-</span>
-              </button>
-            )}
-            <input
-              id="quantity"
-              type="number"
-              value={product.chosenOption.quantity}
-              readOnly
-            />
-            {!orderRow && (
-              <button
-                type="button"
-                onClick={() =>
-                  dispatch(
-                    addProductToCart(
-                      product.productId,
-                      product.chosenOption.size,
-                      1
-                    )
-                  )
-                }
-                className={`${product.notInStock}`}
-              >
-                +
-              </button>
-            )}
+            {renderQuantityInput()}
           </StyledQuantityInput>
         </StyledQuantityChoice>
       </td>

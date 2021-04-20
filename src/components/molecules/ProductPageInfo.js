@@ -111,6 +111,22 @@ const ProductPageInfo = ({ products, id }) => {
     currentProduct.productPreviousPrice
   );
 
+  const renderQuantityInput = () => (
+    <>
+      <button type="button" onClick={decreaseQuantity}>
+        <span style={{ fontWeight: '700' }}>-</span>
+      </button>
+      <input id="quantity" type="number" value={chosenQuantity} readOnly />
+      <button
+        type="button"
+        onClick={increaseQuantity}
+        className={`${notInStockMessageOn}`}
+      >
+        +
+      </button>
+    </>
+  );
+
   return (
     <StyledProductInfoWrapper extraState={currentProduct.extraState}>
       {currentProduct.extraState && (
@@ -164,24 +180,7 @@ const ProductPageInfo = ({ products, id }) => {
         </StyledSizeChoice>
         <StyledQuantityChoice>
           <label htmlFor="quantity">Quantity:</label>
-          <StyledQuantityInput>
-            <button type="button" onClick={decreaseQuantity}>
-              <span style={{ fontWeight: '700' }}>-</span>
-            </button>
-            <input
-              id="quantity"
-              type="number"
-              value={chosenQuantity}
-              readOnly
-            />
-            <button
-              type="button"
-              onClick={increaseQuantity}
-              className={`${notInStockMessageOn}`}
-            >
-              +
-            </button>
-          </StyledQuantityInput>
+          <StyledQuantityInput>{renderQuantityInput()}</StyledQuantityInput>
         </StyledQuantityChoice>
         <StyledError style={{ visibility: `${errorVisibility}` }}>
           {errorMessage}

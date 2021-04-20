@@ -41,8 +41,6 @@ const ClientDataForm = () => {
 
   const currentUser = useSelector(({ user }) => user.currentUser);
 
-  // let onFormSubmitQuestion = null;
-
   useEffect(() => {
     if (currentUser) {
       const emptyUserKeys = Object.entries(currentUser)
@@ -259,8 +257,6 @@ const ClientDataForm = () => {
                   ) : (
                     <Button type="submit" label="payment" />
                   )}
-                  {/* <Button type="submit" label="payment" />
-              {checkout && <PayPal />} */}
                 </StyledClientDataInputsWrapper>
               </Form>
             )}

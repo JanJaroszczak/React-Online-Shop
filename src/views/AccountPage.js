@@ -20,9 +20,9 @@ const AccountPage = ({ history, match }) => {
   console.log('current user:', currentUser);
   console.log('match:', match);
   console.log('history:', history);
-  return (
-    <StyledAccountPageWrapper>
-      <AccountMenu />
+
+  const renderAccountSubPage = () => (
+    <>
       <div>
         {match.url === routes.accountOrders && <OrdersHistory />}
         {match.path === routes.accountOrder && (
@@ -36,6 +36,13 @@ const AccountPage = ({ history, match }) => {
         {match.url === routes.emailChange && <EmailChange />}
         {match.url === routes.passwordChange && <PasswordChange />}
       </div>
+    </>
+  );
+
+  return (
+    <StyledAccountPageWrapper>
+      <AccountMenu />
+      {renderAccountSubPage()}
       {isCurrentUserChecked && !currentUser && <Redirect to={routes.home} />}
     </StyledAccountPageWrapper>
   );

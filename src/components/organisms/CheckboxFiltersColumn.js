@@ -204,6 +204,45 @@ const CheckboxFiltersColumn = ({
     updateProductsToDisplay,
   ]);
 
+  const renderPriceFilter = () => (
+    <>
+      <h3>Price</h3>
+      <label htmlFor="priceFrom">From:</label>
+      <input
+        ref={inputRefBottomPrice}
+        type="number"
+        id="priceFrom"
+        value={bottomFilterPrice}
+        onChange={(e) => {
+          setBottomFilterPrice(e.target.value);
+        }}
+      />
+      <label htmlFor="priceTo">To:</label>
+      <input
+        ref={inputRefUpperPrice}
+        type="text"
+        id="priceTo"
+        value={upperFilterPrice}
+        onChange={(e) => {
+          setUpperFilterPrice(e.target.value);
+        }}
+      />
+    </>
+  );
+
+  const renderExtraStateFilters = () => (
+    <>
+      <h3>Others</h3>
+      <input
+        type="checkbox"
+        id="extraState"
+        checked={isSaleFilterChecked}
+        onChange={(e) => saleFilterClicked(e)}
+      />
+      <label htmlFor="extraState">Sale</label>
+    </>
+  );
+
   return (
     <StyledColumn isTablet={isTablet}>
       <StyledColumnHeading>
@@ -224,38 +263,9 @@ const CheckboxFiltersColumn = ({
       </StyledColumnHeading>
       {allCheckboxFiltersToDisplay}
       <StyledCheckboxesWrapper className="boxes">
-        <h3>Others</h3>
-        <input
-          type="checkbox"
-          id="extraState"
-          checked={isSaleFilterChecked}
-          onChange={(e) => saleFilterClicked(e)}
-        />
-        <label htmlFor="extraState">Sale</label>
+        {renderExtraStateFilters()}
       </StyledCheckboxesWrapper>
-      <StyledPriceFilter>
-        <h3>Price</h3>
-        <label htmlFor="priceFrom">From:</label>
-        <input
-          ref={inputRefBottomPrice}
-          type="number"
-          id="priceFrom"
-          value={bottomFilterPrice}
-          onChange={(e) => {
-            setBottomFilterPrice(e.target.value);
-          }}
-        />
-        <label htmlFor="priceTo">To:</label>
-        <input
-          ref={inputRefUpperPrice}
-          type="text"
-          id="priceTo"
-          value={upperFilterPrice}
-          onChange={(e) => {
-            setUpperFilterPrice(e.target.value);
-          }}
-        />
-      </StyledPriceFilter>
+      <StyledPriceFilter>{renderPriceFilter()}</StyledPriceFilter>
       {isTablet && (
         <Button
           type="submit"

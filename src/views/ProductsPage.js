@@ -79,6 +79,31 @@ const ProductsPage = ({ history }) => {
     if (!isTablet) setMobileFiltersColumnToggle(false);
   }, [isTablet]);
 
+  const renderSortingOptions = () => (
+    <>
+      {isTablet && (
+        <div>
+          <label htmlFor="size">Filter:</label>
+          <StyledFilterIcon onClick={handleMobileFiltersColumn}>
+            <i className="fas fa-filter"></i>
+          </StyledFilterIcon>
+        </div>
+      )}
+      <div>
+        <label htmlFor="size">Sort:</label>
+        <StyledSelect
+          id="size"
+          value={sortingOption}
+          onChange={(e) => {
+            setSortingOption(e.target.value);
+          }}
+        >
+          {selectOptions}
+        </StyledSelect>
+      </div>
+    </>
+  );
+
   return (
     <>
       <StyledProductsPageWrapper>
@@ -97,26 +122,7 @@ const ProductsPage = ({ history }) => {
                 headingDescription={'all currently available cleats'}
               />
               <StyledSortingOptionChoice>
-                {isTablet && (
-                  <div>
-                    <label htmlFor="size">Filter:</label>
-                    <StyledFilterIcon onClick={handleMobileFiltersColumn}>
-                      <i className="fas fa-filter"></i>
-                    </StyledFilterIcon>
-                  </div>
-                )}
-                <div>
-                  <label htmlFor="size">Sort:</label>
-                  <StyledSelect
-                    id="size"
-                    value={sortingOption}
-                    onChange={(e) => {
-                      setSortingOption(e.target.value);
-                    }}
-                  >
-                    {selectOptions}
-                  </StyledSelect>
-                </div>
+                {renderSortingOptions()}
               </StyledSortingOptionChoice>
             </StyledHeadingAndSortingWrapper>
             <StyledProductsGridWrapper>

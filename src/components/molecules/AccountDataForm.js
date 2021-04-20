@@ -23,6 +23,19 @@ const AccountDataForm = () => {
     };
   }, [isSuccessAlert]);
 
+  const renderAlert = () => (
+    <>
+      {isSuccessAlert && (
+        <Alert
+          variant="accountDataChange"
+          severity="success"
+          message="Your data has been successfully updated!"
+          visible={true}
+        />
+      )}
+    </>
+  );
+
   return (
     <div>
       {currentUser && (
@@ -133,14 +146,7 @@ const AccountDataForm = () => {
           )}
         </Formik>
       )}
-      {isSuccessAlert && (
-        <Alert
-          variant="accountDataChange"
-          severity="success"
-          message="Your data has been successfully updated!"
-          visible={true}
-        />
-      )}
+      {renderAlert()}
     </div>
   );
 };

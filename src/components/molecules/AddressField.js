@@ -17,12 +17,13 @@ const AddressField = () => {
       <StyledAddress>
         Cool Cleats
         <br />
-        Box 564, Disneyland
+        Box 564, Łódź
         <br />
         USA
         <br />
         <br />
-        (571) 400-1255 <br />
+        200-400-301
+        <br />
         info@info.com
       </StyledAddress>
     </StyledAddressWrapper>

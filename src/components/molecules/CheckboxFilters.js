@@ -36,17 +36,11 @@ const CheckboxFilters = ({
 
   useEffect(() => {
     if (preSetFilters && preSetFilters.category === filterCategory) {
-      console.log('weszło');
-      console.log(preSetFilters);
-      console.log(uniqueFilterValues);
-      console.log(isCheckedArray);
       uniqueFilterValues.forEach((filterValue, index) => {
         if (
           preSetFilters.values.includes(filterValue) &&
           !isCheckedArray.includes(index)
         ) {
-          console.log('weszło dalej');
-
           setIsCheckedArray([...isCheckedArray, index]);
         }
       });

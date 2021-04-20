@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CartModal = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const selectedIsCartOpen = useSelector(
     ({ productsAndCart }) => productsAndCart.isCartOpen
@@ -60,7 +61,43 @@ const CartModal = () => {
     </li>
   ));
 
-  const dispatch = useDispatch();
+  const renderCartContent = () => (
+    <>
+      {cartProducts.length > 0 && (
+        <div className="modalWrapper">
+          <div className="productsListWrapper">
+            <ul>{cartProductsModalList}</ul>
+          </div>
+          <div className="modalFooterWrapper">
+            <div className="buttonViewCart">
+              <Link to={routes.cart}>
+                <button type="button" onClick={() => dispatch(setCartClosed())}>
+                  View Cart Details
+                </button>
+              </Link>
+            </div>
+            <div className="buttonCheckout">
+              <Link
+                to={currentUser ? routes.checkout : routes.authbeforecheckout}
+              >
+                <button type="button" onClick={() => dispatch(setCartClosed())}>
+                  Checkout
+                </button>
+              </Link>
+            </div>
+            <div className="buttonContinueShopping">
+              <button type="button" onClick={() => dispatch(setCartClosed())}>
+                Continue Shopping
+              </button>
+            </div>
+            <div className="totalPrice">
+              <span>Total price: ${cartTotalPrice}</span>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 
   return (
     <Modal
@@ -80,50 +117,7 @@ const CartModal = () => {
           {cartProducts.length !== 0 && (
             <h3 className="cartHeading">Your cart:</h3>
           )}
-          {cartProducts.length > 0 && (
-            <div className="modalWrapper">
-              <div className="productsListWrapper">
-                <ul>{cartProductsModalList}</ul>
-              </div>
-              <div className="modalFooterWrapper">
-                <div className="buttonViewCart">
-                  <Link to={routes.cart}>
-                    <button
-                      type="button"
-                      onClick={() => dispatch(setCartClosed())}
-                    >
-                      View Cart Details
-                    </button>
-                  </Link>
-                </div>
-                <div className="buttonCheckout">
-                  <Link
-                    to={
-                      currentUser ? routes.checkout : routes.authbeforecheckout
-                    }
-                  >
-                    <button
-                      type="button"
-                      onClick={() => dispatch(setCartClosed())}
-                    >
-                      Checkout
-                    </button>
-                  </Link>
-                </div>
-                <div className="buttonContinueShopping">
-                  <button
-                    type="button"
-                    onClick={() => dispatch(setCartClosed())}
-                  >
-                    Continue Shopping
-                  </button>
-                </div>
-                <div className="totalPrice">
-                  <span>Total price: ${cartTotalPrice}</span>
-                </div>
-              </div>
-            </div>
-          )}
+          {renderCartContent()}
           {cartProducts.length === 0 && (
             <h2 className="emptyCart">Your cart is empty!</h2>
           )}
