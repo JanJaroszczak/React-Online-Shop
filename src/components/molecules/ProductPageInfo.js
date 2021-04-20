@@ -1,10 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
 import salePercentageCalculation from '../../utils/salePercentageCalculation';
 
 import { addProductToCart, setCartOpen } from '../../actions';
+import { routes } from '../../routes';
 
 import {
   StyledProductInfoWrapper,
@@ -149,12 +152,7 @@ const ProductPageInfo = ({ products, id }) => {
         praesentium adipisci ad. Similique, ratione. Voluptatum ut accusamus
         optio doloribus saepe libero, voluptatibus sapiente aliquam rerum fuga
         nihil natus aperiam eius qui modi dolore assumenda, placeat quos dolores
-        velit tenetur cumque eos? Dolorum, atque eum. Nobis, ipsum eaque error
-        ex voluptatibus assumenda velit quas asperiores sequi ad numquam esse
-        incidunt, ut veniam laboriosam minus. Hic rerum corrupti quis magni nam.
-        Ipsa beatae quas eius, nihil delectus assumenda autem nostrum, accusamus
-        ducimus, hic reiciendis architecto omnis sequi perferendis commodi
-        obcaecati ullam? Dicta, iure.
+        velit tenetur cumque eos?
       </StyledProductDescription>
       <StyledPrice>
         $ {currentProduct.productPrice.toFixed(2)}
@@ -191,6 +189,13 @@ const ProductPageInfo = ({ products, id }) => {
           ADD TO CART
         </StyledSubmitButton>
       </form>
+      <Link to={routes.products} style={{ textDecoration: 'none' }}>
+        <Button
+          variant="productInfo"
+          type="button"
+          label="Go back to All Products"
+        />
+      </Link>
     </StyledProductInfoWrapper>
   );
 };

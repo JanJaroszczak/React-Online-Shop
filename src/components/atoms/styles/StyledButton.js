@@ -70,4 +70,11 @@ export const StyledButton = styled.button`
     css`
       margin: 20px auto;
     `}
+
+       ${({ variant }) =>
+    variant === 'productInfo' &&
+    css`
+      padding: 5px 7px;
+      text-transform: none;
+    `}
 `;

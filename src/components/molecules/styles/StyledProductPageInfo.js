@@ -23,6 +23,8 @@ export const StyledProductInfoWrapper = styled.div`
   @media (max-width: 768px) {
     width: 83vw;
     padding-top: 50px;
+    padding-left: 0;
+    padding-right: 0;
 
     ${({ extraState }) =>
       !extraState &&
@@ -125,7 +127,7 @@ export const StyledError = styled.span`
 
 export const StyledSubmitButton = styled.button`
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding: 7px 15px;
   font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
