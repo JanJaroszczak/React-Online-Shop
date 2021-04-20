@@ -8,10 +8,6 @@ const intitialState = {
   products: [],
   counter: 0,
   totalPrice: 0,
-  // currentUser: null,
-  // successfulPaymentAlert: false,
-  // isCurrentUserChecked: null,
-  // isSearchPanelOn: false,
 };
 
 const productsAndCart = (state = intitialState, action) => {
@@ -31,6 +27,94 @@ const productsAndCart = (state = intitialState, action) => {
       return {
         ...state,
         isCartOpen: false,
+      };
+
+    case actionsTypes.REMOVE_PRODUCT_FROM_CART:
+      return {
+        ...state,
+        products: payload.productsCopy,
+        cart: payload.cartAfterRemoval,
+      };
+
+    case actionsTypes.CLOSE_NOT_IN_STOCK_MESSAGE:
+      cartCopy.forEach((product) => {
+        if (product.cartProductId === payload) {
+          product.notInStock = '';
+        }
+      });
+
+      return {
+        ...state,
+        cart: cartCopy,
+      };
+
+    case actionsTypes.CALCULATE_CART_TOTALS:
+      let totalPriceCounter = 0;
+      let cartProductsCounter = 0;
+
+      state.cart.forEach((product) => {
+        cartProductsCounter =
+          cartProductsCounter + product.chosenOption.quantity;
+        totalPriceCounter =
+          totalPriceCounter +
+          product.chosenOption.quantity * product.productPrice;
+      });
+
+      return {
+        ...state,
+        counter: cartProductsCounter,
+        totalPrice: totalPriceCounter,
+      };
+
+    case actionsTypes.GET_PRODUCTS:
+      return {
+        ...state,
+        products: payload,
+      };
+
+    case actionsTypes.GET_CART_FROM_LOCAL_STORAGE:
+      return {
+        ...state,
+        cart: payload,
+      };
+
+    case actionsTypes.CLEAR_CART:
+      return {
+        ...state,
+        cart: [],
+      };
+
+    case actionsTypes.DECREASE_PRODUCT_CART_QUANTITY:
+      let handledProduct = null;
+      let decreaseNotPossibleFlag = false;
+
+      cartCopy.forEach((product) => {
+        if (product.cartProductId === payload.cartProductId) {
+          handledProduct = product;
+          if (product.chosenOption.quantity > 1) {
+            product.chosenOption.quantity = product.chosenOption.quantity - 1;
+          } else {
+            decreaseNotPossibleFlag = true;
+          }
+        }
+      });
+
+      productsCopy.forEach((product) => {
+        if (product.productId === payload.productId) {
+          product.sizes.forEach((size) => {
+            if (size.size === handledProduct.chosenOption.size) {
+              size.availableQuantity = size.availableQuantity + 1;
+            }
+          });
+        }
+      });
+
+      if (decreaseNotPossibleFlag) return state;
+
+      return {
+        ...state,
+        products: productsCopy,
+        cart: cartCopy,
       };
 
     case actionsTypes.ADD_PRODUCT_TO_CART:
@@ -97,138 +181,6 @@ const productsAndCart = (state = intitialState, action) => {
           cart: [...state.cart, chosenProduct],
         };
       }
-
-    case actionsTypes.REMOVE_PRODUCT_FROM_CART:
-      const cartAfterRemoval = cartCopy.filter(
-        (product) => product.cartProductId !== payload.cartProductId
-      );
-
-      const removedProduct = cartCopy.find(
-        (product) => product.cartProductId === payload.cartProductId
-      );
-
-      productsCopy.forEach((product) => {
-        if (product.productId === payload.productId) {
-          product.sizes.forEach((size) => {
-            if (size.size === removedProduct.chosenOption.size) {
-              size.availableQuantity =
-                size.availableQuantity + removedProduct.chosenOption.quantity;
-            }
-          });
-        }
-      });
-
-      return {
-        ...state,
-        products: productsCopy,
-        cart: cartAfterRemoval,
-      };
-
-    case actionsTypes.DECREASE_PRODUCT_CART_QUANTITY:
-      let handledProduct = null;
-      let decreaseNotPossibleFlag = false;
-
-      cartCopy.forEach((product) => {
-        if (product.cartProductId === payload.cartProductId) {
-          handledProduct = product;
-          if (product.chosenOption.quantity > 1) {
-            product.chosenOption.quantity = product.chosenOption.quantity - 1;
-          } else {
-            decreaseNotPossibleFlag = true;
-          }
-        }
-      });
-
-      productsCopy.forEach((product) => {
-        if (product.productId === payload.productId) {
-          product.sizes.forEach((size) => {
-            if (size.size === handledProduct.chosenOption.size) {
-              size.availableQuantity = size.availableQuantity + 1;
-            }
-          });
-        }
-      });
-
-      if (decreaseNotPossibleFlag) return state;
-
-      return {
-        ...state,
-        products: productsCopy,
-        cart: cartCopy,
-      };
-
-    case actionsTypes.CLOSE_NOT_IN_STOCK_MESSAGE:
-      cartCopy.forEach((product) => {
-        if (product.cartProductId === payload) {
-          product.notInStock = '';
-        }
-      });
-
-      return {
-        ...state,
-        cart: cartCopy,
-      };
-
-    case actionsTypes.CALCULATE_CART_TOTALS:
-      let totalPriceCounter = 0;
-      let cartProductsCounter = 0;
-
-      state.cart.forEach((product) => {
-        cartProductsCounter =
-          cartProductsCounter + product.chosenOption.quantity;
-        totalPriceCounter =
-          totalPriceCounter +
-          product.chosenOption.quantity * product.productPrice;
-      });
-
-      return {
-        ...state,
-        counter: cartProductsCounter,
-        totalPrice: totalPriceCounter,
-      };
-
-    // case actionsTypes.SET_CURRENT_USER:
-    //   console.log('Redux - userLoggedIn: true');
-    //   return {
-    //     ...state,
-    //     currentUser: payload,
-    //   };
-
-    case actionsTypes.GET_PRODUCTS:
-      return {
-        ...state,
-        products: payload,
-      };
-
-    case actionsTypes.GET_CART_FROM_LOCAL_STORAGE:
-      return {
-        ...state,
-        cart: payload,
-      };
-
-    case actionsTypes.CLEAR_CART:
-      return {
-        ...state,
-        cart: [],
-      };
-
-    // case actionsTypes.SUCCESSFUL_PAYMENT_ALERT:
-    //   return {
-    //     ...state,
-    //     successfulPaymentAlert: payload,
-    //   };
-
-    // case actionsTypes.CURRENT_USER_CHECKED:
-    //   return {
-    //     ...state,
-    //     isCurrentUserChecked: payload,
-    //   };
-
-    // case actionsTypes.TOGGLE_SEARCH_PANEL:
-    //   return {
-    //     ...state,
-    //     isSearchPanelOn: !state.isSearchPanelOn,
-    //   };
 
     default:
       return state;

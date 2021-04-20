@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import _ from 'lodash';
 import {
   addProductToCart,
   decreaseProductCartQuantity,
@@ -20,6 +21,13 @@ import {
 const CartContentTableRow = ({ product, orderRow }) => {
   const dispatch = useDispatch();
 
+  const currentCart = useSelector(
+    ({ productsAndCart }) => productsAndCart.cart
+  );
+  const currentProducts = useSelector(
+    ({ productsAndCart }) => productsAndCart.products
+  );
+
   useEffect(() => {
     dispatch(closeNotInStockMessage(product.cartProductId));
   }, []);
@@ -31,6 +39,34 @@ const CartContentTableRow = ({ product, orderRow }) => {
       }, 2000);
     }
   }, [product.notInStock, product.cartProductId, dispatch]);
+
+  const removeFromCart = () => {
+    const cartCopy = _.cloneDeep(currentCart);
+    const productsCopy = _.cloneDeep(currentProducts);
+
+    const cartAfterRemoval = cartCopy.filter(
+      (cartProductCopy) =>
+        cartProductCopy.cartProductId !== product.cartProductId
+    );
+
+    const removedProduct = cartCopy.find(
+      (cartProductCopy) =>
+        cartProductCopy.cartProductId === product.cartProductId
+    );
+
+    productsCopy.forEach((productCopy) => {
+      if (productCopy.productId === product.productId) {
+        productCopy.sizes.forEach((size) => {
+          if (size.size === removedProduct.chosenOption.size) {
+            size.availableQuantity =
+              size.availableQuantity + removedProduct.chosenOption.quantity;
+          }
+        });
+      }
+    });
+
+    dispatch(removeProductFromCart(productsCopy, cartAfterRemoval));
+  };
 
   return (
     <StyledTableRow>
@@ -87,17 +123,7 @@ const CartContentTableRow = ({ product, orderRow }) => {
         <StyledPrice>
           $ {product.chosenOption.quantity * product.productPrice}
           {!orderRow && (
-            <i
-              className="fas fa-times"
-              onClick={() =>
-                dispatch(
-                  removeProductFromCart(
-                    product.productId,
-                    product.cartProductId
-                  )
-                )
-              }
-            ></i>
+            <i className="fas fa-times" onClick={removeFromCart}></i>
           )}
         </StyledPrice>
       </td>

@@ -13,9 +13,9 @@ export const addProductToCart = (productId, chosenSize, chosenQuantity) => ({
   payload: { productId, chosenSize, chosenQuantity },
 });
 
-export const removeProductFromCart = (productId, cartProductId) => ({
+export const removeProductFromCart = (productsCopy, cartAfterRemoval) => ({
   type: actionsTypes.REMOVE_PRODUCT_FROM_CART,
-  payload: { productId, cartProductId },
+  payload: { productsCopy, cartAfterRemoval },
 });
 
 export const decreaseProductCartQuantity = (productId, cartProductId) => ({
