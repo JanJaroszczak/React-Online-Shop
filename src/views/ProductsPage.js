@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
+import Button from '../components/atoms/Button';
 import CheckboxFiltersColumn from '../components/organisms/CheckboxFiltersColumn';
 import Heading from '../components/atoms/Heading';
 import ProductCard from '../components/molecules/ProductCard';
@@ -24,6 +25,7 @@ const ProductsPage = ({ history }) => {
     false
   );
   const [preSetFilters, setPreSetFilters] = useState(null);
+  const [areAnyFiltersSet, setAreAnyFiltersSet] = useState(false);
 
   const isTablet = useMediaQuery({
     query: '(max-width: 768px)',
@@ -85,8 +87,13 @@ const ProductsPage = ({ history }) => {
     <>
       {isTablet && (
         <div>
-          <label htmlFor="size">Filter:</label>
-          <StyledFilterIcon onClick={handleMobileFiltersColumn}>
+          <label htmlFor="size">
+            {areAnyFiltersSet ? 'Edit set filters:' : 'Filter:'}
+          </label>
+          <StyledFilterIcon
+            areAnyFiltersSet={areAnyFiltersSet}
+            onClick={handleMobileFiltersColumn}
+          >
             <i className="fas fa-filter"></i>
           </StyledFilterIcon>
         </div>
@@ -114,6 +121,7 @@ const ProductsPage = ({ history }) => {
           isTablet={mobileFiltersColumnToggle}
           onMobileClose={handleMobileFiltersColumn}
           preSetFilters={preSetFilters}
+          onSetFilters={(areSet) => setAreAnyFiltersSet(areSet)}
         />
         {!mobileFiltersColumnToggle && (
           <div>

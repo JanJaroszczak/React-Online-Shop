@@ -17,6 +17,7 @@ const CheckboxFiltersColumn = ({
   isTablet,
   onMobileClose,
   preSetFilters,
+  onSetFilters,
 }) => {
   const availableProducts = useSelector(
     ({ productsAndCart }) => productsAndCart.products
@@ -31,6 +32,7 @@ const CheckboxFiltersColumn = ({
   const [markedCheckboxFilters, setMarkedCheckboxFilters] = useState([]);
   const [areAllFiltersCleared, setAreAllFiltersCleared] = useState(false);
   const [isSaleFilterChecked, setIsSaleFilterChecked] = useState(false);
+  const [areAnyFiltersSet, setAreAnyFiltersSet] = useState(false);
   const inputRefBottomPrice = useRef();
   const inputRefUpperPrice = useRef();
 
@@ -205,6 +207,22 @@ const CheckboxFiltersColumn = ({
     updateProductsToDisplay,
   ]);
 
+  useEffect(() => {
+    if (
+      bottomFilterPrice ||
+      upperFilterPrice ||
+      markedCheckboxFilters.length > 0
+    ) {
+      setAreAnyFiltersSet(true);
+    } else {
+      setAreAnyFiltersSet(false);
+    }
+  }, [bottomFilterPrice, upperFilterPrice, markedCheckboxFilters]);
+
+  useEffect(() => {
+    onSetFilters(areAnyFiltersSet);
+  }, [areAnyFiltersSet]);
+
   const renderPriceFilter = () => (
     <>
       <h3>Price</h3>
@@ -252,13 +270,7 @@ const CheckboxFiltersColumn = ({
           type="button"
           label="clear all filters"
           color={isTabletButton ? '' : 'white'}
-          variant={
-            bottomFilterPrice ||
-            upperFilterPrice ||
-            markedCheckboxFilters.length > 0
-              ? 'clearFilters'
-              : 'clearFiltersDisabled'
-          }
+          variant={areAnyFiltersSet ? 'clearFilters' : 'clearFiltersDisabled'}
           clicked={clearFilters}
         />
       </StyledColumnHeading>

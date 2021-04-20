@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledProductsPageWrapper = styled.div`
   display: grid;
@@ -33,17 +33,22 @@ export const StyledSortingOptionChoice = styled.div`
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: auto auto;
-    column-gap: 50px;
+    column-gap: 40px;
     margin: 0 auto;
   } ;
 `;
 
 export const StyledFilterIcon = styled.div`
-  /* margin-top: 2px; */
   font-size: 4.1rem;
   color: ${({ theme }) => theme.colors.declicateGray};
 
   /* border: 1px solid black; */
+
+  ${({ areAnyFiltersSet }) =>
+    areAnyFiltersSet &&
+    css`
+      color: ${({ theme }) => theme.colors.mainDark};
+    `}
 `;
 
 export const StyledSelect = styled.select`
