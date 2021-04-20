@@ -11,15 +11,17 @@ import useOnClickOutside from '../../../hoc/useOnClickOutside';
 import {
   StyledNav,
   StyledNavWrapper,
-  StyledLogo,
   StyledUl,
   StyledLi,
-  StyledNavLink,
   StyledNavRightHandSideWrapper,
   StyledAdjustedIcon,
-  StyledCartCounter,
   StyledAccountNavLink,
 } from './styles/StyledNavbar';
+import {
+  StyledLogo,
+  StyledNavLink,
+  StyledCartCounter,
+} from './styles/StyledCommonNavbarElements';
 
 const Navbar = () => {
   const outsideClickRef = useRef();
@@ -86,7 +88,7 @@ const Navbar = () => {
             className="fas fa-shopping-cart"
             onClick={() => dispatch(setCartOpen())}
           >
-            <StyledCartCounter>
+            <StyledCartCounter cartCounter={cartCounter}>
               <span>{cartCounter}</span>
             </StyledCartCounter>
           </i>

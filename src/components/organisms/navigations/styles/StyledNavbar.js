@@ -24,18 +24,6 @@ export const StyledNavWrapper = styled.nav`
   /* border: 1px solid black; */
 `;
 
-export const StyledLogo = styled.div`
-  align-self: center;
-  justify-self: center;
-  padding-left: 20px;
-
-  /* border: 1px solid black; */
-
-  img {
-    height: 55px;
-  }
-`;
-
 export const StyledUl = styled.ul`
   display: grid;
   grid-template-columns: auto auto auto 1fr;
@@ -58,45 +46,6 @@ export const StyledLi = styled.li`
 
   @media (max-width: 860px) {
     margin: 0 5px;
-  }
-`;
-
-export const StyledNavLink = styled(NavLink)`
-  display: block;
-  position: relative;
-  padding: 10px 10px;
-  color: ${({ theme }) => theme.colors.mainDark};
-  font-size: ${({ theme }) => theme.fontSizes.l};
-  text-decoration: none;
-  text-transform: uppercase;
-
-  &:before {
-    content: '';
-    position: absolute;
-    width: 84%;
-    height: 2px;
-    bottom: 5px;
-    left: 8%;
-    background-color: ${({ theme }) => theme.colors.mainDark};
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
-  }
-
-  &:hover:before,
-  &.active:before {
-    visibility: visible;
-    transform: scaleX(1);
-  }
-
-  @media (max-width: 860px) {
-    font-size: ${({ theme }) => theme.fontSizes.m};
-
-    ${({ search }) =>
-      search === 'diff' &&
-      css`
-        font-size: ${({ theme }) => theme.fontSizes.l};
-      `}
   }
 `;
 
@@ -133,27 +82,6 @@ export const StyledAdjustedIcon = styled.i`
   vertical-align: -5px;
 
   /* border: 1px solid black; */
-`;
-
-export const StyledCartCounter = styled.div`
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  display: block;
-  font-size: ${({ theme }) => theme.fontSizes.ss};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
-  background-color: ${({ theme }) => theme.colors.darkGray};
-  color: ${({ theme }) => theme.colors.mainWhite};
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-
-  span {
-    position: absolute;
-    top: 3px;
-    left: 5.5px;
-    font-family: 'Roboto Condensed', sans-serif;
-  }
 `;
 
 export const StyledAccountNavLink = styled(NavLink)`

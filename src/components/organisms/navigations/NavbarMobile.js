@@ -8,17 +8,19 @@ import { routes } from '../../../routes';
 import logo from '../../../assets/images/logo3.png';
 import {
   StyledMobileNavbar,
-  StyledLogo,
   StyledIconsWrapper,
   StyledIcon,
-  StyledCartCounter,
   StyledMenu,
   StyledUl,
   StyledLi,
-  StyledNavLink,
   StyledAccountUl,
   StyledAccountNavLink,
 } from './styles/StyledNavbarMobile';
+import {
+  StyledLogo,
+  StyledNavLink,
+  StyledCartCounter,
+} from './styles/StyledCommonNavbarElements';
 
 const NavbarMobile = ({ mobileMenuOn }) => {
   const [menuToggle, setMenuToggle] = useState(false);
@@ -46,7 +48,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
   return (
     <>
       <StyledMobileNavbar>
-        <StyledLogo>
+        <StyledLogo layout="mobile">
           <Link to={routes.home} onClick={() => setMenuToggle(false)}>
             <img src={logo} alt="Logo" />
           </Link>
@@ -54,6 +56,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
         <StyledIconsWrapper>
           <StyledIcon search>
             <StyledNavLink
+              layout="mobile"
               to={routes.mobileSearch}
               onClick={() => setMenuToggle(false)}
             >
@@ -63,7 +66,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
 
           <StyledIcon cart>
             <i className="fas fa-shopping-cart" onClick={handleCartIconClick}>
-              <StyledCartCounter>
+              <StyledCartCounter layout="mobile" cartCounter={cartCounter}>
                 <span>{cartCounter}</span>
               </StyledCartCounter>
             </i>
@@ -86,17 +89,30 @@ const NavbarMobile = ({ mobileMenuOn }) => {
       <StyledMenu menuToggle={menuToggle}>
         <StyledUl>
           <StyledLi>
-            <StyledNavLink to={routes.home} exact onClick={handleMenuClick}>
+            <StyledNavLink
+              layout="mobile"
+              to={routes.home}
+              exact
+              onClick={handleMenuClick}
+            >
               Home
             </StyledNavLink>
           </StyledLi>
           <StyledLi>
-            <StyledNavLink to={routes.products} onClick={handleMenuClick}>
+            <StyledNavLink
+              layout="mobile"
+              to={routes.products}
+              onClick={handleMenuClick}
+            >
               Products
             </StyledNavLink>
           </StyledLi>
           <StyledLi>
-            <StyledNavLink to={routes.contact} onClick={handleMenuClick}>
+            <StyledNavLink
+              layout="mobile"
+              to={routes.contact}
+              onClick={handleMenuClick}
+            >
               Contact
             </StyledNavLink>
           </StyledLi>
