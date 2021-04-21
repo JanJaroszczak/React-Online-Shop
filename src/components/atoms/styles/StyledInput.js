@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { inputVariants } from '../../../utils/atomsTypesAndVariants';
+
 export const StyledInputWrapper = styled.div`
   position: relative;
 
@@ -29,7 +31,7 @@ export const StyledInput = styled.input`
   /* border: 1px solid black; */
 
   ${({ variant }) =>
-    variant === 'accountDataChange' &&
+    variant === inputVariants.accountDataChange &&
     css`
       margin-bottom: 0;
     `}
@@ -45,7 +47,7 @@ export const StyledInput = styled.input`
     max-width: 250px;
 
     ${({ variant }) =>
-      variant === 'accountDataChange' &&
+      variant === inputVariants.accountDataChange &&
       css`
         width: 250px;
       `}

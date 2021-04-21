@@ -8,7 +8,10 @@ import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 
 import { auth } from '../../firebase/firebaseConfig';
-import { buttonVariants } from '../../utils/atomsTypesAndVariants';
+import {
+  buttonVariants,
+  inputVariants,
+} from '../../utils/atomsTypesAndVariants';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 import {
@@ -200,7 +203,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
           <Form>
             <StyledInputsWrapper>
               <Input
-                variant="accountDataChange"
+                variant={inputVariants.accountDataChange}
                 type="password"
                 name="userOldPassword"
                 label={`*${emailChange ? 'Your' : 'Old'} password:`}
@@ -215,7 +218,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
               </StyledError>
 
               <Input
-                variant="accountDataChange"
+                variant={inputVariants.accountDataChange}
                 type={emailChange ? 'email' : 'password'}
                 name="userNewData"
                 label={`*New ${emailChange ? 'email' : 'password'}:`}
@@ -230,7 +233,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
               </StyledError>
 
               <Input
-                variant="accountDataChange"
+                variant={inputVariants.accountDataChange}
                 type={emailChange ? 'email' : 'password'}
                 name="userNewDataConfirmation"
                 label={`*New ${

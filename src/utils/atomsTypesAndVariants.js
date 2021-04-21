@@ -28,3 +28,7 @@ export const headingTypes = {
   mobileAuthBeforeCheckout: 'mobileAuthBeforeCheckout',
   mobileTopHeading: 'mobileTopHeading',
 };
+
+export const inputVariants = {
+  accountDataChange: 'accountDataChange',
+};
