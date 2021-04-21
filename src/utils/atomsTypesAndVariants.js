@@ -1,3 +1,8 @@
+export const alertVariants = {
+  orderSummary: 'orderSummary',
+  accountDataChange: 'accountDataChange',
+};
+
 export const buttonVariants = {
   clearFilters: 'clearFilters',
   clearFiltersDisabled: 'clearFiltersDisabled',

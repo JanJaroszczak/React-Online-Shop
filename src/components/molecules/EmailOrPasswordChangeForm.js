@@ -9,6 +9,7 @@ import Input from '../atoms/Input';
 
 import { auth } from '../../firebase/firebaseConfig';
 import {
+  alertVariants,
   buttonVariants,
   inputVariants,
 } from '../../utils/atomsTypesAndVariants';
@@ -93,7 +94,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
     <>
       {isSuccessAlert && (
         <Alert
-          variant="accountDataChange"
+          variant={alertVariants.accountDataChange}
           severity="success"
           message={`${emailChange ? 'Email' : 'Password'} succesfully changed!`}
           visible={true}

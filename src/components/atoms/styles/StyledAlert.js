@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { alertVariants } from '../../../utils/atomsTypesAndVariants';
+
 export const StyledAlert = styled.div`
   height: 50px;
   width: 100%;
@@ -23,7 +25,7 @@ export const StyledAlert = styled.div`
     `}
 
   ${({ variant }) =>
-    variant === 'orderSummary' &&
+    variant === alertVariants.orderSummary &&
     css`
       margin-top: 93px;
     `}
@@ -32,7 +34,7 @@ export const StyledAlert = styled.div`
     text-align: center;
 
     ${({ variant }) =>
-      variant === 'accountDataChange' &&
+      variant === alertVariants.accountDataChange &&
       css`
         text-align: left;
       `}

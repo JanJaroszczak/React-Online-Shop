@@ -8,7 +8,11 @@ import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
 import Heading from '../components/atoms/Heading';
 
-import { buttonVariants, headingTypes } from '../utils/atomsTypesAndVariants';
+import {
+  alertVariants,
+  buttonVariants,
+  headingTypes,
+} from '../utils/atomsTypesAndVariants';
 import { routes } from '../routes';
 import { successfulPaymentAlert, clearCart } from '../actions';
 
@@ -43,7 +47,7 @@ const OrderSummaryPage = (props) => {
           severity="success"
           message="Payment successful!"
           visible={isSuccessfulPaymentAlert}
-          variant="orderSummary"
+          variant={alertVariants.orderSummary}
         />
       ) : (
         <>

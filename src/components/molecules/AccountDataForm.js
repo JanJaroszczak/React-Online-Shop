@@ -6,7 +6,10 @@ import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
 
-import { buttonVariants } from '../../utils/atomsTypesAndVariants';
+import {
+  alertVariants,
+  buttonVariants,
+} from '../../utils/atomsTypesAndVariants';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 import { StyledInputsWrapper } from './styles/StyledAccountDataForm';
@@ -30,7 +33,7 @@ const AccountDataForm = () => {
     <>
       {isSuccessAlert && (
         <Alert
-          variant="accountDataChange"
+          variant={alertVariants.accountDataChange}
           severity="success"
           message="Your data has been successfully updated!"
           visible={true}
