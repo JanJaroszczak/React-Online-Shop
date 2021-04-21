@@ -100,12 +100,12 @@ export const StyledSelect = styled.select`
   margin-top: 3px;
   font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: ${({ theme }) => theme.fontWeights.light};
-
   font-family: inherit;
   background-color: ${({ theme }) => theme.colors.declicateGray};
   color: ${({ theme }) => theme.colors.mainDark};
   border: none;
   outline: none;
+  cursor: pointer;
 
   /* border: 1px solid black; */
 

@@ -41,6 +41,7 @@ export const StyledSortingOptionChoice = styled.div`
 export const StyledFilterIcon = styled.div`
   font-size: 4.1rem;
   color: ${({ theme }) => theme.colors.declicateGray};
+  cursor: pointer;
 
   /* border: 1px solid black; */
 
@@ -63,6 +64,7 @@ export const StyledSelect = styled.select`
   color: ${({ theme }) => theme.colors.mainDark};
   border: none;
   outline: none;
+  cursor: pointer;
 
   /* border: 1px solid black; */
 

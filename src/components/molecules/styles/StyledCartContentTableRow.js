@@ -40,6 +40,7 @@ export const StyledPrice = styled.div`
     top: 50%;
     transform: translateY(-50%);
     font-size: ${({ theme }) => theme.fontSizes.l};
+    cursor: pointer;
   }
 
   i:hover {

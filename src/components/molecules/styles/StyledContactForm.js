@@ -82,6 +82,10 @@ export const StyledTermsWrapper = styled.div`
   position: relative;
   display: block;
   margin: 22px 0 24px;
+
+  input {
+    cursor: pointer;
+  }
 `;
 
 export const StyledCheckboxLabel = styled.label`
