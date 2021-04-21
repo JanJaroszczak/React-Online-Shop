@@ -4,8 +4,10 @@ import { useMediaQuery } from 'react-responsive';
 import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
 
-import { buttonVariants } from '../../utils/atomsTypesAndVariants';
-import { headingTypes } from '../../utils/atomsTypesAndVariants';
+import {
+  buttonVariants,
+  headingTypes,
+} from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import { StyledDiv, StyledLink } from './styles/StyledSpecialOffer';

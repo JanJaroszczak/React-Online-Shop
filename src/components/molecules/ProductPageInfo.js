@@ -7,8 +7,10 @@ import Heading from '../atoms/Heading';
 import salePercentageCalculation from '../../utils/salePercentageCalculation';
 
 import { addProductToCart, setCartOpen } from '../../actions';
-import { buttonVariants } from '../../utils/atomsTypesAndVariants';
-import { headingTypes } from '../../utils/atomsTypesAndVariants';
+import {
+  buttonVariants,
+  headingTypes,
+} from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {

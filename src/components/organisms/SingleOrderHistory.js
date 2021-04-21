@@ -6,8 +6,10 @@ import CartContentTable from '../../components/organisms/CartContentTable';
 import CartSummary from '../../components/molecules/CartSummary';
 import Heading from '../../components/atoms/Heading';
 
-import { buttonVariants } from '../../utils/atomsTypesAndVariants';
-import { headingTypes } from '../../utils/atomsTypesAndVariants';
+import {
+  buttonVariants,
+  headingTypes,
+} from '../../utils/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {
