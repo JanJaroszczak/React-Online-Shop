@@ -30,9 +30,11 @@ const contactValidationSchema = Yup.object().shape({
   userStreet: Yup.string().required('Enter your street!'),
   userZipCode: Yup.string()
     .required('Enter your zip code!')
-    .min(5, 'Zip Code must contain at least 5 charachters!'),
+    .min(5, 'Zip code must contain at least 5 characters!'),
   userCity: Yup.string().required('Enter your city!'),
-  userPhone: Yup.string().required('Enter your phone number!'),
+  userPhone: Yup.string()
+    .required('Enter your phone number!')
+    .min(9, 'Phone number must contain at least 9 characters!'),
   acceptTerms: Yup.bool().oneOf(
     [true],
     'You need to accept Terms and Conditions!'
