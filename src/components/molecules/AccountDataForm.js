@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Formik } from 'formik';
+import { Form, Formik, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { useSelector } from 'react-redux';
 
 import Button from '../atoms/Button';
@@ -13,6 +14,18 @@ import {
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 import { StyledInputsWrapper } from './styles/StyledAccountDataForm';
+
+const contactValidationSchema = Yup.object().shape({
+  userEmail: Yup.string().email('Invalid email!'),
+  userZipCode: Yup.string().min(
+    5,
+    'Zip code must contain at least 5 characters!'
+  ),
+  userPhone: Yup.string().min(
+    9,
+    'Phone number must contain at least 9 characters!'
+  ),
+});
 
 const AccountDataForm = () => {
   const [isSuccessAlert, setIsSuccessAlert] = useState(false);
@@ -54,6 +67,7 @@ const AccountDataForm = () => {
             userCity: `${currentUser.userCity}`,
             userPhone: `${currentUser.userPhone}`,
           }}
+          validationSchema={contactValidationSchema}
           onSubmit={(values) => {
             console.log(values);
             console.log('submit');
