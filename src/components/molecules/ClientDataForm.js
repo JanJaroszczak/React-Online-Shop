@@ -28,7 +28,9 @@ const contactValidationSchema = Yup.object().shape({
   userSurname: Yup.string().required('Enter your surname!'),
   userEmail: Yup.string().email('Invalid email!').required('Enter email!'),
   userStreet: Yup.string().required('Enter your street!'),
-  userZipCode: Yup.string().required('Enter your zip code!'),
+  userZipCode: Yup.string()
+    .required('Enter your zip code!')
+    .min(5, 'Zip Code must contain at least 5 charachters!'),
   userCity: Yup.string().required('Enter your city!'),
   userPhone: Yup.string().required('Enter your phone number!'),
   acceptTerms: Yup.bool().oneOf(
