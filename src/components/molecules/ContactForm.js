@@ -8,7 +8,7 @@ import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
 import Input from '../atoms/Input';
 
-import { headingTypes } from '../../utils/atomsTypesAndVariants';
+import { headingTypes } from '../../helpers/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {

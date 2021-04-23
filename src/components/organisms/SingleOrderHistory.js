@@ -9,7 +9,7 @@ import Heading from '../../components/atoms/Heading';
 import {
   buttonVariants,
   headingTypes,
-} from '../../utils/atomsTypesAndVariants';
+} from '../../helpers/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {

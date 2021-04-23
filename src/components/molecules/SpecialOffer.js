@@ -7,7 +7,7 @@ import Heading from '../atoms/Heading';
 import {
   buttonVariants,
   headingTypes,
-} from '../../utils/atomsTypesAndVariants';
+} from '../../helpers/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import { StyledDiv, StyledLink } from './styles/StyledSpecialOffer';

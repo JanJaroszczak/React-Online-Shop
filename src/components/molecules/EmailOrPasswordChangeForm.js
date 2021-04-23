@@ -12,7 +12,7 @@ import {
   alertVariants,
   buttonVariants,
   inputVariants,
-} from '../../utils/atomsTypesAndVariants';
+} from '../../helpers/atomsTypesAndVariants';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 import {

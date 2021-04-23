@@ -12,7 +12,7 @@ import {
   alertVariants,
   buttonVariants,
   headingTypes,
-} from '../utils/atomsTypesAndVariants';
+} from '../helpers/atomsTypesAndVariants';
 import { routes } from '../routes';
 import { successfulPaymentAlert, clearCart } from '../actions';
 

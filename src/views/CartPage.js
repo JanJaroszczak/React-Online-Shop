@@ -6,7 +6,7 @@ import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
 import Heading from '../components/atoms/Heading';
 
-import { headingTypes } from '../utils/atomsTypesAndVariants';
+import { headingTypes } from '../helpers/atomsTypesAndVariants';
 
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 

@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import Button from '../components/atoms/Button';
 import Heading from '../components/atoms/Heading';
 
-import { buttonVariants, headingTypes } from '../utils/atomsTypesAndVariants';
+import { buttonVariants, headingTypes } from '../helpers/atomsTypesAndVariants';
 import { StyledParagraph } from './styles/StyledTermsPage';
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 

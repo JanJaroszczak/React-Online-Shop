@@ -10,7 +10,7 @@ import { addProductToCart, setCartOpen } from '../../actions';
 import {
   buttonVariants,
   headingTypes,
-} from '../../utils/atomsTypesAndVariants';
+} from '../../helpers/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {

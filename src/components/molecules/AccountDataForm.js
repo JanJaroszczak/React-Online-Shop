@@ -10,7 +10,7 @@ import Alert from '../atoms/Alert';
 import {
   alertVariants,
   buttonVariants,
-} from '../../utils/atomsTypesAndVariants';
+} from '../../helpers/atomsTypesAndVariants';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 import { StyledInputsWrapper } from './styles/StyledAccountDataForm';

@@ -3,7 +3,7 @@ import React from 'react';
 import EmailOrPasswordChangeForm from '../molecules/EmailOrPasswordChangeForm';
 import Heading from '../atoms/Heading';
 
-import { headingTypes } from '../../utils/atomsTypesAndVariants';
+import { headingTypes } from '../../helpers/atomsTypesAndVariants';
 
 import { StyledDataChangeWrapper } from './styles/StyledStyledDataChangeWrapper';
 

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { alertVariants } from '../../../utils/atomsTypesAndVariants';
+import { alertVariants } from '../../../helpers/atomsTypesAndVariants';
 
 export const StyledAlert = styled.div`
   height: 50px;

@@ -6,7 +6,7 @@ import Heading from '../components/atoms/Heading';
 import ProductCard from '../components/molecules/ProductCard';
 import Spinner from '../components/atoms/Spinner';
 
-import { headingTypes } from '../utils/atomsTypesAndVariants';
+import { headingTypes } from '../helpers/atomsTypesAndVariants';
 import { sortingOptions } from './utils/ProductsPageSortingOptions';
 
 import {

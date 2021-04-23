@@ -6,7 +6,7 @@ import Heading from '../components/atoms/Heading';
 import ProductCard from '../components/molecules/ProductCard';
 import searchProducts from '../utils/searchProducts';
 
-import { headingTypes } from '../utils/atomsTypesAndVariants';
+import { headingTypes } from '../helpers/atomsTypesAndVariants';
 
 import {
   StyledSearchPageWrapper,

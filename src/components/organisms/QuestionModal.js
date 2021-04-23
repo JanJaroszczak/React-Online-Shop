@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Button from '../atoms/Button';
 
-import { buttonVariants } from '../../utils/atomsTypesAndVariants';
+import { buttonVariants } from '../../helpers/atomsTypesAndVariants';
 
 import {
   StyledQuestion,

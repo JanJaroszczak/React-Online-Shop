@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import Button from '../atoms/Button';
 import CheckboxFilters from '../molecules/CheckboxFilters';
 
-import { buttonVariants } from '../../utils/atomsTypesAndVariants';
+import { buttonVariants } from '../../helpers/atomsTypesAndVariants';
 
 import {
   StyledColumn,

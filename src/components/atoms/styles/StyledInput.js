@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { inputVariants } from '../../../utils/atomsTypesAndVariants';
+import { inputVariants } from '../../../helpers/atomsTypesAndVariants';
 
 export const StyledInputWrapper = styled.div`
   position: relative;

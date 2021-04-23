@@ -2,7 +2,7 @@ import React from 'react';
 
 import Heading from '../atoms/Heading';
 
-import { headingTypes } from '../../utils/atomsTypesAndVariants';
+import { headingTypes } from '../../helpers/atomsTypesAndVariants';
 
 import {
   StyledAddressWrapper,

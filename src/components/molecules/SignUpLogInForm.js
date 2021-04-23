@@ -11,7 +11,7 @@ import Input from '../atoms/Input';
 import Spinner from '../../components/atoms/Spinner';
 
 import { auth } from '../../firebase/firebaseConfig';
-import { headingTypes } from '../../utils/atomsTypesAndVariants';
+import { headingTypes } from '../../helpers/atomsTypesAndVariants';
 import { routes } from '../../routes';
 import { usersCollection } from '../../firebase/firestoreUtils';
 

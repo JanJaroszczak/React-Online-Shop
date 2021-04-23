@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { buttonVariants } from '../../../utils/atomsTypesAndVariants';
+import { buttonVariants } from '../../../helpers/atomsTypesAndVariants';
 
 export const StyledButton = styled.button`
   display: block;

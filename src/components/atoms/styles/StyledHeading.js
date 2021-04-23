@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { headingTypes } from '../../../utils/atomsTypesAndVariants';
+import { headingTypes } from '../../../helpers/atomsTypesAndVariants';
 
 export const StyledDiv = styled.div`
   text-transform: uppercase;
