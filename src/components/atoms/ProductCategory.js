@@ -14,7 +14,7 @@ import {
 const ProductCategory = ({ img, value }) => {
   return (
     <StyledDiv>
-      <StyledImg src={img} alt={''} />
+      <StyledImg src={img} alt={`${value} category background image`} />
       <StyledFade />
       <StyledCategory />
       <Link
