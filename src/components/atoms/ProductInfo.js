@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { routes } from '../../routes';
+
 import {
   StyledDiv,
   StyledModelName,
@@ -17,7 +19,7 @@ const ProductInfo = ({
 }) => {
   return (
     <StyledDiv>
-      <StyledLink to={`/product/${productId}`}>
+      <StyledLink to={`${routes.product + productId}`}>
         <StyledModelName>{model}</StyledModelName>
       </StyledLink>
       <StyledBrandName>{brand}</StyledBrandName>
