@@ -141,6 +141,12 @@ export const StyledDiv = styled.div`
       css`
         text-align: left;
       `}
+
+           ${({ type }) =>
+      type === headingTypes.address &&
+      css`
+        margin-top: 0;
+      `}
   }
 
   @media (max-width: 600px) {

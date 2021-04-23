@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledAddressWrapper = styled.div`
-  @media (max-width: 768px) {
-    margin-top: 10px;
-  } ;
-`;
-
 export const StyledAddress = styled.address`
   margin-top: 30px;
   padding-left: 80px;

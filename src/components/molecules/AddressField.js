@@ -4,14 +4,11 @@ import Heading from '../atoms/Heading';
 
 import { headingTypes } from '../../helpers/atomsTypesAndVariants';
 
-import {
-  StyledAddressWrapper,
-  StyledAddress,
-} from './styles/StyledAddressField';
+import { StyledAddress } from './styles/StyledAddressField';
 
 const AddressField = () => {
   return (
-    <StyledAddressWrapper>
+    <div>
       <Heading
         type={headingTypes.address}
         heading={'our address'}
@@ -29,7 +26,7 @@ const AddressField = () => {
         <br />
         info@info.com
       </StyledAddress>
-    </StyledAddressWrapper>
+    </div>
   );
 };
 

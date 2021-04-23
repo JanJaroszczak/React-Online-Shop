@@ -6,6 +6,7 @@ export const inputLabels = {
   zipCode: 'Zip code:',
   city: 'City:',
   phone: 'Phone number:',
+  message: '*Message:',
 };
 
 export const inputPlaceholders = {
@@ -16,4 +17,5 @@ export const inputPlaceholders = {
   typeZipCode: `Type your zip code`,
   typeCity: `Type your city`,
   typePhone: `Type your phone number`,
+  typeMessage: 'Type your message',
 };

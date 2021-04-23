@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import emailjs from 'emailjs-com';
 import { Formik, Form, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
 
+import Alert from '../atoms/Alert';
 import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
 import Input from '../atoms/Input';
 
+import { alertMessages } from '../../helpers/alertMessages';
+import { alertVariants } from '../../helpers/atomsTypesAndVariants';
+import { buttonLabels } from '../../helpers/buttonLabels';
 import { headingTypes } from '../../helpers/atomsTypesAndVariants';
+import { inputLabels, inputPlaceholders } from '../../helpers/inputStrings';
 import { routes } from '../../routes';
+import { validationMessages } from '../../helpers/validationMessages';
 
 import {
   StyledFormWrapper,
@@ -20,18 +25,52 @@ import {
   StyledTermsWrapper,
   StyledCheckboxLabel,
 } from './styles/StyledContactForm';
+import { StyledCommonLink } from '../../globalStyles/GlobalStyledComponents';
+
+const {
+  nameRequired,
+  emailRequired,
+  invalidEmail,
+  messageRequired,
+  messageAtLeast10Chars,
+  termsAcceptanceRequired,
+} = validationMessages;
 
 const contactValidationSchema = Yup.object().shape({
-  userName: Yup.string().required('Enter your name!'),
-  userEmail: Yup.string().email('Invalid email!').required('Enter email!'),
-  userMessage: Yup.string().required('Enter message!').min(10, 'Min. 10 char.'),
-  acceptTerms: Yup.bool().oneOf(
-    [true],
-    'You need to accept Terms and Conditions!'
-  ),
+  userName: Yup.string().required(nameRequired),
+  userEmail: Yup.string().email(invalidEmail).required(emailRequired),
+  userMessage: Yup.string()
+    .required(messageRequired)
+    .min(10, messageAtLeast10Chars),
+  acceptTerms: Yup.bool().oneOf([true], termsAcceptanceRequired),
 });
 
 const ContactForm = () => {
+  const [isSuccessAlert, setIsSuccessAlert] = useState(false);
+
+  const { name, email, message } = inputLabels;
+  const { typeName, typeEmail, typeMessage } = inputPlaceholders;
+
+  useEffect(() => {
+    let timer;
+    if (isSuccessAlert) {
+      timer = setTimeout(() => {
+        setIsSuccessAlert(false);
+      }, 3000);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isSuccessAlert]);
+
+  const renderAlert = () => (
+    <Alert
+      message={alertMessages.messageSent}
+      visible={isSuccessAlert}
+      variant={alertVariants.accountDataChange}
+    />
+  );
+
   return (
     <div>
       <Heading
@@ -61,6 +100,7 @@ const ContactForm = () => {
               .then(
                 (result) => {
                   console.log(result.text);
+                  setIsSuccessAlert(true);
                 },
                 (error) => {
                   console.log(error.text);
@@ -68,7 +108,6 @@ const ContactForm = () => {
               );
 
             resetForm();
-            document.querySelector('#terms').checked = false;
           }}
         >
           {({ values, handleChange }) => (
@@ -76,29 +115,29 @@ const ContactForm = () => {
               <Input
                 type="text"
                 name="userName"
-                label="*Name:"
-                placeholder="Type your name"
+                label={name}
+                placeholder={typeName}
                 value={values.userName}
                 onChangeHandler={handleChange}
               />
               <Input
                 type="email"
                 name="userEmail"
-                label="*Email:"
-                placeholder="Type your email"
+                label={email}
+                placeholder={typeEmail}
                 value={values.userEmail}
                 onChangeHandler={handleChange}
               />
 
               <StyledInputWrapper>
                 <StyledTextAreaLabel htmlFor="userMessage">
-                  *Message:
+                  {message}
                 </StyledTextAreaLabel>
                 <StyledTextarea
                   id="userMessage"
                   type="text"
                   name="userMessage"
-                  placeholder="Type your message"
+                  placeholder={typeMessage}
                   value={values.userMessage}
                   onChange={handleChange}
                 />
@@ -115,19 +154,20 @@ const ContactForm = () => {
                   onChange={handleChange}
                 />
                 <StyledCheckboxLabel>
-                  <Link to={routes.terms} style={{ textDecoration: 'none' }}>
+                  <StyledCommonLink to={routes.terms}>
                     Accept Terms and Conditions
-                  </Link>
+                  </StyledCommonLink>
                 </StyledCheckboxLabel>
                 <StyledErrorWrapper>
                   <ErrorMessage name="acceptTerms" />
                 </StyledErrorWrapper>
               </StyledTermsWrapper>
-              <Button type="submit" label="send message" />
+              <Button type="submit" label={buttonLabels.sendMessage} />
             </Form>
           )}
         </Formik>
       </StyledFormWrapper>
+      {renderAlert()}
     </div>
   );
 };
