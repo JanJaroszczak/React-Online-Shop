@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { cartSummaryVariants } from '../../helpers/atomsTypesAndVariants';
 import { routes } from '../../routes';
 
 import {
@@ -10,6 +11,7 @@ import {
   StyledListElement,
   StyledButton,
 } from './styles/StyledCartSummary';
+import { StyledCommonLink } from '../../globalStyles/GlobalStyledComponents';
 
 const CartSummary = ({ variant, totalOrderPrice, orderSummary }) => {
   const totalPrice = useSelector(
@@ -36,13 +38,12 @@ const CartSummary = ({ variant, totalOrderPrice, orderSummary }) => {
           <span>$ {orderSummary ? totalOrderPrice + 10 : totalPrice + 10}</span>
         </StyledListElement>
       </ul>
-      {variant !== 'checkout' && !orderSummary && (
-        <Link
+      {variant !== cartSummaryVariants.checkout && !orderSummary && (
+        <StyledCommonLink
           to={currentUser ? routes.checkout : routes.authbeforecheckout}
-          style={{ textDecoration: 'none' }}
         >
           <StyledButton type="button">CHECKOUT</StyledButton>
-        </Link>
+        </StyledCommonLink>
       )}
     </StyledCartSummary>
   );
