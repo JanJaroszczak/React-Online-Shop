@@ -1,6 +1,7 @@
 export const inputLabels = {
   name: 'Name:',
   surname: 'Surname:',
+  email: '*Email:',
   street: 'Street:',
   zipCode: 'Zip code:',
   city: 'City:',
@@ -10,6 +11,7 @@ export const inputLabels = {
 export const inputPlaceholders = {
   typeName: `Type your name`,
   typeSurname: `Type your surname`,
+  typeEmail: 'Type your email',
   typeStreet: `Type your street`,
   typeZipCode: `Type your zip code`,
   typeCity: `Type your city`,

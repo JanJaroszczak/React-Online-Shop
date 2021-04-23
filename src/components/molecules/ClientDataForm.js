@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
@@ -10,8 +9,11 @@ import Input from '../atoms/Input';
 import PayPal from './PayPal';
 import QuestionModal from '../organisms/QuestionModal';
 
+import { buttonLabels } from '../../helpers/buttonLabels';
 import { headingTypes } from '../../helpers/atomsTypesAndVariants';
+import { inputLabels, inputPlaceholders } from '../../helpers/inputStrings';
 import { routes } from '../../routes';
+import { validationMessages } from '../../helpers/validationMessages';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
 import {
@@ -22,23 +24,33 @@ import {
   StyledClientDataInputsWrapper,
   StyledCheckoutWrapper,
 } from './styles/StyledContactForm';
+import { StyledCommonLink } from '../../globalStyles/GlobalStyledComponents';
+
+const {
+  nameRequired,
+  surnameRequired,
+  emailRequired,
+  invalidEmail,
+  streetRequired,
+  zipCodeRequired,
+  zipCodeAtLeast5Chars,
+  cityRequired,
+  phoneRequired,
+  phoneAtLeast9Chars,
+  termsAcceptanceRequired,
+} = validationMessages;
 
 const contactValidationSchema = Yup.object().shape({
-  userName: Yup.string().required('Enter your name!'),
-  userSurname: Yup.string().required('Enter your surname!'),
-  userEmail: Yup.string().email('Invalid email!').required('Enter email!'),
-  userStreet: Yup.string().required('Enter your street!'),
+  userName: Yup.string().required(nameRequired),
+  userSurname: Yup.string().required(surnameRequired),
+  userEmail: Yup.string().email(invalidEmail).required(emailRequired),
+  userStreet: Yup.string().required(streetRequired),
   userZipCode: Yup.string()
-    .required('Enter your zip code!')
-    .min(5, 'Zip code must contain at least 5 characters!'),
-  userCity: Yup.string().required('Enter your city!'),
-  userPhone: Yup.string()
-    .required('Enter your phone number!')
-    .min(9, 'Phone number must contain at least 9 characters!'),
-  acceptTerms: Yup.bool().oneOf(
-    [true],
-    'You need to accept Terms and Conditions!'
-  ),
+    .required(zipCodeRequired)
+    .min(5, zipCodeAtLeast5Chars),
+  userCity: Yup.string().required(cityRequired),
+  userPhone: Yup.string().required(phoneRequired).min(9, phoneAtLeast9Chars),
+  acceptTerms: Yup.bool().oneOf([true], termsAcceptanceRequired),
 });
 
 const ClientDataForm = () => {
@@ -49,6 +61,18 @@ const ClientDataForm = () => {
   const [submittedFormValues, setSubmittedFormValues] = useState(null);
 
   const currentUser = useSelector(({ user }) => user.currentUser);
+
+  const { name, surname, email, street, zipCode, city, phone } = inputLabels;
+
+  const {
+    typeName,
+    typeSurname,
+    typeEmail,
+    typeStreet,
+    typeZipCode,
+    typeCity,
+    typePhone,
+  } = inputPlaceholders;
 
   useEffect(() => {
     if (currentUser) {
@@ -145,6 +169,24 @@ const ClientDataForm = () => {
     setIsModalOpen(false);
   };
 
+  // const renderInput = (
+  //   type,
+  //   name,
+  //   label,
+  //   placeholder,
+  //   value,
+  //   onChangeHandler
+  // ) => (
+  //   <Input
+  //     type={type}
+  //     name={name}
+  //     label={label}
+  //     placeholder={placeholder}
+  //     value={value}
+  //     onChangeHandler={onChangeHandler}
+  //   />
+  // );
+
   return (
     <StyledCheckoutWrapper>
       <QuestionModal
@@ -192,56 +234,56 @@ const ClientDataForm = () => {
                   <Input
                     type="text"
                     name="userName"
-                    label="*Name:"
-                    placeholder="Type your name"
+                    label={name}
+                    placeholder={typeName}
                     value={values.userName}
                     onChangeHandler={handleChange}
                   />
                   <Input
                     type="text"
                     name="userSurname"
-                    label="*Surname:"
-                    placeholder="Type your surname"
+                    label={surname}
+                    placeholder={typeSurname}
                     value={values.userSurname}
                     onChangeHandler={handleChange}
                   />
                   <Input
                     type="email"
                     name="userEmail"
-                    label="*Email:"
-                    placeholder="Type your email"
+                    label={email}
+                    placeholder={typeEmail}
                     value={values.userEmail}
                     onChangeHandler={handleChange}
                   />
                   <Input
                     type="text"
                     name="userStreet"
-                    label="*Street:"
-                    placeholder="Type your street"
+                    label={street}
+                    placeholder={typeStreet}
                     value={values.userStreet}
                     onChangeHandler={handleChange}
                   />
                   <Input
                     type="text"
                     name="userZipCode"
-                    label="*Zip code:"
-                    placeholder="Type your zip code"
+                    label={zipCode}
+                    placeholder={typeZipCode}
                     value={values.userZipCode}
                     onChangeHandler={handleChange}
                   />
                   <Input
                     type="text"
                     name="userCity"
-                    label="*City:"
-                    placeholder="Type your city"
+                    label={city}
+                    placeholder={typeCity}
                     value={values.userCity}
                     onChangeHandler={handleChange}
                   />
                   <Input
                     type="text"
                     name="userPhone"
-                    label="*Phone number:"
-                    placeholder="Type your phone number"
+                    label={phone}
+                    placeholder={typePhone}
                     value={values.userPhone}
                     onChangeHandler={handleChange}
                   />
@@ -255,12 +297,9 @@ const ClientDataForm = () => {
                       onChange={handleChange}
                     />
                     <StyledCheckboxLabel>
-                      <Link
-                        to={routes.terms}
-                        style={{ textDecoration: 'none' }}
-                      >
+                      <StyledCommonLink to={routes.terms}>
                         Accept Terms and Conditions
-                      </Link>
+                      </StyledCommonLink>
                     </StyledCheckboxLabel>
                     <StyledErrorWrapper>
                       <ErrorMessage name="acceptTerms" />
@@ -269,7 +308,7 @@ const ClientDataForm = () => {
                   {checkout ? (
                     <PayPal />
                   ) : (
-                    <Button type="submit" label="payment" />
+                    <Button type="submit" label={buttonLabels.payment} />
                   )}
                 </StyledClientDataInputsWrapper>
               </Form>
