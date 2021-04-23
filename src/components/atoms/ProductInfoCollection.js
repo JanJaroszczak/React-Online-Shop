@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
+import { routes } from '../../routes';
 import { setCartClosed } from '../../actions';
 
 import {
@@ -21,43 +22,52 @@ const ProductInfoCollection = ({ product, cartModal, searchModal }) => {
     dispatch(setCartClosed());
   };
 
+  const {
+    productImage,
+    productId,
+    productBrand,
+    productName,
+    chosenOption,
+    productPrice,
+  } = product;
+
   return (
     <>
       {searchModal ? (
         <StyledImg
-          src={product.productImage[0]}
-          alt={''}
+          src={productImage[0]}
+          alt={`${productBrand} ${productName}`}
           searchModal={searchModal}
         />
       ) : (
         <StyledLink
-          to={`/product/${product.productId}`}
+          to={`${routes.product + productId}`}
           onClick={onClickCartModalHandler}
         >
           <StyledImg
-            src={product.productImage[0]}
-            alt={''}
+            src={productImage[0]}
+            alt={`${productBrand} ${productName}`}
             searchModal={searchModal}
           />
         </StyledLink>
       )}
       <StyledProductInfo searchModal={searchModal} cartModal={cartModal}>
         {searchModal ? (
-          <h3>{`${product.productBrand} ${product.productName}`}</h3>
+          <h3>{`${productBrand} ${productName}`}</h3>
         ) : (
           <StyledLink
-            to={`/product/${product.productId}`}
+            to={`${routes.product + productId}`}
             onClick={onClickCartModalHandler}
           >
             <h3>
-              {product.productName} {!cartModal && isMobile ? <br /> : null}
-              (Size: {product.chosenOption.size})
+              {productName} {!cartModal && isMobile ? <br /> : null}
+              (Size: {chosenOption.size})
             </h3>
           </StyledLink>
         )}
         {searchModal ? null : (
           <span>
-            {product.chosenOption.quantity}x ${product.productPrice}
+            {chosenOption.quantity}x ${productPrice}
           </span>
         )}
       </StyledProductInfo>
