@@ -55,17 +55,9 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   const renderAlertsAndRedirects = () => (
     <>
       {isSignUp && whichAlertIsOn === 'signup' ? (
-        <Alert
-          severity="success"
-          message="You have been signed up!"
-          visible={true}
-        />
+        <Alert message="You have been signed up!" visible={true} />
       ) : !isSignUp && whichAlertIsOn === 'login' ? (
-        <Alert
-          severity="success"
-          message="You have been logged in!"
-          visible={true}
-        />
+        <Alert message="You have been logged in!" visible={true} />
       ) : null}
       {beforeCheckout && redirectReady ? (
         <Redirect to={routes.checkout} />

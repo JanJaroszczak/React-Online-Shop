@@ -44,7 +44,6 @@ const OrderSummaryPage = (props) => {
     <StyledCommonPageWrapper>
       {isSuccessfulPaymentAlert ? (
         <Alert
-          severity="success"
           message="Payment successful!"
           visible={isSuccessfulPaymentAlert}
           variant={alertVariants.orderSummary}

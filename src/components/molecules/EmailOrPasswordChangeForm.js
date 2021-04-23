@@ -95,7 +95,6 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
       {isSuccessAlert && (
         <Alert
           variant={alertVariants.accountDataChange}
-          severity="success"
           message={`${emailChange ? 'Email' : 'Password'} succesfully changed!`}
           visible={true}
         />
