@@ -246,6 +246,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
                 value={values.userNewDataConfirmation}
                 onChangeHandler={handleChange}
               />
+              {/* {renderInputs()} */}
               <StyledError
                 style={{
                   visibility: `${newDataConfirmationErrorVisibility}`,
@@ -268,3 +269,13 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
 };
 
 export default EmailOrPasswordChangeForm;
+
+// switch (true) {
+//   case userNewData &&
+//     userNewDataConfirmation &&
+//     userNewData !== userNewDataConfirmation:
+
+//     break;
+
+//   case 200:
+// }

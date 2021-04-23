@@ -112,7 +112,7 @@ const ContactForm = () => {
                   id="terms"
                   type="checkbox"
                   name="acceptTerms"
-                  value={values.acceptTerms}
+                  checked={values.acceptTerms}
                   onChange={handleChange}
                 />
                 <StyledCheckboxLabel>
