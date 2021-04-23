@@ -289,7 +289,6 @@ const ClientDataForm = () => {
                   />
                   <StyledTermsWrapper>
                     <input
-                      style={{ width: '20px', height: '20px' }}
                       id="terms"
                       type="checkbox"
                       name="acceptTerms"

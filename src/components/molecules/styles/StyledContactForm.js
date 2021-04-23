@@ -84,6 +84,8 @@ export const StyledTermsWrapper = styled.div`
   margin: 22px 0 24px;
 
   input {
+    width: 20px;
+    height: 20px;
     cursor: pointer;
   }
 `;
