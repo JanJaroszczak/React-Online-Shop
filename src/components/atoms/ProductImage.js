@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import salePercentageCalculation from '../../utils/salePercentageCalculation';
 
+import { routes } from '../../routes';
+
 import {
   StyledDiv,
   StyledOverflowHidde,
@@ -28,7 +30,7 @@ const ProductImage = ({
   return (
     <StyledDiv>
       <StyledOverflowHidde>
-        <Link to={`/product/${productId}`}>
+        <Link to={`${routes.product + productId}`}>
           <StyledImg src={img} alt={`${productBrand} ${productName}`} />
         </Link>
         {/* <StyledBgImg img={img} /> */}
