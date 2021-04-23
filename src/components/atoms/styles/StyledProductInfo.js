@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const StyledDiv = styled.div`
   height: 137px;
@@ -45,4 +46,9 @@ export const StyledPrice = styled.span`
     text-decoration: line-through;
     vertical-align: super;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #222;
 `;

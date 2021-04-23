@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import {
   StyledDiv,
   StyledModelName,
   StyledBrandName,
   StyledPrice,
+  StyledLink,
 } from './styles/StyledProductInfo';
 
 const ProductInfo = ({
@@ -17,12 +17,9 @@ const ProductInfo = ({
 }) => {
   return (
     <StyledDiv>
-      <Link
-        to={`/product/${productId}`}
-        style={{ textDecoration: 'none', color: '#222' }}
-      >
+      <StyledLink to={`/product/${productId}`}>
         <StyledModelName>{model}</StyledModelName>
-      </Link>
+      </StyledLink>
       <StyledBrandName>{brand}</StyledBrandName>
       <StyledPrice>
         $<span>{price.toFixed(2)}</span>
