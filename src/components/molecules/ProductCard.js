@@ -36,6 +36,8 @@ const ProductCard = ({
             productPrice={productPrice}
             productPreviousPrice={productPreviousPrice}
             extraState={extraState}
+            productName={productName}
+            productBrand={productBrand}
           />
           <ProductInfo
             model={productName}

@@ -17,6 +17,8 @@ const ProductImage = ({
   productPrice,
   productPreviousPrice,
   extraState,
+  productBrand,
+  productName,
 }) => {
   const salePercentage = salePercentageCalculation(
     productPrice,
@@ -27,7 +29,7 @@ const ProductImage = ({
     <StyledDiv>
       <StyledOverflowHidde>
         <Link to={`/product/${productId}`}>
-          <StyledImg src={img} alt={''} />
+          <StyledImg src={img} alt={`${productBrand} ${productName}`} />
         </Link>
         {/* <StyledBgImg img={img} /> */}
       </StyledOverflowHidde>
