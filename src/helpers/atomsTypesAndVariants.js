@@ -37,3 +37,7 @@ export const headingTypes = {
 export const inputVariants = {
   accountDataChange: 'accountDataChange',
 };
+
+export const cartSummaryVariants = {
+  checkout: 'checkout',
+};

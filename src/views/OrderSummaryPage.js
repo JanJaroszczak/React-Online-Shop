@@ -58,11 +58,7 @@ const OrderSummaryPage = (props) => {
             headingDescription={`WE HOPE TO SEE YOU AGAIN!`}
           />
           <CartContentTable order={order} orderSummary />
-          <CartSummary
-            // variant="checkout"
-            totalOrderPrice={totalPrice}
-            orderSummary
-          />
+          <CartSummary totalOrderPrice={totalPrice} orderSummary />
           <StyledLink to={routes.home} style={{ textDecoration: 'none' }}>
             <Button
               variant={buttonVariants.noCapitalize}
