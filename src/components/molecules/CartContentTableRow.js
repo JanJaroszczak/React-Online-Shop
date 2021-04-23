@@ -84,7 +84,7 @@ const CartContentTableRow = ({ product, orderRow }) => {
             )
           }
         >
-          <span style={{ fontWeight: '700' }}>-</span>
+          <span>-</span>
         </button>
       )}
       <input

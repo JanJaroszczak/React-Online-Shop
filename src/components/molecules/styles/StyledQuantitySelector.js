@@ -94,6 +94,10 @@ export const StyledQuantityInput = styled.div`
     }
   }
 
+  button span {
+    font-weight: 700;
+  }
+
   .notInStock::before {
     content: '';
     position: absolute;
