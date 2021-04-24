@@ -5,7 +5,7 @@ import { alertVariants } from '../../../helpers/atomsTypesAndVariants';
 export const StyledAlert = styled.div`
   height: 50px;
   width: 100%;
-  margin: 15px 0;
+  margin: 15px 0 0;
   font-size: ${({ theme }) => theme.fontSizes.s};
   line-height: 50px;
   color: ${({ theme }) => theme.colors.mainDark};
@@ -38,5 +38,13 @@ export const StyledAlert = styled.div`
       css`
         text-align: left;
       `}
-  } ;
+  }
+
+  @media (max-width: 310px) {
+    font-size: ${({ theme }) => theme.fontSizes.xs};
+
+    i {
+      margin: 0 10px;
+    }
+  }
 `;

@@ -23,21 +23,21 @@ import {
 const EmailOrPasswordChangeForm = ({ emailChange }) => {
   const [oldPasswordError, setOldPasswordError] = useState('-');
   const [oldPasswordErrorVisibility, setOldPasswordErrorVisibility] = useState(
-    'hidden'
+    false
   );
   const [newDataError, setNewDataError] = useState('-');
-  const [newDataErrorVisibility, setNewDataErrorVisibility] = useState(
-    'hidden'
-  );
+  const [newDataErrorVisibility, setNewDataErrorVisibility] = useState(false);
   const [newDataConfirmationError, setNewDataConfirmationError] = useState('-');
   const [
     newDataConfirmationErrorVisibility,
     setNewDataConfirmationErrorVisibility,
-  ] = useState('hidden');
+  ] = useState(false);
 
   const [isSuccessAlert, setIsSuccessAlert] = useState(false);
 
   const currentUser = useSelector(({ user }) => user.currentUser);
+
+  const emailOrPassword = emailChange ? 'email' : 'password';
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,50 +55,74 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
       userNewData !== userNewDataConfirmation
     ) {
       setNewDataError(
-        `Your new ${
-          emailChange ? 'email' : 'password'
-        } doesn't match its confirmation.`
+        `Your new ${emailOrPassword} doesn't match its confirmation.`
       );
-      setNewDataErrorVisibility('visible');
+      setNewDataErrorVisibility(true);
     } else if (!userNewData && !userNewDataConfirmation) {
-      setNewDataError(
-        `Please enter a new ${emailChange ? 'email' : 'password'}.`
-      );
-      setNewDataErrorVisibility('visible');
+      setNewDataError(`Please enter a new ${emailOrPassword}.`);
+      setNewDataErrorVisibility(true);
       setNewDataConfirmationError(
-        `Please enter the new ${
-          emailChange ? 'email' : 'password'
-        } confirmation.`
+        `Please enter the new ${emailOrPassword} confirmation.`
       );
-      setNewDataConfirmationErrorVisibility('visible');
+      setNewDataConfirmationErrorVisibility(true);
     } else if (!userNewData && userNewDataConfirmation) {
-      setNewDataError(
-        `Please enter a new ${emailChange ? 'email' : 'password'} twice.`
-      );
-      setNewDataErrorVisibility('visible');
+      setNewDataError(`Please enter a new ${emailOrPassword} twice.`);
+      setNewDataErrorVisibility(true);
     } else if (userNewData && !userNewDataConfirmation) {
       setNewDataConfirmationError(
-        `Please enter a new ${emailChange ? 'email' : 'password'} twice.`
+        `Please enter a new ${emailOrPassword} twice.`
       );
-      setNewDataConfirmationErrorVisibility('visible');
+      setNewDataConfirmationErrorVisibility(true);
     }
+
+    //  switch (true) {
+    //    case userNewData &&
+    //      userNewDataConfirmation &&
+    //      userNewData !== userNewDataConfirmation:
+    //      setNewDataError(
+    //        `Your new ${emailOrPassword} doesn't match its confirmation.`
+    //      );
+    //      setNewDataErrorVisibility(true);
+    //      break;
+    //    case !userNewData && !userNewDataConfirmation:
+    //      setNewDataError(`Please enter a new ${emailOrPassword}.`);
+    //      setNewDataErrorVisibility(true);
+    //      setNewDataConfirmationError(
+    //        `Please enter the new ${emailOrPassword} confirmation.`
+    //      );
+    //      setNewDataConfirmationErrorVisibility(true);
+    //      break;
+    //    case !userNewData && userNewDataConfirmation:
+    //      setNewDataError(`Please enter a new ${emailOrPassword} twice.`);
+    //      setNewDataErrorVisibility(true);
+    //      break;
+    //    case userNewData && !userNewDataConfirmation:
+    //      setNewDataConfirmationError(
+    //        `Please enter a new ${emailOrPassword} twice.`
+    //      );
+    //      setNewDataConfirmationErrorVisibility(true);
+    //      break;
+    //    default:
+    //      console.log('none of conditions fulfilled');
+    //      break;
+    //  }
   };
 
   const setAllErrorsHidden = () => {
-    setOldPasswordErrorVisibility('hidden');
-    setNewDataErrorVisibility('hidden');
-    setNewDataConfirmationErrorVisibility('hidden');
+    setOldPasswordErrorVisibility(false);
+    setNewDataErrorVisibility(false);
+    setNewDataConfirmationErrorVisibility(false);
   };
 
   const renderAlert = () => (
     <>
-      {isSuccessAlert && (
-        <Alert
-          variant={alertVariants.accountDataChange}
-          message={`${emailChange ? 'Email' : 'Password'} succesfully changed!`}
-          visible={true}
-        />
-      )}
+      <Alert
+        variant={alertVariants.accountDataChange}
+        message={`${emailOrPassword[0].toUpperCase()}${emailOrPassword.slice(
+          1
+        )} succesfully changed!`}
+        visible={isSuccessAlert}
+      />
     </>
   );
 
@@ -152,7 +176,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
                     .catch((error) => {
                       console.log('change password error');
                       if (userNewData) setNewDataError(`${error.message}.`);
-                      setNewDataErrorVisibility('visible');
+                      setNewDataErrorVisibility(true);
                     });
                 } else {
                   user
@@ -167,7 +191,7 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
                     .catch((error) => {
                       console.log('change email error');
                       if (userNewData) setNewDataError(`${error.message}`);
-                      setNewDataErrorVisibility('visible');
+                      setNewDataErrorVisibility(true);
                     });
                 }
               } else if (
@@ -175,11 +199,9 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
                 (userNewData === userOldPassword || userNewData === user.email)
               ) {
                 setNewDataError(
-                  `Your new ${
-                    emailChange ? 'email' : 'password'
-                  } must be different than the old one.`
+                  `Your new ${emailOrPassword} must be different than the old one.`
                 );
-                setNewDataErrorVisibility('visible');
+                setNewDataErrorVisibility(true);
               }
 
               commonNewDataCheck(userNewData, userNewDataConfirmation);
@@ -188,10 +210,10 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
               console.log('reauth error');
               if (userOldPassword) {
                 setOldPasswordError(error.message);
-              } else if (!userOldPassword) {
+              } else {
                 setOldPasswordError('Please enter your old password.');
               }
-              setOldPasswordErrorVisibility('visible');
+              setOldPasswordErrorVisibility(true);
 
               commonNewDataCheck(userNewData, userNewDataConfirmation);
             });
@@ -211,52 +233,42 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
                 value={values.userOldPassword}
                 onChangeHandler={handleChange}
               />
-              <StyledError
-                style={{ visibility: `${oldPasswordErrorVisibility}` }}
-              >
+              <StyledError visible={oldPasswordErrorVisibility}>
                 {oldPasswordError}
               </StyledError>
 
               <Input
                 variant={inputVariants.accountDataChange}
-                type={emailChange ? 'email' : 'password'}
+                type={emailOrPassword}
                 name="userNewData"
-                label={`*New ${emailChange ? 'email' : 'password'}:`}
-                placeholder={`Type your new ${
-                  emailChange ? 'email' : 'password'
-                }`}
+                label={`*New ${emailOrPassword}:`}
+                placeholder={`Type your new ${emailOrPassword}`}
                 value={values.userNewData}
                 onChangeHandler={handleChange}
               />
-              <StyledError style={{ visibility: `${newDataErrorVisibility}` }}>
+              <StyledError visible={newDataErrorVisibility}>
                 {newDataError}
               </StyledError>
 
               <Input
                 variant={inputVariants.accountDataChange}
-                type={emailChange ? 'email' : 'password'}
+                type={emailOrPassword}
                 name="userNewDataConfirmation"
-                label={`*New ${
-                  emailChange ? 'email' : 'password'
-                } confirmation:`}
-                placeholder={`Type your new ${
-                  emailChange ? 'email' : 'password'
-                } confirmation`}
+                label={`*New ${emailOrPassword} confirmation:`}
+                placeholder={`Type your new ${emailOrPassword} confirmation`}
                 value={values.userNewDataConfirmation}
                 onChangeHandler={handleChange}
               />
               {/* {renderInputs()} */}
-              <StyledError
-                style={{
-                  visibility: `${newDataConfirmationErrorVisibility}`,
-                }}
-              >
+              <StyledError visible={newDataConfirmationErrorVisibility}>
                 {newDataConfirmationError}
               </StyledError>
               <Button
                 variant={buttonVariants.accountDataChange}
                 type="submit"
-                label={`Change ${emailChange ? 'Email' : 'Password'}`}
+                label={`Change ${emailOrPassword[0].toUpperCase()}${emailOrPassword.slice(
+                  1
+                )}`}
               />
             </StyledInputsWrapper>
           </Form>
