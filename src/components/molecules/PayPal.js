@@ -76,7 +76,6 @@ export default function Paypal() {
 
           dispatch(successfulPaymentAlert(true));
           setRedirectToOrderSummary(true);
-          // updateProductQuantityInFirestore
         },
         onError: (err) => {
           console.log(err);
@@ -99,5 +98,3 @@ export default function Paypal() {
     </StyledPayPalButtonsWrapper>
   );
 }
-
-//totalPrice, cart, cartCopy, userId, products, dispatch
