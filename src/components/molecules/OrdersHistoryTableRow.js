@@ -1,6 +1,8 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
+import { routes } from '../../routes';
+
 import {
   StyledOrdersHistoryTableRow,
   StyledRowDataWrapper,
@@ -24,7 +26,7 @@ const OrdersHistoryTableRow = ({ orderDate, totalOrderPrice, orderId }) => {
             {' '}
             <StyledLink
               to={{
-                pathname: `/account/ordershistory/${orderId}`,
+                pathname: `${routes.accountOrders + orderId}`,
                 state: { orderDate, totalOrderPrice },
               }}
             >

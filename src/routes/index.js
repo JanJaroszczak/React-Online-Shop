@@ -13,7 +13,7 @@ export const routes = {
   ordersummary: '/ordersummary',
   terms: '/terms',
   account: '/account/:subPage',
-  accountOrders: '/account/ordershistory',
+  accountOrders: '/account/ordershistory/',
   accountOrder: '/account/ordershistory/:orderId',
   passwordChange: '/account/passwordchange',
   emailChange: '/account/emailchange',
