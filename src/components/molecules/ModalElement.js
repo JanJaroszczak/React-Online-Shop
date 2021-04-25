@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 
 import ProductInfoCollection from '../atoms/ProductInfoCollection';
 
+import { routes } from '../../routes';
+
 import {
   StyledModalElementWrapper,
   StyledLink,
@@ -34,6 +36,8 @@ const ModalElement = ({
     dispatch(toggleSearchPanel());
   };
 
+  const { productId, productPrice, chosenOption } = product;
+
   return (
     <>
       {searchModal ? (
@@ -45,7 +49,7 @@ const ModalElement = ({
         >
           <StyledLink
             onClick={onClickSearchPanelHandler}
-            to={`/product/${product.productId}`}
+            to={`${routes.product + productId}`}
             ref={popperRef}
           >
             <StyledModalSubElementWrapper>
@@ -53,7 +57,7 @@ const ModalElement = ({
                 product={product}
                 searchModal={searchModal}
               />
-              <StyledPrice>$ {product.productPrice}</StyledPrice>
+              <StyledPrice>$ {productPrice}</StyledPrice>
             </StyledModalSubElementWrapper>
           </StyledLink>
         </StyledModalElementWrapper>
@@ -65,9 +69,7 @@ const ModalElement = ({
               searchModal={searchModal}
               cartModal={cartModal}
             />
-            <StyledPrice>
-              $ {product.chosenOption.quantity * product.productPrice}
-            </StyledPrice>
+            <StyledPrice>$ {chosenOption.quantity * productPrice}</StyledPrice>
           </StyledModalSubElementWrapper>
         </StyledModalElementWrapper>
       )}
