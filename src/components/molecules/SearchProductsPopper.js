@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ModalElement from './ModalElement';
 import searchProducts from '../../utils/searchProducts';
 
+import { routes } from '../../routes';
 import { toggleSearchPanel } from '../../actions';
 
 import {
@@ -172,7 +173,7 @@ const SearchProductsPopper = () => {
         </StyledSearchList>
       </StyledSearchListWrapper>
       {selectedSearchProduct && (
-        <Redirect to={`/product/${selectedSearchProduct}`} />
+        <Redirect to={`${routes.product + selectedSearchProduct}`} />
       )}
     </StyledSearchPanelWrapper>
   );
