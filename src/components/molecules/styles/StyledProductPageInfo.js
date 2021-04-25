@@ -123,6 +123,7 @@ export const StyledError = styled.span`
   margin: 10px 0;
   font-size: ${({ theme }) => theme.fontSizes.xxs};
   color: red;
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
 `;
 
 export const StyledSubmitButton = styled.button`

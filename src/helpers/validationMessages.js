@@ -12,4 +12,5 @@ export const validationMessages = {
   termsAcceptanceRequired: 'You need to accept Terms and Conditions!',
   messageRequired: 'Enter message!',
   messageAtLeast10Chars: 'Your message must contain at least 10 characters.',
+  sizeChoiceRequired: 'Please choose a size!',
 };

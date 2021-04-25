@@ -3,4 +3,5 @@ export const buttonLabels = {
   saveData: 'Save Your Data',
   payment: 'Payment',
   sendMessage: 'Send Message',
+  goToAllProducts: 'Go to All Products',
 };

@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import Button from '../atoms/Button';
@@ -7,11 +6,14 @@ import Heading from '../atoms/Heading';
 import salePercentageCalculation from '../../utils/salePercentageCalculation';
 
 import { addProductToCart, setCartOpen } from '../../actions';
+import { buttonLabels } from '../../helpers/buttonLabels';
 import {
   buttonVariants,
   headingTypes,
 } from '../../helpers/atomsTypesAndVariants';
+import { errorMessages } from './helpers/errorMessages';
 import { routes } from '../../routes';
+import { validationMessages } from '../../helpers/validationMessages';
 
 import {
   StyledProductInfoWrapper,
@@ -27,13 +29,16 @@ import {
   StyledQuantityChoice,
   StyledQuantityInput,
 } from './styles/StyledQuantitySelector';
+import { StyledCommonLink } from '../../globalStyles/GlobalStyledComponents';
 
 const ProductPageInfo = ({ products, id }) => {
   const [chosenSize, setChosenSize] = useState('-');
   const [chosenQuantity, setChosenQuantity] = useState(1);
 
-  const [errorVisibility, setErrorVisibility] = useState('hidden');
-  const [errorMessage, setErrorMessage] = useState('Please choose a size!');
+  const [errorVisibility, setErrorVisibility] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(
+    validationMessages.sizeChoiceRequired
+  );
   const [isAddToCartButtonDisabled, setIsAddToCartButtonDisabled] = useState(
     false
   );
@@ -46,7 +51,16 @@ const ProductPageInfo = ({ products, id }) => {
 
   const currentProduct = products.find((product) => product.productId === id);
 
-  const sizeOptions = currentProduct.sizes.map((size) => {
+  const {
+    sizes,
+    productPrice,
+    productPreviousPrice,
+    extraState,
+    productName,
+    productBrand,
+  } = currentProduct;
+
+  const sizeOptions = sizes.map((size) => {
     if (size.availableQuantity > 0) {
       return (
         <option key={size.size} value={size.size}>
@@ -59,7 +73,7 @@ const ProductPageInfo = ({ products, id }) => {
   });
 
   useEffect(() => {
-    if (chosenSize !== '-') setErrorVisibility('hidden');
+    if (chosenSize !== '-') setErrorVisibility(false);
     setChosenQuantity(1);
 
     const isAnySizeAvailable = sizeOptions.filter(
@@ -67,8 +81,8 @@ const ProductPageInfo = ({ products, id }) => {
     );
 
     if (isAnySizeAvailable.length === 0) {
-      setErrorMessage('No sizes available.');
-      setErrorVisibility('visible');
+      setErrorMessage(errorMessages.noSizes);
+      setErrorVisibility(true);
       setIsAddToCartButtonDisabled(true);
     }
   }, [chosenSize]);
@@ -83,20 +97,18 @@ const ProductPageInfo = ({ products, id }) => {
       setChosenQuantity(1);
       select.current.selectedIndex = 0;
 
-      setErrorVisibility('hidden');
+      setErrorVisibility(false);
     } else {
-      setErrorVisibility('visible');
+      setErrorVisibility(true);
     }
   };
 
   const checkAvailableQuantityPerSize = () => {
     if (chosenSize === '-') {
-      setErrorVisibility('visible');
+      setErrorVisibility(true);
       return;
     }
-    const sizeToCheck = currentProduct.sizes.find(
-      (size) => size.size === chosenSize
-    );
+    const sizeToCheck = sizes.find((size) => size.size === chosenSize);
     return sizeToCheck.availableQuantity;
   };
 
@@ -116,8 +128,8 @@ const ProductPageInfo = ({ products, id }) => {
   };
 
   const salePercentage = salePercentageCalculation(
-    currentProduct.productPrice,
-    currentProduct.productPreviousPrice
+    productPrice,
+    productPreviousPrice
   );
 
   const renderQuantityInput = () => (
@@ -137,18 +149,16 @@ const ProductPageInfo = ({ products, id }) => {
   );
 
   return (
-    <StyledProductInfoWrapper extraState={currentProduct.extraState}>
-      {currentProduct.extraState && (
-        <StyledExtraState>{`${currentProduct.extraState}${
-          currentProduct.extraState === 'sale'
-            ? `\u00A0\u00A0-${salePercentage}%`
-            : ''
+    <StyledProductInfoWrapper extraState={extraState}>
+      {extraState && (
+        <StyledExtraState>{`${extraState}${
+          extraState === 'sale' ? `\u00A0\u00A0-${salePercentage}%` : ''
         }`}</StyledExtraState>
       )}
       <Heading
         type={headingTypes.productPage}
-        heading={currentProduct.productName}
-        headingDescription={currentProduct.productBrand}
+        heading={productName}
+        headingDescription={productBrand}
       />
       <StyledProductDescription>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut veniam
@@ -159,11 +169,9 @@ const ProductPageInfo = ({ products, id }) => {
         velit tenetur cumque eos?
       </StyledProductDescription>
       <StyledPrice>
-        $ {currentProduct.productPrice.toFixed(2)}
+        $ {productPrice.toFixed(2)}
         <span className="previousPrice">
-          {currentProduct.productPreviousPrice
-            ? `$ ${currentProduct.productPreviousPrice.toFixed(2)}`
-            : null}
+          {productPreviousPrice ? `$ ${productPreviousPrice.toFixed(2)}` : null}
         </span>
       </StyledPrice>
       <form onSubmit={addToCart}>
@@ -186,20 +194,18 @@ const ProductPageInfo = ({ products, id }) => {
           <label htmlFor="quantity">Quantity:</label>
           <StyledQuantityInput>{renderQuantityInput()}</StyledQuantityInput>
         </StyledQuantityChoice>
-        <StyledError style={{ visibility: `${errorVisibility}` }}>
-          {errorMessage}
-        </StyledError>
+        <StyledError visible={errorVisibility}>{errorMessage}</StyledError>
         <StyledSubmitButton type="submit" disabled={isAddToCartButtonDisabled}>
           ADD TO CART
         </StyledSubmitButton>
       </form>
-      <Link to={routes.products} style={{ textDecoration: 'none' }}>
+      <StyledCommonLink to={routes.products}>
         <Button
           variant={buttonVariants.productInfo}
           type="button"
-          label="Go to All Products"
+          label={buttonLabels.goToAllProducts}
         />
-      </Link>
+      </StyledCommonLink>
     </StyledProductInfoWrapper>
   );
 };
