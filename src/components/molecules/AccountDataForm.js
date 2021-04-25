@@ -58,15 +58,7 @@ const AccountDataForm = () => {
   }, [isSuccessAlert]);
 
   const renderAlert = () => (
-    <>
-      {isSuccessAlert && (
-        <Alert
-          variant={alertVariants.accountDataChange}
-          message={alertMessages.userDataUpdate}
-          visible={true}
-        />
-      )}
-    </>
+    <Alert message={alertMessages.userDataUpdate} visible={isSuccessAlert} />
   );
 
   return (

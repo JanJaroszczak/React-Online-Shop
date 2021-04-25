@@ -38,6 +38,10 @@ export const StyledAlert = styled.div`
       css`
         text-align: left;
       `}
+
+    i {
+      margin-left: 0;
+    }
   }
 
   @media (max-width: 310px) {
