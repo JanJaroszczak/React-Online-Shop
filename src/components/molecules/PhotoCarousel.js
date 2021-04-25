@@ -19,9 +19,15 @@ const PhotoCarousel = ({ id }) => {
     (product) => product.productId === id
   );
 
+  const { productBrand, productName } = currentProduct;
+
   const slides = currentProduct.productImage.map((img, index) => (
     <SwiperSlide tag="li" key={index}>
-      <img src={img} alt={`${index + 1}`} className="swiperSlideImg" />
+      <img
+        src={img}
+        alt={`${productBrand} ${productName} photo ${index}`}
+        className="swiperSlideImg"
+      />
     </SwiperSlide>
   ));
 
