@@ -197,7 +197,7 @@ const ProductPageInfo = ({ products, id }) => {
         <Button
           variant={buttonVariants.productInfo}
           type="button"
-          label="Go back to All Products"
+          label="Go to All Products"
         />
       </Link>
     </StyledProductInfoWrapper>
