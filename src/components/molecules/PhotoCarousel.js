@@ -21,7 +21,7 @@ const PhotoCarousel = ({ id }) => {
 
   const slides = currentProduct.productImage.map((img, index) => (
     <SwiperSlide tag="li" key={index}>
-      <img src={img} alt={`${index + 1}`} style={{ width: `100%` }} />
+      <img src={img} alt={`${index + 1}`} className="swiperSlideImg" />
     </SwiperSlide>
   ));
 
