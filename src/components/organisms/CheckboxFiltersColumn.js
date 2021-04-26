@@ -5,6 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import Button from '../atoms/Button';
 import CheckboxFilters from '../molecules/CheckboxFilters';
 
+import { buttonLabels } from '../../helpers/buttonLabels';
 import { buttonVariants } from '../../helpers/atomsTypesAndVariants';
 
 import {
@@ -251,6 +252,20 @@ const CheckboxFiltersColumn = ({
     </>
   );
 
+  const renderClearFiltersButton = () => (
+    <Button
+      type="button"
+      label={buttonLabels.clearAllFilters}
+      color={isTabletButton ? '' : 'white'}
+      variant={
+        areAnyFiltersSet
+          ? buttonVariants.clearFilters
+          : buttonVariants.clearFiltersDisabled
+      }
+      clicked={clearFilters}
+    />
+  );
+
   const renderExtraStateFilters = () => (
     <>
       <h3>Others</h3>
@@ -264,35 +279,31 @@ const CheckboxFiltersColumn = ({
     </>
   );
 
+  const renderApplyChosenFiltrsButton = () => (
+    <>
+      {isTablet && (
+        <Button
+          type="submit"
+          label={buttonLabels.applyChosenFilters}
+          variant={buttonVariants.mobile}
+          clicked={onMobileClose}
+        />
+      )}
+    </>
+  );
+
   return (
     <StyledColumn isTablet={isTablet}>
       <StyledColumnHeading>
         <h2>FILTERS</h2>
-        <Button
-          type="button"
-          label="clear all filters"
-          color={isTabletButton ? '' : 'white'}
-          variant={
-            areAnyFiltersSet
-              ? buttonVariants.clearFilters
-              : buttonVariants.clearFiltersDisabled
-          }
-          clicked={clearFilters}
-        />
+        {renderClearFiltersButton()}
       </StyledColumnHeading>
       {allCheckboxFiltersToDisplay}
       <StyledCheckboxesWrapper className="boxes">
         {renderExtraStateFilters()}
       </StyledCheckboxesWrapper>
       <StyledPriceFilter>{renderPriceFilter()}</StyledPriceFilter>
-      {isTablet && (
-        <Button
-          type="submit"
-          label="apply chosen filters"
-          variant={buttonVariants.mobile}
-          clicked={onMobileClose}
-        />
-      )}
+      {renderApplyChosenFiltrsButton()}
     </StyledColumn>
   );
 };

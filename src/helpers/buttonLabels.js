@@ -6,4 +6,6 @@ export const buttonLabels = {
   goToAllProducts: 'Go to All Products',
   signUp: 'Sign Up',
   logIn: 'Log In',
+  clearAllFilters: 'Clear All Filters',
+  applyChosenFilters: 'Apply Chosen Filters',
 };
