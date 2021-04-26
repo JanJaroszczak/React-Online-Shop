@@ -8,4 +8,5 @@ export const buttonLabels = {
   logIn: 'Log In',
   clearAllFilters: 'Clear All Filters',
   applyChosenFilters: 'Apply Chosen Filters',
+  goToAllOrdersHistory: 'Go to All Orders History',
 };

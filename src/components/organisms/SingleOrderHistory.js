@@ -6,6 +6,7 @@ import CartContentTable from '../../components/organisms/CartContentTable';
 import CartSummary from '../../components/molecules/CartSummary';
 import Heading from '../../components/atoms/Heading';
 
+import { buttonLabels } from '../../helpers/buttonLabels';
 import {
   buttonVariants,
   headingTypes,
@@ -44,11 +45,11 @@ const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
           <CartSummary totalOrderPrice={totalOrderPrice} orderSummary />
         </>
       )}
-      <StyledLink to={routes.accountOrders} style={{ textDecoration: 'none' }}>
+      <StyledLink to={routes.accountOrders}>
         <Button
           variant={buttonVariants.noCapitalize}
           type="button"
-          label="Go back to All Orders History"
+          label={buttonLabels.goToAllOrdersHistory}
         />
       </StyledLink>
     </StyledOrderSummaryWrapper>

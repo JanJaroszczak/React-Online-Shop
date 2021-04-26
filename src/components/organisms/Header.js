@@ -64,7 +64,7 @@ const Header = () => {
         slidesPerView={1}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop
-        style={isSearchPanelOn ? { zIndex: '-1' } : null} //without this temporary change useOnClickOutside for Search Popper won't work
+        style={isSearchPanelOn ? { zIndex: '-1' } : null} //without this temporary change useOnClickOutside for Search Popper won't work properly
       >
         {slides}
         <StyledHeadingWrapper>

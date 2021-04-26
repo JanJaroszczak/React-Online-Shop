@@ -12,6 +12,8 @@ export const StyledOrderSummaryWrapper = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
+  text-decoration: none;
+
   @media (max-width: 600px) {
     display: flex;
     justify-content: center;
