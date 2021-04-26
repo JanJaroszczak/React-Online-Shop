@@ -57,6 +57,73 @@ const NavbarMobile = ({ mobileMenuOn }) => {
     login,
   } = routes;
 
+  const renderHamburgerMenuIcon = () => (
+    <HamburgerMenu
+      isOpen={menuToggle}
+      menuClicked={handleMenuClick}
+      width={23}
+      height={17}
+      strokeWidth={3}
+      rotate={0}
+      color="black"
+      borderRadius={0}
+      animationDuration={0.2}
+    />
+  );
+
+  const renderMenu = () => (
+    <StyledMenu menuToggle={menuToggle}>
+      <StyledUl>
+        <StyledLi>
+          <StyledNavLink
+            layout="mobile"
+            to={home}
+            exact
+            onClick={handleMenuClick}
+          >
+            Home
+          </StyledNavLink>
+        </StyledLi>
+        <StyledLi>
+          <StyledNavLink
+            layout="mobile"
+            to={products}
+            onClick={handleMenuClick}
+          >
+            Products
+          </StyledNavLink>
+        </StyledLi>
+        <StyledLi>
+          <StyledNavLink layout="mobile" to={contact} onClick={handleMenuClick}>
+            Contact
+          </StyledNavLink>
+        </StyledLi>
+      </StyledUl>
+      <StyledAccountUl>
+        {currentUser ? null : (
+          <StyledLi>
+            <StyledAccountNavLink to={signup} onClick={handleMenuClick}>
+              Sign Up
+            </StyledAccountNavLink>
+          </StyledLi>
+        )}
+        {currentUser ? (
+          <StyledLi>
+            <StyledAccountNavLink to={accountOrders} onClick={handleMenuClick}>
+              My Account
+            </StyledAccountNavLink>
+          </StyledLi>
+        ) : (
+          <StyledLi>
+            <StyledAccountNavLink to={login} onClick={handleMenuClick}>
+              Log In
+            </StyledAccountNavLink>
+          </StyledLi>
+        )}
+      </StyledAccountUl>
+    </StyledMenu>
+  );
+
   return (
     <>
       <StyledMobileNavbar>
@@ -84,77 +151,11 @@ const NavbarMobile = ({ mobileMenuOn }) => {
             </i>
           </StyledIcon>
           <StyledIcon menuToggle={menuToggle} burger>
-            <HamburgerMenu
-              isOpen={menuToggle}
-              menuClicked={handleMenuClick}
-              width={23}
-              height={17}
-              strokeWidth={3}
-              rotate={0}
-              color="black"
-              borderRadius={0}
-              animationDuration={0.2}
-            />
+            {renderHamburgerMenuIcon()}
           </StyledIcon>
         </StyledIconsWrapper>
       </StyledMobileNavbar>
-      <StyledMenu menuToggle={menuToggle}>
-        <StyledUl>
-          <StyledLi>
-            <StyledNavLink
-              layout="mobile"
-              to={home}
-              exact
-              onClick={handleMenuClick}
-            >
-              Home
-            </StyledNavLink>
-          </StyledLi>
-          <StyledLi>
-            <StyledNavLink
-              layout="mobile"
-              to={products}
-              onClick={handleMenuClick}
-            >
-              Products
-            </StyledNavLink>
-          </StyledLi>
-          <StyledLi>
-            <StyledNavLink
-              layout="mobile"
-              to={contact}
-              onClick={handleMenuClick}
-            >
-              Contact
-            </StyledNavLink>
-          </StyledLi>
-        </StyledUl>
-        <StyledAccountUl>
-          {currentUser ? null : (
-            <StyledLi>
-              <StyledAccountNavLink to={signup} onClick={handleMenuClick}>
-                Sign Up
-              </StyledAccountNavLink>
-            </StyledLi>
-          )}
-          {currentUser ? (
-            <StyledLi>
-              <StyledAccountNavLink
-                to={accountOrders}
-                onClick={handleMenuClick}
-              >
-                My Account
-              </StyledAccountNavLink>
-            </StyledLi>
-          ) : (
-            <StyledLi>
-              <StyledAccountNavLink to={login} onClick={handleMenuClick}>
-                Log In
-              </StyledAccountNavLink>
-            </StyledLi>
-          )}
-        </StyledAccountUl>
-      </StyledMenu>
+      {renderMenu()}
     </>
   );
 };
