@@ -47,11 +47,21 @@ const NavbarMobile = ({ mobileMenuOn }) => {
     setMenuToggle(false);
   }, [mobileMenuOn]);
 
+  const {
+    home,
+    mobileSearch,
+    products,
+    contact,
+    signup,
+    accountOrders,
+    login,
+  } = routes;
+
   return (
     <>
       <StyledMobileNavbar>
         <StyledLogo layout="mobile">
-          <Link to={routes.home} onClick={() => setMenuToggle(false)}>
+          <Link to={home} onClick={() => setMenuToggle(false)}>
             <img src={logo} alt="Logo" />
           </Link>
         </StyledLogo>
@@ -59,7 +69,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
           <StyledIcon search>
             <StyledNavLink
               layout="mobile"
-              to={routes.mobileSearch}
+              to={mobileSearch}
               onClick={() => setMenuToggle(false)}
             >
               <i className="fas fa-search"></i>
@@ -93,7 +103,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
           <StyledLi>
             <StyledNavLink
               layout="mobile"
-              to={routes.home}
+              to={home}
               exact
               onClick={handleMenuClick}
             >
@@ -103,7 +113,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
           <StyledLi>
             <StyledNavLink
               layout="mobile"
-              to={routes.products}
+              to={products}
               onClick={handleMenuClick}
             >
               Products
@@ -112,7 +122,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
           <StyledLi>
             <StyledNavLink
               layout="mobile"
-              to={routes.contact}
+              to={contact}
               onClick={handleMenuClick}
             >
               Contact
@@ -122,10 +132,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
         <StyledAccountUl>
           {currentUser ? null : (
             <StyledLi>
-              <StyledAccountNavLink
-                to={routes.signup}
-                onClick={handleMenuClick}
-              >
+              <StyledAccountNavLink to={signup} onClick={handleMenuClick}>
                 Sign Up
               </StyledAccountNavLink>
             </StyledLi>
@@ -133,7 +140,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
           {currentUser ? (
             <StyledLi>
               <StyledAccountNavLink
-                to={routes.accountOrders}
+                to={accountOrders}
                 onClick={handleMenuClick}
               >
                 My Account
@@ -141,7 +148,7 @@ const NavbarMobile = ({ mobileMenuOn }) => {
             </StyledLi>
           ) : (
             <StyledLi>
-              <StyledAccountNavLink to={routes.login} onClick={handleMenuClick}>
+              <StyledAccountNavLink to={login} onClick={handleMenuClick}>
                 Log In
               </StyledAccountNavLink>
             </StyledLi>

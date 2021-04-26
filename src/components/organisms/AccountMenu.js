@@ -17,6 +17,8 @@ const AccountMenu = () => {
 
   const currentUser = useSelector(({ user }) => user.currentUser);
 
+  const { accountOrders, accountDetails, emailChange, passwordChange } = routes;
+
   const logout = () => {
     auth
       .signOut()
@@ -41,16 +43,16 @@ const AccountMenu = () => {
       </StyledAccountHeading>
       <ul>
         <li>
-          <StyledLink to={routes.accountOrders}>orders history</StyledLink>
+          <StyledLink to={accountOrders}>orders history</StyledLink>
         </li>
         <li>
-          <StyledLink to={routes.accountDetails}>account details</StyledLink>
+          <StyledLink to={accountDetails}>account details</StyledLink>
         </li>
         <li>
-          <StyledLink to={routes.emailChange}>email change</StyledLink>
+          <StyledLink to={emailChange}>email change</StyledLink>
         </li>
         <li>
-          <StyledLink to={routes.passwordChange}>password change</StyledLink>
+          <StyledLink to={passwordChange}>password change</StyledLink>
         </li>
       </ul>
     </StyledAccountMenuWrapper>

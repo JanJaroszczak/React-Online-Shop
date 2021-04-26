@@ -42,29 +42,43 @@ import TermsPage from '../views/TermsPage';
 // import CheckboxFiltersColumn from '../components/organisms/CheckboxFiltersColumn';
 
 const Router = () => {
+  const {
+    home,
+    products,
+    cart,
+    checkout,
+    contact,
+    singleProduct,
+    signup,
+    login,
+    authbeforecheckout,
+    ordersummary,
+    accountOrder,
+    account,
+    mobileSearch,
+    terms,
+  } = routes;
+
   return (
     <ScrollToTop>
       <Switch>
         {/* <Route exact path={routes.home} component={CheckboxFiltersColumn} /> */}
 
-        <Route exact path={routes.home} component={HomePage} />
-        <Route path={routes.products} component={ProductsPage} />
-        <Route path={routes.cart} component={CartPage} />
-        <Route path={routes.checkout} component={CheckoutPage} />
-        <Route path={routes.contact} component={ContactPage} />
-        <Route path={routes.singleProduct} component={ProductPage} />
-        <Route path={routes.upload} component={DatabaseUpload} />
-        <Route path={routes.signup} component={SignUpPage} />
-        <Route path={routes.login} component={LogInPage} />
-        <Route
-          path={routes.authbeforecheckout}
-          component={AuthBeforeCheckoutPage}
-        />
-        <Route path={routes.ordersummary} component={OrderSummaryPage} />
-        <Route path={routes.accountOrder} component={AccountPage} />
-        <Route path={routes.account} component={AccountPage} />
-        <Route path={routes.mobileSearch} component={MobileSearchPage} />
-        <Route path={routes.terms} component={TermsPage} />
+        <Route exact path={home} component={HomePage} />
+        <Route path={products} component={ProductsPage} />
+        <Route path={cart} component={CartPage} />
+        <Route path={checkout} component={CheckoutPage} />
+        <Route path={contact} component={ContactPage} />
+        <Route path={singleProduct} component={ProductPage} />
+        {/* <Route path={upload} component={DatabaseUpload} /> */}
+        <Route path={signup} component={SignUpPage} />
+        <Route path={login} component={LogInPage} />
+        <Route path={authbeforecheckout} component={AuthBeforeCheckoutPage} />
+        <Route path={ordersummary} component={OrderSummaryPage} />
+        <Route path={accountOrder} component={AccountPage} />
+        <Route path={account} component={AccountPage} />
+        <Route path={mobileSearch} component={MobileSearchPage} />
+        <Route path={terms} component={TermsPage} />
 
         {/* <Route exact path={routes.home} component={ProductPageInfo} /> */}
 

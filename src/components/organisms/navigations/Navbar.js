@@ -45,6 +45,16 @@ const Navbar = () => {
   // Call hook passing in the ref and a function to call on outside click
   useOnClickOutside(outsideClickRef, () => dispatch(toggleSearchPanel()));
 
+  const {
+    home,
+    products,
+    contact,
+    mobileSearch,
+    signup,
+    accountOrders,
+    login,
+  } = routes;
+
   const toggleSearchBarVisiblity = () => {
     dispatch(toggleSearchPanel());
   };
@@ -53,21 +63,21 @@ const Navbar = () => {
     <StyledNav>
       <StyledNavWrapper>
         <StyledLogo>
-          <Link to={routes.home}>
+          <Link to={home}>
             <img src={logo} alt="Logo" />
           </Link>
         </StyledLogo>
         <StyledUl>
           <StyledLi>
-            <StyledNavLink to={routes.home} exact>
+            <StyledNavLink to={home} exact>
               Home
             </StyledNavLink>
           </StyledLi>
           <StyledLi>
-            <StyledNavLink to={routes.products}>Products</StyledNavLink>
+            <StyledNavLink to={products}>Products</StyledNavLink>
           </StyledLi>
           <StyledLi>
-            <StyledNavLink to={routes.contact}>Contact</StyledNavLink>
+            <StyledNavLink to={contact}>Contact</StyledNavLink>
           </StyledLi>
         </StyledUl>
         <StyledNavRightHandSideWrapper>
@@ -82,7 +92,7 @@ const Navbar = () => {
           ) : isDesktop ? (
             <i className="fas fa-search" onClick={toggleSearchBarVisiblity}></i>
           ) : (
-            <StyledNavLink to={routes.mobileSearch} search="diff">
+            <StyledNavLink to={mobileSearch} search="diff">
               <i className="fas fa-search"></i>
             </StyledNavLink>
           )}
@@ -97,18 +107,14 @@ const Navbar = () => {
           </i>
 
           {currentUser ? null : (
-            <StyledAccountNavLink to={routes.signup}>
-              Sign Up
-            </StyledAccountNavLink>
+            <StyledAccountNavLink to={signup}>Sign Up</StyledAccountNavLink>
           )}
           {currentUser ? (
-            <StyledAccountNavLink to={routes.accountOrders}>
+            <StyledAccountNavLink to={accountOrders}>
               My Account
             </StyledAccountNavLink>
           ) : (
-            <StyledAccountNavLink to={routes.login}>
-              Log In
-            </StyledAccountNavLink>
+            <StyledAccountNavLink to={login}>Log In</StyledAccountNavLink>
           )}
         </StyledNavRightHandSideWrapper>
       </StyledNavWrapper>

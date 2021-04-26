@@ -19,6 +19,15 @@ const AccountPage = ({ history, match }) => {
     ({ user }) => user.isCurrentUserChecked
   );
 
+  const {
+    accountOrders,
+    accountOrder,
+    accountDetails,
+    emailChange,
+    passwordChange,
+    home,
+  } = routes;
+
   console.log('current user:', currentUser);
   console.log('match:', match);
   console.log('history:', history);
@@ -26,17 +35,17 @@ const AccountPage = ({ history, match }) => {
   const renderAccountSubPage = () => (
     <>
       <div>
-        {match.url === routes.accountOrders && <OrdersHistory />}
-        {match.path === routes.accountOrder && (
+        {match.url === accountOrders && <OrdersHistory />}
+        {match.path === accountOrder && (
           <SingleOrderHistory
             orderDate={history.location.state.orderDate}
             totalOrderPrice={history.location.state.totalOrderPrice}
             orderId={match.params.orderId}
           />
         )}
-        {match.url === routes.accountDetails && <AccountDetails />}
-        {match.url === routes.emailChange && <EmailChange />}
-        {match.url === routes.passwordChange && <PasswordChange />}
+        {match.url === accountDetails && <AccountDetails />}
+        {match.url === emailChange && <EmailChange />}
+        {match.url === passwordChange && <PasswordChange />}
       </div>
     </>
   );
@@ -45,7 +54,7 @@ const AccountPage = ({ history, match }) => {
     <StyledAccountPageWrapper>
       <AccountMenu />
       {renderAccountSubPage()}
-      {isCurrentUserChecked && !currentUser && <Redirect to={routes.home} />}
+      {isCurrentUserChecked && !currentUser && <Redirect to={home} />}
     </StyledAccountPageWrapper>
   );
 };
