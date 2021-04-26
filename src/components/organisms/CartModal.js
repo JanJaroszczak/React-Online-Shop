@@ -46,11 +46,9 @@ const CartModal = () => {
     ({ productsAndCart }) => productsAndCart.isCartOpen
   );
 
-  // const cartProducts = useSelector(({ productsAndCart }) => productsAndCart.cart);
   const cartProducts = useSelector(
     ({ productsAndCart }) => productsAndCart.cart
   );
-  // const cartProducts = useSelector((state) => state.productsAndCart.cart);
 
   const cartTotalPrice = useSelector(
     ({ productsAndCart }) => productsAndCart.totalPrice
@@ -63,6 +61,8 @@ const CartModal = () => {
     </li>
   ));
 
+  const { cart, checkout, authbeforecheckout } = routes;
+
   const renderCartContent = () => (
     <>
       {cartProducts.length > 0 && (
@@ -72,16 +72,14 @@ const CartModal = () => {
           </div>
           <div className="modalFooterWrapper">
             <div className="buttonViewCart">
-              <Link to={routes.cart}>
+              <Link to={cart}>
                 <button type="button" onClick={() => dispatch(setCartClosed())}>
                   View Cart Details
                 </button>
               </Link>
             </div>
             <div className="buttonCheckout">
-              <Link
-                to={currentUser ? routes.checkout : routes.authbeforecheckout}
-              >
+              <Link to={currentUser ? checkout : authbeforecheckout}>
                 <button type="button" onClick={() => dispatch(setCartClosed())}>
                   Checkout
                 </button>
