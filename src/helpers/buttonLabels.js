@@ -4,4 +4,6 @@ export const buttonLabels = {
   payment: 'Payment',
   sendMessage: 'Send Message',
   goToAllProducts: 'Go to All Products',
+  signUp: 'Sign Up',
+  logIn: 'Log In',
 };

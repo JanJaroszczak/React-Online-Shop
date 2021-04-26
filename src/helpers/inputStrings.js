@@ -1,5 +1,5 @@
 export const inputLabels = {
-  name: 'Name:',
+  name: '*Name:',
   surname: 'Surname:',
   email: '*Email:',
   street: 'Street:',
@@ -7,6 +7,8 @@ export const inputLabels = {
   city: 'City:',
   phone: 'Phone number:',
   message: '*Message:',
+  choosePassword: '*Choose your password:',
+  password: '*Password:',
 };
 
 export const inputPlaceholders = {
@@ -18,4 +20,5 @@ export const inputPlaceholders = {
   typeCity: `Type your city`,
   typePhone: `Type your phone number`,
   typeMessage: 'Type your message',
+  typePassword: 'Type your password',
 };

@@ -10,8 +10,11 @@ import Heading from '../atoms/Heading';
 import Input from '../atoms/Input';
 import Spinner from '../../components/atoms/Spinner';
 
+import { alertMessages } from '../../helpers/alertMessages';
 import { auth } from '../../firebase/firebaseConfig';
+import { buttonLabels } from '../../helpers/buttonLabels';
 import { headingTypes } from '../../helpers/atomsTypesAndVariants';
+import { inputLabels, inputPlaceholders } from '../../helpers/inputStrings';
 import { routes } from '../../routes';
 import { usersCollection } from '../../firebase/firestoreUtils';
 
@@ -35,6 +38,9 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
 
   const currentUser = useSelector(({ user }) => user.currentUser);
 
+  const { name, email, choosePassword, password } = inputLabels;
+  const { typeName, typeEmail, typePassword } = inputPlaceholders;
+
   useEffect(() => {
     setRedirectReady(false);
     setWhichButtonPressed('');
@@ -52,13 +58,39 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
     };
   }, [currentUser]);
 
+  const renderHeading = () => (
+    <Heading
+      type={
+        isTablet && !beforeCheckout
+          ? headingTypes.mobileTopHeading
+          : isTablet
+          ? ''
+          : beforeCheckout
+          ? headingTypes.authBeforeCheckoutSubheading
+          : headingTypes.auth
+      }
+      heading={beforeCheckout ? '' : isSignUp ? 'sign up' : 'log in'}
+      headingDescription={
+        beforeCheckout && isSignUp
+          ? "please fill in your data if you haven't signed up yet"
+          : beforeCheckout && !isSignUp
+          ? 'please log in if you have your account already'
+          : isSignUp
+          ? 'please fill in your data to sign up to Cool Cleats'
+          : ''
+      }
+    />
+  );
+
   const renderAlertsAndRedirects = () => (
     <>
       {isSignUp && whichAlertIsOn === 'signup' ? (
-        <Alert message="You have been signed up!" visible={true} />
+        <Alert message={alertMessages.signedUp} visible={true} />
       ) : !isSignUp && whichAlertIsOn === 'login' ? (
-        <Alert message="You have been logged in!" visible={true} />
-      ) : null}
+        <Alert message={alertMessages.loggedIn} visible={true} />
+      ) : (
+        <Alert visible={false} />
+      )}
       {beforeCheckout && redirectReady ? (
         <Redirect to={routes.checkout} />
       ) : !beforeCheckout && redirectReady ? (
@@ -94,34 +126,13 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
 
   return (
     <StyledWrapper beforeCheckout={beforeCheckout}>
-      <Heading
-        type={
-          isTablet && !beforeCheckout
-            ? headingTypes.mobileTopHeading
-            : isTablet
-            ? ''
-            : beforeCheckout
-            ? headingTypes.authBeforeCheckoutSubheading
-            : headingTypes.auth
-        }
-        heading={beforeCheckout ? '' : isSignUp ? 'sign up' : 'log in'}
-        headingDescription={
-          beforeCheckout && isSignUp
-            ? "please fill in your data if you haven't signed yet"
-            : beforeCheckout && !isSignUp
-            ? 'please log in if you have your account already'
-            : isSignUp
-            ? 'please fill in your data to sign up to Cool Cleats'
-            : ''
-        }
-      />
+      {renderHeading()}
       <Formik
         initialValues={{
           userName: '',
           userEmail: '',
           userPassword: '',
         }}
-        // validationSchema={contactValidationSchema}
         onSubmit={(values, { resetForm }) => {
           console.log(values);
           const { userEmail, userName, userPassword } = values;
@@ -132,7 +143,6 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
             auth
               .createUserWithEmailAndPassword(userEmail, userPassword)
               .then((user) => {
-                // setWhichButtonPressed('signup');
                 setWhichAlertIsOn('signup');
                 const userId = user.user.uid;
 
@@ -163,7 +173,6 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
               .signInWithEmailAndPassword(userEmail, userPassword)
               .then((user) => {
                 console.log(user);
-                // setWhichButtonPressed('login');
                 setWhichAlertIsOn('login');
 
                 setLogInError('');
@@ -186,8 +195,8 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
                   id="userName"
                   type="text"
                   name="userName"
-                  label="*Name:"
-                  placeholder="Type your name"
+                  label={name}
+                  placeholder={typeName}
                   value={values.userName}
                   onChangeHandler={handleChange}
                 />
@@ -196,8 +205,8 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
                 id={`userEmail${isSignUp ? 'onSignUp' : 'onLogIn'}`}
                 type="email"
                 name="userEmail"
-                label="*Email:"
-                placeholder="Type your email"
+                label={email}
+                placeholder={typeEmail}
                 value={values.userEmail}
                 onChangeHandler={handleChange}
               />
@@ -205,15 +214,15 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
                 id={`userPassword${isSignUp ? 'onSignUp' : 'onLogIn'}`}
                 type="password"
                 name="userPassword"
-                label={isSignUp ? '*Choose your password:' : '*Password:'}
-                placeholder="Type your password"
+                label={isSignUp ? choosePassword : password}
+                placeholder={typePassword}
                 value={values.userPassword}
                 onChangeHandler={handleChange}
               />
               <StyledButtonWrapper>
                 <Button
                   type="submit"
-                  label={isSignUp ? 'Sign Up' : 'Log In'}
+                  label={isSignUp ? buttonLabels.signUp : buttonLabels.logIn}
                   clicked={
                     isSignUp
                       ? () => setWhichButtonPressed('signup')
