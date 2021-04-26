@@ -3,4 +3,5 @@ export const alertMessages = {
   messageSent: 'Your message has been sent!',
   signedUp: 'You have been signed up!',
   loggedIn: 'You have been logged in!',
+  paymentSuccessful: 'Payment successful!',
 };

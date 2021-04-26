@@ -9,4 +9,5 @@ export const buttonLabels = {
   clearAllFilters: 'Clear All Filters',
   applyChosenFilters: 'Apply Chosen Filters',
   goToAllOrdersHistory: 'Go to All Orders History',
+  goToHomePage: 'Go to Home Page',
 };

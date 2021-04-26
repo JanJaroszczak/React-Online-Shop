@@ -8,11 +8,13 @@ import CartContentTable from '../components/organisms/CartContentTable';
 import CartSummary from '../components/molecules/CartSummary';
 import Heading from '../components/atoms/Heading';
 
+import { alertMessages } from '../helpers/alertMessages';
 import {
   alertVariants,
   buttonVariants,
   headingTypes,
 } from '../helpers/atomsTypesAndVariants';
+import { buttonLabels } from '../helpers/buttonLabels';
 import { routes } from '../routes';
 import { successfulPaymentAlert, clearCart } from '../actions';
 
@@ -44,7 +46,7 @@ const OrderSummaryPage = (props) => {
     <StyledCommonPageWrapper>
       {isSuccessfulPaymentAlert ? (
         <Alert
-          message="Payment successful!"
+          message={alertMessages.paymentSuccessful}
           visible={isSuccessfulPaymentAlert}
           variant={alertVariants.orderSummary}
         />
@@ -59,11 +61,11 @@ const OrderSummaryPage = (props) => {
           />
           <CartContentTable order={order} orderSummary />
           <CartSummary totalOrderPrice={totalPrice} orderSummary />
-          <StyledLink to={routes.home} style={{ textDecoration: 'none' }}>
+          <StyledLink to={routes.home}>
             <Button
               variant={buttonVariants.noCapitalize}
               type="button"
-              label="Go to Home Page"
+              label={buttonLabels.goToHomePage}
             />
           </StyledLink>
         </>
