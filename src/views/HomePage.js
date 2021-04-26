@@ -14,7 +14,6 @@ const HomePage = () => {
       <Header />
       <StyledCommonPageWrapper>
         <Heading
-          // type={'specialOffer'}
           heading={'new arrivals'}
           headingDescription={'brand-new models prepared for 2021'}
         />
@@ -22,7 +21,6 @@ const HomePage = () => {
         <HomeCategories />
         <SpecialOffer />
         <Heading
-          // type={'specialOffer'}
           heading={'bestsellers'}
           headingDescription={'top models over the last year'}
         />
