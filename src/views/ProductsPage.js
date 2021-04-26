@@ -113,6 +113,25 @@ const ProductsPage = ({ history }) => {
     </>
   );
 
+  const renderProductsGrid = () => (
+    <StyledProductsGridWrapper>
+      {productsToDisplay ? (
+        productsToDisplay.map((product) => (
+          <ProductCard {...product} key={product.productId} />
+        ))
+      ) : (
+        <Spinner
+          isLoading={1}
+          left={'50%'}
+          top={'20px'}
+          size={100}
+          translateX={'-50%'}
+          translateY={'0'}
+        />
+      )}
+    </StyledProductsGridWrapper>
+  );
+
   return (
     <>
       <StyledProductsPageWrapper>
@@ -135,22 +154,7 @@ const ProductsPage = ({ history }) => {
                 {renderSortingOptions()}
               </StyledSortingOptionChoice>
             </StyledHeadingAndSortingWrapper>
-            <StyledProductsGridWrapper>
-              {productsToDisplay ? (
-                productsToDisplay.map((product) => (
-                  <ProductCard {...product} key={product.productId} />
-                ))
-              ) : (
-                <Spinner
-                  isLoading={1}
-                  left={'50%'}
-                  top={'20px'}
-                  size={100}
-                  translateX={'-50%'}
-                  translateY={'0'}
-                />
-              )}
-            </StyledProductsGridWrapper>
+            {renderProductsGrid()}
           </div>
         )}
       </StyledProductsPageWrapper>
