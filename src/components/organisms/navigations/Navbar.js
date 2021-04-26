@@ -59,6 +59,49 @@ const Navbar = () => {
     dispatch(toggleSearchPanel());
   };
 
+  const renderSearchPanel = () => (
+    <>
+      {isSearchPanelOn ? (
+        <div ref={outsideClickRef}>
+          <SearchProductsPopper />
+          <StyledAdjustedIcon
+            className="fas fa-times"
+            onClick={toggleSearchBarVisiblity}
+          ></StyledAdjustedIcon>
+        </div>
+      ) : isDesktop ? (
+        <i className="fas fa-search" onClick={toggleSearchBarVisiblity}></i>
+      ) : (
+        <StyledNavLink to={mobileSearch} search="diff">
+          <i className="fas fa-search"></i>
+        </StyledNavLink>
+      )}
+    </>
+  );
+
+  const renderCartIcon = () => (
+    <i className="fas fa-shopping-cart" onClick={() => dispatch(setCartOpen())}>
+      <StyledCartCounter cartCounter={cartCounter}>
+        <span>{cartCounter}</span>
+      </StyledCartCounter>
+    </i>
+  );
+
+  const renderAccountLinks = () => (
+    <>
+      {currentUser ? null : (
+        <StyledAccountNavLink to={signup}>Sign Up</StyledAccountNavLink>
+      )}
+      {currentUser ? (
+        <StyledAccountNavLink to={accountOrders}>
+          My Account
+        </StyledAccountNavLink>
+      ) : (
+        <StyledAccountNavLink to={login}>Log In</StyledAccountNavLink>
+      )}
+    </>
+  );
+
   return (
     <StyledNav>
       <StyledNavWrapper>
@@ -81,41 +124,9 @@ const Navbar = () => {
           </StyledLi>
         </StyledUl>
         <StyledNavRightHandSideWrapper>
-          {isSearchPanelOn ? (
-            <div ref={outsideClickRef}>
-              <SearchProductsPopper />
-              <StyledAdjustedIcon
-                className="fas fa-times"
-                onClick={toggleSearchBarVisiblity}
-              ></StyledAdjustedIcon>
-            </div>
-          ) : isDesktop ? (
-            <i className="fas fa-search" onClick={toggleSearchBarVisiblity}></i>
-          ) : (
-            <StyledNavLink to={mobileSearch} search="diff">
-              <i className="fas fa-search"></i>
-            </StyledNavLink>
-          )}
-
-          <i
-            className="fas fa-shopping-cart"
-            onClick={() => dispatch(setCartOpen())}
-          >
-            <StyledCartCounter cartCounter={cartCounter}>
-              <span>{cartCounter}</span>
-            </StyledCartCounter>
-          </i>
-
-          {currentUser ? null : (
-            <StyledAccountNavLink to={signup}>Sign Up</StyledAccountNavLink>
-          )}
-          {currentUser ? (
-            <StyledAccountNavLink to={accountOrders}>
-              My Account
-            </StyledAccountNavLink>
-          ) : (
-            <StyledAccountNavLink to={login}>Log In</StyledAccountNavLink>
-          )}
+          {renderSearchPanel()}
+          {renderCartIcon()}
+          {renderAccountLinks()}
         </StyledNavRightHandSideWrapper>
       </StyledNavWrapper>
     </StyledNav>
