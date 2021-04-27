@@ -9,14 +9,12 @@ import ContactPage from '../views/ContactPage';
 import HomePage from '../views/HomePage';
 import ProductPage from '../views/ProductPage';
 import ProductsPage from '../views/ProductsPage';
-import DatabaseUpload from '../views/DatabaseUpload';
 import SignUpPage from '../views/SignUpPage';
 import LogInPage from '../views/LogInPage';
 import AuthBeforeCheckoutPage from '../views/AuthBeforeCheckoutPage';
 import OrderSummaryPage from '../views/OrderSummaryPage';
 import AccountPage from '../views/AccountPage';
 import MobileSearchPage from '../views/MobileSearchPage';
-import TermsPage from '../views/TermsPage';
 
 // import ProductPageInfo from '../components/molecules/ProductPageInfo';
 
@@ -56,7 +54,6 @@ const Router = () => {
     accountOrder,
     account,
     mobileSearch,
-    terms,
   } = routes;
 
   return (
@@ -78,7 +75,6 @@ const Router = () => {
         <Route path={accountOrder} component={AccountPage} />
         <Route path={account} component={AccountPage} />
         <Route path={mobileSearch} component={MobileSearchPage} />
-        <Route path={terms} component={TermsPage} />
 
         {/* <Route exact path={routes.home} component={ProductPageInfo} /> */}
 

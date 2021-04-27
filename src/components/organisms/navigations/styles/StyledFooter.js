@@ -33,7 +33,14 @@ export const StyledLi = styled.li`
   }
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledFooterButton = styled.button`
+  font-size: ${({ theme }) => theme.fontSizes.xxs};
   color: ${({ theme }) => theme.colors.mainWhite};
-  text-decoration: none;
+  font-weight: ${({ theme }) => theme.fontWeights.light};
+  border: none;
+  background-color: transparent;
+
+  @media (max-width: 400px) {
+    font-size: ${({ theme }) => theme.fontSizes.ss};
+  }
 `;

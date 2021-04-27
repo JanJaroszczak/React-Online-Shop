@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import emailjs from 'emailjs-com';
 import { Formik, Form, ErrorMessage } from 'formik';
+import { useDispatch } from 'react-redux';
 
 import Alert from '../atoms/Alert';
 import Button from '../atoms/Button';
@@ -13,7 +14,7 @@ import { alertVariants } from '../../helpers/atomsTypesAndVariants';
 import { buttonLabels } from '../../helpers/buttonLabels';
 import { headingTypes } from '../../helpers/atomsTypesAndVariants';
 import { inputLabels, inputPlaceholders } from '../../helpers/inputStrings';
-import { routes } from '../../routes';
+import { isTermsModalOpen } from '../../actions';
 import { validationMessages } from '../../helpers/validationMessages';
 
 import {
@@ -25,7 +26,7 @@ import {
   StyledTermsWrapper,
   StyledCheckboxLabel,
 } from './styles/StyledContactForm';
-import { StyledCommonLink } from '../../globalStyles/GlobalStyledComponents';
+import { StyledTermsButton } from './styles/StyledTermsButton';
 
 const {
   nameRequired,
@@ -50,6 +51,8 @@ const ContactForm = () => {
 
   const { name, email, message } = inputLabels;
   const { typeName, typeEmail, typeMessage } = inputPlaceholders;
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let timer;
@@ -154,9 +157,12 @@ const ContactForm = () => {
                   onChange={handleChange}
                 />
                 <StyledCheckboxLabel>
-                  <StyledCommonLink to={routes.terms}>
+                  <StyledTermsButton
+                    type="button"
+                    onClick={() => dispatch(isTermsModalOpen(true))}
+                  >
                     Accept Terms and Conditions
-                  </StyledCommonLink>
+                  </StyledTermsButton>
                 </StyledCheckboxLabel>
                 <StyledErrorWrapper>
                   <ErrorMessage name="acceptTerms" />

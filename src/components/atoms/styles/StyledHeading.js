@@ -104,6 +104,13 @@ export const StyledDiv = styled.div`
       margin-top: 30px;
     `}
 
+          ${({ type }) =>
+    type === headingTypes.termsModal &&
+    css`
+      margin: 10px 0;
+      padding: 0;
+    `}
+
               ${({ type }) =>
     type === headingTypes.accountPage &&
     css`
@@ -147,6 +154,13 @@ export const StyledDiv = styled.div`
       css`
         margin-top: 0;
       `}
+
+               ${({ type }) =>
+      type === headingTypes.termsModal &&
+      css`
+        margin: 10px 0;
+        padding: 0;
+      `}
   }
 
   @media (max-width: 600px) {
@@ -176,6 +190,12 @@ export const StyledHeading = styled.h2`
       css`
         font-size: ${({ theme }) => theme.fontSizes.xxl};
       `)}
+
+  ${({ type }) =>
+    type === headingTypes.termsModal &&
+    css`
+      font-size: ${({ theme }) => theme.fontSizes.l};
+    `}
 `;
 
 export const StyledHeadingDescription = styled.h3`

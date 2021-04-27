@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage } from 'formik';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
@@ -12,7 +12,7 @@ import QuestionModal from '../organisms/QuestionModal';
 import { buttonLabels } from '../../helpers/buttonLabels';
 import { headingTypes } from '../../helpers/atomsTypesAndVariants';
 import { inputLabels, inputPlaceholders } from '../../helpers/inputStrings';
-import { routes } from '../../routes';
+import { isTermsModalOpen } from '../../actions';
 import { validationMessages } from '../../helpers/validationMessages';
 import { updateUserDataInFirestore } from '../../firebase/firestoreUtils';
 
@@ -24,7 +24,7 @@ import {
   StyledClientDataInputsWrapper,
   StyledCheckoutWrapper,
 } from './styles/StyledContactForm';
-import { StyledCommonLink } from '../../globalStyles/GlobalStyledComponents';
+import { StyledTermsButton } from './styles/StyledTermsButton';
 
 const {
   nameRequired,
@@ -61,6 +61,8 @@ const ClientDataForm = () => {
   const [submittedFormValues, setSubmittedFormValues] = useState(null);
 
   const currentUser = useSelector(({ user }) => user.currentUser);
+
+  const dispatch = useDispatch();
 
   const { name, surname, email, street, zipCode, city, phone } = inputLabels;
 
@@ -168,24 +170,6 @@ const ClientDataForm = () => {
   const closeModalHandler = () => {
     setIsModalOpen(false);
   };
-
-  // const renderInput = (
-  //   type,
-  //   name,
-  //   label,
-  //   placeholder,
-  //   value,
-  //   onChangeHandler
-  // ) => (
-  //   <Input
-  //     type={type}
-  //     name={name}
-  //     label={label}
-  //     placeholder={placeholder}
-  //     value={value}
-  //     onChangeHandler={onChangeHandler}
-  //   />
-  // );
 
   return (
     <StyledCheckoutWrapper>
@@ -296,9 +280,12 @@ const ClientDataForm = () => {
                       onChange={handleChange}
                     />
                     <StyledCheckboxLabel>
-                      <StyledCommonLink to={routes.terms}>
+                      <StyledTermsButton
+                        type="button"
+                        onClick={() => dispatch(isTermsModalOpen(true))}
+                      >
                         Accept Terms and Conditions
-                      </StyledCommonLink>
+                      </StyledTermsButton>
                     </StyledCheckboxLabel>
                     <StyledErrorWrapper>
                       <ErrorMessage name="acceptTerms" />

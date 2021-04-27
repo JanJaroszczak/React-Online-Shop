@@ -13,6 +13,7 @@ export const mainTheme = {
     extraLightGray: 'rgb(249, 249, 249)',
     success: '#EDF7ED',
     successIcon: '#5CB660',
+    link: 'rgb(85, 26, 139)',
   },
 
   fontSizes: {

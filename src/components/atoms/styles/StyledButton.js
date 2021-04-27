@@ -74,13 +74,6 @@ export const StyledButton = styled.button`
       margin: 20px auto;
     `}
 
-     ${({ variant }) =>
-    variant === buttonVariants.mobileTermsPage &&
-    css`
-      margin: 0 auto;
-      text-transform: none;
-    `}
-
        ${({ variant }) =>
     variant === buttonVariants.productInfo &&
     css`

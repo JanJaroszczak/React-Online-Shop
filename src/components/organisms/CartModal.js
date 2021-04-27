@@ -3,11 +3,11 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Modal from '@material-ui/core/Modal';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ModalElement from '../molecules/ModalElement';
 
-import { makeStyles } from '@material-ui/core/styles';
 import { routes } from '../../routes';
 import { setCartClosed } from '../../actions';
 

@@ -11,7 +11,6 @@ export const buttonVariants = {
   accountDataChange: 'accountDataChange',
   noCapitalize: 'noCapitalize',
   mobile: 'mobile',
-  mobileTermsPage: 'mobileTermsPage',
   productInfo: 'productInfo',
 };
 
@@ -32,6 +31,7 @@ export const headingTypes = {
   accountPage: 'accountPage',
   mobileAuthBeforeCheckout: 'mobileAuthBeforeCheckout',
   mobileTopHeading: 'mobileTopHeading',
+  termsModal: 'termsModal',
 };
 
 export const inputVariants = {

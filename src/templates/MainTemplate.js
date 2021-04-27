@@ -11,6 +11,7 @@ import Footer from '../components/organisms/navigations/Footer';
 import CartModal from '../components/organisms/CartModal';
 import NavbarMobile from '../components/organisms/navigations/NavbarMobile';
 import { StyledWrapper } from './styles/StyledMainTemplate';
+import TermsModal from '../components/organisms/TermsModal';
 
 const MainTemplate = ({ children }) => {
   const [mobileMenuOn, setMobileMenuOn] = useState(false);
@@ -42,6 +43,7 @@ const MainTemplate = ({ children }) => {
         )}
         <StyledWrapper>
           <CartModal />
+          <TermsModal />
           {children}
         </StyledWrapper>
         <ScrollUpButton
