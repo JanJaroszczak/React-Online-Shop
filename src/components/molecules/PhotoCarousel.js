@@ -38,7 +38,9 @@ const PhotoCarousel = ({ id }) => {
         thumbs={{ swiper: thumbsSwiper }}
         wrapperTag="ul"
         navigation
-        pagination
+        pagination={{
+          clickable: true,
+        }}
         spaceBetween={0}
         slidesPerView={1}
       >

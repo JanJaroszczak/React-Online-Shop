@@ -8,6 +8,15 @@
   padding-inline-start: 0;
 }
 
+#productPage .swiper-button-prev,
+#productPage .swiper-button-next {
+  color: black;
+}
+
+#productPage .swiper-pagination-bullet {
+  background-color: black;
+}
+
 #thumbsProductPage.swiper-container {
   max-width: 500px;
   margin-top: 3px;
