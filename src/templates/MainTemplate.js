@@ -3,15 +3,17 @@ import { useMediaQuery } from 'react-responsive';
 import { ThemeProvider } from 'styled-components';
 import ScrollUpButton from 'react-scroll-up-button';
 
-import { mainTheme } from '../themes/mainTheme';
 import useOnClickOutside from '../hoc/useOnClickOutside';
 import GlobalStyle from '../globalStyles/GlobalStyles';
 import Navbar from '../components/organisms/navigations/Navbar';
 import Footer from '../components/organisms/navigations/Footer';
 import CartModal from '../components/organisms/CartModal';
 import NavbarMobile from '../components/organisms/navigations/NavbarMobile';
-import { StyledWrapper } from './styles/StyledMainTemplate';
 import TermsModal from '../components/organisms/TermsModal';
+
+import { mainTheme } from '../themes/mainTheme';
+
+import { StyledWrapper } from './styles/StyledMainTemplate';
 
 const MainTemplate = ({ children }) => {
   const [mobileMenuOn, setMobileMenuOn] = useState(false);
