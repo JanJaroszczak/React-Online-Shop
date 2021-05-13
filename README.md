@@ -54,8 +54,6 @@ npm start
 
 - The browser will automatically open the project on ‘localhost:3000’.
 
-<br/>
-
 ## 2. Technologies
 
 The following technologies were used in the project:
