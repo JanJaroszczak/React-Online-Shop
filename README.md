@@ -1,6 +1,10 @@
-# Talk-to-Gisapia-and-the-Others
+# Online Shop
 
-The application allows you to write in two languages (PL / ENG) with 3 different characters who can collect information provided via the messenger and send the collected data to the e-mail provided by the user.
+An online shop with football shoes. Users can register, edit accounts, use contact form, search products, edit cart and submit payments. The website has a fully responsive design – from 280px foldable mobiles to desktops.
+
+<br/>
+
+### Live version is available [here](https://coolcleats.com/).
 
 <br/>
 
@@ -13,8 +17,6 @@ Desktop version:
 Mobile version:
 
 ![](src/assets/readme/mobile_full.gif)
-
-### Live version is available [here](https://coolcleats.com/).
 
 <br/>
 <br/>
