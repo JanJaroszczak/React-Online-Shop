@@ -93,3 +93,43 @@ Below, a list of most important features of the project.
 ![](src/assets/readme/products.gif)
 
 <br/>
+
+- A fully functional products search function is implemented – created with an own code and a displayed in a form of a custom popper. Users can operate the popper with both mouse and keyboard.
+
+![](src/assets/readme/popper.gif)
+
+<br/>
+
+- Great majority of the layout was created with custom Styled Components. Header, product cards swiper and photo galleries were created with Swiper and modals with Material-UI.
+
+![](src/assets/readme/design.gif)
+
+<br/>
+
+- Contact page has a custom Google Map implemented to fit the color palette of the project. Users can also use a contact form to send a message to page owner. Contact form backend is managed by EmailJS.
+
+![](src/assets/readme/contact.gif)
+
+<br/>
+
+- The website offers an editable cart. After adding a product to cart, a modal with the cart content is displayed. Users can open cart details page product quantity can be edited or a product can be fully removed from the cart. Once cart check is done, users may proceed to checkout.
+
+![](src/assets/readme/cart.gif)
+
+<br/>
+
+- Having proceeded to checkout users are asked to fill in their data. After filling it in, users will be asked if they want to save the added date on their account. If users had already their data saved on the account earlier, the form will be pulled automatically from the database while opening the checkout page. Having the data filled and terms and conditions accepted, users can go to payment which is implemented with a use of Paypal sandbox.
+
+![](src/assets/readme/checkout.gif)
+
+<br/>
+
+- Files structure is organised basing on Atomic Design.
+
+![](src/assets/readme/atomic.gif)
+
+<br/>
+
+- The project has a fully responsive design – from 280px foldable mobiles to desktops.
+
+<br/>
