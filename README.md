@@ -136,7 +136,7 @@ Below, a list of most important features of the project is presented.
 
 ## 4. What next
 
-I’m planning to implement Stripe JS in the project in order to add a possibility of real payments.
+I’m planning to implement Stripe.js in the project in order to add a possibility of real payments.
 
 <br/>
 
@@ -145,7 +145,7 @@ I’m planning to implement Stripe JS in the project in order to add a possibili
 In case of any questions, feel free to contact me via:
 
 - [jan.jaroszczak@gmail.com](mailto:jan.jaroszczak@gmail.com)
-- [@LinkedIn](https://www.flynerd.pl/)
+- [LinkedIn](https://www.flynerd.pl/)
 - Contact form on my portfolio [website](https://www.janjaroszczak.com/)
 
 <br/>
