@@ -2,8 +2,6 @@
 
 An online shop with football shoes. Users can register, edit accounts, use contact form, search products, edit cart and submit payments. The website has a fully responsive design – from 280px foldable mobiles to desktops.
 
-<br/>
-
 ### Live version is available [here](https://coolcleats.com/).
 
 <br/>
@@ -17,9 +15,6 @@ Desktop version:
 Mobile version:
 
 ![](src/assets/readme/mobile_full.gif)
-
-<br/>
-<br/>
 
 ## Table of Contents
 
