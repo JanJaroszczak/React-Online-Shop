@@ -16,6 +16,8 @@ Mobile version:
 
 ![](src/assets/readme/mobile_full.gif)
 
+<br/>
+
 ## Table of Contents
 
 1. Setup
@@ -23,7 +25,5 @@ Mobile version:
 3. Features
 4. What next
 5. Contact
-
-<br/>
 
 ## 1. Technologies
