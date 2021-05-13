@@ -2,7 +2,7 @@
 
 An online shop with football shoes. Users can register, edit accounts, use contact form, search products, edit cart and submit payments. The website has a fully responsive design – from 280px foldable mobiles to desktops.
 
-### Live version is available [here](https://coolcleats.com/).
+### Live version is available [here](https://coolcleats.netlify.app/).
 
 <br/>
 
@@ -145,7 +145,7 @@ I’m planning to implement Stripe.js in the project in order to add a possibili
 In case of any questions, feel free to contact me via:
 
 - [jan.jaroszczak@gmail.com](mailto:jan.jaroszczak@gmail.com)
-- [LinkedIn](https://www.flynerd.pl/)
+- [LinkedIn](https://www.linkedin.com/in/jan-jaroszczak/)
 - Contact form on my portfolio [website](https://www.janjaroszczak.com/)
 
 <br/>
