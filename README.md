@@ -54,6 +54,8 @@ npm start
 
 - The browser will automatically open the project on ‘localhost:3000’.
 
+<br/>
+
 ## 2. Technologies
 
 The following technologies were used in the project:
@@ -72,6 +74,22 @@ The following technologies were used in the project:
 - Swiper
 - Styled Components
 - Responsive Web Design
-- Atomic Design.
+- Atomic Design
 
   <br/>
+
+## 3. Features
+
+Below, a list of most important features of the project.
+
+- Users can create an account which stores orders history, contact data and provides possibility to edit them as well as changing password and account email. User data is stored in Firestore database.
+
+![](src/assets/readme/account.gif)
+
+<br/>
+
+- Products data is stored in Google Firestore database. Products can be filtered and sorted depending on user’s preferences. On product page, users may choose a size, add the product to the cart and browse through product gallery created with Swiper.
+
+![](src/assets/readme/products.gif)
+
+<br/>
