@@ -80,7 +80,7 @@ The following technologies were used in the project:
 
 ## 3. Features
 
-Below, a list of most important features of the project.
+Below, a list of most important features of the project is presented.
 
 - Users can create an account which stores orders history, contact data and provides possibility to edit them as well as changing password and account email. User data is stored in Firestore database.
 
@@ -131,5 +131,21 @@ Below, a list of most important features of the project.
 <br/>
 
 - The project has a fully responsive design – from 280px foldable mobiles to desktops.
+
+<br/>
+
+## 4. What next
+
+I’m planning to implement Stripe JS in the project in order to add a possibility of real payments.
+
+<br/>
+
+## 5. Contact
+
+In case of any questions, feel free to contact me via:
+
+- [jan.jaroszczak@gmail.com](mailto:jan.jaroszczak@gmail.com)
+- [@LinkedIn](https://www.flynerd.pl/)
+- Contact form on my portfolio [website](https://www.janjaroszczak.com/)
 
 <br/>
