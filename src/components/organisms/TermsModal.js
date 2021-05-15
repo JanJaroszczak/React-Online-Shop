@@ -10,7 +10,10 @@ import Heading from '../../components/atoms/Heading';
 import { headingTypes } from '../../helpers/atomsTypesAndVariants';
 import { isTermsModalOpen } from '../../actions';
 
-import { StyledTermsWrapper, StyledParagraph } from './styles/StyledTermsModal';
+import {
+  StyledTermsWrapper,
+  StyledTermsContentWrapper,
+} from './styles/StyledTermsModal';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -69,7 +72,7 @@ const TermsModal = () => {
               heading={'Terms and Conditions'}
               headingDescription=""
             />
-            <StyledParagraph>
+            <StyledTermsContentWrapper>
               <p>Last updated: May 15, 2021</p>
               <p>
                 This Privacy Policy describes Our policies and procedures on the
@@ -609,7 +612,7 @@ const TermsModal = () => {
                   </a>
                 </li>
               </ul>
-            </StyledParagraph>
+            </StyledTermsContentWrapper>
           </StyledTermsWrapper>
         </div>
       </Fade>

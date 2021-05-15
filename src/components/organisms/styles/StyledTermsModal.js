@@ -24,7 +24,7 @@ export const StyledTermsWrapper = styled.div`
   }
 `;
 
-export const StyledParagraph = styled.p`
+export const StyledTermsContentWrapper = styled.div`
   margin-bottom: 15px;
   padding: 0 20px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
