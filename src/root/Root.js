@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { auth } from '../firebase/firebaseConfig';
-// import styled, { css } from 'styled-components';
 
 import MainTemplate from '../templates/MainTemplate';
 import Router from '../routing/Router';
+
+import { auth } from '../firebase/firebaseConfig';
 import {
   calculateCartTotals,
   setCurrentUser,
@@ -17,72 +17,16 @@ import {
   usersCollection,
 } from '../firebase/firestoreUtils';
 
-// import Button from '../components/atoms/Button';
-
-// const StyledBtn = styled.button`
-//   color: coral;
-//   padding: 8px 18px;
-//   /* background-color: ${(props) => (props.isBlue ? 'blue' : 'yellow')}; */
-//   background-color: ${({ isBlue }) => (isBlue ? 'blue' : 'yellow')};
-
-//   background-color: ${({ color }) => color};
-
-//   ${({ diff }) =>
-//     diff &&
-//     css`
-//       color: white;
-//       border-radius: 10px;
-//       margin: 5px;
-//     `}
-// `;
-
-// const SecondBtn = styled(StyledBtn)`
-//   color: black;
-// `;
-
-// const ThemeBtn = styled.button`
-//   color: ${({ theme }) => theme.colors.mainWhite};
-//   background-color: ${({ theme }) => theme.colors.mainDark};
-//   padding: 8px 18px;
-// `;
-// const StyledLink = styled(Link)`
-
-// `
-
 const Root = () => {
   const [firstPageLoad, setFirstPageLoad] = useState(false);
-  // const [test, setTest] = useState(null);
 
   const cartProducts = useSelector(
     ({ productsAndCart }) => productsAndCart.cart
   );
-  // const isSearchPanelOn = useSelector(({ searchPanel }) => searchPanel.isSearchPanelOn);
 
   const dispatch = useDispatch();
 
   let cart = [];
-
-  // window.addEventListener(
-  //   'keydown',
-  //   (e) => {
-  //     if (
-  //       ['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(
-  //         e.code
-  //       ) > -1
-  //     ) {
-  //       e.preventDefault();
-  //     }
-  //   },
-  //   false
-  // );
-
-  // useEffect(() => {
-  //   if (isSearchPanelOn) {
-  //     console.log('blur');
-  //     setTest(window.pageYOffset);
-  //     // window.blur();
-  //   }
-  // }, [isSearchPanelOn]);
 
   useEffect(() => {
     if (firstPageLoad) {
@@ -189,22 +133,8 @@ const Root = () => {
   return (
     <MainTemplate>
       <Router />
-
-      {/* <h1>Root</h1>
-      <StyledBtn>click me one</StyledBtn>
-      <StyledBtn isBlue>click me two</StyledBtn>
-      <StyledBtn color="pink">click me two</StyledBtn>
-      <StyledBtn color="yellow" diff>
-        click me diff
-      </StyledBtn>
-      <SecondBtn>Second btn</SecondBtn>
-      <ThemeBtn>theme test</ThemeBtn>
-      <Button onClickFn={() => console.log('CLICK')}>atom btn</Button>
-      <Link>to products</Link> */}
     </MainTemplate>
   );
 };
 
 export default Root;
-
-// git commit -m "Title" -m "Desc...."
