@@ -21,9 +21,8 @@ import {
 const ProductsPage = ({ history }) => {
   const [productsToDisplay, setProductsToDisplay] = useState(null);
   const [sortingOption, setSortingOption] = useState(sortingOptions.new.value);
-  const [mobileFiltersColumnToggle, setMobileFiltersColumnToggle] = useState(
-    false
-  );
+  const [mobileFiltersColumnToggle, setMobileFiltersColumnToggle] =
+    useState(false);
   const [preSetFilters, setPreSetFilters] = useState(null);
   const [areAnyFiltersSet, setAreAnyFiltersSet] = useState(false);
 
@@ -33,6 +32,7 @@ const ProductsPage = ({ history }) => {
 
   useEffect(() => {
     if (history.location.state) setPreSetFilters(history.location.state);
+    console.log(history.location.state);
   }, []);
 
   const selectOptions = Object.entries(sortingOptions).map((option) => (

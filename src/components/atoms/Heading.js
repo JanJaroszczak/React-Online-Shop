@@ -9,7 +9,7 @@ import {
 const SectionHeader = ({
   type,
   heading,
-  headingDescription,
+  headingDescription = '',
   headingDescriptionSecondLine,
 }) => {
   return (

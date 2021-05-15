@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import ScrollToTop from '../hoc/ScrollToTop';
+import ScrollToTop from '../utils/ScrollToTop';
 import { routes } from '../routes';
 import CartPage from '../views/CartPage';
 import CheckoutPage from '../views/CheckoutPage';

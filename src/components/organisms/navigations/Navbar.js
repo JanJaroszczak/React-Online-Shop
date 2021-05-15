@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
 import SearchProductsPopper from '../../molecules/SearchProductsPopper';
-import useOnClickOutside from '../../../hoc/useOnClickOutside';
+import useOnClickOutside from '../../../utils/useOnClickOutside';
 
 import { routes } from '../../../routes';
 import { setCartOpen, toggleSearchPanel } from '../../../actions';

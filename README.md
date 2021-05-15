@@ -130,10 +130,6 @@ Below, a list of most important features of the project is presented.
 
 <br/>
 
-- The project has a fully responsive design – from 280px foldable mobiles to desktops.
-
-<br/>
-
 ## 4. What next
 
 I’m planning to implement Stripe.js in the project in order to add a possibility of real payments.

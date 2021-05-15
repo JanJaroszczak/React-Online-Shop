@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { ThemeProvider } from 'styled-components';
 import ScrollUpButton from 'react-scroll-up-button';
 
-import useOnClickOutside from '../hoc/useOnClickOutside';
+import useOnClickOutside from '../utils/useOnClickOutside';
 import GlobalStyle from '../globalStyles/GlobalStyles';
 import Navbar from '../components/organisms/navigations/Navbar';
 import Footer from '../components/organisms/navigations/Footer';
@@ -24,9 +24,9 @@ const MainTemplate = ({ children }) => {
     setMobileMenuOn((prevState) => !prevState);
   });
 
-  const onMobileMenuChangeHandler = () => {
-    setMobileMenuOn(true);
-  };
+  // const onMobileMenuChangeHandler = () => {
+  //   setMobileMenuOn(true);
+  // };
 
   const isDesktopNavbar = useMediaQuery({
     query: '(min-width: 751px)',
