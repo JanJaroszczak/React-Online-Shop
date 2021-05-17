@@ -29,4 +29,16 @@ export const StyledTermsContentWrapper = styled.div`
   padding: 0 20px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   text-align: justify;
+
+  h1,
+  h2 {
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
+
+  p,
+  li {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
 `;
