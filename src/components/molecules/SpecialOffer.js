@@ -22,7 +22,7 @@ const SpecialOffer = () => {
       <Heading
         type={isTablet ? null : headingTypes.specialOffer}
         heading={'may sale'}
-        headingDescription={'free shipping for orders over $100'}
+        headingDescription={'hurry up to get the last pairs!'}
       />
       <StyledLink
         to={{
