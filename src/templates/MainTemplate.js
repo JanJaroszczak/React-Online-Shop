@@ -20,13 +20,8 @@ const MainTemplate = ({ children }) => {
   const outsideClickRef = useRef();
 
   useOnClickOutside(outsideClickRef, () => {
-    console.log('outside click');
     setMobileMenuOn((prevState) => !prevState);
   });
-
-  // const onMobileMenuChangeHandler = () => {
-  //   setMobileMenuOn(true);
-  // };
 
   const isDesktopNavbar = useMediaQuery({
     query: '(min-width: 751px)',
