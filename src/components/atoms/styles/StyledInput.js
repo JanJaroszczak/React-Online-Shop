@@ -4,16 +4,12 @@ import { inputVariants } from '../../../helpers/atomsTypesAndVariants';
 
 export const StyledInputWrapper = styled.div`
   position: relative;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledLabel = styled.label`
   display: block;
   margin-bottom: 3px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledInput = styled.input`
@@ -27,8 +23,6 @@ export const StyledInput = styled.input`
   font-size: ${({ theme }) => theme.fontSizes.xs};
   outline: none;
   border: none;
-
-  /* border: 1px solid black; */
 
   ${({ variant }) =>
     variant === inputVariants.accountDataChange &&

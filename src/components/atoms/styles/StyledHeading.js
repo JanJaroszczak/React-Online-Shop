@@ -8,8 +8,6 @@ export const StyledDiv = styled.div`
   margin: 60px auto 20px;
   padding-left: 80px;
 
-  /* border: 1px solid black; */
-
   ${({ type }) =>
     type === headingTypes.specialOffer &&
     css`

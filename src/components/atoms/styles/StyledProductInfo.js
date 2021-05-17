@@ -15,8 +15,6 @@ export const StyledModelName = styled.h3`
   font-weight: ${({ theme }) => theme.fontWeights.light};
   margin-top: 15px;
   margin-right: 25px;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledBrandName = styled.span`
@@ -25,16 +23,12 @@ export const StyledBrandName = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.xxs};
   margin-top: 5px;
   line-height: 20px;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledPrice = styled.span`
   display: block;
   margin-top: 5px;
   font-size: ${({ theme }) => theme.fontSizes.m};
-
-  /* border: 1px solid black; */
 
   span {
     padding-left: 6px;

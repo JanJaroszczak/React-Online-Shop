@@ -8,8 +8,6 @@ export const StyledDiv = styled.div`
   font-size: 0;
   margin: 0 auto;
 
-  /* border: 1px solid black; */
-
   &:hover img {
     transform: scale(1.1);
   }

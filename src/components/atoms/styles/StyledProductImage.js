@@ -19,15 +19,6 @@ export const StyledImg = styled.img`
   }
 `;
 
-// export const StyledBgImg = styled.div`
-//   background: url(${({ img }) => img});
-//   width: 200px;
-//   height: 200px;
-//   /* background-repeat: no-repeat; */
-//   /* background-position: 50%; */
-//   background-size: contain;
-// `;
-
 export const StyledCircle = styled.div`
   position: absolute;
   top: -15px;
