@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -46,10 +46,6 @@ const TermsModal = () => {
   const isModalOpen = useSelector(
     ({ termsModal }) => termsModal.isTermsModalOpen
   );
-
-  useEffect(() => {
-    console.log('isOn?:', isModalOpen);
-  }, [isModalOpen]);
 
   const renderTermsText = () => (
     <>

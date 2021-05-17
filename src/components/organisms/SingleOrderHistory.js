@@ -21,9 +21,6 @@ import {
 const SingleOrderHistory = ({ orderDate, totalOrderPrice, orderId }) => {
   const currentUser = useSelector(({ user }) => user.currentUser);
 
-  console.log(orderDate);
-  console.log(totalOrderPrice);
-
   let orderToDisplay = null;
 
   if (currentUser) {

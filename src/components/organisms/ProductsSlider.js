@@ -40,12 +40,7 @@ const ProductsSlider = () => {
         id="productSlider"
         wrapperTag="ul"
         navigation
-        // centeredSlides={true}
-        // centeredSlidesBounds={true}
-        // spaceBetween={10}
         slidesPerView={isMobile ? 1 : is650 ? 2 : is900 ? 3 : 4}
-        // autoplay={{ delay: 3000, disableOnInteraction: false }}
-        // loop
       >
         {cards}
       </Swiper>

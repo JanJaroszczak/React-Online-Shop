@@ -23,7 +23,6 @@ const AccountMenu = () => {
     auth
       .signOut()
       .then(() => {
-        console.log('signed out');
         dispatch(clearCart());
       })
       .catch((error) => {

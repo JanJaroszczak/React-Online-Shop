@@ -19,11 +19,7 @@ const OrdersHistoryTable = () => {
         (order) => order.orderId
       );
 
-      console.log('allIds:', allOrderIds);
-
       const uniqueOrderIds = Array.from(new Set(allOrderIds));
-
-      console.log('unique Ids:', uniqueOrderIds);
 
       const ordersHistoryRowData = uniqueOrderIds.map((uniqueOrderId) => {
         let totalOrderPrice = 0;
