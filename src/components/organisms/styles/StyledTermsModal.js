@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledTermsWrapper = styled.div`
-  max-height: 70vh;
+  max-height: 60vh;
   overflow: auto;
 
   & ::-webkit-scrollbar {
@@ -26,11 +26,13 @@ export const StyledTermsContentWrapper = styled.div`
   padding: 0 20px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   text-align: justify;
+  overflow-wrap: break-word;
 
   h1,
   h2 {
     margin-top: 13px;
     margin-bottom: 13px;
+    text-align: left;
   }
 
   p,
