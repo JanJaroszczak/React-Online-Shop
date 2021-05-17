@@ -16,7 +16,6 @@ html{
 
 body{
     font-family: 'Roboto Condensed', sans-serif;
-    /* height: 100vh; */
 }
 
 button {
@@ -28,8 +27,6 @@ outline: none;
 ul {
   list-style: none;
 }
-
-
 `;
 
 export default GlobalStyle;
