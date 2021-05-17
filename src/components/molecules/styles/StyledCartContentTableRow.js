@@ -9,8 +9,6 @@ export const StyledTableRow = styled.tr`
     display: grid;
     grid-template-columns: 100px auto;
 
-    /* border: 1px solid black; */
-
     @media (max-width: 480px) {
       grid-template-columns: 100px;
       grid-template-rows: auto auto;
@@ -31,8 +29,6 @@ export const StyledPrice = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
   color: ${({ theme }) => theme.colors.mainDark};
-
-  /* border: 1px solid black; */
 
   i {
     position: absolute;

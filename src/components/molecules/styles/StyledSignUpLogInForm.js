@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const StyledWrapper = styled.div`
-  /* border: 1px solid black; */
-
   ${({ beforeCheckout }) =>
     beforeCheckout &&
     css`
@@ -12,7 +10,6 @@ export const StyledWrapper = styled.div`
 
 export const StyledButtonWrapper = styled.div`
   position: relative;
-  /* border: 1px solid black; */
 `;
 
 export const StyledInputsWrapper = styled.div`
@@ -20,8 +17,6 @@ export const StyledInputsWrapper = styled.div`
     max-width: 250px;
     margin: 0 auto;
   }
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledError = styled.div`

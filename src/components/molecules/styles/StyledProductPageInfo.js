@@ -7,8 +7,6 @@ export const StyledProductInfoWrapper = styled.div`
   padding: 50px 30px 0;
   overflow: hidden;
 
-  /* border: 1px solid black; */
-
   @media (max-width: 820px) {
     padding-top: 80px;
     padding-bottom: 20px;
@@ -88,8 +86,6 @@ export const StyledPrice = styled.div`
 export const StyledSizeChoice = styled.div`
   display: inline-block;
   font-size: ${({ theme }) => theme.fontSizes.xs};
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledSelect = styled.select`
@@ -106,8 +102,6 @@ export const StyledSelect = styled.select`
   border: none;
   outline: none;
   cursor: pointer;
-
-  /* border: 1px solid black; */
 
   option {
     font-weight: inherit;

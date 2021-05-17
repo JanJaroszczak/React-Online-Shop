@@ -5,8 +5,6 @@ export const StyledQuantityChoice = styled.div`
   margin-left: 50px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
 
-  /* border: 1px solid black; */
-
   ${({ cart }) =>
     cart &&
     css`
@@ -27,8 +25,6 @@ export const StyledQuantityChoice = styled.div`
 
 export const StyledQuantityInput = styled.div`
   display: block;
-
-  /* border: 1px solid black; */
 
   input {
     height: 40px;

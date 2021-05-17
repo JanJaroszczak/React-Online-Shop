@@ -4,8 +4,6 @@ export const StyledCartSummary = styled.div`
   width: 380px;
   margin: 40px 0 40px auto;
 
-  /* border: 1px solid black; */
-
   ${({ variant }) =>
     variant === 'checkout' &&
     css`
@@ -13,13 +11,7 @@ export const StyledCartSummary = styled.div`
       margin: 123px 50px 0 0;
     `}
 
-  /* ${({ orderSummary }) =>
-    orderSummary &&
-    css`
-      margin: 0;
-    `} */
-
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
     width: 80vw;
     margin: 30px auto 0;
 
@@ -54,8 +46,6 @@ export const StyledListElement = styled.li`
   font-size: ${({ theme }) => theme.fontSizes.s};
   color: ${({ theme }) => theme.colors.gray};
   border-bottom: 1px solid ${({ theme }) => theme.colors.declicateGray};
-
-  /* border: 1px solid black; */
 
   ${({ total }) =>
     total &&

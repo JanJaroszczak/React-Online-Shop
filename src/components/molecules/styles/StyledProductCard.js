@@ -6,6 +6,4 @@ export const StyledDiv = styled.div`
   min-width: 150px;
   min-height: 320px;
   margin: 17px 10px;
-
-  /* border: 1px solid black; */
 `;

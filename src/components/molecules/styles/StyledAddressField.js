@@ -7,8 +7,6 @@ export const StyledAddress = styled.address`
   font-style: normal;
   font-weight: ${({ theme }) => theme.fontWeights.regular};
 
-  /* border: 1px solid black; */
-
   @media (max-width: 768px) {
     padding: 0;
     text-align: center;

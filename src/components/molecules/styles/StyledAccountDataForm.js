@@ -5,6 +5,4 @@ export const StyledInputsWrapper = styled.div`
     max-width: 250px;
     margin: 0 auto;
   }
-
-  /* border: 1px solid black; */
 `;

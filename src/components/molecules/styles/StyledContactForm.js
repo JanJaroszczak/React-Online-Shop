@@ -4,8 +4,6 @@ export const StyledFormWrapper = styled.div`
   margin-top: 30px;
   margin-left: 50px;
 
-  /* border: 1px solid black; */
-
   ${({ checkout }) =>
     checkout &&
     css`
@@ -24,8 +22,6 @@ export const StyledCheckoutWrapper = styled.div`
   margin-top: 30px;
   margin-left: 50px;
 
-  /* border: 1px solid black; */
-
   @media (max-width: 768px) {
     margin-top: 0;
     margin-left: 0;
@@ -34,8 +30,6 @@ export const StyledCheckoutWrapper = styled.div`
 
 export const StyledInputWrapper = styled.div`
   position: relative;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledClientDataInputsWrapper = styled.div`
@@ -43,8 +37,6 @@ export const StyledClientDataInputsWrapper = styled.div`
     max-width: 250px;
     margin: 0 auto;
   }
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledErrorWrapper = styled.div`
