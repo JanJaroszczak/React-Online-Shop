@@ -21,7 +21,7 @@ const SpecialOffer = () => {
     <StyledDiv>
       <Heading
         type={isTablet ? null : headingTypes.specialOffer}
-        heading={'march sale'}
+        heading={'may sale'}
         headingDescription={'free shipping for orders over $100'}
       />
       <StyledLink
