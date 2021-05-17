@@ -53,7 +53,6 @@ const Root = () => {
       cart = JSON.parse(localStorage.getItem('cart'));
       if (cart) {
         dispatch(alignProductsAndCart(dataFromProductsCollection, cart));
-        console.log('products loaded from Firestore');
       }
     });
 
@@ -61,10 +60,6 @@ const Root = () => {
       subscribeProducts();
     };
   }, [dispatch]);
-
-  useEffect(() => {
-    console.log('root reload');
-  }, []);
 
   useEffect(() => {
     const subscribeUsers = usersCollection.onSnapshot((snapshot) => {
@@ -75,7 +70,6 @@ const Root = () => {
       });
 
       const currentUser = auth.currentUser;
-      console.log(currentUser);
 
       let currentUserId = null;
 
@@ -86,10 +80,9 @@ const Root = () => {
           (user) => user.userId === currentUserId
         );
 
-        console.log('user data loaded from Firestore');
         dispatch(setCurrentUser(...currentUserData));
       } else {
-        console.log('user not logged in');
+        console.log('User not logged in.');
       }
     });
 
@@ -101,22 +94,17 @@ const Root = () => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log('Root - logged in');
-
         const currentUserData = usersCollection.doc(user.uid);
 
         currentUserData.get().then((item) => {
           if (item.exists) {
-            console.log(item.data().userId);
-
             dispatch(setCurrentUser(item.data()));
             dispatch(currentUserChecked(true));
           } else {
-            console.error('root - no user!');
+            console.error('There is no user.');
           }
         });
       } else {
-        console.log('Root- logged out');
         dispatch(currentUserChecked(true));
         dispatch(setCurrentUser(null));
       }
