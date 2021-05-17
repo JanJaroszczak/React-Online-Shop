@@ -33,7 +33,6 @@ const ProductImage = ({
         <Link to={`${routes.product + productId}`}>
           <StyledImg src={img} alt={`${productBrand} ${productName}`} />
         </Link>
-        {/* <StyledBgImg img={img} /> */}
       </StyledOverflowHidde>
       {extraState && (
         <StyledCircle extraState={extraState}>
