@@ -41,7 +41,6 @@ const MobileSearchPage = () => {
   };
 
   const submitHandler = (e) => {
-    console.log('submitted');
     e.preventDefault();
     setSearchInputValue('');
     filterProducts();
@@ -61,7 +60,6 @@ const MobileSearchPage = () => {
       <form onSubmit={submitHandler}>
         <StyledInputWrapper>
           <StyledSearchInput
-            // autoFocus
             type="text"
             value={searchInputValue}
             onChange={(event) => {

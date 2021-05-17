@@ -28,10 +28,6 @@ const AccountPage = ({ history, match }) => {
     home,
   } = routes;
 
-  console.log('current user:', currentUser);
-  console.log('match:', match);
-  console.log('history:', history);
-
   const renderAccountSubPage = () => (
     <>
       <div>

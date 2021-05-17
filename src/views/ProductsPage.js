@@ -32,7 +32,6 @@ const ProductsPage = ({ history }) => {
 
   useEffect(() => {
     if (history.location.state) setPreSetFilters(history.location.state);
-    console.log(history.location.state);
   }, []);
 
   const selectOptions = Object.entries(sortingOptions).map((option) => (
@@ -66,8 +65,6 @@ const ProductsPage = ({ history }) => {
 
   const filteredProductsHandler = useCallback(
     (filteredProducts) => {
-      console.log(filteredProducts);
-
       const sortedProducts = sortProducts(filteredProducts);
 
       setProductsToDisplay(sortedProducts);
