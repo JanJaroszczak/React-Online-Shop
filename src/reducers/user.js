@@ -10,7 +10,6 @@ const user = (state = intitialState, action) => {
 
   switch (type) {
     case actionsTypes.SET_CURRENT_USER:
-      console.log('Redux - userLoggedIn: true');
       return {
         ...state,
         currentUser: payload,
