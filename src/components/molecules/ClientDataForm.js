@@ -82,19 +82,7 @@ const ClientDataForm = () => {
         .filter((entry) => entry[1] === '')
         .map((entryName) => entryName[0]);
 
-      //Explanation:
-      // list = Object.entries(buttons)
-      // .filter(([key, value]) => `${key}`[value] !== 'undefined' )
-      // .map(([key, value], idx) => `{${idx} {${key}: ${value}}}`)
-
       setEmptyUserFields(emptyUserKeys);
-
-      console.log(currentUser);
-      console.log(Object.entries(currentUser));
-      console.log(
-        Object.entries(currentUser).filter((entry) => entry[1] === '')
-      );
-      console.log(emptyUserKeys);
 
       const emptyUserFieldsNamesToDisplay = emptyUserKeys.map((key) =>
         key.substring(4)
@@ -110,22 +98,17 @@ const ClientDataForm = () => {
         emptyUserFieldsNamesToDisplay.length > 1 ? 'and' : ''
       } ${lastField} as default for your account?`;
 
-      // console.log(onFormSubmitQuestion);
       setOnFormSubmitQuestion(question);
     }
   }, [currentUser]);
 
-  // console.log(onFormSubmitQuestion);
-
   useEffect(() => {
-    console.log('checkout set false');
     setCheckout(false);
     setIsModalOpen(false);
   }, []);
 
   const noAnswerHandler = () => {
     setIsModalOpen(false);
-    console.log('checkout set true');
     setCheckout(true);
   };
 
@@ -135,35 +118,9 @@ const ClientDataForm = () => {
       ...emptyUserFields.map((key) => ({ [key]: submittedFormValues[key] }))
     );
 
-    console.log(...emptyUserFields);
-    console.log(userDataToUpdateInFirestore);
-
-    const userDataToUpdateInFirestore2 = Object.assign(
-      {},
-      emptyUserFields.map((key) => ({ [key]: submittedFormValues[key] }))
-    );
-
-    console.log(emptyUserFields);
-    console.log(userDataToUpdateInFirestore2);
-
-    //Explanation:
-    // const raw = {
-    //   item1: { key: 'sdfd', value: 'sdfd' },
-    //   item2: { key: 'sdfd', value: 'sdfd' },
-    //   item3: { key: 'sdfd', value: 'sdfd' },
-    // };
-
-    // const filteredKeys = ['item1', 'item3'];
-
-    // const filtered = Object.assign(
-    //   {},
-    //   ...filteredKeys.map((key) => ({ [key]: raw[key] }))
-    // );
-
     updateUserDataInFirestore(currentUser.userId, userDataToUpdateInFirestore);
 
     setIsModalOpen(false);
-    console.log('checkout set true');
     setCheckout(true);
   };
 
@@ -200,12 +157,9 @@ const ClientDataForm = () => {
             }}
             validationSchema={contactValidationSchema}
             onSubmit={(values) => {
-              console.log(values);
-
               if (emptyUserFields.length > 0) {
                 setIsModalOpen(true);
               } else {
-                console.log('checkout set true');
                 setCheckout(true);
               }
 

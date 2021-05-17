@@ -91,8 +91,6 @@ const ContactForm = () => {
           }}
           validationSchema={contactValidationSchema}
           onSubmit={(values, { resetForm }) => {
-            console.log(values);
-
             emailjs
               .send(
                 'contact_service',
@@ -101,8 +99,7 @@ const ContactForm = () => {
                 process.env.REACT_APP_EMAILJS_USERID
               )
               .then(
-                (result) => {
-                  console.log(result.text);
+                () => {
                   setIsSuccessAlert(true);
                 },
                 (error) => {

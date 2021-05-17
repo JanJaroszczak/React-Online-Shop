@@ -8,10 +8,7 @@ import Input from '../atoms/Input';
 import Alert from '../atoms/Alert';
 
 import { alertMessages } from '../../helpers/alertMessages';
-import {
-  alertVariants,
-  buttonVariants,
-} from '../../helpers/atomsTypesAndVariants';
+import { buttonVariants } from '../../helpers/atomsTypesAndVariants';
 import { buttonLabels } from '../../helpers/buttonLabels';
 import { inputLabels, inputPlaceholders } from '../../helpers/inputStrings';
 import { validationMessages } from '../../helpers/validationMessages';
@@ -75,9 +72,6 @@ const AccountDataForm = () => {
           }}
           validationSchema={contactValidationSchema}
           onSubmit={(values) => {
-            console.log(values);
-            console.log('submit');
-
             const {
               userName,
               userSurname,

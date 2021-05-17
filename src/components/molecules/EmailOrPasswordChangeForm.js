@@ -22,9 +22,8 @@ import {
 
 const EmailOrPasswordChangeForm = ({ emailChange }) => {
   const [oldPasswordError, setOldPasswordError] = useState('-');
-  const [oldPasswordErrorVisibility, setOldPasswordErrorVisibility] = useState(
-    false
-  );
+  const [oldPasswordErrorVisibility, setOldPasswordErrorVisibility] =
+    useState(false);
   const [newDataError, setNewDataError] = useState('-');
   const [newDataErrorVisibility, setNewDataErrorVisibility] = useState(false);
   const [newDataConfirmationError, setNewDataConfirmationError] = useState('-');
@@ -74,38 +73,6 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
       );
       setNewDataConfirmationErrorVisibility(true);
     }
-
-    //  switch (true) {
-    //    case userNewData &&
-    //      userNewDataConfirmation &&
-    //      userNewData !== userNewDataConfirmation:
-    //      setNewDataError(
-    //        `Your new ${emailOrPassword} doesn't match its confirmation.`
-    //      );
-    //      setNewDataErrorVisibility(true);
-    //      break;
-    //    case !userNewData && !userNewDataConfirmation:
-    //      setNewDataError(`Please enter a new ${emailOrPassword}.`);
-    //      setNewDataErrorVisibility(true);
-    //      setNewDataConfirmationError(
-    //        `Please enter the new ${emailOrPassword} confirmation.`
-    //      );
-    //      setNewDataConfirmationErrorVisibility(true);
-    //      break;
-    //    case !userNewData && userNewDataConfirmation:
-    //      setNewDataError(`Please enter a new ${emailOrPassword} twice.`);
-    //      setNewDataErrorVisibility(true);
-    //      break;
-    //    case userNewData && !userNewDataConfirmation:
-    //      setNewDataConfirmationError(
-    //        `Please enter a new ${emailOrPassword} twice.`
-    //      );
-    //      setNewDataConfirmationErrorVisibility(true);
-    //      break;
-    //    default:
-    //      console.log('none of conditions fulfilled');
-    //      break;
-    //  }
   };
 
   const setAllErrorsHidden = () => {
@@ -135,16 +102,10 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
           userNewDataConfirmation: '',
         }}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
-          console.log('submit');
-
           setAllErrorsHidden();
 
-          const {
-            userOldPassword,
-            userNewData,
-            userNewDataConfirmation,
-          } = values;
+          const { userOldPassword, userNewData, userNewDataConfirmation } =
+            values;
 
           const user = auth.currentUser;
           const credential = firebase.auth.EmailAuthProvider.credential(
@@ -152,12 +113,9 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
             userOldPassword
           );
 
-          console.log(credential);
-
           user
             .reauthenticateWithCredential(credential)
             .then(() => {
-              console.log('reauth ok');
               if (
                 userNewData === userNewDataConfirmation &&
                 userNewData !== userOldPassword &&
@@ -167,14 +125,12 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
                   user
                     .updatePassword(userNewData)
                     .then(() => {
-                      console.log('change password ok');
                       updateUserDataInFirestore(currentUser.userId, {
                         userPassword: userNewData,
                       });
                       setIsSuccessAlert(true);
                     })
                     .catch((error) => {
-                      console.log('change password error');
                       if (userNewData) setNewDataError(`${error.message}.`);
                       setNewDataErrorVisibility(true);
                     });
@@ -182,14 +138,12 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
                   user
                     .updateEmail(userNewData)
                     .then(() => {
-                      console.log('change email ok');
                       updateUserDataInFirestore(currentUser.userId, {
                         userEmail: userNewData,
                       });
                       setIsSuccessAlert(true);
                     })
                     .catch((error) => {
-                      console.log('change email error');
                       if (userNewData) setNewDataError(`${error.message}`);
                       setNewDataErrorVisibility(true);
                     });
@@ -207,7 +161,6 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
               commonNewDataCheck(userNewData, userNewDataConfirmation);
             })
             .catch((error) => {
-              console.log('reauth error');
               if (userOldPassword) {
                 setOldPasswordError(error.message);
               } else {
@@ -259,7 +212,6 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
                 value={values.userNewDataConfirmation}
                 onChangeHandler={handleChange}
               />
-              {/* {renderInputs()} */}
               <StyledError visible={newDataConfirmationErrorVisibility}>
                 {newDataConfirmationError}
               </StyledError>
@@ -280,13 +232,3 @@ const EmailOrPasswordChangeForm = ({ emailChange }) => {
 };
 
 export default EmailOrPasswordChangeForm;
-
-// switch (true) {
-//   case userNewData &&
-//     userNewDataConfirmation &&
-//     userNewData !== userNewDataConfirmation:
-
-//     break;
-
-//   case 200:
-// }

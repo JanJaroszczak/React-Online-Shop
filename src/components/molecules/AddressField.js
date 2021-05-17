@@ -19,12 +19,12 @@ const AddressField = () => {
         <br />
         Box 564, Łódź
         <br />
-        USA
+        Poland
         <br />
         <br />
         200-400-301
         <br />
-        info@info.com
+        info@coolcleats.com
       </StyledAddress>
     </div>
   );

@@ -28,7 +28,6 @@ const ModalElement = ({
   useEffect(() => {
     if (cursor && cursor === index) {
       popperRef.current.focus();
-      console.log('Ruch');
     }
   }, [cursor]);
 

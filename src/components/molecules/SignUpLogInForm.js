@@ -134,7 +134,6 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
           userPassword: '',
         }}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
           const { userEmail, userName, userPassword } = values;
 
           setIsLoading(true);
@@ -164,21 +163,16 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
                 });
               })
               .catch((err) => {
-                console.log(err);
-                setIsLoading(false);
                 setLogInError(err.message);
               });
           } else {
             auth
               .signInWithEmailAndPassword(userEmail, userPassword)
-              .then((user) => {
-                console.log(user);
+              .then(() => {
                 setWhichAlertIsOn('login');
-
                 setLogInError('');
               })
               .catch((err) => {
-                console.log(err);
                 setIsLoading(false);
                 setLogInError(err.message);
               });

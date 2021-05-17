@@ -17,8 +17,6 @@ const CheckboxFilters = ({
   );
 
   useEffect(() => {
-    console.log('zmiana areAllFiltersCleared');
-    console.log(areAllFiltersCleared);
     if (areAllFiltersCleared) {
       setIsCheckedArray([]);
     }

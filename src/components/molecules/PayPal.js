@@ -39,7 +39,7 @@ export default function Paypal() {
   useEffect(() => {
     window.paypal
       .Buttons({
-        createOrder: (data, actions, err) => {
+        createOrder: (actions) => {
           return actions.order.create({
             intent: 'CAPTURE',
             purchase_units: [
@@ -53,15 +53,7 @@ export default function Paypal() {
             ],
           });
         },
-        onApprove: async (data, actions) => {
-          // const paypalOrder = await actions.order.capture();
-          // console.log(paypalOrder);
-          // console.log(data);
-
-          // const order = {
-          //   clientDetails: {},
-          //   products: [],
-          // };
+        onApprove: async () => {
           const productsInCartId = cart.map((product) => product.productId);
 
           products.forEach((product) => {
