@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const StyledNav = styled.div`
@@ -9,8 +9,6 @@ export const StyledNav = styled.div`
   background-color: ${({ theme }) => theme.colors.mainWhite};
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
   z-index: 200;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledNavWrapper = styled.nav`
@@ -20,8 +18,6 @@ export const StyledNavWrapper = styled.nav`
   max-width: 1200px;
   height: 70px;
   margin: 0 auto;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledUl = styled.ul`
@@ -29,8 +25,6 @@ export const StyledUl = styled.ul`
   grid-template-columns: auto auto auto 1fr;
   grid-template-rows: 1fr;
   padding-left: 30px;
-
-  /* border: 1px solid black; */
 
   @media (max-width: 860px) {
     padding-left: 20px;
@@ -41,8 +35,6 @@ export const StyledLi = styled.li`
   align-self: center;
   justify-self: center;
   margin: 0 10px;
-
-  /* border: 1px solid black; */
 
   @media (max-width: 860px) {
     margin: 0 5px;
@@ -57,16 +49,12 @@ export const StyledNavRightHandSideWrapper = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.l};
   padding-right: 10px;
 
-  /* border: 1px solid black; */
-
   i {
     display: inline-block;
     width: 50px;
     text-align: center;
     padding: 10px 0;
     cursor: pointer;
-
-    /* border: 1px solid black; */
   }
 
   i.fa-shopping-cart {
@@ -80,8 +68,6 @@ export const StyledAdjustedIcon = styled.i`
   padding: 10px 0;
   text-align: center;
   vertical-align: -5px;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledAccountNavLink = styled(NavLink)`
@@ -94,8 +80,6 @@ export const StyledAccountNavLink = styled(NavLink)`
   border: none;
   background-color: transparent;
   text-decoration: none;
-
-  /* border: 1px solid black; */
 
   &:before {
     content: '';

@@ -2,27 +2,19 @@
   margin-bottom: 20px;
   min-height: 320px;
   position: relative;
-
-  /* border: 1px solid black; */
 }
 
 #productSlider .swiper-button-prev {
   color: black;
   padding-right: 20px;
-
-  /* border: 1px solid black; */
 }
 #productSlider .swiper-button-next {
   color: black;
   padding-left: 20px;
-
-  /* border: 1px solid black; */
 }
 
 #productSlider .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* border: 1px solid red; */
 }

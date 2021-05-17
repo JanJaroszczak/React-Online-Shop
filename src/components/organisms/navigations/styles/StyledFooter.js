@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const StyledFooter = styled.footer`
   width: 100%;
@@ -18,7 +17,6 @@ export const StyledUl = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: 0 auto; */
 
   @media (max-width: 400px) {
     flex-direction: column;

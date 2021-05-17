@@ -8,8 +8,6 @@ export const StyledHeadingWrapper = styled.div`
   transform: translate(-50%, -50%);
   color: ${({ theme }) => theme.colors.mainWhite};
   text-align: center;
-
-  /* border: 1px solid white; */
 `;
 
 export const StyledHeading = styled.h1`
@@ -17,8 +15,6 @@ export const StyledHeading = styled.h1`
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   letter-spacing: 2px;
   text-transform: uppercase;
-
-  /* border: 1px solid white; */
 
   @media (max-width: 768px) {
     font-size: ${({ theme }) => theme.fontSizes.xxl};
@@ -29,8 +25,6 @@ export const StyledSubheading = styled.h2`
   margin-top: 15px;
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: ${({ theme }) => theme.fontWeights.light};
-
-  /* border: 1px solid white; */
 
   @media (max-width: 768px) {
     font-size: ${({ theme }) => theme.fontSizes.l};

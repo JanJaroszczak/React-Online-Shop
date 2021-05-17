@@ -6,8 +6,6 @@ export const StyledOrdersHistoryWrapper = styled.div`
   margin: 0 auto;
   padding: 30px 10px 20px 30px;
 
-  /* border: 1px solid black; */
-
   @media (max-width: 600px) {
     padding: 40px 0;
   }

@@ -13,16 +13,12 @@ export const StyledMobileNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.mainWhite};
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
   z-index: 100;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledIconsWrapper = styled.div`
   justify-self: end;
   display: flex;
   align-items: center;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledIcon = styled.div`
@@ -32,10 +28,7 @@ export const StyledIcon = styled.div`
   width: ${({ burger }) => (burger ? '70px' : '50px')};
   font-size: 3rem;
   padding: ${({ burger, cart }) => (burger ? '14px 0' : cart ? '10px 0' : '0')};
-  /* z-index: 200; */
   cursor: pointer;
-
-  /* border: 1px solid black; */
 
   i.fa-shopping-cart,
   i.fa-search {
@@ -68,16 +61,12 @@ export const StyledMenu = styled.div`
 export const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledLi = styled.li`
   align-self: center;
   justify-self: center;
   margin: 0 10px;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledAccountUl = styled.ul`

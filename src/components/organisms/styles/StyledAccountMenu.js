@@ -5,8 +5,6 @@ export const StyledAccountMenuWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledAccountHeading = styled.div`
@@ -15,8 +13,6 @@ export const StyledAccountHeading = styled.div`
   grid-template-rows: 100px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
   border-right: 1px solid ${({ theme }) => theme.colors.midGray};
-
-  /* border: 1px solid black; */
 
   @media (max-width: 600px) {
     border-right: none;
@@ -27,15 +23,11 @@ export const StyledNameLogoutWrapper = styled.div`
   max-width: 145px;
   align-self: center;
 
-  /* border: 1px solid black; */
-
   h3 {
     font-size: ${({ theme }) => theme.fontSizes.l};
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-
-    /* border: 1px solid black; */
   }
 
   button {
@@ -62,8 +54,6 @@ export const StyledLink = styled(NavLink)`
   font-weight: ${({ theme }) => theme.fontWeights.regular};
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
   border-right: 1px solid ${({ theme }) => theme.colors.midGray};
-
-  /* border: 1px solid black; */
 
   &.active {
     color: ${({ theme }) => theme.colors.mainDark};

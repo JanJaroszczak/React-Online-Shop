@@ -1,19 +1,15 @@
-/* width */
 .modalWrapper ::-webkit-scrollbar {
   width: 7px;
 }
 
-/* Track */
 .modalWrapper ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-/* Handle */
 .modalWrapper ::-webkit-scrollbar-thumb {
   background: #888;
 }
 
-/* Handle on hover */
 .modalWrapper ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
@@ -23,8 +19,6 @@ div.modalWrapper {
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   height: 100%;
-
-  /* border: 1px solid blue; */
 }
 
 @media (max-width: 768px) {
@@ -44,8 +38,6 @@ h3.cartHeading {
 div.productsListWrapper {
   overflow: auto;
   max-height: 60vh;
-
-  /* border: 1px solid red; */
 }
 
 @media (max-width: 768px) {
@@ -64,8 +56,6 @@ div.modalFooterWrapper {
   margin: auto 0 0;
   padding-top: 15px;
   height: 100px;
-
-  /* border: 1px solid red; */
 }
 
 @media (max-width: 768px) {
@@ -86,24 +76,18 @@ div.modalFooterWrapper {
   align-self: center;
   justify-self: center;
   grid-area: button1;
-
-  /* border: 1px solid red; */
 }
 
 .buttonCheckout {
   align-self: center;
   justify-self: center;
   grid-area: button2;
-
-  /* border: 1px solid red; */
 }
 
 .buttonContinueShopping {
   align-self: center;
   justify-self: center;
   grid-area: button3;
-
-  /* border: 1px solid red; */
 }
 
 .totalPrice {
@@ -112,8 +96,6 @@ div.modalFooterWrapper {
   grid-area: price;
   margin-top: 15px;
   font-weight: 400;
-
-  /* border: 1px solid red; */
 }
 
 @media (max-width: 768px) {
@@ -174,8 +156,6 @@ div.modalFooterWrapper {
   transform: translate(-50%, -50%);
   font-size: 3.5rem;
   text-align: center;
-
-  /* border: 1px solid red; */
 }
 
 @media (max-width: 550px) {

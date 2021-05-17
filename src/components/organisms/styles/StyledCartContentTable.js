@@ -18,11 +18,7 @@ export const StyledTable = styled.table`
   th,
   td {
     padding: 15px;
-    /* overflow: hidden; */
     text-overflow: ellipsis;
-    /* white-space: nowrap; */
-
-    /* border: 1px solid black; */
 
     @media (max-width: 480px) {
       padding: 0;
@@ -30,7 +26,6 @@ export const StyledTable = styled.table`
   }
 
   th {
-    /* position: sticky; */
     top: 0;
     background-color: ${({ theme }) => theme.colors.mainWhite};
     text-align: left;

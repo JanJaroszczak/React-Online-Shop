@@ -4,8 +4,6 @@ export const StyledColumn = styled.div`
   margin-top: 57px;
   width: 280px;
 
-  /* border: 1px solid black; */
-
   @media (max-width: 768px) {
     display: none;
 

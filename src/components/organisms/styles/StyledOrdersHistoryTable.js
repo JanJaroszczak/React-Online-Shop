@@ -21,8 +21,6 @@ export const StyledOrdersHistoryTable = styled.table`
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    /* border: 1px solid black; */
-
     @media (max-width: 300px) {
       padding: 10px;
     }

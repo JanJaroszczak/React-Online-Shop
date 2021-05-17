@@ -6,8 +6,6 @@ export const StyledLogo = styled.div`
   justify-self: center;
   padding-left: 20px;
 
-  /* border: 1px solid black; */
-
   @media (max-width: 310px) {
     ${({ layout }) =>
       layout === 'mobile' &&
