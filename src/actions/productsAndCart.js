@@ -39,9 +39,7 @@ export const getProducts = (alignedProductsData) => ({
 
 export const alignProductsAndCart = (productsData, cart) => {
   return (dispatch) => {
-    console.log(cart);
     if (cart.length > 0) {
-      console.log('alignment ON');
       const productsInCart = cart.map((product) => [
         product.productId,
         product.chosenOption.size,
