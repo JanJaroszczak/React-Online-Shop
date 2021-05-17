@@ -9,7 +9,6 @@ export const updateProductQuantityInFirestore = (productId, sizes) => {
   productsCollection.doc(productId).update({
     sizes,
   });
-  console.log('Firestore availability update');
 };
 
 export const updateUserDataInFirestore = (
@@ -19,7 +18,6 @@ export const updateUserDataInFirestore = (
   usersCollection.doc(userId).update({
     ...userDataToUpdateInFirestore,
   });
-  console.log('Firestore user update');
 };
 
 export const addOrderToOrderHistory = (cart, userId) => {
@@ -54,5 +52,4 @@ export const addOrderToOrderHistory = (cart, userId) => {
       }),
     });
   });
-  console.log('Firestore order history update');
 };
