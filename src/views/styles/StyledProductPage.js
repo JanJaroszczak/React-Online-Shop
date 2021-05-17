@@ -9,8 +9,6 @@ export const StyledProductWrapper = styled.div`
   margin: 0 auto;
   padding: 30px 20px 0;
 
-  /* border: 1px solid black; */
-
   @media (max-width: 820px) {
     grid-template-columns: 1fr;
     grid-template-rows: auto;

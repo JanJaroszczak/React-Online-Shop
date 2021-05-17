@@ -12,8 +12,6 @@ export const StyledContactPageWrapper = styled.div`
   margin: 50px auto 0;
   padding: 0 20px;
 
-  /* border: 1px solid black; */
-
   @media (max-width: 1024px) {
     grid-template-columns: 1.5fr 1fr;
   }

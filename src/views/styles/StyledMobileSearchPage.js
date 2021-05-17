@@ -11,8 +11,6 @@ export const StyledInputWrapper = styled.div`
   max-width: 460px;
   margin: 0 auto;
   padding: 0 20px;
-
-  /* border: 1px solid black; */
 `;
 
 export const StyledSearchInput = styled.input`
@@ -36,8 +34,6 @@ export const StyledSearchButton = styled.button`
 
   i {
     font-size: ${({ theme }) => theme.fontSizes.xl};
-
-    /* border: 1px solid black; */
   }
 `;
 
@@ -49,8 +45,6 @@ export const StyledProductsGridWrapper = styled.div`
   justify-content: center;
   margin: 30px auto 0;
   width: 90%;
-
-  /* border: 1px solid black; */
 
   @media (max-width: 960px) {
     grid-template-columns: repeat(3, 1fr);

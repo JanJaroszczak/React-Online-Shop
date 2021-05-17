@@ -15,8 +15,6 @@ export const StyledHeadingAndSortingWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
 
-  /* border: 1px solid black; */
-
   @media (max-width: 768px) {
     grid-template-columns: auto;
     grid-template-rows: auto auto;
@@ -27,8 +25,6 @@ export const StyledSortingOptionChoice = styled.div`
   margin: 60px 30px 20px 0;
   display: inline-block;
   font-size: ${({ theme }) => theme.fontSizes.xs};
-
-  /* border: 1px solid black; */
 
   @media (max-width: 768px) {
     display: grid;
@@ -42,8 +38,6 @@ export const StyledFilterIcon = styled.div`
   font-size: 4.1rem;
   color: ${({ theme }) => theme.colors.declicateGray};
   cursor: pointer;
-
-  /* border: 1px solid black; */
 
   ${({ areAnyFiltersSet }) =>
     areAnyFiltersSet &&
@@ -66,8 +60,6 @@ export const StyledSelect = styled.select`
   outline: none;
   cursor: pointer;
 
-  /* border: 1px solid black; */
-
   option {
     font-weight: inherit;
   }
@@ -81,8 +73,6 @@ export const StyledProductsGridWrapper = styled.div`
   column-gap: 10px;
   justify-content: space-between;
   margin: 40px 20px 40px 52px;
-
-  /* border: 1px solid black; */
 
   @media (max-width: 960px) {
     grid-template-columns: 1fr 1fr;
