@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max350, max480, max600, max768, max820, max1000 } = mediaQueryStrings;
+
 export const StyledTable = styled.table`
   display: grid;
   border-collapse: collapse;
@@ -20,7 +24,7 @@ export const StyledTable = styled.table`
     padding: 15px;
     text-overflow: ellipsis;
 
-    @media (max-width: 480px) {
+    @media ${max480} {
       padding: 0;
     }
   }
@@ -34,7 +38,7 @@ export const StyledTable = styled.table`
     color: black;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
 
-    @media (max-width: 350px) {
+    @media ${max350} {
       font-size: ${({ theme }) => theme.fontSizes.xxs};
     }
   }
@@ -45,7 +49,7 @@ export const StyledTable = styled.table`
     color: #808080;
   }
 
-  @media (max-width: 1000px) {
+  @media ${max1000} {
     ${({ orderSummary }) =>
       orderSummary &&
       css`
@@ -56,7 +60,7 @@ export const StyledTable = styled.table`
       `}
   }
 
-  @media (max-width: 820px) {
+  @media ${max820} {
     grid-template-columns: minmax(280px, 1fr) minmax(150px, auto) minmax(
         140px,
         auto
@@ -72,7 +76,7 @@ export const StyledTable = styled.table`
       `}
   }
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     ${({ orderSummary }) =>
       orderSummary &&
       css`
@@ -83,14 +87,14 @@ export const StyledTable = styled.table`
       `}
   }
 
-  @media (max-width: 600px) {
+  @media ${max600} {
     grid-template-columns: minmax(200px, 1fr) minmax(100px, auto) minmax(
         120px,
         auto
       );
   }
 
-  @media (max-width: 480px) {
+  @media ${max480} {
     grid-template-columns: 1fr 90px 95px;
 
     ${({ orderSummary }) =>
@@ -100,7 +104,7 @@ export const StyledTable = styled.table`
       `}
   }
 
-  @media (max-width: 350px) {
+  @media ${max350} {
     grid-template-columns: 1fr 80px 75px;
   }
 `;

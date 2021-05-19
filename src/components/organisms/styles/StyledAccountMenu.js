@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max600 } = mediaQueryStrings;
+
 export const StyledAccountMenuWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -14,7 +18,7 @@ export const StyledAccountHeading = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
   border-right: 1px solid ${({ theme }) => theme.colors.midGray};
 
-  @media (max-width: 600px) {
+  @media ${max600} {
     border-right: none;
   }
 `;
@@ -60,7 +64,7 @@ export const StyledLink = styled(NavLink)`
     border-right: none;
   }
 
-  @media (max-width: 600px) {
+  @media ${max600} {
     border-right: none;
   }
 `;

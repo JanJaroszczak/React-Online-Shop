@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+import { mediaQueryStrings } from '../../../../helpers/mediaQueryStrings';
+
+const { max860 } = mediaQueryStrings;
+
 export const StyledNav = styled.div`
   position: fixed;
   top: 0;
@@ -26,7 +30,7 @@ export const StyledUl = styled.ul`
   grid-template-rows: 1fr;
   padding-left: 30px;
 
-  @media (max-width: 860px) {
+  @media ${max860} {
     padding-left: 20px;
   }
 `;
@@ -36,7 +40,7 @@ export const StyledLi = styled.li`
   justify-self: center;
   margin: 0 10px;
 
-  @media (max-width: 860px) {
+  @media ${max860} {
     margin: 0 5px;
   }
 `;
@@ -100,7 +104,7 @@ export const StyledAccountNavLink = styled(NavLink)`
     transform: scaleX(1);
   }
 
-  @media (max-width: 860px) {
+  @media ${max860} {
     font-size: ${({ theme }) => theme.fontSizes.s};
   }
 `;

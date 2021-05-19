@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max300, max380, max768 } = mediaQueryStrings;
+
 export const StyledOrdersHistoryTable = styled.table`
   display: grid;
   border-collapse: collapse;
   grid-template-columns: minmax(300px, 1fr) minmax(250px, auto);
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     grid-template-columns: auto 1fr;
   }
 
@@ -21,7 +25,7 @@ export const StyledOrdersHistoryTable = styled.table`
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    @media (max-width: 300px) {
+    @media ${max300} {
       padding: 10px;
     }
   }
@@ -37,7 +41,7 @@ export const StyledOrdersHistoryTable = styled.table`
 
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
 
-    @media (max-width: 380px) {
+    @media ${max380} {
       font-size: ${({ theme }) => theme.fontSizes.xxs};
     }
   }

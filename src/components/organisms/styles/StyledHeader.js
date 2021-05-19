@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max768 } = mediaQueryStrings;
+
 export const StyledHeadingWrapper = styled.div`
   position: absolute;
   z-index: 1;
@@ -16,7 +20,7 @@ export const StyledHeading = styled.h1`
   letter-spacing: 2px;
   text-transform: uppercase;
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     font-size: ${({ theme }) => theme.fontSizes.xxl};
   } ;
 `;
@@ -26,7 +30,7 @@ export const StyledSubheading = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: ${({ theme }) => theme.fontWeights.light};
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     font-size: ${({ theme }) => theme.fontSizes.l};
   } ;
 `;

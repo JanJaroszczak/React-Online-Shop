@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max768 } = mediaQueryStrings;
+
 export const StyledColumn = styled.div`
   margin-top: 57px;
   width: 280px;
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     display: none;
 
     ${({ isTablet }) =>
@@ -28,7 +32,7 @@ export const StyledColumnHeading = styled.div`
     font-weight: ${({ theme }) => theme.fontWeights.regular};
   }
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     padding-left: 45px;
     color: ${({ theme }) => theme.colors.mainDark};
     background-color: ${({ theme }) => theme.colors.mainWhite};
@@ -41,7 +45,7 @@ export const StyledPriceFilter = styled.div`
   background-color: ${({ theme }) => theme.colors.mainDark};
   border-bottom: 1px solid ${({ theme }) => theme.colors.mainWhite};
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     padding-left: 45px;
     background-color: ${({ theme }) => theme.colors.mainWhite};
     border-bottom: 1px solid ${({ theme }) => theme.colors.midGray};
@@ -53,7 +57,7 @@ export const StyledPriceFilter = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.m};
     font-weight: ${({ theme }) => theme.fontWeights.light};
 
-    @media (max-width: 768px) {
+    @media ${max768} {
       color: ${({ theme }) => theme.colors.mainDark};
     }
   }
@@ -64,7 +68,7 @@ export const StyledPriceFilter = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.xs};
     color: ${({ theme }) => theme.colors.mainWhite};
 
-    @media (max-width: 768px) {
+    @media ${max768} {
       color: ${({ theme }) => theme.colors.mainDark};
     }
   }
