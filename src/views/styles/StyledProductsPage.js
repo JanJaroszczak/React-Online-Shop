@@ -1,12 +1,16 @@
 import styled, { css } from 'styled-components';
 
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
+
+const { max480, max630, max768, max960 } = mediaQueryStrings;
+
 export const StyledProductsPageWrapper = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   max-width: 1200px;
   margin: 0 auto;
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     grid-template-columns: auto;
   } ;
 `;
@@ -15,7 +19,7 @@ export const StyledHeadingAndSortingWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     grid-template-columns: auto;
     grid-template-rows: auto auto;
   } ;
@@ -26,7 +30,7 @@ export const StyledSortingOptionChoice = styled.div`
   display: inline-block;
   font-size: ${({ theme }) => theme.fontSizes.xs};
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 40px;
@@ -74,7 +78,7 @@ export const StyledProductsGridWrapper = styled.div`
   justify-content: space-between;
   margin: 40px 20px 40px 52px;
 
-  @media (max-width: 960px) {
+  @media ${max960} {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
 
@@ -82,15 +86,15 @@ export const StyledProductsGridWrapper = styled.div`
     width: 90%;
   }
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  @media (max-width: 630px) {
+  @media ${max630} {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media (max-width: 480px) {
+  @media ${max480} {
     grid-template-columns: auto;
   } ;
 `;

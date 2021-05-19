@@ -7,6 +7,7 @@ import ProductCard from '../components/molecules/ProductCard';
 import searchProducts from '../utils/searchProducts';
 
 import { headingTypes } from '../helpers/atomsTypesAndVariants';
+import { mediaQueryStrings } from '../helpers/mediaQueryStrings';
 
 import {
   StyledSearchPageWrapper,
@@ -21,7 +22,7 @@ const MobileSearchPage = () => {
   const [foundProducts, setFoundProducts] = useState([]);
 
   const isTablet = useMediaQuery({
-    query: '(max-width: 768px)',
+    query: mediaQueryStrings.max768,
   });
 
   const products = useSelector(

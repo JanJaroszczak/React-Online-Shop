@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
+
+const { max480, max720, max960 } = mediaQueryStrings;
+
 export const StyledSearchPageWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -46,15 +50,15 @@ export const StyledProductsGridWrapper = styled.div`
   margin: 30px auto 0;
   width: 90%;
 
-  @media (max-width: 960px) {
+  @media ${max960} {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 720px) {
+  @media ${max720} {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 480px) {
+  @media ${max480} {
     grid-template-columns: auto;
   }
 `;

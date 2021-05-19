@@ -15,6 +15,7 @@ import {
   headingTypes,
 } from '../helpers/atomsTypesAndVariants';
 import { buttonLabels } from '../helpers/buttonLabels';
+import { mediaQueryStrings } from '../helpers/mediaQueryStrings';
 import { routes } from '../routes';
 import { successfulPaymentAlert, clearCart } from '../actions';
 
@@ -27,7 +28,7 @@ const OrderSummaryPage = (props) => {
   );
 
   const isTablet = useMediaQuery({
-    query: '(max-width: 768px)',
+    query: mediaQueryStrings.max768,
   });
 
   const dispatch = useDispatch();

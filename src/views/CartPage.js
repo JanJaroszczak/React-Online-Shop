@@ -7,6 +7,7 @@ import CartSummary from '../components/molecules/CartSummary';
 import Heading from '../components/atoms/Heading';
 
 import { headingTypes } from '../helpers/atomsTypesAndVariants';
+import { mediaQueryStrings } from '../helpers/mediaQueryStrings';
 
 import { StyledCommonPageWrapper } from './styles/StyledCommonElements';
 
@@ -16,7 +17,7 @@ const CartPage = () => {
   );
 
   const isTablet = useMediaQuery({
-    query: '(max-width: 768px)',
+    query: mediaQueryStrings.max768,
   });
 
   return (
