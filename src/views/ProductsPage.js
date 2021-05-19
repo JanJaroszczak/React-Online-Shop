@@ -7,6 +7,7 @@ import ProductCard from '../components/molecules/ProductCard';
 import Spinner from '../components/atoms/Spinner';
 
 import { headingTypes } from '../helpers/atomsTypesAndVariants';
+import { mediaQueryStrings } from '../helpers/mediaQueryStrings';
 import { sortingOptions } from './utils/ProductsPageSortingOptions';
 
 import {
@@ -27,7 +28,7 @@ const ProductsPage = ({ history }) => {
   const [areAnyFiltersSet, setAreAnyFiltersSet] = useState(false);
 
   const isTablet = useMediaQuery({
-    query: '(max-width: 768px)',
+    query: mediaQueryStrings.max768,
   });
 
   useEffect(() => {

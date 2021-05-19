@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
 import { routes } from '../../routes';
 import { setCartClosed } from '../../actions';
 
@@ -15,7 +16,7 @@ const ProductInfoCollection = ({ product, cartModal, searchModal }) => {
   const dispatch = useDispatch();
 
   const isMobile = useMediaQuery({
-    query: '(max-width: 480px)',
+    query: mediaQueryStrings.max480,
   });
 
   const onClickCartModalHandler = () => {

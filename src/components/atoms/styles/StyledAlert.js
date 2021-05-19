@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
 import { alertVariants } from '../../../helpers/atomsTypesAndVariants';
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max310, max768 } = mediaQueryStrings;
 
 export const StyledAlert = styled.div`
   height: 50px;
@@ -30,7 +33,7 @@ export const StyledAlert = styled.div`
       margin-top: 93px;
     `}
 
-      @media (max-width: 768px) {
+      @media ${max768} {
     text-align: center;
 
     ${({ variant }) =>
@@ -44,7 +47,7 @@ export const StyledAlert = styled.div`
     }
   }
 
-  @media (max-width: 310px) {
+  @media ${max310} {
     font-size: ${({ theme }) => theme.fontSizes.xs};
 
     i {

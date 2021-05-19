@@ -15,6 +15,7 @@ import { auth } from '../../firebase/firebaseConfig';
 import { buttonLabels } from '../../helpers/buttonLabels';
 import { headingTypes } from '../../helpers/atomsTypesAndVariants';
 import { inputLabels, inputPlaceholders } from '../../helpers/inputStrings';
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
 import { routes } from '../../routes';
 import { usersCollection } from '../../firebase/firestoreUtils';
 
@@ -33,7 +34,7 @@ const SignUpLogInForm = ({ isSignUp, beforeCheckout }) => {
   const [whichButtonPressed, setWhichButtonPressed] = useState('');
 
   const isTablet = useMediaQuery({
-    query: '(max-width: 768px)',
+    query: mediaQueryStrings.max768,
   });
 
   const currentUser = useSelector(({ user }) => user.currentUser);

@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
 import { headingTypes } from '../../../helpers/atomsTypesAndVariants';
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max600, max768 } = mediaQueryStrings;
 
 export const StyledDiv = styled.div`
   text-transform: uppercase;
@@ -116,7 +119,7 @@ export const StyledDiv = styled.div`
       padding-left: 0;
     `} 
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     margin: 30px 0;
     padding: 0;
     text-align: center;
@@ -161,7 +164,7 @@ export const StyledDiv = styled.div`
       `}
   }
 
-  @media (max-width: 600px) {
+  @media ${max600} {
     ${({ type }) =>
       type === headingTypes.accountPageWithoutSubheading &&
       css`

@@ -8,13 +8,14 @@ import {
   buttonVariants,
   headingTypes,
 } from '../../helpers/atomsTypesAndVariants';
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
 import { routes } from '../../routes';
 
 import { StyledDiv, StyledLink } from './styles/StyledSpecialOffer';
 
 const SpecialOffer = () => {
   const isTablet = useMediaQuery({
-    query: '(max-width: 768px)',
+    query: mediaQueryStrings.max768,
   });
 
   return (

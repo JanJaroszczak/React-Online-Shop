@@ -1,6 +1,7 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
 import { routes } from '../../routes';
 
 import {
@@ -11,7 +12,7 @@ import {
 
 const OrdersHistoryTableRow = ({ orderDate, totalOrderPrice, orderId }) => {
   const is340 = useMediaQuery({
-    query: '(max-width: 340px)',
+    query: mediaQueryStrings.max340,
   });
 
   return (

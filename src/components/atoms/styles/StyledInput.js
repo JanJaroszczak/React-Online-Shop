@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
 import { inputVariants } from '../../../helpers/atomsTypesAndVariants';
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max600, max768 } = mediaQueryStrings;
 
 export const StyledInputWrapper = styled.div`
   position: relative;
@@ -36,7 +39,7 @@ export const StyledInput = styled.input`
       color: ${({ theme }) => theme.colors.gray};
     `}
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     width: 100%;
     max-width: 250px;
 
@@ -47,7 +50,7 @@ export const StyledInput = styled.input`
       `}
   }
 
-  @media (max-width: 600px) {
+  @media ${max600} {
     width: 100%;
     max-width: 250px;
   } ;

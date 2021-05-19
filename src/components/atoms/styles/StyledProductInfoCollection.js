@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max350, max480 } = mediaQueryStrings;
+
 export const StyledLink = styled(Link)`
   align-self: center;
   text-decoration: none;
@@ -22,7 +26,7 @@ export const StyledProductInfo = styled.div`
   align-self: center;
   padding-left: 15px;
 
-  @media (max-width: 480px) {
+  @media ${max480} {
     ${({ cartModal }) =>
       !cartModal &&
       css`
@@ -43,7 +47,7 @@ export const StyledProductInfo = styled.div`
         margin-bottom: 0;
       `}
 
-    @media (max-width: 480px) {
+    @media ${max480} {
       ${({ cartModal }) =>
         !cartModal &&
         css`
@@ -52,7 +56,7 @@ export const StyledProductInfo = styled.div`
         `}
     }
 
-    @media (max-width: 350px) {
+    @media ${max350} {
       font-size: ${({ theme }) => theme.fontSizes.xxs};
     }
   }
@@ -62,7 +66,7 @@ export const StyledProductInfo = styled.div`
     font-weight: ${({ theme }) => theme.fontWeights.regular};
     color: ${({ theme }) => theme.colors.gray};
 
-    @media (max-width: 350px) {
+    @media ${max350} {
       font-size: ${({ theme }) => theme.fontSizes.xxs};
     }
   }

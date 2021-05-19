@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max450, max600 } = mediaQueryStrings;
+
 export const StyledDiv = styled.div`
   position: relative;
   max-width: 360px;
@@ -27,12 +31,12 @@ export const StyledCategory = styled.div`
   width: 160px;
   border: 2px solid white;
 
-  @media (max-width: 600px) {
+  @media ${max600} {
     height: 60px;
     width: 120px;
   }
 
-  @media (max-width: 450px) {
+  @media ${max450} {
     height: 80px;
     width: 160px;
   } ;
@@ -51,12 +55,12 @@ export const StyledCategoryName = styled.div`
   text-transform: uppercase;
   border: 2px solid white;
 
-  @media (max-width: 600px) {
+  @media ${max600} {
     width: 120px;
     font-size: ${({ theme }) => theme.fontSizes.l};
   }
 
-  @media (max-width: 450px) {
+  @media ${max450} {
     width: 160px;
     font-size: ${({ theme }) => theme.fontSizes.xl};
   } ;
