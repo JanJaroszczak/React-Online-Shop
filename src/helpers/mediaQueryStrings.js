@@ -22,13 +22,3 @@ export const mediaQueryStrings = {
   max1000: '(max-width: 1000px)',
   max1024: '(max-width: 1024px)',
 };
-
-// import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
-
-// import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
-
-// const { max340, max350, max450, max480, max600, max768 } = mediaQueryStrings;
-
-// import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
-
-// const {  } = mediaQueryStrings;
