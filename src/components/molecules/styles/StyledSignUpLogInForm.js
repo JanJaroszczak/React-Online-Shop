@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
 export const StyledWrapper = styled.div`
   ${({ beforeCheckout }) =>
     beforeCheckout &&
@@ -13,7 +15,7 @@ export const StyledButtonWrapper = styled.div`
 `;
 
 export const StyledInputsWrapper = styled.div`
-  @media (max-width: 768px) {
+  @media ${mediaQueryStrings.max768} {
     max-width: 250px;
     margin: 0 auto;
   }

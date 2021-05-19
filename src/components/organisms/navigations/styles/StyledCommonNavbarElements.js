@@ -1,12 +1,16 @@
 import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+import { mediaQueryStrings } from '../../../../helpers/mediaQueryStrings';
+
+const { max310, max860 } = mediaQueryStrings;
+
 export const StyledLogo = styled.div`
   align-self: center;
   justify-self: center;
   padding-left: 20px;
 
-  @media (max-width: 310px) {
+  @media ${max310} {
     ${({ layout }) =>
       layout === 'mobile' &&
       css`
@@ -56,7 +60,7 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   text-transform: uppercase;
 
-  @media (max-width: 860px) {
+  @media ${max860} {
     ${({ layout }) =>
       layout !== 'mobile' &&
       css`

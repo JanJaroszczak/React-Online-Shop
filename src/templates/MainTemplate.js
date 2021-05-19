@@ -11,6 +11,7 @@ import CartModal from '../components/organisms/CartModal';
 import NavbarMobile from '../components/organisms/navigations/NavbarMobile';
 import TermsModal from '../components/organisms/TermsModal';
 
+import { mediaQueryStrings } from '../helpers/mediaQueryStrings';
 import { mainTheme } from '../themes/mainTheme';
 
 import { StyledWrapper } from './styles/StyledMainTemplate';
@@ -24,7 +25,7 @@ const MainTemplate = ({ children }) => {
   });
 
   const isDesktopNavbar = useMediaQuery({
-    query: '(min-width: 751px)',
+    query: mediaQueryStrings.min751,
   });
 
   return (

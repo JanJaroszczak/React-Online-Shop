@@ -5,6 +5,7 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
 
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
 import { routes } from '../../routes';
 
 import 'swiper/swiper-bundle.css';
@@ -31,7 +32,7 @@ const Header = () => {
   );
 
   const isTablet = useMediaQuery({
-    query: '(max-width: 768px)',
+    query: mediaQueryStrings.max768,
   });
 
   const slides = [

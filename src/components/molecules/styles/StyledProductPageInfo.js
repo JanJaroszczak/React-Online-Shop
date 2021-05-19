@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max768, max820 } = mediaQueryStrings;
+
 export const StyledProductInfoWrapper = styled.div`
   position: relative;
   max-width: 700px;
@@ -7,7 +11,7 @@ export const StyledProductInfoWrapper = styled.div`
   padding: 50px 30px 0;
   overflow: hidden;
 
-  @media (max-width: 820px) {
+  @media ${max820} {
     padding-top: 80px;
     padding-bottom: 20px;
 
@@ -18,7 +22,7 @@ export const StyledProductInfoWrapper = styled.div`
       `}
   }
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     width: 83vw;
     padding-top: 50px;
     padding-left: 0;
@@ -42,11 +46,11 @@ export const StyledExtraState = styled.span`
 
   border: 1px solid ${({ theme }) => theme.colors.midGray};
 
-  @media (max-width: 820px) {
+  @media ${max820} {
     top: 31px;
   }
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     left: 50%;
     transform: translateX(-50%);
   }
@@ -107,7 +111,7 @@ export const StyledSelect = styled.select`
     font-weight: inherit;
   }
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     width: 58px;
   } ;
 `;

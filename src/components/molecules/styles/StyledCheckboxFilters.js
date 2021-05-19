@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max768 } = mediaQueryStrings;
+
 export const StyledCheckboxesWrapper = styled.div`
   width: 280px;
   padding: 15px 25px 10px;
   background-color: ${({ theme }) => theme.colors.mainDark};
   border-bottom: 1px solid ${({ theme }) => theme.colors.mainWhite};
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     width: 100%;
     padding-left: 45px;
 
@@ -20,7 +24,7 @@ export const StyledCheckboxesWrapper = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.m};
     font-weight: ${({ theme }) => theme.fontWeights.light};
 
-    @media (max-width: 768px) {
+    @media ${max768} {
       color: ${({ theme }) => theme.colors.mainDark};
     }
   }
@@ -42,7 +46,7 @@ export const StyledCheckboxesWrapper = styled.div`
     -moz-user-select: none;
     -ms-user-select: none;
 
-    @media (max-width: 768px) {
+    @media ${max768} {
       color: ${({ theme }) => theme.colors.mainDark};
     }
   }
@@ -60,7 +64,7 @@ export const StyledCheckboxesWrapper = styled.div`
     -webkit-transition: all 0.12s, border-color 0.08s;
     transition: all 0.12s, border-color 0.08s;
 
-    @media (max-width: 768px) {
+    @media ${max768} {
       border: 1px solid ${({ theme }) => theme.colors.mainDark};
     }
   }

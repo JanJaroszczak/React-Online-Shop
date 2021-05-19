@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max768, max1024 } = mediaQueryStrings;
+
 export const StyledFormWrapper = styled.div`
   margin-top: 30px;
   margin-left: 50px;
@@ -11,7 +15,7 @@ export const StyledFormWrapper = styled.div`
       margin-left: 0;
     `}
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
@@ -22,7 +26,7 @@ export const StyledCheckoutWrapper = styled.div`
   margin-top: 30px;
   margin-left: 50px;
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     margin-top: 0;
     margin-left: 0;
   } ;
@@ -33,7 +37,7 @@ export const StyledInputWrapper = styled.div`
 `;
 
 export const StyledClientDataInputsWrapper = styled.div`
-  @media (max-width: 768px) {
+  @media ${max768} {
     max-width: 250px;
     margin: 0 auto;
   }
@@ -65,7 +69,7 @@ export const StyledTextarea = styled.textarea`
   outline: none;
   border: none;
 
-  @media (max-width: 1024px) {
+  @media ${max1024} {
     width: 100%;
   } ;
 `;

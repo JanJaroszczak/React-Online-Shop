@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max380 } = mediaQueryStrings;
+
 export const StyledOrdersHistoryTableRow = styled.tr`
   td {
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
@@ -20,7 +24,7 @@ export const StyledRowDataWrapper = styled.div`
   font-weight: ${({ theme }) => theme.fontWeights.regular};
   color: ${({ theme }) => theme.colors.mainDark};
 
-  @media (max-width: 380px) {
+  @media ${max380} {
     font-size: ${({ theme }) => theme.fontSizes.s};
   }
 
@@ -29,7 +33,7 @@ export const StyledRowDataWrapper = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.xxs};
     font-weight: ${({ theme }) => theme.fontWeights.light};
 
-    @media (max-width: 380px) {
+    @media ${max380} {
       font-size: ${({ theme }) => theme.fontSizes.ss};
     }
   }

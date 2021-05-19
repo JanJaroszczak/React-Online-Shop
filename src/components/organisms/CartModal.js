@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ModalElement from '../molecules/ModalElement';
 
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
 import { routes } from '../../routes';
 import { setCartClosed } from '../../actions';
 

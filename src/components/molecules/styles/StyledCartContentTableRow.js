@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max350, max480 } = mediaQueryStrings;
+
 export const StyledTableRow = styled.tr`
   td {
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
@@ -9,12 +13,12 @@ export const StyledTableRow = styled.tr`
     display: grid;
     grid-template-columns: 100px auto;
 
-    @media (max-width: 480px) {
+    @media ${max480} {
       grid-template-columns: 100px;
       grid-template-rows: auto auto;
     }
 
-    @media (max-width: 350px) {
+    @media ${max350} {
       grid-template-columns: 80px;
       grid-template-rows: auto auto;
     }

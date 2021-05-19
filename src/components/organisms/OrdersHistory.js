@@ -4,13 +4,14 @@ import { useMediaQuery } from 'react-responsive';
 import OrdersHistoryTable from './OrdersHistoryTable';
 import Spinner from '../../components/atoms/Spinner';
 
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
 import { StyledOrdersHistoryWrapper } from './styles/StyledOrdersHistory';
 
 const OrdersHistory = () => {
   const [isTableMounted, setIsTableMounted] = useState(false);
 
   const is600 = useMediaQuery({
-    query: '(max-width: 600px)',
+    query: mediaQueryStrings.max600,
   });
 
   useEffect(() => {

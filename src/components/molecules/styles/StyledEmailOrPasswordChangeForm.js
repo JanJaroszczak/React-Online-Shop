@@ -1,7 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
 
 export const StyledInputsWrapper = styled.div`
-  @media (max-width: 600px) {
+  @media ${mediaQueryStrings.max600} {
     max-width: 250px;
     margin: 0 auto;
   }

@@ -6,22 +6,26 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 
 import ProductCard from '../molecules/ProductCard';
 
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
+
 import 'swiper/swiper-bundle.css';
 import './styles/stylesProductsSlider.css';
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const ProductsSlider = () => {
+  const { max480, max650, max900 } = mediaQueryStrings;
+
+  const isMobile = useMediaQuery({
+    query: max480,
+  });
+
   const is650 = useMediaQuery({
-    query: '(max-width: 650px)',
+    query: max650,
   });
 
   const is900 = useMediaQuery({
-    query: '(max-width: 900px)',
-  });
-
-  const isMobile = useMediaQuery({
-    query: '(max-width: 480px)',
+    query: max900,
   });
 
   const selectedProducts = useSelector(

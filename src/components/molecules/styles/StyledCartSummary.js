@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max600, max768 } = mediaQueryStrings;
+
 export const StyledCartSummary = styled.div`
   width: 380px;
   margin: 40px 0 40px auto;
@@ -11,7 +15,7 @@ export const StyledCartSummary = styled.div`
       margin: 123px 50px 0 0;
     `}
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     width: 80vw;
     margin: 30px auto 0;
 
@@ -23,7 +27,7 @@ export const StyledCartSummary = styled.div`
       `}
   }
 
-  @media (max-width: 600px) {
+  @media ${max600} {
     ${({ orderSummary }) =>
       orderSummary &&
       css`
@@ -71,7 +75,7 @@ export const StyledButton = styled.button`
     background-color: ${({ theme }) => theme.colors.extraDarkGray};
   }
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     margin: 20px auto 0;
   }
 `;

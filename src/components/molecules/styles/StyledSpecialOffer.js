@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
 export const StyledDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
@@ -22,7 +24,7 @@ export const StyledDiv = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.moderateGray};
   }
 
-  @media (max-width: 768px) {
+  @media ${mediaQueryStrings.max768} {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
     height: auto;

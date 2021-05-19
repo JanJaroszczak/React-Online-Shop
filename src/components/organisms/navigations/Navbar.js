@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import SearchProductsPopper from '../../molecules/SearchProductsPopper';
 import useOnClickOutside from '../../../utils/useOnClickOutside';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
 import { routes } from '../../../routes';
 import { setCartOpen, toggleSearchPanel } from '../../../actions';
 
@@ -39,7 +40,7 @@ const Navbar = () => {
   );
 
   const isDesktop = useMediaQuery({
-    query: '(min-width: 1024px)',
+    query: mediaQueryStrings.min1024,
   });
 
   // Call hook passing in the ref and a function to call on outside click

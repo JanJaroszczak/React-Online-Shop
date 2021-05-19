@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { mediaQueryStrings } from '../../../helpers/mediaQueryStrings';
+
+const { max768 } = mediaQueryStrings;
+
 export const StyledQuantityChoice = styled.div`
   display: inline-block;
   margin-left: 50px;
@@ -14,7 +18,7 @@ export const StyledQuantityChoice = styled.div`
       margin-left: 0;
     `}
 
-  @media (max-width: 768px) {
+  @media ${max768} {
     ${({ cart }) =>
       cart &&
       css`
@@ -40,7 +44,7 @@ export const StyledQuantityInput = styled.div`
     outline: none;
     border-radius: 0;
 
-    @media (max-width: 768px) {
+    @media ${max768} {
       ${({ cart }) =>
         cart &&
         css`
@@ -48,7 +52,7 @@ export const StyledQuantityInput = styled.div`
           width: 25px;
         `}
     }
-    @media (max-width: 768px) {
+    @media ${max768} {
       ${({ orderRow }) =>
         orderRow &&
         css`
@@ -76,7 +80,7 @@ export const StyledQuantityInput = styled.div`
 
     border: none;
 
-    @media (max-width: 768px) {
+    @media ${max768} {
       ${({ cart }) =>
         cart &&
         css`
@@ -105,7 +109,7 @@ export const StyledQuantityInput = styled.div`
     border-bottom: 7px solid transparent;
     transition: 1s linear;
 
-    @media (max-width: 768px) {
+    @media ${max768} {
       top: -10px;
       left: 5px;
       border-right: 7px solid transparent;
@@ -129,7 +133,7 @@ export const StyledQuantityInput = styled.div`
     text-align: center;
     transition: 1s linear;
 
-    @media (max-width: 768px) {
+    @media ${max768} {
       top: -50px;
       left: -50px;
     }

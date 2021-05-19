@@ -7,6 +7,7 @@ import CheckboxFilters from '../molecules/CheckboxFilters';
 
 import { buttonLabels } from '../../helpers/buttonLabels';
 import { buttonVariants } from '../../helpers/atomsTypesAndVariants';
+import { mediaQueryStrings } from '../../helpers/mediaQueryStrings';
 
 import {
   StyledColumn,
@@ -27,7 +28,7 @@ const CheckboxFiltersColumn = ({
   );
 
   const isTabletButton = useMediaQuery({
-    query: '(max-width: 768px)',
+    query: mediaQueryStrings.max768,
   });
 
   const [bottomFilterPrice, setBottomFilterPrice] = useState('');
@@ -88,8 +89,8 @@ const CheckboxFiltersColumn = ({
     (allCheckboxFilteredProducts) => {
       let currentCondition = null;
 
-      const allCheckboxAndPriceFilteredProducts = allCheckboxFilteredProducts.filter(
-        (product) => {
+      const allCheckboxAndPriceFilteredProducts =
+        allCheckboxFilteredProducts.filter((product) => {
           bottomFilterPrice && upperFilterPrice
             ? (currentCondition =
                 product.productPrice >= bottomFilterPrice &&
@@ -101,8 +102,7 @@ const CheckboxFiltersColumn = ({
             : (currentCondition = product.productPrice > 0);
 
           return currentCondition;
-        }
-      );
+        });
       onFilteredProducts(allCheckboxAndPriceFilteredProducts);
     },
     [bottomFilterPrice, upperFilterPrice, onFilteredProducts]
