@@ -8,7 +8,7 @@ import {
 
 const SectionHeader = ({
   type,
-  heading,
+  heading = '',
   headingDescription = '',
   headingDescriptionSecondLine,
 }) => {

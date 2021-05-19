@@ -23,7 +23,6 @@ const AuthBeforeCheckoutPage = () => {
             : headingTypes.authBeforeCheckout
         }
         heading={'log in or sign up '}
-        headingDescription={''}
       />
       <StyledGridWrapper>
         <SignUpLogInForm isSignUp={false} beforeCheckout />

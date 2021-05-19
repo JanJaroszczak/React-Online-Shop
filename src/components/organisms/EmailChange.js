@@ -16,7 +16,6 @@ const EmailChange = () => {
       {currentUser && (
         <Heading
           type={headingTypes.accountPage}
-          heading={''}
           headingDescription={`your current email is: ${currentUser.userEmail}`}
           headingDescriptionSecondLine="enter your password and a new email to change it:"
         />

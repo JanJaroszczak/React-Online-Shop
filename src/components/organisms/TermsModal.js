@@ -573,7 +573,6 @@ const TermsModal = () => {
             <Heading
               type={headingTypes.termsModal}
               heading={'Terms and Conditions'}
-              headingDescription=""
             />
             <StyledTermsContentWrapper>
               {renderTermsText()}

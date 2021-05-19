@@ -12,7 +12,6 @@ const PasswordChange = () => {
     <StyledDataChangeWrapper>
       <Heading
         type={headingTypes.accountPage}
-        heading={''}
         headingDescription={`enter your current password and a new one:`}
       />
       <EmailOrPasswordChangeForm />

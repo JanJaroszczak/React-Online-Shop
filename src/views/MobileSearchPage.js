@@ -55,7 +55,6 @@ const MobileSearchPage = () => {
             : headingTypes.topSearchPageHeading
         }
         heading={'SEARCH PANEL'}
-        headingDescription={``}
       />
       <form onSubmit={submitHandler}>
         <StyledInputWrapper>
