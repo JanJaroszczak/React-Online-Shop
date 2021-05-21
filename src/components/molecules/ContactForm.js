@@ -33,16 +33,13 @@ const {
   emailRequired,
   invalidEmail,
   messageRequired,
-  messageAtLeast10Chars,
   termsAcceptanceRequired,
 } = validationMessages;
 
 const contactValidationSchema = Yup.object().shape({
   userName: Yup.string().required(nameRequired),
   userEmail: Yup.string().email(invalidEmail).required(emailRequired),
-  userMessage: Yup.string()
-    .required(messageRequired)
-    .min(10, messageAtLeast10Chars),
+  userMessage: Yup.string().required(messageRequired),
   acceptTerms: Yup.bool().oneOf([true], termsAcceptanceRequired),
 });
 

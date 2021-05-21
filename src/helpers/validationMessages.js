@@ -1,7 +1,7 @@
 export const validationMessages = {
   nameRequired: 'Enter your name!',
   surnameRequired: 'Enter your surname!',
-  emailRequired: 'Enter email!',
+  emailRequired: 'Enter an email!',
   invalidEmail: 'Invalid email!',
   streetRequired: 'Enter your street!',
   zipCodeRequired: 'Enter your zip code!',
@@ -10,7 +10,6 @@ export const validationMessages = {
   phoneRequired: 'Enter your phone number!',
   phoneAtLeast9Chars: 'Phone number must contain at least 9 characters!',
   termsAcceptanceRequired: 'You need to accept Terms and Conditions!',
-  messageRequired: 'Enter message!',
-  messageAtLeast10Chars: 'Your message must contain at least 10 characters.',
+  messageRequired: 'Enter a message!',
   sizeChoiceRequired: 'Please choose a size!',
 };
